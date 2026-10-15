@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIA — Autonomous Zero-Cost AI Assistant Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #121826;
+      --card-border: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --purple: #a855f7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .title-group h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge-zero-cost {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--success);
+      color: var(--success);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #334155;
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .progress-bar-bg {
+      background: #1e293b;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.75rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      overflow-x: auto;
+    }
+
+    .table-container h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      color: var(--text-muted);
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--card-border);
+      font-weight: 600;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #1a2234;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .status-ok { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+    .status-warn { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+    .status-info { background: rgba(56, 189, 248, 0.2); color: var(--primary); }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-group">
+        <h1>ARIA <span>// Telemetry</span></h1>
+        <div class="badge-zero-cost">TOTAL COST: $0.00 / MONTH (PERMANENT)</div>
+      </div>
+      <div>
+        <span class="status-pill status-ok">SYSTEM OPERATIONAL</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Groq Free Tier Card -->
+      <div class="card">
+        <h3>Groq Cloud LPU (LLaMA 3.3 70B) <span class="status-pill status-ok">ACTIVE</span></h3>
+        <div class="stat-value" id="groq-val">14,400</div>
+        <div class="stat-sub">Requests Available Today / 14,400 Free</div>
+        <div class="progress-bar-bg">
+          <div class="progress-fill" style="width: 100%; background: var(--primary);"></div>
+        </div>
+      </div>
+
+      <!-- Gemini AI Studio Free Tier Card -->
+      <div class="card">
+        <h3>Gemini 2.0 Flash (1M Context) <span class="status-pill status-ok">READY</span></h3>
+        <div class="stat-value" id="gemini-val">1,500</div>
+        <div class="stat-sub">Requests Available Today / 1,500 Free</div>
+        <div class="progress-bar-bg">
+          <div class="progress-fill" style="width: 100%; background: var(--purple);"></div>
+        </div>
+      </div>
+
+      <!-- Oracle Cloud Compute Card -->
+      <div class="card">
+        <h3>OCI Always Free (ARM 24GB) <span class="status-pill status-ok">ONLINE</span></h3>
+        <div class="stat-value">4 vCPU</div>
+        <div class="stat-sub">IMAP IDLE Daemon & Ollama Fallback</div>
+        <div class="progress-bar-bg">
+          <div class="progress-fill" style="width: 100%; background: var(--success);"></div>
+        </div>
+      </div>
+
+      <!-- GitHub Actions Compute Card -->
+      <div class="card">
+        <h3>GitHub Actions Runner <span class="status-pill status-info">SERVERLESS</span></h3>
+        <div class="stat-value">UNLIMITED</div>
+        <div class="stat-sub">Public Repository Free Runners</div>
+        <div class="progress-bar-bg">
+          <div class="progress-fill" style="width: 100%; background: var(--primary);"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infrastructure Compliance Table -->
+    <div class="table-container">
+      <h2>Free-Tier Infrastructure Compliance Matrix</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Provider / Component</th>
+            <th>Contracted Free Tier</th>
+            <th>Monthly Monetary Cost</th>
+            <th>Billing Risk Barrier</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Groq Cloud</strong> (Inference)</td>
+            <td>14,400 req/day permanent free</td>
+            <td>$0.00</td>
+            <td>No credit card bound; hard quota cut-off</td>
+            <td><span class="status-pill status-ok">COMPLIANT</span></td>
+          </tr>
+          <tr>
+            <td><strong>Google AI Studio</strong> (1M LLM)</td>
+            <td>1,500 req/day permanent free</td>
+            <td>$0.00</td>
+            <td>Free Tier Developer API Project</td>
+            <td><span class="status-pill status-ok">COMPLIANT</span></td>
+          </tr>
+          <tr>
+            <td><strong>Oracle Cloud</strong> (Compute)</td>
+            <td>4 OCPU, 24GB RAM Always Free</td>
+            <td>$0.00</td>
+            <td>Contractually guaranteed Always Free shape</td>
+            <td><span class="status-pill status-ok">COMPLIANT</span></td>
+          </tr>
+          <tr>
+            <td><strong>Supabase</strong> (Database)</td>
+            <td>500MB PostgreSQL + pgvector</td>
+            <td>$0.00</td>
+            <td>Free tier quota ceiling auto-pruned</td>
+            <td><span class="status-pill status-ok">COMPLIANT</span></td>
+          </tr>
+          <tr>
+            <td><strong>Cloudflare R2</strong> (Object Store)</td>
+            <td>10GB storage, $0 egress fees</td>
+            <td>$0.00</td>
+            <td>Zero bandwidth/egress billing</td>
+            <td><span class="status-pill status-ok">COMPLIANT</span></td>
+          </tr>
+          <tr>
+            <td><strong>Upstash Redis</strong> (Cache)</td>
+            <td>10,000 commands/day free</td>
+            <td>$0.00</td>
+            <td>Serverless daily cap</td>
+            <td><span class="status-pill status-ok">COMPLIANT</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      ARIA Autonomous Personal AI Assistant // Operating under strict zero-cost FinOps governance.
+    </footer>
+  </div>
+</body>
+</html>
