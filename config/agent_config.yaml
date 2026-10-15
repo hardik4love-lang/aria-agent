@@ -1,0 +1,42 @@
+agent:
+  name: "ARIA"
+  version: "1.0.0"
+  description: "Autonomous Reasoning & Interaction Agent ($0.00 TCO)"
+  timezone: "UTC"
+  
+runtime:
+  max_loop_iterations: 15
+  runner_safety_margin_seconds: 600  # Checkpoint & hand off 10 min before 6h timeout
+  checkpoint_interval_seconds: 300   # Checkpoint state every 5 minutes
+  max_retries_per_step: 3
+
+quotas:
+  groq_daily_limit: 14400
+  groq_reserve_buffer: 2000
+  gemini_daily_limit: 1500
+  gemini_reserve_buffer: 200
+  github_hourly_limit: 5000
+  github_agent_hourly_ceiling: 300
+  upstash_daily_limit: 10000
+
+security:
+  strict_zero_trust: true
+  enable_prompt_injection_guard: true
+  require_human_approval_for:
+    - "email_send"
+    - "gh_commit_file"
+    - "gh_merge_pr"
+    - "code_execute_sandbox"
+  auto_approval_whitelist_recipients:
+    - "myself@example.com"
+  redact_patterns:
+    - "(?i)password[:=]\\s*['\"][^'\"]+['\"]"
+    - "(?i)bearer\\s+[a-zA-Z0-9_\\-\\.]+"
+    - "(?i)ghp_[a-zA-Z0-9]{36}"
+    - "(?i)gsk_[a-zA-Z0-9]{40,}"
+
+memory:
+  working_memory_max_tokens: 64000
+  supabase_storage_target_mb: 400
+  supabase_storage_limit_mb: 500
+  consolidation_interval_days: 7

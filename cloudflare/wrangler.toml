@@ -1,0 +1,9 @@
+name = "aria-gateway"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+# Permanent Free Tier configuration (100,000 req/day)
+workers_dev = true
+
+[vars]
+GITHUB_REPO = "yourusername/aria-agent"

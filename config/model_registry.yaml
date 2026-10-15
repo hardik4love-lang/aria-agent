@@ -1,0 +1,47 @@
+models:
+  planner:
+    primary:
+      provider: "groq"
+      model_id: "llama-3.3-70b-versatile"
+      temperature: 0.1
+      max_tokens: 4096
+      context_window: 131072
+    fallback_cloud:
+      provider: "gemini"
+      model_id: "gemini-2.0-flash-exp"
+      temperature: 0.1
+      max_tokens: 8192
+      context_window: 1048576
+    fallback_local:
+      provider: "ollama"
+      model_id: "qwen2.5:7b"
+      temperature: 0.1
+      max_tokens: 4096
+
+  executor:
+    primary:
+      provider: "groq"
+      model_id: "llama-3.1-8b-instant"
+      temperature: 0.0
+      max_tokens: 2048
+      context_window: 131072
+    fallback_cloud:
+      provider: "gemini"
+      model_id: "gemini-2.0-flash-exp"
+      temperature: 0.0
+      max_tokens: 2048
+    fallback_local:
+      provider: "ollama"
+      model_id: "llama3.2:3b"
+      temperature: 0.0
+      max_tokens: 2048
+
+  embeddings:
+    primary:
+      provider: "ollama"
+      model_id: "nomic-embed-text"
+      dimensions: 768
+    fallback_cloud:
+      provider: "groq"
+      model_id: "nomic-embed-text"
+      dimensions: 768

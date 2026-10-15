@@ -1,0 +1,22 @@
+[Unit]
+Description=ARIA Autonomous Agent Persistent Daemon (OCI Always Free)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/aria
+EnvironmentFile=/opt/aria/.env
+ExecStart=/usr/bin/python3 /opt/aria/daemon/daemon.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Security Sandboxing
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

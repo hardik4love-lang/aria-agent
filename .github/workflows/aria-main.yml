@@ -1,0 +1,100 @@
+name: ARIA Orchestrator Engine
+
+on:
+  schedule:
+    # Ephemeral runner poll: every 15 minutes
+    - cron: '*/15 * * * *'
+    # Hourly deep reflection and planning
+    - cron: '0 * * * *'
+  repository_dispatch:
+    types:
+      - email-received
+      - pr-review-requested
+      - human-approval-resolved
+      - webhook-trigger
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'Specific task instruction'
+        required: false
+        default: 'Inspect unread emails and log tasks'
+      type:
+        description: 'Task domain type'
+        required: true
+        default: 'email'
+        type: choice
+        options:
+          - email
+          - github
+          - maintenance
+          - adhoc
+      resume_id:
+        description: 'Checkpoint task ID to resume'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350 # Checkpoints and exits cleanly before 360m hard kill
+
+    steps:
+      - name: Checkout Code & State
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Execute ARIA ReAct Graph
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_AGENT_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          EMAIL_ACCOUNT: ${{ secrets.EMAIL_ACCOUNT }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          JOB_START_EPOCH: ${{ github.event.repository.updated_at }}
+        run: |
+          TASK_INPUT="${{ github.event.inputs.task || 'Inspect unread emails and synchronize task queue' }}"
+          TYPE_INPUT="${{ github.event.inputs.type || 'email' }}"
+          RESUME_INPUT="${{ github.event.inputs.resume_id || '' }}"
+          
+          CMD="python -m aria.main --task \"$TASK_INPUT\" --type \"$TYPE_INPUT\""
+          if [ -n "$RESUME_INPUT" ]; then
+            CMD="$CMD --resume-id \"$RESUME_INPUT\""
+          fi
+          
+          eval $CMD
+
+      - name: Commit State Changes to Git
+        if: always()
+        run: |
+          git config --global user.name "ARIA Agent Bot"
+          git config --global user.email "aria-agent@users.noreply.github.com"
+          git add state/
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "chore(state): automated state checkpoint [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "No state changes detected."
+          fi

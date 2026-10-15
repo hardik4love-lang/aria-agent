@@ -1,0 +1,100 @@
+{
+  "thread_id": "task_1792087968_84e333c1",
+  "version": 4,
+  "state": {
+    "task_id": "task_1792087968_84e333c1",
+    "task_type": "email",
+    "task_description": "Inspect unread emails and record summary in memory",
+    "raw_input": {
+      "job_start_epoch": 1792087968.2332034,
+      "max_job_seconds": 20000.0,
+      "dry_run": true
+    },
+    "plan": [
+      {
+        "step_id": 1,
+        "description": "Inspect unread emails",
+        "tool_name": "email_list_unread",
+        "tool_arguments": {
+          "max_count": 5
+        },
+        "is_high_risk": false,
+        "status": "completed",
+        "result": "[{'uid': '101', 'sender': 'colleague@example.com', 'subject': 'Review requested: Quarterly Roadmap', 'date': '2026-10-15T10:00:00Z', 'snippet': 'Could you please take a look at the proposed changes in the repository?'}]",
+        "error": null
+      },
+      {
+        "step_id": 2,
+        "description": "Store summary into memory",
+        "tool_name": "memory_store",
+        "tool_arguments": {
+          "key": "recent_emails",
+          "value": "Checked inbox successfully",
+          "namespace": "email"
+        },
+        "is_high_risk": false,
+        "status": "completed",
+        "result": "{'success': True, 'stored_key': 'recent_emails', 'namespace': 'email'}",
+        "error": null
+      }
+    ],
+    "current_step_idx": 2,
+    "observations": [
+      {
+        "tool_name": "email_list_unread",
+        "inputs": {
+          "max_count": 5
+        },
+        "output": [
+          {
+            "uid": "101",
+            "sender": "colleague@example.com",
+            "subject": "Review requested: Quarterly Roadmap",
+            "date": "2026-10-15T10:00:00Z",
+            "snippet": "Could you please take a look at the proposed changes in the repository?"
+          }
+        ],
+        "success": true,
+        "error": null,
+        "timestamp": "2026-10-15T18:12:51.476708+00:00",
+        "duration_ms": 0
+      },
+      {
+        "tool_name": "memory_store",
+        "inputs": {
+          "key": "recent_emails",
+          "value": "Checked inbox successfully",
+          "namespace": "email"
+        },
+        "output": {
+          "success": true,
+          "stored_key": "recent_emails",
+          "namespace": "email"
+        },
+        "success": true,
+        "error": null,
+        "timestamp": "2026-10-15T18:12:51.490785+00:00",
+        "duration_ms": 11
+      }
+    ],
+    "messages": [],
+    "quota_snapshot": {
+      "groq_requests_today": 0,
+      "groq_remaining": 14400,
+      "gemini_requests_today": 0,
+      "gemini_remaining": 1500,
+      "github_requests_this_hour": 0,
+      "github_remaining": 5000,
+      "active_provider": "groq",
+      "within_safe_limits": true
+    },
+    "checkpoint_version": 4,
+    "error_count": 0,
+    "human_approval_required": false,
+    "pending_action": null,
+    "approval_status": null,
+    "checkpoint_and_pause": false,
+    "completion_status": "completed",
+    "audit_log": []
+  }
+}

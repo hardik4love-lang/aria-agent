@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "key": "recent_emails",
+      "value": "Checked inbox successfully",
+      "namespace": "email",
+      "created_at": 1792087770.5498493,
+      "access_count": 0,
+      "updated_at": 1792088023.6354604
+    }
+  ]
+}
