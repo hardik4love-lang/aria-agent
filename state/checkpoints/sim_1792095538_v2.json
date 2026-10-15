@@ -1,0 +1,57 @@
+{
+  "thread_id": "sim_1792095538",
+  "version": 2,
+  "state": {
+    "task_id": "sim_1792095538",
+    "task_type": "email",
+    "task_description": "Review pull request diff and enforce zero cost",
+    "raw_input": {
+      "job_start_epoch": 1792095538.5696297,
+      "max_job_seconds": 600,
+      "dry_run": true
+    },
+    "plan": [
+      {
+        "step_id": 1,
+        "description": "Inspect unread emails",
+        "tool_name": "email_list_unread",
+        "tool_arguments": {
+          "max_count": 5
+        },
+        "is_high_risk": false
+      },
+      {
+        "step_id": 2,
+        "description": "Store summary into memory",
+        "tool_name": "memory_store",
+        "tool_arguments": {
+          "key": "recent_emails",
+          "value": "Checked inbox successfully",
+          "namespace": "email"
+        },
+        "is_high_risk": false
+      }
+    ],
+    "current_step_idx": 0,
+    "observations": [],
+    "messages": [],
+    "quota_snapshot": {
+      "groq_requests_today": 0,
+      "groq_remaining": 14400,
+      "gemini_requests_today": 0,
+      "gemini_remaining": 1500,
+      "github_requests_this_hour": 0,
+      "github_remaining": 5000,
+      "active_provider": "groq",
+      "within_safe_limits": true
+    },
+    "checkpoint_version": 2,
+    "error_count": 0,
+    "human_approval_required": false,
+    "pending_action": null,
+    "approval_status": null,
+    "checkpoint_and_pause": true,
+    "completion_status": "in_progress",
+    "audit_log": []
+  }
+}
