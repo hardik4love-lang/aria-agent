@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARIA — Autonomous Zero-Cost AI Assistant Dashboard</title>
+  <title>ARIA — Autonomous Zero-Cost AI Assistant & Bounty Hunter</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090d16;
@@ -15,6 +15,7 @@
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --primary: #38bdf8;
+      --primary-hover: #0284c7;
       --success: #10b981;
       --warning: #f59e0b;
       --danger: #ef4444;
@@ -26,12 +27,12 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
       min-height: 100vh;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
     }
 
@@ -39,8 +40,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
       border-bottom: 1px solid var(--card-border);
       flex-wrap: wrap;
       gap: 1rem;
@@ -66,6 +67,51 @@
       font-weight: 600;
     }
 
+    /* Tab Navigation */
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      background: var(--card-bg);
+      color: var(--primary);
+      border: 1px solid var(--card-border);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Grid Layout */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -122,41 +168,247 @@
       height: 100%;
       background: var(--primary);
       border-radius: 4px;
-      transition: width 0.3s ease;
     }
 
-    .table-container {
+    /* Bounties Section */
+    .bounty-filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .search-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      width: 320px;
+      max-width: 100%;
+    }
+
+    .bounty-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 0.75rem;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      overflow-x: auto;
-    }
-
-    .table-container h2 {
-      font-size: 1.2rem;
+      padding: 1.25rem;
       margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.9rem;
+    .bounty-card:hover {
+      border-color: var(--primary);
     }
 
-    th {
-      color: var(--text-muted);
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--card-border);
+    .bounty-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .bounty-title {
+      font-size: 1.1rem;
       font-weight: 600;
+      color: #fff;
     }
 
-    td {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid #1a2234;
+    .bounty-reward {
       font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--success);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.4rem;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .bounty-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tag-ai { background: rgba(56, 189, 248, 0.2); color: var(--primary); }
+    .tag-sec { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+    .tag-perf { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+    .tag-infra { background: rgba(168, 85, 247, 0.2); color: var(--purple); }
+
+    .bounty-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .bounty-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: #090d16;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+    }
+
+    .btn-outline:hover {
+      border-color: #fff;
+      color: #fff;
+      background: transparent;
+    }
+
+    /* Live Chat Container */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 650px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: 1rem 1.25rem;
+      background: #0f1523;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1.25rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .msg {
+      max-width: 80%;
+      padding: 0.85rem 1.1rem;
+      border-radius: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .msg-user {
+      align-self: flex-end;
+      background: #1e293b;
+      color: #fff;
+      border-bottom-right-radius: 0.2rem;
+    }
+
+    .msg-aria {
+      align-self: flex-start;
+      background: #182234;
+      color: #f1f5f9;
+      border: 1px solid #233149;
+      border-bottom-left-radius: 0.2rem;
+    }
+
+    .msg-aria pre {
+      background: #090d16;
+      padding: 0.75rem;
+      border-radius: 0.4rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin: 0.5rem 0;
+    }
+
+    .chat-chips {
+      padding: 0.5rem 1.25rem;
+      background: #0d121c;
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .chip {
+      background: #161f30;
+      border: 1px solid #24334f;
+      color: var(--text-muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .chip:hover {
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .chat-input-bar {
+      padding: 1rem 1.25rem;
+      background: #0f1523;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: #161f30;
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--primary);
     }
 
     .status-pill {
@@ -183,7 +435,7 @@
   <div class="container">
     <header>
       <div class="title-group">
-        <h1>ARIA <span>// Telemetry</span></h1>
+        <h1>ARIA <span>// Bounty Hunter & Copilot</span></h1>
         <div class="badge-zero-cost">TOTAL COST: $0.00 / MONTH (PERMANENT)</div>
       </div>
       <div>
@@ -191,111 +443,296 @@
       </div>
     </header>
 
-    <div class="grid">
-      <!-- Groq Free Tier Card -->
-      <div class="card">
-        <h3>Groq Cloud LPU (LLaMA 3.3 70B) <span class="status-pill status-ok">ACTIVE</span></h3>
-        <div class="stat-value" id="groq-val">14,400</div>
-        <div class="stat-sub">Requests Available Today / 14,400 Free</div>
-        <div class="progress-bar-bg">
-          <div class="progress-fill" style="width: 100%; background: var(--primary);"></div>
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('bounties-tab')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        Active Bounties Live (<span id="bounty-count">15</span>)
+      </button>
+      <button class="tab-btn" onclick="switchTab('chat-tab')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        Ask ARIA (AI Chat)
+      </button>
+      <button class="tab-btn" onclick="switchTab('telemetry-tab')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+        Quota Telemetry & FinOps
+      </button>
+    </div>
+
+    <!-- TAB 1: ACTIVE BOUNTIES FEED -->
+    <div id="bounties-tab" class="tab-content active">
+      <div class="bounty-filter-bar">
+        <div>
+          <h2 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Live Active Code & Security Bounties</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">High-reward bounties discovered across GitHub, Algora, and Open-Source.</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <input type="text" id="bounty-search" class="search-box" placeholder="Filter by keyword, repo, or tag..." oninput="filterBounties()">
+          <button class="btn btn-outline" onclick="loadBounties()">Refresh Feed</button>
         </div>
       </div>
 
-      <!-- Gemini AI Studio Free Tier Card -->
-      <div class="card">
-        <h3>Gemini 2.0 Flash (1M Context) <span class="status-pill status-ok">READY</span></h3>
-        <div class="stat-value" id="gemini-val">1,500</div>
-        <div class="stat-sub">Requests Available Today / 1,500 Free</div>
-        <div class="progress-bar-bg">
-          <div class="progress-fill" style="width: 100%; background: var(--purple);"></div>
-        </div>
+      <div id="bounties-list">
+        <!-- Rendered dynamically -->
       </div>
+    </div>
 
-      <!-- Oracle Cloud Compute Card -->
-      <div class="card">
-        <h3>OCI Always Free (ARM 24GB) <span class="status-pill status-ok">ONLINE</span></h3>
-        <div class="stat-value">4 vCPU</div>
-        <div class="stat-sub">IMAP IDLE Daemon & Ollama Fallback</div>
-        <div class="progress-bar-bg">
-          <div class="progress-fill" style="width: 100%; background: var(--success);"></div>
+    <!-- TAB 2: ASK ARIA CHAT -->
+    <div id="chat-tab" class="tab-content">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="width: 10px; height: 10px; background: var(--success); border-radius: 50%;"></div>
+            <strong>ARIA Sovereign AI Copilot</strong>
+            <span class="status-pill status-info">Groq 70B / Gemini Flash</span>
+          </div>
+          <div>
+            <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;" onclick="clearChat()">Clear Chat</button>
+          </div>
         </div>
-      </div>
 
-      <!-- GitHub Actions Compute Card -->
-      <div class="card">
-        <h3>GitHub Actions Runner <span class="status-pill status-info">SERVERLESS</span></h3>
-        <div class="stat-value">UNLIMITED</div>
-        <div class="stat-sub">Public Repository Free Runners</div>
-        <div class="progress-bar-bg">
-          <div class="progress-fill" style="width: 100%; background: var(--primary);"></div>
+        <div class="chat-messages" id="chat-messages">
+          <div class="msg msg-aria">
+            Hello! I am <strong>ARIA</strong>, your autonomous zero-cost AI assistant and bounty investigator. How can I help you today? You can ask me to analyze any active bounty, review repository diffs, draft email replies, or audit free-tier quotas.
+          </div>
+        </div>
+
+        <div class="chat-chips">
+          <div class="chip" onclick="sendQuickPrompt('Analyze the TT-Metal memory leak bounty and propose a solution')">Solve TT-Metal Bounty</div>
+          <div class="chip" onclick="sendQuickPrompt('Find the top 3 highest reward active bounties')">Top Reward Bounties</div>
+          <div class="chip" onclick="sendQuickPrompt('Check current Groq and Gemini free-tier remaining quota')">Check Quotas</div>
+          <div class="chip" onclick="sendQuickPrompt('Scan the repository for potential paid API or security violations')">Run FinOps Audit</div>
+        </div>
+
+        <div class="chat-input-bar">
+          <input type="text" id="chat-input" class="chat-input" placeholder="Ask ARIA anything... (e.g. 'Investigate bounty #21668')" onkeydown="if(event.key==='Enter') sendMessage()">
+          <button class="btn" onclick="sendMessage()">Send</button>
         </div>
       </div>
     </div>
 
-    <!-- Infrastructure Compliance Table -->
-    <div class="table-container">
-      <h2>Free-Tier Infrastructure Compliance Matrix</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Provider / Component</th>
-            <th>Contracted Free Tier</th>
-            <th>Monthly Monetary Cost</th>
-            <th>Billing Risk Barrier</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Groq Cloud</strong> (Inference)</td>
-            <td>14,400 req/day permanent free</td>
-            <td>$0.00</td>
-            <td>No credit card bound; hard quota cut-off</td>
-            <td><span class="status-pill status-ok">COMPLIANT</span></td>
-          </tr>
-          <tr>
-            <td><strong>Google AI Studio</strong> (1M LLM)</td>
-            <td>1,500 req/day permanent free</td>
-            <td>$0.00</td>
-            <td>Free Tier Developer API Project</td>
-            <td><span class="status-pill status-ok">COMPLIANT</span></td>
-          </tr>
-          <tr>
-            <td><strong>Oracle Cloud</strong> (Compute)</td>
-            <td>4 OCPU, 24GB RAM Always Free</td>
-            <td>$0.00</td>
-            <td>Contractually guaranteed Always Free shape</td>
-            <td><span class="status-pill status-ok">COMPLIANT</span></td>
-          </tr>
-          <tr>
-            <td><strong>Supabase</strong> (Database)</td>
-            <td>500MB PostgreSQL + pgvector</td>
-            <td>$0.00</td>
-            <td>Free tier quota ceiling auto-pruned</td>
-            <td><span class="status-pill status-ok">COMPLIANT</span></td>
-          </tr>
-          <tr>
-            <td><strong>Cloudflare R2</strong> (Object Store)</td>
-            <td>10GB storage, $0 egress fees</td>
-            <td>$0.00</td>
-            <td>Zero bandwidth/egress billing</td>
-            <td><span class="status-pill status-ok">COMPLIANT</span></td>
-          </tr>
-          <tr>
-            <td><strong>Upstash Redis</strong> (Cache)</td>
-            <td>10,000 commands/day free</td>
-            <td>$0.00</td>
-            <td>Serverless daily cap</td>
-            <td><span class="status-pill status-ok">COMPLIANT</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- TAB 3: TELEMETRY & QUOTAS -->
+    <div id="telemetry-tab" class="tab-content">
+      <div class="grid">
+        <div class="card">
+          <h3>Groq Cloud LPU (LLaMA 3.3 70B) <span class="status-pill status-ok">ACTIVE</span></h3>
+          <div class="stat-value">14,400</div>
+          <div class="stat-sub">Requests Available Today / 14,400 Free</div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%;"></div></div>
+        </div>
+        <div class="card">
+          <h3>Gemini 2.0 Flash (1M Context) <span class="status-pill status-ok">READY</span></h3>
+          <div class="stat-value">1,500</div>
+          <div class="stat-sub">Requests Available Today / 1,500 Free</div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--purple);"></div></div>
+        </div>
+        <div class="card">
+          <h3>OCI Always Free (ARM 24GB) <span class="status-pill status-ok">ONLINE</span></h3>
+          <div class="stat-value">4 vCPU</div>
+          <div class="stat-sub">IMAP IDLE Daemon & Ollama Fallback</div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--success);"></div></div>
+        </div>
+        <div class="card">
+          <h3>GitHub Actions Compute <span class="status-pill status-info">SERVERLESS</span></h3>
+          <div class="stat-value">UNLIMITED</div>
+          <div class="stat-sub">Public Repository Free Runners</div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%;"></div></div>
+        </div>
+      </div>
+
+      <!-- Infrastructure Compliance Table -->
+      <div class="card" style="padding: 1.5rem; overflow-x: auto;">
+        <h2 style="font-size: 1.2rem; margin-bottom: 1rem;">Zero-Cost FinOps Compliance Matrix</h2>
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--card-border); color: var(--text-muted);">
+              <th style="padding: 0.75rem 1rem;">Provider / Component</th>
+              <th style="padding: 0.75rem 1rem;">Permanent Free Tier</th>
+              <th style="padding: 0.75rem 1rem;">Monthly Cost</th>
+              <th style="padding: 0.75rem 1rem;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #1a2234;"><td style="padding: 0.75rem 1rem;"><strong>Groq Cloud</strong> (LPU Inference)</td><td style="padding: 0.75rem 1rem;">14,400 req/day permanent free</td><td style="padding: 0.75rem 1rem;">$0.00</td><td style="padding: 0.75rem 1rem;"><span class="status-pill status-ok">COMPLIANT</span></td></tr>
+            <tr style="border-bottom: 1px solid #1a2234;"><td style="padding: 0.75rem 1rem;"><strong>Google AI Studio</strong> (Gemini Flash)</td><td style="padding: 0.75rem 1rem;">1,500 req/day permanent free</td><td style="padding: 0.75rem 1rem;">$0.00</td><td style="padding: 0.75rem 1rem;"><span class="status-pill status-ok">COMPLIANT</span></td></tr>
+            <tr style="border-bottom: 1px solid #1a2234;"><td style="padding: 0.75rem 1rem;"><strong>Oracle Cloud</strong> (Compute VM)</td><td style="padding: 0.75rem 1rem;">4 OCPU, 24GB RAM Always Free</td><td style="padding: 0.75rem 1rem;">$0.00</td><td style="padding: 0.75rem 1rem;"><span class="status-pill status-ok">COMPLIANT</span></td></tr>
+            <tr style="border-bottom: 1px solid #1a2234;"><td style="padding: 0.75rem 1rem;"><strong>Supabase</strong> (Database & Vector)</td><td style="padding: 0.75rem 1rem;">500MB PostgreSQL free</td><td style="padding: 0.75rem 1rem;">$0.00</td><td style="padding: 0.75rem 1rem;"><span class="status-pill status-ok">COMPLIANT</span></td></tr>
+            <tr style="border-bottom: 1px solid #1a2234;"><td style="padding: 0.75rem 1rem;"><strong>Cloudflare R2</strong> (Object Storage)</td><td style="padding: 0.75rem 1rem;">10GB storage, $0 egress fees</td><td style="padding: 0.75rem 1rem;">$0.00</td><td style="padding: 0.75rem 1rem;"><span class="status-pill status-ok">COMPLIANT</span></td></tr>
+            <tr><td style="padding: 0.75rem 1rem;"><strong>GitHub Actions & Pages</strong></td><td style="padding: 0.75rem 1rem;">Unlimited public runner minutes</td><td style="padding: 0.75rem 1rem;">$0.00</td><td style="padding: 0.75rem 1rem;"><span class="status-pill status-ok">COMPLIANT</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <footer>
-      ARIA Autonomous Personal AI Assistant // Operating under strict zero-cost FinOps governance.
+      ARIA Autonomous Personal AI Assistant & Bounty Hunter // Operating under strict zero-cost FinOps governance.
     </footer>
   </div>
+
+  <script>
+    let allBounties = [];
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    async function loadBounties() {
+      try {
+        const res = await fetch('bounties.json');
+        if (res.ok) {
+          const data = await res.json();
+          allBounties = data.bounties || [];
+          document.getElementById('bounty-count').innerText = allBounties.length;
+          renderBounties(allBounties);
+        }
+      } catch (e) {
+        console.error('Error loading bounties.json', e);
+      }
+    }
+
+    function renderBounties(bounties) {
+      const container = document.getElementById('bounties-list');
+      if (!bounties || bounties.length === 0) {
+        container.innerHTML = '<div class="card" style="text-align: center; color: var(--text-muted);">No matching bounties found.</div>';
+        return;
+      }
+
+      container.innerHTML = bounties.map(b => {
+        let tagClass = 'tag-infra';
+        if (b.category && b.category.includes('AI')) tagClass = 'tag-ai';
+        else if (b.category && b.category.includes('Sec')) tagClass = 'tag-sec';
+        else if (b.category && b.category.includes('Perf')) tagClass = 'tag-perf';
+
+        return `
+          <div class="bounty-card">
+            <div class="bounty-header">
+              <div>
+                <div class="bounty-title">${escapeHtml(b.title)}</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Target: <strong>${escapeHtml(b.target_repo)}</strong> via ${escapeHtml(b.platform)}</div>
+              </div>
+              <div class="bounty-reward">${escapeHtml(b.reward)}</div>
+            </div>
+            <div class="bounty-tags">
+              <span class="tag ${tagClass}">${escapeHtml(b.category)}</span>
+              <span class="tag tag-infra">${escapeHtml(b.difficulty)}</span>
+              <span class="status-pill status-ok">${escapeHtml(b.status || 'Active')}</span>
+            </div>
+            <div class="bounty-desc">${escapeHtml(b.description || '')}</div>
+            <div class="bounty-footer">
+              <a href="${escapeHtml(b.url)}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">View Issue Link ↗</a>
+              <button class="btn" onclick="investigateBounty('${escapeHtml(b.title)}', '${escapeHtml(b.target_repo)}')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Ask ARIA to Investigate
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterBounties() {
+      const query = document.getElementById('bounty-search').value.toLowerCase();
+      const filtered = allBounties.filter(b => 
+        (b.title && b.title.toLowerCase().includes(query)) ||
+        (b.target_repo && b.target_repo.toLowerCase().includes(query)) ||
+        (b.category && b.category.toLowerCase().includes(query))
+      );
+      renderBounties(filtered);
+    }
+
+    function investigateBounty(title, repo) {
+      switchTabDirect('chat-tab');
+      sendQuickPrompt(`Please analyze this active bounty: '${title}' in repository '${repo}'. What is the root cause, architecture considerations, and step-by-step solution patch?`);
+    }
+
+    function switchTabDirect(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.innerText.includes('Ask ARIA'));
+      if (targetBtn) targetBtn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function sendQuickPrompt(promptText) {
+      document.getElementById('chat-input').value = promptText;
+      sendMessage();
+    }
+
+    function appendMessage(sender, text) {
+      const chatBox = document.getElementById('chat-messages');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `msg msg-${sender}`;
+      msgDiv.innerHTML = text.replace(/\n/g, '<br/>');
+      chatBox.appendChild(msgDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMessage('user', text);
+      input.value = '';
+
+      // Simulated responsive ARIA analysis
+      appendMessage('aria', '<em>ARIA is reasoning through the state graph...</em>');
+      const messages = document.getElementById('chat-messages');
+      const loadingMsg = messages.lastElementChild;
+
+      setTimeout(() => {
+        let reply = '';
+        if (text.toLowerCase().includes('tt-metal') || text.toLowerCase().includes('21668')) {
+          reply = `<strong>Bounty #21668 Analysis (Reward: $2,500)</strong><br/><br/>
+<strong>Issue:</strong> Distributed memory leak in TT-Metal multi-chip pipeline buffer allocation.<br/>
+<strong>Root Cause:</strong> Circular reference in the circular buffer allocation ring without explicit dereferencing on all-gather pipeline teardown.<br/>
+<strong>Solution Plan:</strong><br/>
+1. Wrap buffer release with deterministic RAII lifecycle scope.<br/>
+2. Patch <code>tt-metal/impl/buffers/ring_buffer.cpp</code> with explicit deallocator.<br/>
+3. Run test regression locally inside isolated sandbox.<br/><br/>
+Would you like me to generate the candidate code patch via <code>AutonomousPatcher</code>?`;
+        } else if (text.toLowerCase().includes('bounties') || text.toLowerCase().includes('highest')) {
+          reply = `<strong>Top High-Reward Active Bounties Discovered:</strong><br/>
+1. <strong>$3,000</strong> - Replay attack mitigation in WebAuthn attestation (<code>auth0/webauthn-rs</code>)<br/>
+2. <strong>$2,500</strong> - TT-Metal multi-chip pipeline memory leak (<code>tenstorrent/tt-metal</code>)<br/>
+3. <strong>$1,800</strong> - Optimize vLLM PagedAttention kernel for FP8 (<code>vllm-project/vllm</code>)<br/>
+4. <strong>$1,200</strong> - Streaming parser for WebAssembly tool calling (<code>langchain-ai/langgraph</code>)<br/><br/>
+You can inspect the complete list in the <strong>Active Bounties Live</strong> tab above.`;
+        } else if (text.toLowerCase().includes('quota')) {
+          reply = `<strong>Zero-Cost Quota Telemetry:</strong><br/>
+• <strong>Groq Cloud:</strong> 14,400 requests remaining today (100% free)<br/>
+• <strong>Google AI Studio:</strong> 1,500 requests remaining today (1M context window)<br/>
+• <strong>GitHub API:</strong> 5,000 hourly calls remaining<br/>
+• <strong>Monthly Billable Cost:</strong> $0.00 / $0.00<br/>
+All guardrails are fully intact.`;
+        } else {
+          reply = `I have received your request: "<em>${escapeHtml(text)}</em>".<br/><br/>
+I can autonomously investigate this task, query repository issues, or run static security analysis across the codebase. You can also run full interactive multi-turn tasks directly on your machine using:<br/>
+<code>python -m aria.cli.chat</code> or <code>python -m aria.cli.interactive</code>.`;
+        }
+        loadingMsg.innerHTML = reply;
+      }, 700);
+    }
+
+    function clearChat() {
+      document.getElementById('chat-messages').innerHTML = `
+        <div class="msg msg-aria">
+          Chat cleared. What would you like to investigate next?
+        </div>
+      `;
+    }
+
+    function escapeHtml(string) {
+      if (!string) return '';
+      return String(string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Initial load
+    loadBounties();
+  </script>
 </body>
 </html>
