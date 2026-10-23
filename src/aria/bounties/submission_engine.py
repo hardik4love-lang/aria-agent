@@ -18,8 +18,9 @@ from aria.security.telegram_gate import TelegramApprovalGate
 class BountySubmissionEngine:
     """Manages autonomous submissions for completed jobs and bounties."""
 
-    OUTPUT_DIR = "data/jobs_output"
-    SUBMISSIONS_LOG = "data/submissions_log.jsonl"
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    OUTPUT_DIR = os.path.join(BASE_DIR, "data", "jobs_output")
+    SUBMISSIONS_LOG = os.path.join(BASE_DIR, "data", "submissions_log.jsonl")
 
     @classmethod
     def normalize_job_id(cls, raw_id: str) -> str:
