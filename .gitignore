@@ -33,6 +33,8 @@ ENV/
 *.pem
 *.enc
 tool_credentials.enc
+state/agent_wallet.json
+*wallet*.json
 
 # Testing & Coverage
 .pytest_cache/

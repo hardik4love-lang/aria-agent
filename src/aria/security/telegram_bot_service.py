@@ -43,8 +43,12 @@ class TelegramAssistantService:
                     {"text": "🚀 Submit All 10 Jobs ($565)", "callback_data": "SUBMIT:all"}
                 ],
                 [
-                    {"text": "📊 System Status", "callback_data": "MENU:status"},
+                    {"text": "⚡ Instant Agent Bounties (USDC)", "callback_data": "MENU:market"},
                     {"text": "💼 10 Rapid Jobs", "callback_data": "MENU:jobs"}
+                ],
+                [
+                    {"text": "📊 System Status", "callback_data": "MENU:status"},
+                    {"text": "🎯 Live Bounties", "callback_data": "MENU:bounties"}
                 ],
                 [
                     {"text": "⚡ Run 10 Scrapes", "callback_data": "MENU:scrape"},
@@ -236,6 +240,8 @@ class TelegramAssistantService:
             action = data.split(":", 1)[1]
             if action == "status":
                 self._cmd_status(edit_msg_id=msg_id)
+            elif action == "market":
+                self._cmd_market(edit_msg_id=msg_id)
             elif action == "jobs":
                 self._cmd_jobs(edit_msg_id=msg_id)
             elif action == "scrape":
@@ -246,6 +252,34 @@ class TelegramAssistantService:
                 self._cmd_payout(edit_msg_id=msg_id)
             elif action == "help":
                 self._cmd_help(edit_msg_id=msg_id)
+        elif data.startswith("MARKET:"):
+            act = data.split(":", 1)[1]
+            if act == "scan":
+                from aria.bounties.agent_market_scanner import AgentMarketplaceManager
+                ab = AgentMarketplaceManager.scan_agent_bounties(limit=5)
+                tm = AgentMarketplaceManager.scan_taskmarket()
+                scan_msg = (
+                    "<b>🔍 LIVE AGENT-NATIVE BOUNTY SCAN</b>\n"
+                    "━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"• <b>AgentBounties.app:</b> {ab.get('status', 'CHECKING')}\n"
+                    f"• <b>TaskMarket.dev:</b> {tm.get('status', 'CHECKING')}\n"
+                    f"• <b>Active Wallet:</b> <code>{ab.get('wallet_address', '')}</code>\n\n"
+                    "<i>Autonomous API listener is active. As soon as a claimable task is listed, ARIA executes, submits the artifact, and routes USDC to your Base wallet.</i>"
+                )
+                self.send_message(scan_msg, reply_markup=self.get_main_menu_keyboard())
+            elif act == "wallet":
+                from aria.bounties.agent_market_scanner import AgentMarketplaceManager
+                w = AgentMarketplaceManager.get_or_create_wallet()
+                w_msg = (
+                    "<b>👛 ARIA BASE EVM WALLET</b>\n"
+                    "━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"• <b>Address:</b> <code>{w['address']}</code>\n"
+                    f"• <b>Network:</b> Base Mainnet (Chain ID 8453)\n"
+                    f"• <b>Settlement Token:</b> USDC\n"
+                    f"• <b>BaseScan:</b> https://basescan.org/address/{w['address']}\n\n"
+                    "<i>All agent-native task settlements from TaskMarket and AgentBounties land directly here.</i>"
+                )
+                self.send_message(w_msg, reply_markup=self.get_main_menu_keyboard())
         elif data.startswith("SOLVE:"):
             job_id = data.split(":", 1)[1]
             self._solve_job_by_id(job_id, edit_msg_id=msg_id)
@@ -256,6 +290,8 @@ class TelegramAssistantService:
 
         if cmd in ["/start", "/help"]:
             self._cmd_help()
+        elif cmd in ["/market", "market", "/agentbounties"]:
+            self._cmd_market()
         elif cmd in ["/status", "status"]:
             self._cmd_status()
         elif cmd in ["/jobs", "jobs"]:
@@ -475,6 +511,42 @@ class TelegramAssistantService:
             self.edit_message(edit_msg_id, status_msg, reply_markup=self.get_main_menu_keyboard())
         else:
             self.send_message(status_msg, reply_markup=self.get_main_menu_keyboard())
+
+    def _cmd_market(self, edit_msg_id: Optional[int] = None):
+        from aria.bounties.agent_market_scanner import AgentMarketplaceManager
+        overview = AgentMarketplaceManager.get_market_overview()
+        wallet = overview["wallet"]
+        msg = (
+            "<b>⚡ ARIA INSTANT AGENT BOUNTY ENGINE</b>\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"• <b>Base EVM Wallet:</b> <code>{wallet['address']}</code>\n"
+            f"• <b>Settlement Currency:</b> USDC on Base (Coinbase L2)\n"
+            "• <b>Release Speed:</b> Minutes (Zero human delay)\n\n"
+            "<b>Connected Marketplaces:</b>\n"
+        )
+        for p in overview["platforms"]:
+            status_emoji = "🟢" if p["status"] == "ONLINE" else "🟡"
+            msg += f"• {status_emoji} <b>{p['name']}</b> ({p['network']})\n  <i>Speed: {p['speed']}</i>\n"
+
+        msg += (
+            "\n━━━━━━━━━━━━━━━━━━━━━━\n"
+            "<i>ARIA submits solutions autonomously via API. Payouts land in USDC on Base within minutes.</i>"
+        )
+        market_kb = {
+            "inline_keyboard": [
+                [
+                    {"text": "🔍 Scan Agent Opportunities", "callback_data": "MARKET:scan"},
+                    {"text": "👛 View Wallet", "callback_data": "MARKET:wallet"}
+                ],
+                [
+                    {"text": "🔙 Back to Main Menu", "callback_data": "MENU:help"}
+                ]
+            ]
+        }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, msg, reply_markup=market_kb)
+        else:
+            self.send_message(msg, reply_markup=market_kb)
 
     def _cmd_jobs(self, edit_msg_id: Optional[int] = None):
         from aria.tools.rapid_cash_tools import RapidCashTools
