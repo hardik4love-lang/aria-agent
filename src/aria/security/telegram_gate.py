@@ -11,6 +11,14 @@ import time
 from typing import Dict, Any, Optional, Tuple, Callable
 import httpx
 
+try:
+    from dotenv import load_dotenv
+    # Search for .env in current and parent directories
+    load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), ".env"))
+    load_dotenv()
+except ImportError:
+    pass
+
 class TelegramApprovalGate:
     """
     Manages push approval cards to the operator's personal Telegram.
