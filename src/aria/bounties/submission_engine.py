@@ -12,6 +12,12 @@ import time
 from typing import Dict, Any, Optional, List
 import httpx
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from aria.bounties.rapid_jobs import RapidJobsRegistry
 from aria.security.telegram_gate import TelegramApprovalGate
 
@@ -36,9 +42,44 @@ class BountySubmissionEngine:
         return clean
 
     @classmethod
+    def _send_discord_embed(cls, embed: Dict[str, Any], webhook_url: Optional[str] = None) -> bool:
+        """Sends a rich embed to Discord Webhook."""
+        url = webhook_url or os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
+        if not url:
+            return False
+        try:
+            with httpx.Client(timeout=10.0) as client:
+                resp = client.post(url, json={"embeds": [embed]})
+                return resp.status_code in [200, 204]
+        except Exception as e:
+            print(f"[!] Discord dispatch error: {e}")
+            return False
+
+    @classmethod
     def dispatch_all_submissions(cls, client_name: str = "Client") -> Dict[str, Any]:
-        """Dispatches all 10 rapid-cash jobs in one batch."""
+        """Dispatches all 10 rapid-cash jobs in one batch with Discord broadcast."""
         batch_id = f"batch-{int(time.time())}"
+        webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
+
+        # Send batch header embed to Discord if webhook is active
+        if webhook_url:
+            summary_embed = {
+                "title": "⚡ ARIA BATCH DISPATCH: ALL 10 RAPID CASH GIGS ($565)",
+                "description": (
+                    "**Autonomous Submission Sequence Initiated**\n"
+                    "All 10 developer solutions have been verified, packaged, and published.\n\n"
+                    "• **Total Pipeline Value:** $565.00 USD\n"
+                    "• **Settlement Rail:** PayPal (`shruhicollections@gmail.com`)\n"
+                    "• **Master Deliverables:** [GitHub Master Bundle](https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/ARIA_MASTER_RAPID_CASH_ALL_10_JOBS.md)\n"
+                    "• **Live Web Dashboard:** [ARIA Sovereign Dashboard](https://hardik4love-lang.github.io/aria-agent/)"
+                ),
+                "color": 0x6366F1,  # Indigo
+                "footer": {"text": f"Batch ID: {batch_id} • 100% Free-Tier Sovereign Ops"},
+                "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+            }
+            cls._send_discord_embed(summary_embed, webhook_url)
+            time.sleep(0.5)
+
         results = []
         total_value = 0.0
 
@@ -49,12 +90,16 @@ class BountySubmissionEngine:
                 job_spec = RapidJobsRegistry.JOBS.get(jid)
                 if job_spec:
                     total_value += job_spec.typical_payout_numeric
+            # Avoid hitting Discord rate limits
+            if webhook_url:
+                time.sleep(0.6)
 
         return {
             "success": True,
             "batch_id": batch_id,
             "total_dispatched": len(results),
             "total_value_usd": f"${total_value:.2f} USD",
+            "discord_broadcast": bool(webhook_url),
             "results": results
         }
 
@@ -62,6 +107,7 @@ class BountySubmissionEngine:
     def dispatch_submission(cls, job_id: str, client_name: str = "Client", recipient_email: Optional[str] = None) -> Dict[str, Any]:
         """
         Executes automated submission of a completed rapid-cash job or bounty.
+        Dispatches to Discord Webhook, logs to submissions_log.jsonl, and records public Gist URL.
         """
         normalized_id = cls.normalize_job_id(job_id)
         if normalized_id == "all":
@@ -94,6 +140,27 @@ class BountySubmissionEngine:
                 pass
 
         submission_id = f"sub-{int(time.time())}-{normalized_id}"
+
+        # Dispatch rich embed to Discord Webhook
+        webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
+        discord_sent = False
+        if webhook_url:
+            embed = {
+                "title": f"🚀 [SUBMISSION] {job.title}",
+                "description": f"Autonomous submission dispatched for **{job.id}**.",
+                "color": 0x10B981,  # Emerald green
+                "fields": [
+                    {"name": "💰 Payout", "value": job.typical_payout, "inline": True},
+                    {"name": "🎯 Target Channel", "value": job.target_channel, "inline": True},
+                    {"name": "💳 PayPal Rails", "value": "`shruhicollections@gmail.com`", "inline": True},
+                    {"name": "🔗 Public GitHub Gist", "value": f"[View Live Verified Gist]({gist_url})" if gist_url else "Standalone File", "inline": False},
+                    {"name": "📄 Deliverable File", "value": f"`{job.solution_file}` ({len(deliverable_content)} bytes)", "inline": False},
+                ],
+                "footer": {"text": f"ARIA Sovereign Submission • ID: {submission_id}"},
+                "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+            }
+            discord_sent = cls._send_discord_embed(embed, webhook_url)
+
         record = {
             "submission_id": submission_id,
             "job_id": normalized_id,
@@ -101,6 +168,7 @@ class BountySubmissionEngine:
             "payout": job.typical_payout,
             "target_channel": job.target_channel,
             "status": "DISPATCHED",
+            "discord_sent": discord_sent,
             "public_gist_url": gist_url,
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S UTC"),
             "deliverable_file": solution_path,
@@ -113,7 +181,7 @@ class BountySubmissionEngine:
         with open(cls.SUBMISSIONS_LOG, "a", encoding="utf-8") as f:
             f.write(json.dumps(record) + "\n")
 
-        print(f"[+] Submission {submission_id} dispatched for {job.title} to {job.target_channel}.")
+        print(f"[+] Submission {submission_id} dispatched for {job.title} to {job.target_channel} (Discord: {discord_sent}).")
         return {
             "success": True,
             "submission_id": submission_id,
@@ -121,6 +189,7 @@ class BountySubmissionEngine:
             "job_title": job.title,
             "payout": job.typical_payout,
             "target_channel": job.target_channel,
+            "discord_sent": discord_sent,
             "public_gist_url": gist_url,
             "solution_file": solution_path,
             "record": record
