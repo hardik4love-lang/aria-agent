@@ -4,7 +4,17 @@ on:
   schedule:
     # Watchdog cron: triggers every 6 hours (00:00, 06:00, 12:00, 18:00 UTC) as a self-healing backup
     - cron: '0 */6 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/aria-24x7-cloud-daemon.yml'
   workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Trigger reason'
+        required: false
+        default: 'manual-start'
   repository_dispatch:
     types:
       - aria-cloud-daemon-handoff
