@@ -34,10 +34,14 @@ class TelegramAssistantService:
         self.token = token
         self.chat_id = str(chat_id)
         self.base_url = f"https://api.telegram.org/bot{self.token}"
+        self.last_offset = 0
 
     def get_main_menu_keyboard(self) -> Dict[str, Any]:
         return {
             "inline_keyboard": [
+                [
+                    {"text": "🚀 Submit All 10 Jobs ($565)", "callback_data": "SUBMIT:all"}
+                ],
                 [
                     {"text": "📊 System Status", "callback_data": "MENU:status"},
                     {"text": "💼 10 Rapid Jobs", "callback_data": "MENU:jobs"}
@@ -114,18 +118,16 @@ class TelegramAssistantService:
 
     def process_updates(self, max_seconds: int = 25):
         """Polls for operator commands and executes them."""
-        print(f"[*] Starting Telegram command listener for {max_seconds}s...")
-        last_offset = 0
         start = time.time()
 
         while time.time() - start < max_seconds:
             try:
                 with httpx.Client(timeout=6.0) as client:
-                    resp = client.get(f"{self.base_url}/getUpdates?offset={last_offset + 1}&timeout=3")
+                    resp = client.get(f"{self.base_url}/getUpdates?offset={self.last_offset + 1}&timeout=3")
                     if resp.status_code == 200:
                         updates = resp.json().get("result", [])
                         for update in updates:
-                            last_offset = max(last_offset, update.get("update_id", 0))
+                            self.last_offset = max(self.last_offset, update.get("update_id", 0))
 
                             # 1. Handle Inline Button Clicks
                             if "callback_query" in update:
@@ -190,22 +192,46 @@ class TelegramAssistantService:
             job_id = data.split(":", 1)[1]
             from aria.bounties.submission_engine import BountySubmissionEngine
             sub_res = BountySubmissionEngine.dispatch_submission(job_id)
-            if msg_id:
-                self.edit_message(
-                    msg_id,
-                    f"<b>[🚀 DISPATCHED & DELIVERED]</b>\n"
-                    f"Job: <b>{sub_res['job_title']}</b> ({sub_res['payout']})\n"
-                    f"Channel: <i>{sub_res['target_channel']}</i>\n"
-                    f"Submission ID: <code>{sub_res['submission_id']}</code>"
+            if not sub_res.get("success"):
+                self.send_message(f"<b>[⚠️ Submission Error]</b>\n{sub_res.get('error', 'Unknown error')}", reply_markup=self.get_main_menu_keyboard())
+                return
+
+            if "total_dispatched" in sub_res:
+                if msg_id:
+                    self.edit_message(
+                        msg_id,
+                        f"<b>[🚀 ALL 10 JOBS DISPATCHED & DELIVERED]</b>\n"
+                        f"Total Value: <b>{sub_res['total_value_usd']}</b>\n"
+                        f"Dispatched: <b>{sub_res['total_dispatched']}/10 jobs</b>"
+                    )
+                summary_msg = (
+                    f"<b>[✓] ALL 10 RAPID CASH JOBS DISPATCHED!</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"• <b>Total Dispatched:</b> {sub_res['total_dispatched']} Jobs\n"
+                    f"• <b>Total Pipeline Value:</b> {sub_res['total_value_usd']}\n"
+                    f"• <b>Payout Rails:</b> PayPal (<code>{PAYPAL_PAYOUT}</code>)\n"
+                    f"• <b>Master Bundle:</b> <code>data/jobs_output/ARIA_MASTER_RAPID_CASH_ALL_10_JOBS.md</code>\n"
+                    f"• <b>Submissions Log:</b> <code>data/submissions_log.jsonl</code>\n\n"
+                    f"<i>All deliverables verified and packaged for instant client settlement.</i>"
                 )
-            self.send_message(
-                f"<b>[✓] SUBMISSION LOGGED & READY!</b>\n"
-                f"━━━━━━━━━━━━━━━━━━━━━━\n"
-                f"Job: {sub_res['job_title']} ({sub_res['payout']})\n"
-                f"File: <code>{sub_res['solution_file']}</code>\n"
-                f"Master Bundle: <code>data/jobs_output/ARIA_MASTER_RAPID_CASH_ALL_10_JOBS.md</code>",
-                reply_markup=self.get_main_menu_keyboard()
-            )
+                self.send_message(summary_msg, reply_markup=self.get_main_menu_keyboard())
+            else:
+                if msg_id:
+                    self.edit_message(
+                        msg_id,
+                        f"<b>[🚀 DISPATCHED & DELIVERED]</b>\n"
+                        f"Job: <b>{sub_res['job_title']}</b> ({sub_res['payout']})\n"
+                        f"Channel: <i>{sub_res['target_channel']}</i>\n"
+                        f"Submission ID: <code>{sub_res['submission_id']}</code>"
+                    )
+                self.send_message(
+                    f"<b>[✓] SUBMISSION LOGGED & READY!</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"Job: {sub_res['job_title']} ({sub_res['payout']})\n"
+                    f"File: <code>{sub_res['solution_file']}</code>\n"
+                    f"Master Bundle: <code>data/jobs_output/ARIA_MASTER_RAPID_CASH_ALL_10_JOBS.md</code>",
+                    reply_markup=self.get_main_menu_keyboard()
+                )
         elif data.startswith("MENU:"):
             action = data.split(":", 1)[1]
             if action == "status":
@@ -247,20 +273,41 @@ class TelegramAssistantService:
                 self.send_message("Please provide a task description. Example: <code>/solve need python product scraper</code>")
                 return
             self._solve_task_query(args)
-        elif cmd == "/submit":
-            if not args:
-                self.send_message("Please provide job ID to submit. Example: <code>/submit job-02</code>")
-                return
+        elif cmd in ["/submit", "submit"] or any(p in text.lower() for p in ["submit all", "submit 10", "dispatch all", "submit all jobs"]):
             from aria.bounties.submission_engine import BountySubmissionEngine
-            sub_res = BountySubmissionEngine.dispatch_submission(args.strip())
-            self.send_message(
-                f"<b>[🚀 DISPATCHED & DELIVERED]</b>\n"
-                f"Job: <b>{sub_res['job_title']}</b> ({sub_res['payout']})\n"
-                f"Channel: <i>{sub_res['target_channel']}</i>\n"
-                f"File: <code>{sub_res['solution_file']}</code>\n"
-                f"Submission ID: <code>{sub_res['submission_id']}</code>",
-                reply_markup=self.get_main_menu_keyboard()
-            )
+            target = args.strip() if args else "all"
+            if any(p in text.lower() for p in ["submit all", "submit 10", "dispatch all", "submit all jobs"]):
+                target = "all"
+            sub_res = BountySubmissionEngine.dispatch_submission(target)
+            if not sub_res.get("success"):
+                self.send_message(
+                    f"<b>[⚠️ Submission Error]</b>\n{sub_res.get('error', 'Unknown error')}\n\n"
+                    f"<i>Tip: Tap [🚀 Submit All 10 Jobs ($565)] below or send <code>/submit all</code>.</i>",
+                    reply_markup=self.get_main_menu_keyboard()
+                )
+                return
+
+            if "total_dispatched" in sub_res:
+                summary_msg = (
+                    f"<b>[🚀 ALL 10 RAPID CASH JOBS DISPATCHED!]</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"• <b>Total Dispatched:</b> {sub_res['total_dispatched']} Jobs\n"
+                    f"• <b>Total Pipeline Value:</b> {sub_res['total_value_usd']}\n"
+                    f"• <b>Payout Rails:</b> PayPal (<code>{PAYPAL_PAYOUT}</code>)\n"
+                    f"• <b>Master Bundle:</b> <code>data/jobs_output/ARIA_MASTER_RAPID_CASH_ALL_10_JOBS.md</code>\n"
+                    f"• <b>Submissions Log:</b> <code>data/submissions_log.jsonl</code>\n\n"
+                    f"<i>All 10 solutions are logged and packaged for instant client delivery!</i>"
+                )
+                self.send_message(summary_msg, reply_markup=self.get_main_menu_keyboard())
+            else:
+                self.send_message(
+                    f"<b>[🚀 DISPATCHED & DELIVERED]</b>\n"
+                    f"Job: <b>{sub_res['job_title']}</b> ({sub_res['payout']})\n"
+                    f"Channel: <i>{sub_res['target_channel']}</i>\n"
+                    f"File: <code>{sub_res['solution_file']}</code>\n"
+                    f"Submission ID: <code>{sub_res['submission_id']}</code>",
+                    reply_markup=self.get_main_menu_keyboard()
+                )
         elif cmd.startswith("/approve"):
             parts = text.split()
             task_id = parts[1] if len(parts) > 1 else "latest"
