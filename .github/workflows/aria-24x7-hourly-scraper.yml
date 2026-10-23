@@ -55,8 +55,10 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}
+          PAYPAL_EMAIL: "shruhicollections@gmail.com"
+          UPI_ID: "purshottamramawat27@oksbi"
         run: |
-          python -m aria.security.telegram_bot_service || true
+          python -c "import sys; sys.path.insert(0, 'src'); from aria.security.telegram_bot_service import TelegramAssistantService; svc = TelegramAssistantService(); svc.process_updates(max_seconds=60)" || true
 
       - name: Persist Scraped Data & Audit Logs to Repository
         if: always()
