@@ -33,6 +33,8 @@ def print_chat_banner():
 ======================================================================
   Type your question or instruction to ARIA.
   Special Commands:
+    /jobs     - Show 10 ready-to-convert rapid cash jobs
+    /scrape   - Execute 10 web scrapings with Telegram approval gate
     /bounties - Show active high-reward bounties
     /quota    - Inspect live free-tier quota balances
     /report   - Generate autonomous self-optimization report
@@ -83,8 +85,26 @@ def start_chat_session():
                 print("\n" + optimizer.generate_health_report())
                 continue
 
+            if user_input.lower() == "/jobs":
+                from aria.tools.rapid_cash_tools import RapidCashTools
+                res = RapidCashTools.list_ready_jobs()
+                print(f"\n[ARIA] Rapid Cash Inventory ({res['total_jobs']} Jobs Ready):")
+                for j in res["jobs"]:
+                    print(f"  [{j['id']}] {j['title']} ({j['payout']}) -> {j['target_channel']}")
+                print(f"  Payout destination: PayPal ({res['payout_rails']['paypal']}) | UPI ({res['payout_rails']['upi']})")
+                continue
+
+            if user_input.lower() == "/scrape":
+                from aria.bounties.hourly_scraper import HourlyScrapingEngine
+                engine = HourlyScrapingEngine()
+                print("\n[ARIA] Launching autonomous 10-target scraping batch...")
+                res = engine.execute_hourly_cycle()
+                print(f"\n[ARIA] Batch {res['batch_id']} completed: {res['total_items']} items saved in {res['batch_directory']}")
+                print(f"[ARIA] Status: {res['status']}")
+                continue
+
             if user_input.lower() == "/help":
-                print("\nCommands: /bounties, /quota, /report, /exit")
+                print("\nCommands: /jobs, /scrape, /bounties, /quota, /report, /exit")
                 continue
 
             # Prompt injection inspection
