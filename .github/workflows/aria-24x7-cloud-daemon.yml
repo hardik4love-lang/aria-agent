@@ -25,7 +25,6 @@ concurrency:
 
 permissions:
   contents: write
-  actions: write
   issues: write
   pull-requests: write
 
@@ -61,7 +60,7 @@ jobs:
           PAYPAL_EMAIL: ${{ secrets.PAYPAL_EMAIL }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           BASE_WALLET_ADDRESS: ${{ secrets.BASE_WALLET_ADDRESS }}
-          DAEMON_MAX_SECONDS: "20400" # 340 minutes (~5.66 hours)
+          DAEMON_MAX_SECONDS: "20400"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python daemon/aria_telegram_daemon.py --max-seconds 20400
@@ -79,7 +78,7 @@ jobs:
             echo "No state changes to commit."
           fi
 
-      - name: Perpetual Chain: Trigger Next Continuous Cloud Cycle
+      - name: "Perpetual Chain: Trigger Next Continuous Cloud Cycle"
         if: success()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
