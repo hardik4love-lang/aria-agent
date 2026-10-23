@@ -667,9 +667,12 @@
             <span class="status-pill status-ok">${escapeHtml(b.status)}</span>
             <span style="font-size: 0.75rem; color: var(--text-muted); font-family: monospace;">Deliverable: ${escapeHtml(b.deliverable)}</span>
           </div>
-          <div class="bounty-footer" style="margin-top: 0.75rem;">
-            <a href="${escapeHtml(b.pr_url)}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">
-              ↗ View PR / Deliverable
+          <div class="bounty-footer" style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <a href="${escapeHtml(b.job_url || '#')}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">
+              🔗 View Job Listing ↗
+            </a>
+            <a href="${escapeHtml(b.submission_url || b.pr_url || '#')}" target="_blank" class="btn" style="font-size: 0.8rem; background: var(--success); color: #000; font-weight: 600;">
+              🚀 View Submission Deliverable ↗
             </a>
             <button class="btn" style="background: var(--card-border); color: #fff; font-size: 0.8rem;" onclick="copyDeliverablePath('${escapeHtml(b.deliverable)}')">
               📋 Copy File Path
