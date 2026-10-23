@@ -1,0 +1,70 @@
+name: ARIA 24/7 Hourly Scraper & Telegram Approval Daemon
+
+on:
+  schedule:
+    # Runs at minute 0 of every hour 24/7/365 (100% Free on GitHub Public Actions)
+    - cron: '0 * * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/aria/bounties/**'
+      - 'src/aria/security/**'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  hourly-scrape-and-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout Codebase & Persistent State
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Zero-Cost Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Execute 10-Target Hourly Scraping Pipeline
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}
+          PAYPAL_EMAIL: "shruhicollections@gmail.com"
+          UPI_ID: "purshottamramawat27@oksbi"
+        run: |
+          python daemon/hourly_task_runner.py --run-once
+
+      - name: Listen for Operator Telegram Commands & Approvals
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}
+        run: |
+          python -m aria.security.telegram_bot_service || true
+
+      - name: Persist Scraped Data & Audit Logs to Repository
+        if: always()
+        run: |
+          git config --global user.name "ARIA Autonomous Daemon"
+          git config --global user.email "aria-daemon@users.noreply.github.com"
+          git add data/ state/
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "chore(data): persist hourly scrape batch & approval logs [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "No new state or data changes to commit."
+          fi
