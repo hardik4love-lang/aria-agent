@@ -1,0 +1,78 @@
+name: ARIA 24/7 Sovereign Cloud Daemon
+
+on:
+  schedule:
+    # Watchdog cron: triggers every 6 hours (00:00, 06:00, 12:00, 18:00 UTC) as a self-healing backup
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - aria-cloud-daemon-handoff
+
+concurrency:
+  group: aria-24x7-cloud-daemon
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  cloud-daemon:
+    name: ARIA 24/7 Cloud Assistant & Watcher
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+
+    steps:
+      - name: Checkout Codebase & Persistent State
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Zero-Cost Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run ARIA Sovereign Cloud Daemon (5.6-Hour Continuous Block)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PAYPAL_EMAIL: ${{ secrets.PAYPAL_EMAIL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          BASE_WALLET_ADDRESS: ${{ secrets.BASE_WALLET_ADDRESS }}
+          DAEMON_MAX_SECONDS: "20400" # 340 minutes (~5.66 hours)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python daemon/aria_telegram_daemon.py --max-seconds 20400
+
+      - name: Persist State & Audit Logs
+        if: always()
+        run: |
+          git config --global user.name "ARIA Cloud Daemon [GitHub Actions]"
+          git config --global user.email "aria-cloud-daemon@users.noreply.github.com"
+          git add data/ state/ || true
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "chore(state): persist cloud daemon session checkpoint [skip ci]" || true
+            git push origin HEAD:${{ github.ref_name }} || true
+          else
+            echo "No state changes to commit."
+          fi
+
+      - name: Perpetual Chain: Trigger Next Continuous Cloud Cycle
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "[+] Handoff: Triggering next 24/7 continuous cloud cycle..."
+          gh workflow run aria-24x7-cloud-daemon.yml --repo ${{ github.repository }} || true

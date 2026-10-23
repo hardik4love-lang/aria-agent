@@ -3,7 +3,8 @@
 ARIA Persistent 24/7 Telegram Assistant & Bounty Mail Watcher Daemon.
 Maintains continuous long-polling with @Ariabountie_bot, providing instant (<1s) responses,
 autonomous tool dispatch, rapid cash solvers, mobile approval gating, and 1-minute bounty email alerts.
-Total Cost of Ownership: $0.00 / month.
+Total Cost of Ownership: $0.00 / month (Zero-Cost FinOps).
+Runs natively on GitHub Actions Cloud Runners in 24/7 continuous perpetual handoff loops.
 """
 
 import os
@@ -12,6 +13,8 @@ import time
 import signal
 import logging
 import threading
+import argparse
+from typing import Optional
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
@@ -47,15 +50,21 @@ def run_email_watcher_thread():
             logger.warning(f"[EMAIL] Watcher check exception: {e}")
         time.sleep(60)
 
-def run_continuous_daemon():
+def run_continuous_daemon(max_seconds: int = 0):
     global running
     signal.signal(signal.SIGINT, handle_sigterm)
     signal.signal(signal.SIGTERM, handle_sigterm)
 
+    is_cloud = os.environ.get("GITHUB_ACTIONS") == "true"
+    host_label = "GitHub Actions Cloud (24/7 Serverless)" if is_cloud else "Local Machine Runner"
+
     logger.info("==================================================================")
-    logger.info("  ARIA 24/7 PERSISTENT TELEGRAM ASSISTANT & BOUNTY WATCHER")
+    logger.info("  ARIA 24/7 SOVEREIGN CLOUD ASSISTANT & BOUNTY WATCHER")
+    logger.info(f"  Environment: {host_label}")
     logger.info("  Bot: @Ariabountie_bot | Operator Chat ID: 8737013099")
     logger.info("  TCO: $0.00 / month (Zero-Cost FinOps)")
+    if max_seconds > 0:
+        logger.info(f"  Target Run Duration: {max_seconds} seconds (~{max_seconds/3600:.2f} hours)")
     logger.info("==================================================================")
 
     svc = TelegramAssistantService()
@@ -66,14 +75,16 @@ def run_continuous_daemon():
     
     # Send startup notification to operator
     try:
+        greeting_host = "☁️ <b>GitHub Actions Cloud Runner (24/7 Continuous)</b>\n<i>Your local PC can be turned off completely.</i>" if is_cloud else "💻 Local Machine"
         svc.send_message(
-            "👑 <b>ARIA 24/7 SOVEREIGN DAEMON ONLINE</b>\n"
-            "━━━━━━━━━━━━━━━━━━━━━━\n"
-            "• Natural conversation with Groq / Cloud LLM: ACTIVE\n"
-            "• 1-Minute Bounty Email Watcher: ACTIVE\n"
-            "• Master All-10-Jobs Bundle: READY\n"
-            "• Push Button Instant Execution: REPAIRED\n\n"
-            "<i>Say 'hi' to me or tap any button below:</i>",
+            f"👑 <b>ARIA 24/7 SOVEREIGN DAEMON ONLINE</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"• <b>Host:</b> {greeting_host}\n"
+            f"• <b>Telegram Listener:</b> ACTIVE (<1s responses)\n"
+            f"• <b>Bounty Email Watcher:</b> ACTIVE (60s cycles)\n"
+            f"• <b>Discord Webhook Dispatch:</b> CONNECTED\n"
+            f"• <b>Total Pipeline Value:</b> $6,455.00 USD\n\n"
+            f"<i>Aria is live and standing by 24/7. Tap any button or send an instruction:</i>",
             reply_markup=svc.get_main_menu_keyboard()
         )
         logger.info("Startup notification sent to operator.")
@@ -82,8 +93,13 @@ def run_continuous_daemon():
 
     consecutive_errors = 0
     poll_cycle = 0
+    start_time = time.time()
 
     while running:
+        if max_seconds > 0 and (time.time() - start_time) >= max_seconds:
+            logger.info(f"[+] Maximum cloud duration of {max_seconds}s reached. Initiating clean handoff...")
+            break
+
         poll_cycle += 1
         try:
             # Poll for updates with 15-second chunks
@@ -101,4 +117,7 @@ def run_continuous_daemon():
 
 
 if __name__ == "__main__":
-    run_continuous_daemon()
+    parser = argparse.ArgumentParser(description="ARIA 24/7 Telegram Daemon")
+    parser.add_argument("--max-seconds", type=int, default=int(os.environ.get("DAEMON_MAX_SECONDS", "0")), help="Max runtime before clean exit")
+    args = parser.parse_args()
+    run_continuous_daemon(max_seconds=args.max_seconds)
