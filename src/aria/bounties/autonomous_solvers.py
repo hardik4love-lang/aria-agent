@@ -205,8 +205,8 @@ export function MobileDrawer({ isOpen, onClose, children }: { isOpen: boolean; o
         cls._ensure_dir()
         file_path = os.path.join(cls.OUTPUT_DIR, "job05_cleaned_leads.csv")
         sample_raw = [
-            {"name": "purshottam ramawat", "email": "PURSHOTTAM@example.com", "phone": "(905) 424-1725"},
-            {"name": "Purshottam Ramawat", "email": "purshottam@example.com", "phone": "9054241725"},
+            {"name": "Alex Smith", "email": "ALEX.SMITH@example.com", "phone": "(905) 424-1725"},
+            {"name": "Alex Smith", "email": "alex.smith@example.com", "phone": "9054241725"},
             {"name": "Elena Rostova", "email": "elena.r@enterprise.de", "phone": "+49 30 123456"},
             {"name": "Marcus Vance", "email": "m.vance@vancetech.io", "phone": "+1 415-555-0144"}
         ]

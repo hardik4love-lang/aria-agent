@@ -13,7 +13,7 @@ from pydantic import BaseModel, Field
 import httpx
 
 PAYPAL_PAYOUT = "shruhicollections@gmail.com"
-UPI_PAYOUT = "purshottamramawat27@oksbi"
+UPI_PAYOUT = os.environ.get("UPI_ID", "").strip()
 
 class RapidJobSpec(BaseModel):
     id: str

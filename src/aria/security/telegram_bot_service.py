@@ -21,7 +21,7 @@ except ImportError:
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA")
 AUTHORIZED_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "8737013099")
 PAYPAL_PAYOUT = os.environ.get("PAYPAL_EMAIL", "shruhicollections@gmail.com")
-UPI_PAYOUT = os.environ.get("UPI_ID", "purshottamramawat27@oksbi")
+UPI_PAYOUT = os.environ.get("UPI_ID", "")
 
 
 class TelegramAssistantService:
@@ -348,14 +348,17 @@ class TelegramAssistantService:
             "━━━━━━━━━━━━━━━━━━━━━━\n"
             "All client deliverables and bounty payments are routed directly to:\n\n"
             f"• <b>PayPal (International USD/EUR/GBP):</b>\n"
-            f"  <code>{PAYPAL_PAYOUT}</code>\n\n"
-            f"• <b>UPI / IMPS (Instant Domestic INR):</b>\n"
-            f"  <code>{UPI_PAYOUT}</code>\n\n"
-            "━━━━━━━━━━━━━━━━━━━━━━\n"
-            "<i>Zero escrow lockup. Instant settlement upon client delivery.</i>"
+            f"  <code>{PAYPAL_PAYOUT}</code>\n"
+        )
+        if UPI_PAYOUT:
+            payout_msg += f"\n• <b>UPI / IMPS (Instant Domestic INR):</b>\n  <code>{UPI_PAYOUT}</code>\n"
+        else:
+            payout_msg += "\n• <b>UPI / IMPS:</b> <i>(Provide your personal UPI ID to configure)</i>\n"
+        payout_msg += (
+            "\n━━━━━━━━━━━━━━━━━━━━━━\n"
+            "<i>Zero escrow lockup. Instant direct settlement upon delivery.</i>"
         )
         self.send_message(payout_msg, reply_markup=self.get_main_menu_keyboard())
-
     def _cmd_email(self):
         email_msg = (
             "<b>📧 ARIA EMAIL OPERATIONS</b>\n"

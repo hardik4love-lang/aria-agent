@@ -6,7 +6,7 @@
 const BOT_TOKEN = "8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA";
 const AUTHORIZED_CHAT_ID = "8737013099";
 const PAYPAL_PAYOUT = "shruhicollections@gmail.com";
-const UPI_PAYOUT = "purshottamramawat27@oksbi";
+const UPI_PAYOUT = "";
 
 const MAIN_MENU_KEYBOARD = {
   inline_keyboard: [

@@ -70,7 +70,7 @@ def update_env_file(chat_id: str):
         "TELEGRAM_BOT_TOKEN": BOT_TOKEN,
         "TELEGRAM_CHAT_ID": chat_id,
         "PAYPAL_EMAIL": "shruhicollections@gmail.com",
-        "UPI_ID": "purshottamramawat27@oksbi"
+        "UPI_ID": ""
     }
 
     new_lines = []
@@ -100,7 +100,7 @@ def send_welcome_card(chat_id: str, first_name: str):
         f"<b>TCO Governance:</b> $0.00 / month (100% Sovereign)\n"
         f"<b>Payout Channels:</b>\n"
         f"  • PayPal: <code>shruhicollections@gmail.com</code>\n"
-        f"  • UPI: <code>purshottamramawat27@oksbi</code>\n\n"
+        f"  • UPI: <code></code>\n\n"
         f"<b>Hourly Scraper Status:</b> 10 targets/hr armed\n"
         f"<b>Telegram Approval Gate:</b> ACTIVE & ENFORCED\n\n"
         f"<i>Every hour, Aria will extract 10 targets and send an approval card here. Zero actions will be dispatched without your approval!</i>"

@@ -27,7 +27,7 @@ class RapidCashTools:
             "jobs": jobs,
             "payout_rails": {
                 "paypal": "shruhicollections@gmail.com",
-                "upi": "purshottamramawat27@oksbi"
+                "upi": ""
             }
         }
 
