@@ -43,7 +43,7 @@
       "category": "Next.js / React",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://discord.gg/reactiflux",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job01_hydration_fix.tsx",
+      "submission_url": "https://gist.github.com/hardik4love-lang/0494cd0e13d36aae4d0b73ac7b59fb27",
       "deliverable": "data/jobs_output/job01_hydration_fix.tsx",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -57,7 +57,7 @@
       "category": "Web Scraping",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://reddit.com/r/slavelabour",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job02_ecommerce_scraper.py",
+      "submission_url": "https://gist.github.com/hardik4love-lang/628429a04caafec84d2a450205ad9140",
       "deliverable": "data/jobs_output/job02_ecommerce_scraper.py",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -71,7 +71,7 @@
       "category": "Backend / API",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://discord.gg/programming",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job03_cors_proxy_server.js",
+      "submission_url": "https://gist.github.com/hardik4love-lang/836e18aacdafa3ea310a06327db3ee3d",
       "deliverable": "data/jobs_output/job03_cors_proxy_server.js",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -85,7 +85,7 @@
       "category": "Frontend / UI",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://discord.gg/reactiflux",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job04_tailwind_drawer.tsx",
+      "submission_url": "https://gist.github.com/hardik4love-lang/daad1e502d361de1c3230c88b7ea1e47",
       "deliverable": "data/jobs_output/job04_tailwind_drawer.tsx",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -99,7 +99,7 @@
       "category": "Data Processing",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://reddit.com/r/slavelabour",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job05_crm_lead_cleaner.py",
+      "submission_url": "https://gist.github.com/hardik4love-lang/779057db4ea6796c65e38834d9eacff1",
       "deliverable": "data/jobs_output/job05_crm_lead_cleaner.py",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -113,7 +113,7 @@
       "category": "Payments / Security",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://discord.gg/programming",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job06_stripe_webhook_handler.ts",
+      "submission_url": "https://gist.github.com/hardik4love-lang/6803a10f541765e89a96ebfbca94ed40",
       "deliverable": "data/jobs_output/job06_stripe_webhook_handler.ts",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -127,7 +127,7 @@
       "category": "SEO / Next.js",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://discord.gg/reactiflux",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job07_dynamic_og_image.tsx",
+      "submission_url": "https://gist.github.com/hardik4love-lang/c67b9300fa47f42f448a918ab75a1a1c",
       "deliverable": "data/jobs_output/job07_dynamic_og_image.tsx",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -141,7 +141,7 @@
       "category": "Bots & Webhooks",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://reddit.com/r/forhire",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job08_alert_relay.py",
+      "submission_url": "https://gist.github.com/hardik4love-lang/08253e5112ea9b7d21b54744c1510331",
       "deliverable": "data/jobs_output/job08_alert_relay.py",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -155,7 +155,7 @@
       "category": "Scheduling / Open-Source",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://algora.io/calcom/bounties",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job09_calcom_timezone_normalizer.ts",
+      "submission_url": "https://gist.github.com/hardik4love-lang/85514d0ab67e3959f9ababe85ec4659b",
       "deliverable": "data/jobs_output/job09_calcom_timezone_normalizer.ts",
       "completed_at": "2026-10-23T11:20:00Z"
     },
@@ -169,7 +169,7 @@
       "category": "GraphQL / Open-Source",
       "status": "COMPLETED & VERIFIED",
       "job_url": "https://algora.io/twentyhq/bounties",
-      "submission_url": "https://github.com/hardik4love-lang/aria-agent/blob/main/data/jobs_output/job10_graphql_nested_filter.ts",
+      "submission_url": "https://gist.github.com/hardik4love-lang/325f2461b2247f45c641b333d2e0e796",
       "deliverable": "data/jobs_output/job10_graphql_nested_filter.ts",
       "completed_at": "2026-10-23T11:20:00Z"
     },

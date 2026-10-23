@@ -82,6 +82,17 @@ class BountySubmissionEngine:
             with open(solution_path, "r", encoding="utf-8") as f:
                 deliverable_content = f.read()
 
+        # Load published public Gist URL if available
+        gist_url = ""
+        gists_file = os.path.join(cls.OUTPUT_DIR, "gists_map.json")
+        if os.path.exists(gists_file):
+            try:
+                with open(gists_file, "r", encoding="utf-8") as gf:
+                    gists = json.load(gf)
+                    gist_url = gists.get(normalized_id, "")
+            except Exception:
+                pass
+
         submission_id = f"sub-{int(time.time())}-{normalized_id}"
         record = {
             "submission_id": submission_id,
@@ -90,6 +101,7 @@ class BountySubmissionEngine:
             "payout": job.typical_payout,
             "target_channel": job.target_channel,
             "status": "DISPATCHED",
+            "public_gist_url": gist_url,
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S UTC"),
             "deliverable_file": solution_path,
             "file_size": len(deliverable_content),
@@ -109,6 +121,7 @@ class BountySubmissionEngine:
             "job_title": job.title,
             "payout": job.typical_payout,
             "target_channel": job.target_channel,
+            "public_gist_url": gist_url,
             "solution_file": solution_path,
             "record": record
         }
