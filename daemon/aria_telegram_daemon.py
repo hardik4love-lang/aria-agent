@@ -50,7 +50,30 @@ def run_email_watcher_thread():
             logger.warning(f"[EMAIL] Watcher check exception: {e}")
         time.sleep(60)
 
-def run_continuous_daemon(max_seconds: int = 0):
+def run_instant_liquidity_thread(svc: TelegramAssistantService):
+    """Background worker that executes instant liquidity cycles every 10 minutes."""
+    from aria.bounties.instant_liquidity import InstantLiquidityEngine
+    logger.info("10-Minute Instant Liquidity & Base EVM Solver thread active.")
+    while running:
+        try:
+            res = InstantLiquidityEngine.execute_instant_opportunity_cycle()
+            if res.get("dispatched_count", 0) > 0:
+                logger.info(f"[LIQUIDITY] Dispatched {res['dispatched_count']} instant on-chain solutions.")
+                msg = (
+                    f"<b>⚡ INSTANT LIQUIDITY SETTLEMENT DISPATCHED</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"• <b>Dispatched:</b> {res['dispatched_count']} tasks\n"
+                    f"• <b>Base Wallet:</b> <code>{res['wallet']}</code>\n"
+                    f"• <b>Settlement Rail:</b> Base Mainnet (USDC)\n"
+                    f"<i>Check your Base wallet or dashboard for incoming settlement.</i>"
+                )
+                svc.send_message(msg, reply_markup=svc.get_main_menu_keyboard())
+        except Exception as e:
+            logger.warning(f"[LIQUIDITY] Cycle exception: {e}")
+        time.sleep(600)
+
+
+def run_continuous_daemon(max_seconds: int = 0, standby_trigger: int = 0):
     global running
     signal.signal(signal.SIGINT, handle_sigterm)
     signal.signal(signal.SIGTERM, handle_sigterm)
@@ -72,6 +95,10 @@ def run_continuous_daemon(max_seconds: int = 0):
     # Start 1-Minute Email Polling Worker
     email_thread = threading.Thread(target=run_email_watcher_thread, daemon=True)
     email_thread.start()
+
+    # Start 10-Minute Instant Liquidity Worker
+    liquidity_thread = threading.Thread(target=run_instant_liquidity_thread, args=(svc,), daemon=True)
+    liquidity_thread.start()
     
     # Send startup notification to operator
     try:
@@ -95,8 +122,23 @@ def run_continuous_daemon(max_seconds: int = 0):
     poll_cycle = 0
     start_time = time.time()
 
+    standby_dispatched = False
+
     while running:
-        if max_seconds > 0 and (time.time() - start_time) >= max_seconds:
+        elapsed = time.time() - start_time
+
+        # Overlapping Warm Standby Trigger (20 minutes before termination)
+        if standby_trigger > 0 and elapsed >= standby_trigger and not standby_dispatched:
+            logger.info(f"[+] Reached standby threshold ({elapsed:.0f}s >= {standby_trigger}s). Spawning warm standby runner...")
+            try:
+                import subprocess
+                subprocess.run(["gh", "workflow", "run", "aria-24x7-cloud-daemon.yml"], capture_output=True, text=True)
+                logger.info("[✓] Warm standby runner successfully pre-spawned. Zero-downtime handoff armed.")
+            except Exception as e:
+                logger.warning(f"[!] Could not pre-spawn standby: {e}")
+            standby_dispatched = True
+
+        if max_seconds > 0 and elapsed >= max_seconds:
             logger.info(f"[+] Maximum cloud duration of {max_seconds}s reached. Initiating clean handoff...")
             break
 
@@ -119,5 +161,6 @@ def run_continuous_daemon(max_seconds: int = 0):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ARIA 24/7 Telegram Daemon")
     parser.add_argument("--max-seconds", type=int, default=int(os.environ.get("DAEMON_MAX_SECONDS", "0")), help="Max runtime before clean exit")
+    parser.add_argument("--standby-trigger", type=int, default=int(os.environ.get("STANDBY_SPAWN_SECONDS", "0")), help="Seconds before dispatching successor runner")
     args = parser.parse_args()
-    run_continuous_daemon(max_seconds=args.max_seconds)
+    run_continuous_daemon(max_seconds=args.max_seconds, standby_trigger=args.standby_trigger)

@@ -104,7 +104,7 @@ class TelegramAssistantService:
                 ],
                 [
                     {"text": "⚡ Run 10 Scrapes", "callback_data": "MENU:scrape"},
-                    {"text": "🎯 Live Bounties", "callback_data": "MENU:bounties"}
+                    {"text": "⚡ Instant Liquidity", "callback_data": "MENU:liquidity"}
                 ],
                 [
                     {"text": "💰 Payout Accounts", "callback_data": "MENU:payout"},
@@ -376,6 +376,10 @@ class TelegramAssistantService:
             self._cmd_scrape()
         elif cmd in ["/bounties", "bounties"]:
             self._cmd_bounties()
+        elif cmd in ["/liquidity", "liquidity", "/base"]:
+            self._cmd_liquidity()
+        elif cmd in ["/copilot", "copilot"]:
+            self._cmd_copilot()
         elif cmd in ["/payout", "payout", "payment"]:
             self._cmd_payout()
         elif cmd in ["/email", "email"]:
@@ -761,6 +765,79 @@ class TelegramAssistantService:
             "• <b>Recent Catch:</b> limitlessprojects/Go-Hybrid PR #825 conflict (Rebased & Solved)"
         )
         self.send_message(email_msg, reply_markup=self.get_main_menu_keyboard())
+
+    def _cmd_liquidity(self, edit_msg_id: Optional[int] = None):
+        """Displays instant liquidity status, Base EVM wallet, and executes opportunity scan."""
+        from aria.bounties.instant_liquidity import InstantLiquidityEngine
+        from aria.bounties.agent_market_scanner import AgentMarketplaceManager
+
+        wallet = AgentMarketplaceManager.get_or_create_wallet()
+        cycle = InstantLiquidityEngine.execute_instant_opportunity_cycle()
+
+        msg = (
+            "<b>⚡ ARIA INSTANT LIQUIDITY ENGINE (BASE MAINNET)</b>\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"• <b>Base EVM Wallet:</b> <code>{wallet['address']}</code>\n"
+            f"• <b>Settlement Currency:</b> USDC (Coinbase Base L2)\n"
+            f"• <b>Settlement Latency:</b> Instant / Sub-Hour\n"
+            f"• <b>Connected Platforms:</b> TaskMarket.dev, AgentBounties.app (A2A 1.0)\n"
+            f"• <b>Dispatched this Cycle:</b> {cycle.get('dispatched_count', 0)} solutions\n\n"
+            "<b>BaseScan Explorer:</b>\n"
+            f"https://basescan.org/address/{wallet['address']}\n\n"
+            "<i>Smart contracts disburse USDC immediately upon algorithmic test pass. Zero human delay.</i>"
+        )
+        liq_kb = {
+            "inline_keyboard": [
+                [
+                    {"text": "🔄 Run Instant Cycle", "callback_data": "MENU:liquidity"},
+                    {"text": "💼 View 10 Rapid Jobs", "callback_data": "MENU:jobs"}
+                ],
+                [
+                    {"text": "🔙 Back to Main Menu", "callback_data": "MENU:help"}
+                ]
+            ]
+        }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, msg, reply_markup=liq_kb)
+        else:
+            self.send_message(msg, reply_markup=liq_kb)
+
+    def _cmd_copilot(self, edit_msg_id: Optional[int] = None):
+        """Interactive 1-Tap Operator Copilot for Reddit & Discord Gigs."""
+        from aria.bounties.rapid_jobs import RapidJobsRegistry
+        job = RapidJobsRegistry.JOBS.get("job-02")  # Python Scraper ($35-$45)
+        pack = RapidJobsRegistry.generate_full_bid_pack(job, client_name="Client") if job else {}
+
+        copilot_msg = (
+            "<b>🎯 1-TAP OPERATOR COPILOT (REDDIT & DISCORD)</b>\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            "Earn instant cash today without anti-bot bans by using 1-tap assisted bidding:\n\n"
+            "• <b>Recommended Gig:</b> Python E-Commerce Scraper ($35 – $45)\n"
+            "• <b>Target:</b> Reddit r/slavelabour ([TASK]) or Discord\n"
+            "• <b>Solution File:</b> <code>data/jobs_output/job02_ecommerce_scraper.py</code>\n\n"
+            "<b>1. Tap to Copy Public Comment:</b>\n"
+            f"<code>{pack.get('public_comment', '$bid - I have a tested scraper script ready.')}</code>\n\n"
+            "<b>2. Tap to Copy Private DM Pitch:</b>\n"
+            f"<blockquote>{pack.get('private_dm_pitch', 'Hey! I have your scraper tested and ready. Delivery to PayPal.')}</blockquote>\n\n"
+            f"• <b>Payout Channel:</b> PayPal (<code>{PAYPAL_PAYOUT}</code>)\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            "<i>Zero coding needed. Copy, paste, collect payment!</i>"
+        )
+        copilot_kb = {
+            "inline_keyboard": [
+                [
+                    {"text": "🚀 Submit Job 02 Deliverable", "callback_data": "SUBMIT:job-02"},
+                    {"text": "💼 View All 10 Jobs", "callback_data": "MENU:jobs"}
+                ],
+                [
+                    {"text": "🔙 Back to Main Menu", "callback_data": "MENU:help"}
+                ]
+            ]
+        }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, copilot_msg, reply_markup=copilot_kb)
+        else:
+            self.send_message(copilot_msg, reply_markup=copilot_kb)
 
     def _solve_job_by_id(self, job_id: str, edit_msg_id: Optional[int] = None):
         from aria.bounties.rapid_jobs import RapidJobsRegistry

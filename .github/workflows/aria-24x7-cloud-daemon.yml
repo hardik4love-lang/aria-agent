@@ -53,7 +53,7 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
 
-      - name: Run ARIA Sovereign Cloud Daemon (5.6-Hour Continuous Block)
+      - name: Run ARIA Sovereign Cloud Daemon (5.6-Hour Continuous Block with Warm Overlap)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -61,9 +61,10 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           BASE_WALLET_ADDRESS: ${{ secrets.BASE_WALLET_ADDRESS }}
           DAEMON_MAX_SECONDS: "20400"
+          STANDBY_SPAWN_SECONDS: "19200"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python daemon/aria_telegram_daemon.py --max-seconds 20400
+          python daemon/aria_telegram_daemon.py --max-seconds 20400 --standby-trigger 19200
 
       - name: Persist State & Audit Logs (Atomic Rebase-and-Retry)
         if: always()

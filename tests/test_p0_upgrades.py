@@ -92,3 +92,23 @@ def test_instant_liquidity_engine_cycle():
     assert res.get("cycle_complete") is True
     assert "0x" in res.get("wallet", "")
     assert res.get("settlement_network") == "Base Mainnet (EVM)"
+
+
+def test_telegram_cmd_liquidity(monkeypatch):
+    svc = TelegramAssistantService(token="12345:mock_token", chat_id="8737013099")
+    sent = []
+    monkeypatch.setattr(svc, "send_message", lambda text, reply_markup=None: sent.append(text))
+    svc._cmd_liquidity()
+    assert len(sent) == 1
+    assert "BASE MAINNET" in sent[0]
+    assert "USDC" in sent[0]
+
+
+def test_telegram_cmd_copilot(monkeypatch):
+    svc = TelegramAssistantService(token="12345:mock_token", chat_id="8737013099")
+    sent = []
+    monkeypatch.setattr(svc, "send_message", lambda text, reply_markup=None: sent.append(text))
+    svc._cmd_copilot()
+    assert len(sent) == 1
+    assert "1-TAP OPERATOR COPILOT" in sent[0]
+    assert "PayPal" in sent[0]
