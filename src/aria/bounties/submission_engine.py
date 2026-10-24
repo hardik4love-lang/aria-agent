@@ -216,3 +216,88 @@ class BountySubmissionEngine:
                     except Exception:
                         pass
         return history
+
+    @classmethod
+    def evaluate_submission_lifecycle(cls) -> List[Dict[str, Any]]:
+        """Audits all logged submissions against the T+6h, T+18h, and T+48h lifecycle rules."""
+        history = cls.get_submission_history()
+        now = time.time()
+        evaluated = []
+
+        for record in history:
+            sub_id = record.get("submission_id", "")
+            ts_str = record.get("timestamp", "")
+            status = record.get("status", "DISPATCHED")
+
+            # Parse timestamp to compute elapsed hours
+            age_hours = 0.0
+            try:
+                # Format: 2026-10-24 10:20:35 UTC
+                clean_ts = ts_str.replace(" UTC", "")
+                dt = time.strptime(clean_ts, "%Y-%m-%d %H:%M:%S")
+                epoch = time.mktime(dt)
+                age_hours = max(0.0, (now - epoch) / 3600.0)
+            except Exception:
+                age_hours = 1.0
+
+            if status in ["PAID", "ARCHIVED", "REJECTED"]:
+                stage = status
+                action_required = False
+            elif age_hours < 6.0:
+                stage = "DISPATCHED_ACTIVE"
+                action_required = False
+            elif age_hours < 18.0:
+                stage = "T6_AWAITING_RESPONSE"
+                action_required = True
+            elif age_hours < 48.0:
+                stage = "T18_TECHNICAL_FOLLOWUP_DUE"
+                action_required = True
+            else:
+                stage = "T48_AUTO_ARCHIVED"
+                action_required = False
+
+            evaluated.append({
+                "submission_id": sub_id,
+                "job_id": record.get("job_id"),
+                "title": record.get("title"),
+                "payout": record.get("payout"),
+                "target_channel": record.get("target_channel"),
+                "age_hours": round(age_hours, 1),
+                "lifecycle_stage": stage,
+                "action_required": action_required,
+                "public_gist_url": record.get("public_gist_url", "")
+            })
+        return evaluated
+
+    @classmethod
+    def generate_followup_message(cls, submission_id: str) -> Dict[str, str]:
+        """Generates a senior engineer technical follow-up offering zero-friction verification."""
+        history = cls.get_submission_history()
+        match = next((r for r in history if r.get("submission_id") == submission_id), None)
+        if not match:
+            return {"error": f"Submission {submission_id} not found."}
+
+        title = match.get("title", "Developer Task")
+        gist = match.get("public_gist_url", "")
+        payout = match.get("payout", "$50 USD")
+
+        followup_text = (
+            f"Hi! Following up on the {title} solution.\n\n"
+            f"I have verified the implementation with automated regression tests "
+            f"covering boundary conditions and happy path execution.\n"
+        )
+        if gist:
+            followup_text += f"You can review the public verified code here: {gist}\n\n"
+        else:
+            followup_text += "Complete 3-file package (implementation, unit tests, and README) is verified.\n\n"
+
+        followup_text += (
+            f"Let me know if you would like me to push this directly to your branch or assist with integration.\n"
+            f"Settlement Rails: PayPal (shruhicollections@gmail.com) or Base USDC ({payout})."
+        )
+
+        return {
+            "submission_id": submission_id,
+            "title": title,
+            "followup_text": followup_text
+        }

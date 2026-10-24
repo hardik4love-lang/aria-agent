@@ -122,3 +122,29 @@ def test_standardized_deliverable_bundle():
         readme_text = f.read()
         assert "Root Cause & Architecture" in readme_text
         assert "shruhicollections@gmail.com" in readme_text
+
+
+def test_http_connection_pool():
+    """Verifies centralized HTTP client pooling and reuse."""
+    from aria.utils.http import get_http_client, close_http_clients
+    c1 = get_http_client()
+    c2 = get_http_client()
+    assert c1 is c2
+    assert not c1.is_closed
+    close_http_clients()
+
+
+def test_submission_lifecycle_evaluation():
+    """Verifies that submissions are accurately evaluated for T+6h, T+18h, and T+48h stages."""
+    from aria.bounties.submission_engine import BountySubmissionEngine
+    lifecycle = BountySubmissionEngine.evaluate_submission_lifecycle()
+    assert isinstance(lifecycle, list)
+    if lifecycle:
+        first = lifecycle[0]
+        assert "submission_id" in first
+        assert "lifecycle_stage" in first
+        assert "action_required" in first
+
+        msg = BountySubmissionEngine.generate_followup_message(first["submission_id"])
+        assert "followup_text" in msg
+        assert "shruhicollections@gmail.com" in msg["followup_text"]

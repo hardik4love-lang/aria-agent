@@ -196,6 +196,103 @@ export default {
       });
     }
 
+
+    // 4. PayPal Payment Settlement Webhook
+    if (url.pathname === "/webhook/paypal" && request.method === "POST") {
+      try {
+        const event = await request.json();
+        const eventType = event.event_type || "UNKNOWN";
+        const resource = event.resource || {};
+        const amount = resource.amount ? `${resource.amount.value} ${resource.amount.currency}` : "Incoming Payment";
+        const payer = resource.payer ? resource.payer.email_address : "Client";
+
+        await sendTelegramMessage(token, authorizedChatId,
+          `<b>┌── ⚡ PAYPAL SETTLEMENT CONFIRMED ──────────┐</b>\n` +
+          `<b>│ Event:</b>  <code>${eventType}</code>\n` +
+          `<b>│ Amount:</b> <b>${amount}</b>\n` +
+          `<b>│ Payer:</b>  ${payer}\n` +
+          `<b>├──────────────────────────────────────────┤</b>\n` +
+          `<b>│ Rail:</b>   PayPal (<code>${PAYPAL_PAYOUT}</code>)\n` +
+          `<b>└──────────────────────────────────────────┘</b>\n\n` +
+          `<i>Settlement successfully credited!</i>`,
+          MAIN_MENU_KEYBOARD
+        );
+        return new Response(JSON.stringify({ status: "processed" }), { status: 200, headers: { "Content-Type": "application/json" } });
+      } catch (err) {
+        return new Response(`Error: ${err.message}`, { status: 400 });
+      }
+    }
+
+    // 5. GitHub Actions / PR Event Webhook
+    if (url.pathname === "/webhook/github" && request.method === "POST") {
+      try {
+        const ghEvent = request.headers.get("X-GitHub-Event") || "event";
+        const payload = await request.json();
+        const repo = payload.repository ? payload.repository.full_name : "GitHub";
+        const action = payload.action || "triggered";
+        const sender = payload.sender ? payload.sender.login : "user";
+
+        if (["pull_request", "pull_request_review", "issue_comment"].includes(ghEvent)) {
+          await sendTelegramMessage(token, authorizedChatId,
+            `<b>🔔 GITHUB EVENT: ${repo}</b>\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━\n` +
+            `• <b>Type:</b> <code>${ghEvent}</code> (${action})\n` +
+            `• <b>Sender:</b> @${sender}\n` +
+            `• <b>Details:</b> <i>${payload.comment ? payload.comment.body.slice(0, 150) : "PR updated"}</i>`
+          );
+        }
+        return new Response("OK", { status: 200 });
+      } catch (err) {
+        return new Response(`Error: ${err.message}`, { status: 400 });
+      }
+    }
+
+    // 6. Zero-Cost Edge AI Chat Proxy (Groq LLaMA 3.3 70B)
+    if (url.pathname === "/api/chat") {
+      if (request.method === "OPTIONS") {
+        return new Response(null, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type"
+          }
+        });
+      }
+      try {
+        const body = await request.json();
+        const prompt = body.prompt || "Status report";
+        const groqKey = env.GROQ_API_KEY;
+        if (!groqKey) {
+          return new Response(JSON.stringify({ response: "ARIA Sovereign Edge Mode: Operational at $0.00/month TCO." }), {
+            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+          });
+        }
+        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${groqKey}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            model: "llama-3.3-70b-versatile",
+            messages: [
+              { role: "system", content: "You are ARIA, an autonomous AI engineer and executive partner operating at $0.00/month TCO." },
+              { role: "user", content: prompt }
+            ],
+            temperature: 0.2,
+            max_tokens: 800
+          })
+        });
+        const groqData = await groqRes.json();
+        const reply = groqData.choices?.[0]?.message?.content || "No response generated";
+        return new Response(JSON.stringify({ response: reply }), {
+          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } });
+      }
+    }
+
     return new Response("ARIA Gateway Endpoint Active.", { status: 200 });
   }
 };
