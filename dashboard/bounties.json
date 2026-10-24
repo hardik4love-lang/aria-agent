@@ -115,62 +115,62 @@
     {
       "id": "hy-715",
       "repo": "limitlessprojects/Go-Hybrid",
-      "pr_number": 715,
+      "pr_number": 1524,
       "title": "feat(spike): add W-016 hy-mir explicit desugared verification spike (#695)",
       "payout": "$300.00",
       "payout_numeric": 300.0,
       "category": "Compiler / Type-Checker (Rust)",
       "state": "OPEN",
-      "status": "HEALTHY",
+      "status": "REBASED & REOPENED (FRESH ARRIVAL)",
       "mergeable": true,
-      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/715",
+      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1524",
       "issue_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/695",
-      "detail": "Compiler MIR explicit desugaring spike. Passing test harness."
+      "detail": "Rebased cleanly against upstream main following queue sweep. Fully mergeable. Reopened as PR #1524."
     },
     {
       "id": "hy-714",
       "repo": "limitlessprojects/Go-Hybrid",
-      "pr_number": 714,
+      "pr_number": 1522,
       "title": "fix(hy-check): enforce borrow roots on sub-slice elements and classify unrooted pointer shapes (fixes #679)",
       "payout": "$300.00",
       "payout_numeric": 300.0,
       "category": "Compiler / Type-Checker (Rust)",
       "state": "OPEN",
-      "status": "HEALTHY",
+      "status": "REBASED & REOPENED (FRESH ARRIVAL)",
       "mergeable": true,
-      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/714",
+      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1522",
       "issue_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/679",
-      "detail": "Enforces borrow roots on sub-slice elements. Clean CI passing."
+      "detail": "Rebased cleanly against upstream main following queue sweep. Fully mergeable. Reopened as PR #1522."
     },
     {
       "id": "hy-713",
       "repo": "limitlessprojects/Go-Hybrid",
-      "pr_number": 713,
+      "pr_number": 1506,
       "title": "fix(hy-check): reject out-of-bounds constant string index and slice bounds (fixes #708)",
       "payout": "$300.00",
       "payout_numeric": 300.0,
       "category": "Compiler / Type-Checker (Rust)",
       "state": "OPEN",
-      "status": "HEALTHY",
+      "status": "REBASED & REOPENED (FRESH ARRIVAL)",
       "mergeable": true,
-      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/713",
+      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1506",
       "issue_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/708",
-      "detail": "Rejects constant out-of-bounds indices. Clean CI passing."
+      "detail": "Rebased cleanly against upstream main following queue sweep. Fully mergeable. Reopened as PR #1506."
     },
     {
       "id": "hy-712",
       "repo": "limitlessprojects/Go-Hybrid",
-      "pr_number": 712,
+      "pr_number": 1505,
       "title": "fix(hy-check): reject duplicate constant keys in map literals (fixes #687)",
       "payout": "$300.00",
       "payout_numeric": 300.0,
       "category": "Compiler / Type-Checker (Rust)",
       "state": "OPEN",
-      "status": "HEALTHY",
+      "status": "REBASED & REOPENED (FRESH ARRIVAL)",
       "mergeable": true,
-      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/712",
+      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1505",
       "issue_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/687",
-      "detail": "Detects and rejects duplicate map keys at compile-time."
+      "detail": "Rebased cleanly against upstream main following queue sweep. Fully mergeable. Reopened as PR #1505."
     },
     {
       "id": "hy-569",
@@ -607,9 +607,9 @@
       "platform": "GitHub PR",
       "target_repo": "limitlessprojects/Go-Hybrid",
       "category": "Compiler / Type-Checker (Rust)",
-      "status": "HEALTHY",
-      "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/715",
-      "description": "Compiler MIR explicit desugaring spike. Passing test harness."
+      "status": "REBASED & REOPENED",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1524",
+      "description": "Rebased cleanly against main. Reopened as PR #1524."
     },
     {
       "id": "hy-714",
@@ -619,9 +619,9 @@
       "platform": "GitHub PR",
       "target_repo": "limitlessprojects/Go-Hybrid",
       "category": "Compiler / Type-Checker (Rust)",
-      "status": "HEALTHY",
-      "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/714",
-      "description": "Enforces borrow roots on sub-slice elements. Clean CI passing."
+      "status": "REBASED & REOPENED",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1522",
+      "description": "Rebased cleanly against main. Reopened as PR #1522."
     },
     {
       "id": "hy-713",
@@ -631,9 +631,9 @@
       "platform": "GitHub PR",
       "target_repo": "limitlessprojects/Go-Hybrid",
       "category": "Compiler / Type-Checker (Rust)",
-      "status": "HEALTHY",
-      "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/713",
-      "description": "Rejects constant out-of-bounds indices. Clean CI passing."
+      "status": "REBASED & REOPENED",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1506",
+      "description": "Rebased cleanly against main. Reopened as PR #1506."
     },
     {
       "id": "hy-712",
@@ -643,9 +643,9 @@
       "platform": "GitHub PR",
       "target_repo": "limitlessprojects/Go-Hybrid",
       "category": "Compiler / Type-Checker (Rust)",
-      "status": "HEALTHY",
-      "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/712",
-      "description": "Detects and rejects duplicate map keys at compile-time."
+      "status": "REBASED & REOPENED",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1505",
+      "description": "Rebased cleanly against main. Reopened as PR #1505."
     },
     {
       "id": "hy-569",
