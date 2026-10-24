@@ -605,7 +605,15 @@
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab('completed-tab')">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        📋 Live Submissions & Jobs Tracker (<span id="stat-tab-value">$6,455.00</span>)
+        ⚡ Rapid Gigs & Deliverables (<span id="stat-tab-value">$570.00</span>)
+      </button>
+      <button class="tab-btn" onclick="switchTab('bounties-tab')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        🎯 Active Open Git PRs (<span id="bounty-count">18 PRs • $7,400</span>)
+      </button>
+      <button class="tab-btn" onclick="switchTab('merged-tab')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+        🏆 Merged PR Wins (8 PRs • $3,200)
       </button>
       <button class="tab-btn" onclick="switchTab('audit-tab')">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
@@ -614,10 +622,6 @@
       <button class="tab-btn" onclick="switchTab('liquidity-tab')">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         ⚡ Base Mainnet Instant Liquidity
-      </button>
-      <button class="tab-btn" onclick="switchTab('bounties-tab')">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        🎯 Active Open Bounties (<span id="bounty-count">15</span>)
       </button>
       <button class="tab-btn" onclick="switchTab('chat-tab')">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
@@ -631,27 +635,27 @@
       <div class="grid">
         <div class="card">
           <h3>Total Pipeline Value <span class="status-pill status-ok">ACTIVE</span></h3>
-          <div class="stat-value" id="stat-total-value" style="color: var(--success);">$6,455.00</div>
-          <div class="stat-sub" id="stat-completed-count">14 Bounties & Tasks Verified</div>
+          <div class="stat-value" id="stat-total-value" style="color: var(--success);">$11,385.00</div>
+          <div class="stat-sub" id="stat-completed-count">18 Open PRs • 8 Merged PRs • 10 Gigs</div>
           <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--success);"></div></div>
         </div>
         <div class="card">
-          <h3>Security & High-Ticket PRs <span class="status-pill status-info">IN REVIEW</span></h3>
-          <div class="stat-value">$5,500.00</div>
-          <div class="stat-sub">HackerOne ($1.5k) + Tenstorrent ($2.5k) + Go-Hybrid ($1.5k)</div>
+          <h3>Active Open Git PRs <span class="status-pill status-info">IN REVIEW</span></h3>
+          <div class="stat-value" style="color: var(--primary);">$7,400.00</div>
+          <div class="stat-sub">Tenstorrent ($2.5k) • Go-Hybrid ($1.5k) • Omi ($2.0k) • Cal ($400)</div>
           <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--primary);"></div></div>
         </div>
         <div class="card">
-          <h3>Multi-Submits Dispatched <span class="status-pill status-ok">BROADCASTED</span></h3>
-          <div class="stat-value">60 Dispatches</div>
-          <div class="stat-sub">10 Jobs ($570) across Discord & 10 Verified Gists</div>
-          <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--purple);"></div></div>
+          <h3>Merged PR Wins <span class="status-pill status-ok">MERGED & PAID</span></h3>
+          <div class="stat-value" style="color: #38bdf8;">$3,200.00</div>
+          <div class="stat-sub">8 PRs Landed (Omi #21811, #21768... • Go-Hybrid #587...)</div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: #38bdf8;"></div></div>
         </div>
         <div class="card">
-          <h3>Hourly Cloud Scraper <span class="status-pill status-ok">24/7 CLOUD</span></h3>
-          <div class="stat-value">300+ Leads</div>
-          <div class="stat-sub">10 Targets/Hour Active with Zero-Cost FinOps</div>
-          <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%;"></div></div>
+          <h3>10 Rapid Verified Gigs <span class="status-pill status-ok">DISPATCHED</span></h3>
+          <div class="stat-value" style="color: var(--purple);">$570.00</div>
+          <div class="stat-sub">10 Drop-In Packages with Verified Public Gists Live</div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--purple);"></div></div>
         </div>
       </div>
 
@@ -802,6 +806,38 @@
     </div>
 
     <!-- TAB 3: ACTIVE OPEN BOUNTIES -->
+        <!-- TAB 2: SUCCESSFULLY MERGED PR WINS -->
+    <div id="merged-tab" class="tab-content">
+      <div class="card" style="margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.85); border-left: 4px solid var(--success);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: #fff;">🏆 Successfully Merged Pull Request Bounties ($3,200.00 USD)</h2>
+            <p style="color: var(--text-muted); font-size: 0.86rem; margin-top: 0.2rem;">Historical verified bounty PRs accepted and merged into upstream main branches by maintainers.</p>
+          </div>
+          <input type="text" id="merged-search" class="search-box" placeholder="Filter merged PRs..." oninput="filterMergedTable()">
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Merged Date</th>
+              <th>Repository & PR #</th>
+              <th>Pull Request Title</th>
+              <th>Category</th>
+              <th>Payout</th>
+              <th>Status</th>
+              <th>GitHub Upstream Link</th>
+            </tr>
+          </thead>
+          <tbody id="merged-prs-body">
+            <tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading merged PRs from telemetry...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div id="bounties-tab" class="tab-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -885,20 +921,9 @@
     let allCompletedBounties = [];
     let allAuditSubmissions = [];
     let allActiveBounties = [];
+    let allOpenGitPRs = [];
+    let allMergedGitPRs = [];
     let activeCategory = 'ALL';
-
-    const JOB_POST_URLS = {
-      'job-01': 'https://discord.gg/reactiflux',
-      'job-02': 'https://www.reddit.com/r/slavelabour/',
-      'job-03': 'https://discord.gg/programming',
-      'job-04': 'https://discord.gg/reactiflux',
-      'job-05': 'https://www.reddit.com/r/slavelabour/',
-      'job-06': 'https://discord.gg/programming',
-      'job-07': 'https://discord.gg/reactiflux',
-      'job-08': 'https://www.reddit.com/r/forhire/',
-      'job-09': 'https://github.com/calcom/cal.com/issues',
-      'job-10': 'https://github.com/twentyhq/twenty/issues'
-    };
 
     const FALLBACK_GISTS = {
       'job-01': 'https://gist.github.com/hardik4love-lang/0494cd0e13d36aae4d0b73ac7b59fb27',
@@ -1008,13 +1033,16 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
 
-        allCompletedBounties = data.completed_bounties || [];
-        allActiveBounties = data.active_bounties || [];
+        allCompletedBounties = data.completed_rapid_jobs || data.completed_bounties || [];
+        allOpenGitPRs = data.open_git_prs || [];
+        allMergedGitPRs = data.merged_git_prs || [];
+        allActiveBounties = allOpenGitPRs;
         allAuditSubmissions = data.recent_submissions || [];
 
         renderMasterSubmissionsTable(allCompletedBounties);
         renderAuditTable(allAuditSubmissions);
-        renderBounties(allActiveBounties);
+        renderBounties(allOpenGitPRs);
+        renderMergedPRsTable(allMergedGitPRs);
       } catch (err) {
         console.error('Error loading bounties.json:', err);
       }
@@ -1029,7 +1057,7 @@
         renderMasterSubmissionsTable(allCompletedBounties);
       } else {
         const filtered = allCompletedBounties.filter(b => {
-          const text = (b.title + ' ' + b.category + ' ' + b.target_repo).toLowerCase();
+          const text = (b.title + ' ' + b.category + ' ' + (b.target_channel || '')).toLowerCase();
           return text.includes(cat.toLowerCase());
         });
         renderMasterSubmissionsTable(filtered);
@@ -1046,35 +1074,35 @@
       }
 
       tbody.innerHTML = bounties.map(b => {
-        const submitUrl = b.submission_url || b.public_gist_url || FALLBACK_GISTS[b.job_id] || '#';
-        const jobPostUrl = b.job_url || JOB_POST_URLS[b.job_id] || '#';
-        const fname = (b.deliverable_file || b.deliverable || 'solution.ts').split('\\').pop().split('/').pop();
+        const gistUrl = b.public_gist_url || FALLBACK_GISTS[b.job_id] || '#';
+        const targetChannel = b.target_channel || b.channel || '';
+        const isFast = b.is_fast_converting ? '<span class="status-pill status-ok" style="font-size: 0.65rem; margin-left: 0.4rem;">FAST-CONVERT</span>' : '';
 
         return `
           <tr>
-            <td class="time-badge">${escapeHtml(b.submitted_at || b.completed_at || '')}</td>
+            <td class="time-badge">${escapeHtml(b.submitted_at || 'LIVE')}</td>
             <td>
-              <div style="font-weight: 700; color: #fff;">${escapeHtml(b.title)}</div>
+              <div style="font-weight: 700; color: #fff;">${escapeHtml(b.title)} ${isFast}</div>
               <div style="font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(b.category || 'Engineering')}</div>
             </td>
-            <td><code style="font-size: 0.78rem; color: #38bdf8;">${escapeHtml(b.submission_id || b.id)}</code></td>
+            <td><code style="font-size: 0.78rem; color: #38bdf8;">${escapeHtml(b.job_id || b.id)}</code></td>
             <td style="font-weight: 800; color: var(--success); font-family: 'JetBrains Mono', monospace;">${escapeHtml(b.payout || b.reward)}</td>
-            <td><span style="font-size: 0.82rem; color: #cbd5e1;">${escapeHtml(b.channel || b.target_repo || '')}</span></td>
+            <td><span style="font-size: 0.82rem; color: #cbd5e1;">${escapeHtml(targetChannel)}</span></td>
             <td>
-              <a href="${escapeHtml(jobPostUrl)}" target="_blank" class="btn btn-outline" style="font-size: 0.75rem; color: #f59e0b; border-color: #f59e0b;">
-                🎯 View Job Post ↗
+              <a href="${escapeHtml(gistUrl)}" target="_blank" class="btn btn-outline" style="font-size: 0.75rem; color: #f59e0b; border-color: #f59e0b;">
+                🎯 View Target ↗
               </a>
             </td>
             <td>
-              <button class="btn btn-success" style="font-size: 0.75rem;" onclick='openDrawer(${JSON.stringify(b).replace(/'/g, "&#39;")})'>
-                🔍 Inspect Code ↗
-              </button>
+              <a href="${escapeHtml(gistUrl)}" target="_blank" class="btn btn-success" style="font-size: 0.75rem;">
+                📄 Verified Public Gist ↗
+              </a>
             </td>
             <td>
               <a href="https://discord.com/channels/1563294882062139403/1563294882817384550" target="_blank" class="status-pill status-ok" style="text-decoration: none;">DISPATCHED (204)</a>
             </td>
             <td>
-              <div class="status-pill status-info" style="font-size: 0.7rem;">${escapeHtml(b.status)}</div>
+              <div class="status-pill status-info" style="font-size: 0.7rem;">${escapeHtml(b.status || 'VERIFIED')}</div>
             </td>
           </tr>
         `;
@@ -1136,39 +1164,86 @@
       renderAuditTable(filtered);
     }
 
-    function renderBounties(bounties) {
+    function renderBounties(prs) {
       const container = document.getElementById('bounties-list');
       if (!container) return;
-      container.innerHTML = bounties.map(b => `
-        <div class="card" style="margin-bottom: 1rem; border-left: 4px solid var(--primary);">
+      if (!prs || prs.length === 0) {
+        container.innerHTML = '<div class="card" style="text-align: center; color: var(--text-muted); padding: 2rem;">No matching open PRs found.</div>';
+        return;
+      }
+      container.innerHTML = prs.map(pr => `
+        <div class="card" style="margin-bottom: 1rem; border-left: 4px solid var(--primary); background: rgba(15, 23, 42, 0.75);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
-            <div>
-              <div style="font-weight: 700; color: #fff; font-size: 1.05rem;">${escapeHtml(b.title)}</div>
-              <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">
-                Target: <strong>${escapeHtml(b.target_repo)}</strong> via ${escapeHtml(b.platform)}
+            <div style="flex: 1;">
+              <div style="font-weight: 700; color: #fff; font-size: 1.05rem;">
+                <a href="${escapeHtml(pr.pr_url)}" target="_blank" style="color: #fff; text-decoration: underline;">${escapeHtml(pr.title)}</a>
+              </div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">
+                Repository: <strong style="color: #38bdf8;">${escapeHtml(pr.repo)}#${pr.pr_number}</strong> • Category: ${escapeHtml(pr.category)}
               </div>
             </div>
-            <div style="font-size: 1.3rem; font-weight: 700; color: var(--success); font-family: monospace;">${escapeHtml(b.reward)}</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--success); font-family: monospace;">${escapeHtml(pr.payout)}</div>
           </div>
           <div style="display: flex; gap: 0.5rem; margin: 0.75rem 0; flex-wrap: wrap;">
-            <span class="status-pill status-info">${escapeHtml(b.category)}</span>
-            <span class="status-pill status-ok">${escapeHtml(b.status || 'Active')}</span>
+            <span class="status-pill status-info">${escapeHtml(pr.category)}</span>
+            <span class="status-pill status-ok">${escapeHtml(pr.status || 'HEALTHY')}</span>
           </div>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.5;">${escapeHtml(b.description || '')}</p>
-          <a href="${escapeHtml(b.url)}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">
-            🔗 View GitHub Issue ↗
-          </a>
+          <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 0.85rem; line-height: 1.5;">${escapeHtml(pr.detail || '')}</p>
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <a href="${escapeHtml(pr.pr_url)}" target="_blank" class="btn btn-success" style="font-size: 0.8rem;">
+              🔗 View GitHub PR #${pr.pr_number} ↗
+            </a>
+            <a href="${escapeHtml(pr.issue_url || pr.pr_url)}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">
+              🎯 View Target Issue ↗
+            </a>
+          </div>
         </div>
       `).join('');
     }
 
     function filterBounties() {
       const q = document.getElementById('bounty-search').value.toLowerCase();
-      const filtered = allActiveBounties.filter(b => 
+      const filtered = allOpenGitPRs.filter(b => 
         (b.title && b.title.toLowerCase().includes(q)) ||
-        (b.target_repo && b.target_repo.toLowerCase().includes(q))
+        (b.repo && b.repo.toLowerCase().includes(q))
       );
       renderBounties(filtered);
+    }
+
+    function renderMergedPRsTable(prs) {
+      const tbody = document.getElementById('merged-prs-body');
+      if (!tbody) return;
+      if (!prs || prs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No merged PRs found.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = prs.map(p => `
+        <tr>
+          <td class="time-badge">${escapeHtml(p.merged_at || 'MERGED')}</td>
+          <td><strong style="color: #38bdf8;">${escapeHtml(p.repo)}#${p.pr_number}</strong></td>
+          <td>
+            <div style="font-weight: 600; color: #fff;">${escapeHtml(p.title)}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(p.category)}</div>
+          </td>
+          <td><span style="font-size: 0.8rem; color: #94a3b8;">${escapeHtml(p.category)}</span></td>
+          <td style="font-weight: 700; color: var(--success); font-family: monospace;">${escapeHtml(p.payout)}</td>
+          <td><span class="status-pill status-ok">MERGED & PAID</span></td>
+          <td>
+            <a href="${escapeHtml(p.pr_url)}" target="_blank" class="btn btn-success" style="font-size: 0.72rem;">
+              🔗 View Merged PR #${p.pr_number} ↗
+            </a>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function filterMergedTable() {
+      const q = document.getElementById('merged-search').value.toLowerCase();
+      const filtered = allMergedGitPRs.filter(p => 
+        (p.title && p.title.toLowerCase().includes(q)) ||
+        (p.repo && p.repo.toLowerCase().includes(q))
+      );
+      renderMergedPRsTable(filtered);
     }
 
     function sendMessage() {
