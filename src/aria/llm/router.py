@@ -1,3 +1,4 @@
+from aria.utils.http import get_http_client
 """
 Model Router for ARIA Agent.
 Routes between Groq (free LPU), Google AI Studio (free 1M context), and Ollama on OCI ARM.
@@ -65,11 +66,11 @@ class GroqClient(BaseLLMClient):
             "max_tokens": 4096
         }
         try:
-            with httpx.Client(timeout=30.0) as client:
-                resp = client.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=payload)
-                resp.raise_for_status()
-                data = resp.json()
-                return data["choices"][0]["message"]["content"]
+            client = get_http_client()
+            resp = client.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=payload, timeout=30.0)
+            resp.raise_for_status()
+            data = resp.json()
+            return data["choices"][0]["message"]["content"]
         except Exception:
             if self.fallback_client:
                 return self.fallback_client.generate(prompt, system, temperature)
@@ -96,11 +97,11 @@ class GeminiClient(BaseLLMClient):
             "generationConfig": {"temperature": temperature, "maxOutputTokens": 4096}
         }
         try:
-            with httpx.Client(timeout=30.0) as client:
-                resp = client.post(url, json=payload)
-                resp.raise_for_status()
-                data = resp.json()
-                return data["candidates"][0]["content"]["parts"][0]["text"]
+            client = get_http_client()
+            resp = client.post(url, json=payload, timeout=30.0)
+            resp.raise_for_status()
+            data = resp.json()
+            return data["candidates"][0]["content"]["parts"][0]["text"]
         except Exception:
             if self.fallback_client:
                 return self.fallback_client.generate(prompt, system, temperature)

@@ -1,3 +1,4 @@
+from aria.utils.http import get_http_client
 """
 ARIA Full-Duplex Interactive Telegram Assistant Controller.
 Enables two-way sovereign communication between operator and Aria via @Ariabountie_bot.
@@ -123,9 +124,9 @@ class TelegramAssistantService:
         if reply_markup:
             payload["reply_markup"] = reply_markup
         try:
-            with httpx.Client(timeout=10.0) as client:
-                res = client.post(f"{self.base_url}/sendMessage", json=payload)
-                return res.status_code == 200
+            client = get_http_client()
+            res = client.post(f"{self.base_url}/sendMessage", json=payload, timeout=10.0)
+            return res.status_code == 200
         except Exception as e:
             print(f"[!] Error sending Telegram msg: {e}")
             return False
@@ -153,9 +154,9 @@ class TelegramAssistantService:
         if reply_markup:
             payload["reply_markup"] = reply_markup
         try:
-            with httpx.Client(timeout=8.0) as client:
-                res = client.post(f"{self.base_url}/editMessageText", json=payload)
-                return res.status_code == 200
+            client = get_http_client()
+            res = client.post(f"{self.base_url}/editMessageText", json=payload, timeout=8.0)
+            return res.status_code == 200
         except Exception as e:
             print(f"[!] Error editing Telegram msg {message_id}: {e}")
             return False
@@ -167,8 +168,8 @@ class TelegramAssistantService:
             if text:
                 payload["text"] = text
                 payload["show_alert"] = False
-            with httpx.Client(timeout=4.0) as client:
-                client.post(f"{self.base_url}/answerCallbackQuery", json=payload)
+            client = get_http_client()
+            client.post(f"{self.base_url}/answerCallbackQuery", json=payload, timeout=4.0)
         except Exception:
             pass
 
@@ -178,30 +179,30 @@ class TelegramAssistantService:
 
         while time.time() - start < max_seconds:
             try:
-                with httpx.Client(timeout=6.0) as client:
-                    resp = client.get(f"{self.base_url}/getUpdates?offset={self.last_offset + 1}&timeout=3")
-                    if resp.status_code == 200:
-                        updates = resp.json().get("result", [])
-                        for update in updates:
-                            self.last_offset = max(self.last_offset, update.get("update_id", 0))
+                client = get_http_client()
+                resp = client.get(f"{self.base_url}/getUpdates?offset={self.last_offset + 1}&timeout=3", timeout=6.0)
+                if resp.status_code == 200:
+                    updates = resp.json().get("result", [])
+                    for update in updates:
+                        self.last_offset = max(self.last_offset, update.get("update_id", 0))
 
-                            # 1. Handle Inline Button Clicks
-                            if "callback_query" in update:
-                                self._handle_callback(update["callback_query"])
+                        # 1. Handle Inline Button Clicks
+                        if "callback_query" in update:
+                            self._handle_callback(update["callback_query"])
+                            continue
+
+                        # 2. Handle Text Commands
+                        if "message" in update and "text" in update["message"]:
+                            msg = update["message"]
+                            text = msg.get("text", "").strip()
+                            sender_chat_id = str(msg.get("chat", {}).get("id", ""))
+                            
+                            # Security: Only respond to authorized operator
+                            if sender_chat_id != str(self.chat_id):
+                                print(f"[!] Unauthorized access attempt from {sender_chat_id}")
                                 continue
 
-                            # 2. Handle Text Commands
-                            if "message" in update and "text" in update["message"]:
-                                msg = update["message"]
-                                text = msg.get("text", "").strip()
-                                sender_chat_id = str(msg.get("chat", {}).get("id", ""))
-                                
-                                # Security: Only respond to authorized operator
-                                if sender_chat_id != str(self.chat_id):
-                                    print(f"[!] Unauthorized access attempt from {sender_chat_id}")
-                                    continue
-
-                                self._handle_text_command(text)
+                            self._handle_text_command(text)
 
             except Exception as e:
                 print(f"[!] Listener exception: {e}")
@@ -477,10 +478,10 @@ class TelegramAssistantService:
                     "temperature": 0.7,
                     "max_tokens": 1024
                 }
-                with httpx.Client(timeout=15.0) as client:
-                    resp = client.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=payload)
-                    if resp.status_code == 200:
-                        return resp.json()["choices"][0]["message"]["content"]
+                client = get_http_client()
+                resp = client.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=payload, timeout=15.0)
+                if resp.status_code == 200:
+                    return resp.json()["choices"][0]["message"]["content"]
             except Exception as e:
                 print(f"[!] Groq inference error: {e}")
 
@@ -495,10 +496,10 @@ class TelegramAssistantService:
                     ],
                     "generationConfig": {"temperature": 0.7, "maxOutputTokens": 1024}
                 }
-                with httpx.Client(timeout=15.0) as client:
-                    resp = client.post(url, json=payload)
-                    if resp.status_code == 200:
-                        return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+                client = get_http_client()
+                resp = client.post(url, json=payload, timeout=15.0)
+                if resp.status_code == 200:
+                    return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
             except Exception as e:
                 print(f"[!] Gemini inference error: {e}")
 
