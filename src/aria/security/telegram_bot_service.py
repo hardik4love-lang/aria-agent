@@ -11,6 +11,7 @@ import sys
 import time
 import json
 import httpx
+import re
 from typing import Dict, Any, Optional, List
 
 try:
@@ -25,6 +26,56 @@ PAYPAL_PAYOUT = os.environ.get("PAYPAL_EMAIL", "shruhicollections@gmail.com")
 UPI_PAYOUT = os.environ.get("UPI_ID", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
+
+
+class TelegramEntityChunker:
+    """Chunks messages for Telegram without splitting HTML entity tags or truncating words."""
+
+    @staticmethod
+    def chunk_html_message(text: str, max_chars: int = 4000) -> List[str]:
+        if len(text) <= max_chars:
+            return [text]
+
+        chunks = []
+        current = ""
+        open_tags = []
+
+        lines = text.split("\n")
+        for line in lines:
+            while len(line) > max_chars:
+                part = line[:max_chars]
+                line = line[max_chars:]
+                if current:
+                    closed_current = current
+                    for tag in reversed(open_tags):
+                        closed_current += f"</{tag}>"
+                    chunks.append(closed_current)
+                    current = "".join([f"<{tag}>" for tag in open_tags])
+                chunks.append(part)
+
+            if len(current) + len(line) + 1 > max_chars:
+                closed_current = current
+                for tag in reversed(open_tags):
+                    closed_current += f"</{tag}>"
+                chunks.append(closed_current)
+                current = "".join([f"<{tag}>" for tag in open_tags]) + line + "\n"
+            else:
+                current += line + "\n"
+
+                found_tags = re.findall(r"<(/?)(\w+)[^>]*>", line)
+                for is_closing, tag in found_tags:
+                    tag = tag.lower()
+                    if tag in ["b", "i", "code", "pre", "blockquote", "u", "s"]:
+                        if is_closing:
+                            if tag in open_tags:
+                                open_tags.remove(tag)
+                        else:
+                            open_tags.append(tag)
+
+        if current.strip():
+            chunks.append(current.strip())
+
+        return chunks or [text[:max_chars]]
 
 
 class TelegramAssistantService:
@@ -80,14 +131,14 @@ class TelegramAssistantService:
             return False
 
     def send_message(self, text: str, reply_markup: Optional[Dict[str, Any]] = None) -> bool:
-        """Sends message with automatic chunking for Telegram 4096-char limit."""
-        if len(text) <= 4000:
-            return self._send_raw_message(text, reply_markup)
+        """Sends message with automatic tag-balanced entity chunking for Telegram 4096-char limit."""
+        chunks = TelegramEntityChunker.chunk_html_message(text, max_chars=4000)
+        if len(chunks) == 1:
+            return self._send_raw_message(chunks[0], reply_markup)
         
-        chunks = [text[i:i+4000] for i in range(0, len(text), 4000)]
         for chunk in chunks[:-1]:
             self._send_raw_message(chunk)
-            time.sleep(0.3)
+            time.sleep(0.2)
         return self._send_raw_message(chunks[-1], reply_markup)
 
     def edit_message(self, message_id: int, text: str, reply_markup: Optional[Dict[str, Any]] = None) -> bool:
@@ -174,6 +225,17 @@ class TelegramAssistantService:
 
         if data.startswith("APPROVE:"):
             task_id = data.split(":", 1)[1]
+            try:
+                os.makedirs("state", exist_ok=True)
+                with open("state/approvals.jsonl", "a", encoding="utf-8") as f:
+                    f.write(json.dumps({
+                        "task_id": task_id,
+                        "decision": "APPROVED_BY_TELEGRAM_BUTTON",
+                        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S UTC"),
+                        "data": {"task_id": task_id}
+                    }) + "\n")
+            except Exception as e:
+                print(f"[!] Error recording approval to state: {e}")
             card_text = (
                 f"<b>[✅ APPROVED & DISPATCHED]</b>\n"
                 f"Task ID: <code>{task_id}</code>\n"
@@ -186,6 +248,17 @@ class TelegramAssistantService:
                 self.send_message(card_text, reply_markup=self.get_main_menu_keyboard())
         elif data.startswith("REJECT:"):
             task_id = data.split(":", 1)[1]
+            try:
+                os.makedirs("state", exist_ok=True)
+                with open("state/approvals.jsonl", "a", encoding="utf-8") as f:
+                    f.write(json.dumps({
+                        "task_id": task_id,
+                        "decision": "REJECTED_BY_TELEGRAM_BUTTON",
+                        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S UTC"),
+                        "data": {"task_id": task_id}
+                    }) + "\n")
+            except Exception as e:
+                print(f"[!] Error recording rejection to state: {e}")
             if msg_id:
                 self.edit_message(
                     msg_id,

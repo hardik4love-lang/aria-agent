@@ -65,7 +65,7 @@ jobs:
         run: |
           python daemon/aria_telegram_daemon.py --max-seconds 20400
 
-      - name: Persist State & Audit Logs
+      - name: Persist State & Audit Logs (Atomic Rebase-and-Retry)
         if: always()
         run: |
           git config --global user.name "ARIA Cloud Daemon [GitHub Actions]"
@@ -73,7 +73,29 @@ jobs:
           git add data/ state/ || true
           if ! git diff-index --quiet HEAD --; then
             git commit -m "chore(state): persist cloud daemon session checkpoint [skip ci]" || true
-            git push origin HEAD:${{ github.ref_name }} || true
+            max_retries=6
+            pushed=0
+            for i in $(seq 1 $max_retries); do
+              echo "[*] State push attempt $i of $max_retries..."
+              if git push origin HEAD:${{ github.ref_name }}; then
+                echo "[✓] State successfully persisted to origin/${{ github.ref_name }}"
+                pushed=1
+                break
+              fi
+              echo "[!] Push rejected. Re-fetching and rebasing with ours strategy..."
+              git fetch origin ${{ github.ref_name }}
+              git rebase -X ours origin/${{ github.ref_name }} || {
+                git rebase --abort
+                git pull --rebase -X ours origin ${{ github.ref_name }} || true
+              }
+              sleep_sec=$(( 2 ** i ))
+              echo "[*] Backing off ${sleep_sec}s before next push attempt..."
+              sleep $sleep_sec
+            done
+            if [ $pushed -eq 0 ]; then
+              echo "[WARN] Final push attempt after rebase fallback..."
+              git push origin HEAD:${{ github.ref_name }} || true
+            fi
           else
             echo "No state changes to commit."
           fi

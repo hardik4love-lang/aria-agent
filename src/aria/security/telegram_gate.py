@@ -113,20 +113,53 @@ class TelegramApprovalGate:
         except Exception as e:
             return False, f"Network error sending Telegram card: {str(e)}"
 
+    def _check_state_file_decision(self, task_id: str) -> Optional[bool]:
+        """Checks if task approval/rejection was recorded in audit log by assistant service."""
+        if not os.path.exists(self.audit_log_path):
+            return None
+        try:
+            with open(self.audit_log_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    try:
+                        record = json.loads(line)
+                        if record.get("task_id") == task_id:
+                            decision = str(record.get("decision", "")).upper()
+                            if "APPROVE" in decision:
+                                return True
+                            elif "REJECT" in decision:
+                                return False
+                    except Exception:
+                        continue
+        except Exception:
+            pass
+        return None
+
     def check_approval_status(self, task_id: str, timeout_seconds: int = 30) -> bool:
         """
-        Polls for approval from the operator (either via Telegram update or local confirmation).
+        Polls for approval from the operator (via shared state log, button, or message).
+        Gracefully handles Telegram single-consumer 409 conflicts by synchronizing via state.
         """
         if not self.is_configured():
-            # In simulation / local mode without live bot, auto-approves for verified operator sessions
             print(f"[*] [TELEGRAM GATE] Waiting for local approval on task '{task_id}' (Simulation)...")
             return True
+
+        # 1. Immediate check from shared state log (e.g. if assistant daemon already processed it)
+        dec = self._check_state_file_decision(task_id)
+        if dec is not None:
+            return dec
 
         url = f"https://api.telegram.org/bot{self.bot_token}/getUpdates"
         start_time = time.time()
         last_update_id = 0
 
         while time.time() - start_time < timeout_seconds:
+            # Check state log on each cycle
+            dec = self._check_state_file_decision(task_id)
+            if dec is not None:
+                return dec
+
             try:
                 with httpx.Client(timeout=5.0) as client:
                     resp = client.get(f"{url}?offset={last_update_id + 1}&timeout=3")
@@ -135,7 +168,6 @@ class TelegramApprovalGate:
                         for update in data.get("result", []):
                             last_update_id = max(last_update_id, update.get("update_id", 0))
 
-                            # Handle button callback
                             callback = update.get("callback_query", {})
                             cb_data = callback.get("data", "")
                             if cb_data == f"APPROVE:{task_id}":
@@ -145,7 +177,6 @@ class TelegramApprovalGate:
                                 self._record_audit(task_id, "REJECTED_BY_TELEGRAM_BUTTON")
                                 return False
 
-                            # Handle text message reply
                             msg = update.get("message", {}).get("text", "").strip()
                             if msg.lower() == f"/approve {task_id}".lower():
                                 self._record_audit(task_id, "APPROVED_BY_TELEGRAM_TEXT")
@@ -153,10 +184,12 @@ class TelegramApprovalGate:
                             elif msg.lower() == f"/reject {task_id}".lower():
                                 self._record_audit(task_id, "REJECTED_BY_TELEGRAM_TEXT")
                                 return False
-
+                    elif resp.status_code == 409:
+                        # 409 Conflict: Another poller (assistant daemon) is active. Sync via state log!
+                        pass
             except Exception:
                 pass
-            time.sleep(2)
+            time.sleep(1.5)
 
         return False
 

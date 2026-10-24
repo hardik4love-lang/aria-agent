@@ -42,9 +42,10 @@ class MockLLMClient(BaseLLMClient):
 
 
 class GroqClient(BaseLLMClient):
-    def __init__(self, api_key: str, model_id: str):
+    def __init__(self, api_key: str, model_id: str, fallback_client: Optional[BaseLLMClient] = None):
         self.api_key = api_key
         self.model_id = model_id
+        self.fallback_client = fallback_client
 
     def generate(self, prompt: str, system: Optional[str] = None, temperature: float = 0.0) -> str:
         import httpx
@@ -70,14 +71,16 @@ class GroqClient(BaseLLMClient):
                 data = resp.json()
                 return data["choices"][0]["message"]["content"]
         except Exception:
-            # Fallback to mock on network or token issues
+            if self.fallback_client:
+                return self.fallback_client.generate(prompt, system, temperature)
             return MockLLMClient(self.model_id).generate(prompt, system, temperature)
 
 
 class GeminiClient(BaseLLMClient):
-    def __init__(self, api_key: str, model_id: str = "gemini-2.0-flash-exp"):
+    def __init__(self, api_key: str, model_id: str = "gemini-2.0-flash-exp", fallback_client: Optional[BaseLLMClient] = None):
         self.api_key = api_key
         self.model_id = model_id
+        self.fallback_client = fallback_client
 
     def generate(self, prompt: str, system: Optional[str] = None, temperature: float = 0.0) -> str:
         import httpx
@@ -99,6 +102,8 @@ class GeminiClient(BaseLLMClient):
                 data = resp.json()
                 return data["candidates"][0]["content"]["parts"][0]["text"]
         except Exception:
+            if self.fallback_client:
+                return self.fallback_client.generate(prompt, system, temperature)
             return MockLLMClient(self.model_id).generate(prompt, system, temperature)
 
 
@@ -146,16 +151,22 @@ class ModelRouter:
                 self.quota.record_call("gemini")
                 return GeminiClient(self.gemini_key, "gemini-2.0-flash-exp")
 
-        # 2. Primary Provider: Groq Cloud
+        # Construct fallback chain
+        mock_fallback = MockLLMClient(model_name=f"mock-{role}")
+        gemini_fallback = None
+        if self.gemini_key and snapshot["gemini_remaining"] > 50:
+            gemini_fallback = GeminiClient(self.gemini_key, "gemini-2.0-flash-exp", fallback_client=mock_fallback)
+
+        # 2. Primary Provider: Groq Cloud (with automatic Gemini/Mock runtime cascade)
         if self.groq_key and snapshot["groq_remaining"] > 2000:
             self.quota.record_call("groq")
             model = "llama-3.3-70b-versatile" if role == "planner" else "llama-3.1-8b-instant"
-            return GroqClient(self.groq_key, model)
+            return GroqClient(self.groq_key, model, fallback_client=gemini_fallback or mock_fallback)
 
         # 3. Secondary Provider: Google AI Studio
         if self.gemini_key and snapshot["gemini_remaining"] > 200:
             self.quota.record_call("gemini")
-            return GeminiClient(self.gemini_key, "gemini-2.0-flash-exp")
+            return GeminiClient(self.gemini_key, "gemini-2.0-flash-exp", fallback_client=mock_fallback)
 
         # 4. Local fallback: Ollama on OCI ARM VM
         try:
@@ -170,3 +181,73 @@ class ModelRouter:
 
         # 5. Safe Mock fallback for CI or local dry runs
         return MockLLMClient(model_name=f"mock-{role}")
+
+
+class CascadeLLMRouter:
+    """Production-grade cascading inference router with zero-cost bounds."""
+
+    def __init__(self, quota_tracker: Optional[QuotaTracker] = None):
+        self.quota = quota_tracker or QuotaTracker()
+        self.groq_key = os.environ.get("GROQ_API_KEY", "").strip()
+        self.gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
+        self.ollama_url = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+
+    def generate(self, prompt: str, system: Optional[str] = None, role: str = "general", max_tokens: int = 2048) -> str:
+        snapshot = self.quota.get_snapshot()
+
+        # 1. Attempt Groq Primary
+        if self.groq_key and snapshot["groq_remaining"] > 500:
+            model = "llama-3.3-70b-versatile" if role == "planner" else "llama-3.1-8b-instant"
+            res = self._try_groq(model, prompt, system, max_tokens)
+            if res:
+                self.quota.record_call("groq")
+                return res
+
+        # 2. Attempt Groq Fast Secondary
+        if self.groq_key and snapshot["groq_remaining"] > 100:
+            res = self._try_groq("llama-3.1-8b-instant", prompt, system, max_tokens)
+            if res:
+                self.quota.record_call("groq")
+                return res
+
+        # 3. Attempt Google Gemini 2.0 Flash
+        if self.gemini_key and snapshot["gemini_remaining"] > 50:
+            res = self._try_gemini("gemini-2.0-flash-exp", prompt, system, max_tokens)
+            if res:
+                self.quota.record_call("gemini")
+                return res
+
+        # 4. Deterministic safe mock fallback
+        return MockLLMClient(f"cascade-{role}").generate(prompt, system)
+
+    def _try_groq(self, model: str, prompt: str, system: Optional[str], max_tokens: int) -> Optional[str]:
+        import httpx
+        headers = {"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"}
+        messages = []
+        if system:
+            messages.append({"role": "system", "content": system})
+        messages.append({"role": "user", "content": prompt})
+
+        try:
+            with httpx.Client(timeout=15.0) as client:
+                r = client.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json={
+                    "model": model, "messages": messages, "max_tokens": max_tokens, "temperature": 0.4
+                })
+                if r.status_code == 200:
+                    return r.json()["choices"][0]["message"]["content"]
+        except Exception:
+            pass
+        return None
+
+    def _try_gemini(self, model: str, prompt: str, system: Optional[str], max_tokens: int) -> Optional[str]:
+        import httpx
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.gemini_key}"
+        parts = [{"text": f"SYSTEM: {system}\nUSER: {prompt}"}] if system else [{"text": prompt}]
+        try:
+            with httpx.Client(timeout=20.0) as client:
+                r = client.post(url, json={"contents": [{"role": "user", "parts": parts}], "generationConfig": {"maxOutputTokens": max_tokens}})
+                if r.status_code == 200:
+                    return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception:
+            pass
+        return None
