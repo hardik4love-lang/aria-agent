@@ -532,12 +532,13 @@
           <thead>
             <tr>
               <th>Date & Time (UTC)</th>
-              <th>Task / Bounty</th>
+              <th>Task / Bounty Title</th>
               <th>Submission ID</th>
               <th>Payout</th>
-              <th>Channel / Destination</th>
-              <th>Live Deliverable Link</th>
-              <th>Discord Status</th>
+              <th>Channel / Community</th>
+              <th>🎯 Original Job Post</th>
+              <th>🚀 Submission Deliverable</th>
+              <th>Discord Delivery</th>
               <th>Review State</th>
             </tr>
           </thead>
@@ -568,8 +569,9 @@
               <th>Submission ID</th>
               <th>Job ID & Title</th>
               <th>Payout</th>
-              <th>Target Channel</th>
-              <th>Public Gist Link</th>
+              <th>Target Community</th>
+              <th>🎯 Original Job Post</th>
+              <th>🚀 Submission Gist</th>
               <th>Discord Delivery</th>
               <th>Deliverable File</th>
             </tr>
@@ -746,6 +748,23 @@
       }
     }
 
+    const JOB_POST_URLS = {
+      'bty-gh-tt-60777': 'https://github.com/tenstorrent/tt-metal/issues/60613',
+      'bty-gh-hy-825': 'https://github.com/limitlessprojects/Go-Hybrid/issues/777',
+      'bty-h1-gh-4115591': 'https://github.com/actions/toolkit',
+      'job-01': 'https://discord.gg/reactiflux',
+      'job-02': 'https://reddit.com/r/slavelabour',
+      'job-03': 'https://discord.gg/programming',
+      'job-04': 'https://discord.gg/reactiflux',
+      'job-05': 'https://reddit.com/r/slavelabour',
+      'job-06': 'https://discord.gg/programming',
+      'job-07': 'https://discord.gg/reactiflux',
+      'job-08': 'https://reddit.com/r/forhire',
+      'job-09': 'https://algora.io/calcom/bounties',
+      'job-10': 'https://algora.io/twentyhq/bounties',
+      'hourly-scraper-pipeline': 'https://github.com/hardik4love-lang/aria-agent/actions/workflows/aria-24x7-hourly-scraper.yml'
+    };
+
     function renderMasterSubmissionsTable(items) {
       const tbody = document.getElementById('master-submissions-body');
       if (!tbody) return;
@@ -756,14 +775,14 @@
         else if (b.category && b.category.includes('AI')) tagClass = 'tag-ai';
         else if (b.category && b.category.includes('Performance')) tagClass = 'tag-perf';
 
-        const linkUrl = b.submission_url || b.proof_url || b.job_url || '#';
-        const isGist = linkUrl.includes('gist.github.com');
-        const isPR = linkUrl.includes('/pull/');
-        const isH1 = linkUrl.includes('hackerone.com');
+        const jobPostUrl = b.job_url || JOB_POST_URLS[b.id] || '#';
+        const submitUrl = b.submission_url || b.proof_url || '#';
+        const isGist = submitUrl.includes('gist.github.com');
+        const isPR = submitUrl.includes('/pull/');
+        const isH1 = submitUrl.includes('hackerone.com');
 
-        let btnLabel = '🔗 View Submission ↗';
-        if (isGist) btnLabel = '📄 Live Public Gist ↗';
-        else if (isPR) btnLabel = '🐙 View GitHub PR ↗';
+        let btnLabel = '📄 Live Public Gist ↗';
+        if (isPR) btnLabel = '🐙 View GitHub PR ↗';
         else if (isH1) btnLabel = '🛡️ HackerOne Report ↗';
 
         return `
@@ -776,10 +795,17 @@
             <td><code style="font-size: 0.8rem; color: #38bdf8;">${escapeHtml(b.submission_id || b.id)}</code></td>
             <td style="font-weight: 700; color: var(--success); font-family: monospace; font-size: 0.95rem;">${escapeHtml(b.reward)}</td>
             <td>
-              <span style="font-size: 0.8rem; color: #cbd5e1;">${escapeHtml(b.channel || b.platform)}</span>
+              <a href="${escapeHtml(jobPostUrl)}" target="_blank" style="font-size: 0.82rem; color: #cbd5e1; text-decoration: underline;">
+                ${escapeHtml(b.channel || b.platform)}
+              </a>
             </td>
             <td>
-              <a href="${escapeHtml(linkUrl)}" target="_blank" class="btn btn-success" style="font-size: 0.75rem;">
+              <a href="${escapeHtml(jobPostUrl)}" target="_blank" class="btn btn-outline" style="font-size: 0.75rem; color: #f59e0b; border-color: #f59e0b;">
+                🎯 View Job Post ↗
+              </a>
+            </td>
+            <td>
+              <a href="${escapeHtml(submitUrl)}" target="_blank" class="btn btn-success" style="font-size: 0.75rem;">
                 ${btnLabel}
               </a>
             </td>
@@ -821,6 +847,7 @@
 
       tbody.innerHTML = subs.map(s => {
         const gistUrl = s.public_gist_url || FALLBACK_GISTS[s.job_id] || '';
+        const jobUrl = s.job_url || JOB_POST_URLS[s.job_id] || '#';
         return `
         <tr>
           <td class="time-badge">${escapeHtml(s.timestamp || '')}</td>
@@ -830,9 +857,18 @@
             <div style="font-size: 0.75rem; color: #94a3b8;">${escapeHtml(s.job_id || '')}</div>
           </td>
           <td style="font-weight: 700; color: var(--success); font-family: monospace;">${escapeHtml(s.payout || '')}</td>
-          <td><span style="font-size: 0.8rem; color: #cbd5e1;">${escapeHtml(s.target_channel || '')}</span></td>
           <td>
-            ${gistUrl ? `<a href="${escapeHtml(gistUrl)}" target="_blank" class="btn btn-outline" style="font-size: 0.75rem; color: var(--primary); border-color: var(--primary);">🔗 Live Verified Gist ↗</a>` : '<span style="color: #64748b;">Stand-Alone File</span>'}
+            <a href="${escapeHtml(jobUrl)}" target="_blank" style="font-size: 0.8rem; color: #cbd5e1; text-decoration: underline;">
+              ${escapeHtml(s.target_channel || '')}
+            </a>
+          </td>
+          <td>
+            <a href="${escapeHtml(jobUrl)}" target="_blank" class="btn btn-outline" style="font-size: 0.72rem; color: #f59e0b; border-color: #f59e0b;">
+              🎯 View Job Post ↗
+            </a>
+          </td>
+          <td>
+            ${gistUrl ? `<a href="${escapeHtml(gistUrl)}" target="_blank" class="btn btn-success" style="font-size: 0.72rem;">📄 Live Gist ↗</a>` : '<span style="color: #64748b;">Stand-Alone</span>'}
           </td>
           <td>
             <span class="status-pill status-ok">DELIVERED (204)</span>
