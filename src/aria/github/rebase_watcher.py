@@ -55,16 +55,39 @@ class PRRebaseWatcher:
                 res = client.get(url, headers=headers)
                 if res.status_code == 200:
                     data = res.json()
+
+                    # If GitHub is still computing mergeability asynchronously in the background:
+                    # 'mergeable' will be None and 'mergeable_state' will be "unknown".
+                    if data.get("mergeable") is None or data.get("mergeable_state") == "unknown":
+                        time.sleep(2.0)
+                        res2 = client.get(url, headers=headers)
+                        if res2.status_code == 200:
+                            data = res2.json()
+
+                    m_state = data.get("mergeable_state", "clean")
+                    is_mergeable = data.get("mergeable")
+
+                    # In GitHub REST API:
+                    # - mergeable: False OR mergeable_state: "dirty" -> Git merge conflict detected.
+                    # - mergeable_state in ["clean", "unstable", "behind", "blocked", "draft"] -> Git mergeable (no conflict).
+                    # - If mergeable is None / unknown after retry -> assume HEALTHY to prevent false-alarm spam.
+                    if is_mergeable is False or m_state == "dirty":
+                        status = "CONFLICT_DETECTED"
+                    elif is_mergeable is True or m_state in ["clean", "unstable", "behind", "blocked", "draft"]:
+                        status = "HEALTHY"
+                    else:
+                        status = "HEALTHY"
+
                     return {
                         "repo": repo,
                         "pr_number": pr_number,
                         "state": data.get("state"),
-                        "mergeable": data.get("mergeable"),
-                        "mergeable_state": data.get("mergeable_state"),
+                        "mergeable": is_mergeable,
+                        "mergeable_state": m_state,
                         "comments_count": data.get("comments", 0),
                         "reviews_count": data.get("review_comments", 0),
                         "updated_at": data.get("updated_at"),
-                        "status": "HEALTHY" if data.get("mergeable") else "REQUIRES_ATTENTION"
+                        "status": status
                     }
                 elif res.status_code == 404:
                     return {"repo": repo, "pr_number": pr_number, "status": "NOT_FOUND"}
