@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23T21:05:00Z",
+  "last_updated": "2026-10-24T04:19:44Z",
   "total_completed_bounties": 14,
   "total_completed_value": 6455.0,
   "dashboard_live_url": "https://hardik4love-lang.github.io/aria-agent/",
@@ -36,13 +36,13 @@
     {
       "id": "bty-h1-gh-4115591",
       "title": "HackerOne #4115591: Unquoted workflow input expression evaluation in actions/toolkit releases.yml",
-      "reward": ",500",
+      "reward": "$1,500",
       "reward_numeric": 1500.0,
       "platform": "HackerOne / GitHub Security",
       "target_repo": "actions/toolkit",
-      "category": "CI/CD Supply Chain Security",
-      "status": "TRIAGED / VALIDATION PENDING",
-      "job_url": "https://hackerone.com/github",
+      "category": "GitHub Security Bug Bounty",
+      "status": "TRIAGED / PENDING VALIDATION (Hubot Confirmed)",
+      "job_url": "https://github.com/actions/toolkit",
       "submission_url": "https://hackerone.com/reports/4115591",
       "deliverable": ".github/workflows/releases.yml",
       "completed_at": "2026-10-23T20:53:00Z"
@@ -195,7 +195,7 @@
       "platform": "GitHub Actions Cloud",
       "target_repo": "hardik4love-lang/aria-agent",
       "category": "Automation & Lead Gen",
-      "status": "ACTIVE 24/7 (Batches #1 & #2 Persisted)",
+      "status": "ACTIVE 24/7 (Batches #1, #2, #3 Persisted & Approved)",
       "job_url": "https://github.com/hardik4love-lang/aria-agent/actions/workflows/aria-24x7-hourly-scraper.yml",
       "submission_url": "https://github.com/hardik4love-lang/aria-agent/tree/main/data/hourly_scrapes",
       "deliverable": "data/hourly_scrapes/",
@@ -242,5 +242,16 @@
       "status": "Active",
       "description": "Tool-call JSON chunk reconstruction without buffering full responses."
     }
-  ]
+  ],
+  "multi_submissions": {
+    "total_dispatches": 60,
+    "unique_jobs_covered": 10,
+    "discord_webhook_live": true,
+    "discord_webhook_id": "1563295171381301398",
+    "payout_rails": {
+      "paypal": "shruhicollections@gmail.com",
+      "base_evm_wallet": "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c"
+    },
+    "verified_gists_count": 10
+  }
 }

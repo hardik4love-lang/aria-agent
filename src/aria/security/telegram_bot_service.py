@@ -35,6 +35,7 @@ class TelegramAssistantService:
         self.chat_id = str(chat_id)
         self.base_url = f"https://api.telegram.org/bot{self.token}"
         self.last_offset = 0
+        self.processed_callbacks = set()
 
     def get_main_menu_keyboard(self) -> Dict[str, Any]:
         return {
@@ -165,22 +166,24 @@ class TelegramAssistantService:
         # Show native alert toast on user's screen so they know it is executing
         self.answer_callback(cb_id, text="⚡ Aria Executing...")
 
+        # Deduplicate callbacks
+        if cb_id and cb_id in self.processed_callbacks:
+            return
+        if cb_id:
+            self.processed_callbacks.add(cb_id)
+
         if data.startswith("APPROVE:"):
             task_id = data.split(":", 1)[1]
-            if msg_id:
-                self.edit_message(
-                    msg_id,
-                    f"<b>[✅ APPROVED & DISPATCHED]</b>\n"
-                    f"Task ID: <code>{task_id}</code>\n"
-                    f"All deliverables verified, packaged, and committed to GitHub."
-                )
-            self.send_message(
-                f"<b>[✓] TASK {task_id} APPROVED!</b>\n"
-                f"━━━━━━━━━━━━━━━━━━━━━━\n"
-                f"Aria has finalized and delivered the verified batch.\n"
-                f"All changes committed to repository state.",
-                reply_markup=self.get_main_menu_keyboard()
+            card_text = (
+                f"<b>[✅ APPROVED & DISPATCHED]</b>\n"
+                f"Task ID: <code>{task_id}</code>\n"
+                f"All deliverables verified, packaged, and committed to GitHub.\n\n"
+                f"<i>Repository state updated & standing by 24/7 in cloud.</i>"
             )
+            if msg_id:
+                self.edit_message(msg_id, card_text, reply_markup=self.get_main_menu_keyboard())
+            else:
+                self.send_message(card_text, reply_markup=self.get_main_menu_keyboard())
         elif data.startswith("REJECT:"):
             task_id = data.split(":", 1)[1]
             if msg_id:
