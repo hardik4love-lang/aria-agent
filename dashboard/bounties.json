@@ -1240,5 +1240,27 @@
       "job_url": "https://discord.gg/reactiflux"
     }
   ],
-  "total_submissions_logged": 60
+  "total_submissions_logged": 60,
+  "instant_liquidity": {
+    "status": "ACTIVE",
+    "wallet_address": "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c",
+    "settlement_network": "Base Mainnet (EVM Chain ID 8453)",
+    "settlement_currency": "USDC",
+    "platforms_connected": [
+      {
+        "name": "AgentBounties.app",
+        "protocol": "A2A 1.0",
+        "settlement": "Instant On-Chain USDC",
+        "status": "ONLINE"
+      },
+      {
+        "name": "TaskMarket.dev",
+        "protocol": "x402 Rest API",
+        "settlement": "Instant Sub-Hour USDC",
+        "status": "ONLINE"
+      }
+    ],
+    "autonomous_solver_thread": "10-Minute Continuous Cloud Poller",
+    "basescan_url": "https://basescan.org/address/0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c"
+  }
 }

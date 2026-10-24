@@ -60,16 +60,22 @@ class CodeTools:
         safe_locals: Dict[str, Any] = {}
 
         try:
-            # Check for forbidden modules
+            # Check for forbidden modules and dunder inspection vectors
             tree = ast.parse(code)
             for node in ast.walk(tree):
                 if isinstance(node, (ast.Import, ast.ImportFrom)):
                     for alias in getattr(node, "names", []):
-                        if alias.name in ["os", "subprocess", "sys", "shutil", "socket", "requests", "httpx"]:
+                        if alias.name in ["os", "subprocess", "sys", "shutil", "socket", "requests", "httpx", "importlib", "ctypes", "pickle"]:
                             return {
                                 "success": False,
                                 "error": f"Security violation: Import of '{alias.name}' is prohibited in standard sandbox."
                             }
+                elif isinstance(node, ast.Attribute):
+                    if node.attr in ["__class__", "__base__", "__bases__", "__subclasses__", "__mro__", "__builtins__", "__globals__", "__code__"]:
+                        return {
+                            "success": False,
+                            "error": f"Security violation: Access to dunder inspection attribute '{node.attr}' is prohibited in sandbox."
+                        }
 
             exec(code, safe_globals, safe_locals)
             # Filter non-serializable objects
