@@ -1,13 +1,16 @@
 """
 ARIA Agent State Definitions for LangGraph Orchestration.
+Upgraded to Pydantic v2 ConfigDict for zero deprecation warnings on Python 3.14+.
 """
 
 from typing import List, Dict, Any, Optional, TypedDict
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class PlanStep(BaseModel):
     """Represents a discrete step planned by the Planner Agent."""
+    model_config = ConfigDict(arbitrary_types_allowed=True, validate_assignment=True)
+
     step_id: int
     description: str
     tool_name: str
@@ -20,6 +23,8 @@ class PlanStep(BaseModel):
 
 class ToolObservation(BaseModel):
     """Observation returned after tool execution."""
+    model_config = ConfigDict(arbitrary_types_allowed=True, validate_assignment=True)
+
     tool_name: str
     inputs: Dict[str, Any]
     output: Any
@@ -31,6 +36,8 @@ class ToolObservation(BaseModel):
 
 class QuotaSnapshot(BaseModel):
     """Tracks consumption against strict free-tier quotas."""
+    model_config = ConfigDict(arbitrary_types_allowed=True, validate_assignment=True)
+
     groq_requests_today: int = 0
     groq_remaining: int = 14400
     gemini_requests_today: int = 0

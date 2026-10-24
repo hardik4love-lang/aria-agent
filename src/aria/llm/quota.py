@@ -1,18 +1,20 @@
 """
 Quota Tracker for Strict Zero-Cost Governance.
 Tracks real-time consumption of free-tier APIs and prevents over-budget calls.
+Optimized with an In-Memory Write-Behind Cache for sub-millisecond lookups.
 """
 
 import os
 import json
 import time
+import threading
 from datetime import datetime, timezone
-from typing import Dict, Any, Tuple
+from typing import Dict, Any, Tuple, Optional
 import httpx
 
 
 class QuotaTracker:
-    """Manages API rate limits and daily/hourly budgets."""
+    """Manages API rate limits and daily/hourly budgets with in-memory caching."""
 
     def __init__(self, state_file_path: str = "state/quota_tracker.json"):
         self.state_file_path = state_file_path
@@ -33,6 +35,11 @@ class QuotaTracker:
             "github_reserve": 500,
         }
 
+        self._lock = threading.Lock()
+        self._last_flush_time = time.time()
+        self._dirty = False
+        self._mem_cache: Optional[Dict[str, Any]] = None
+
     def _get_today_key(self) -> str:
         return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -40,69 +47,99 @@ class QuotaTracker:
         return datetime.now(timezone.utc).strftime("%Y-%m-%d-%H")
 
     def _load_local_state(self) -> Dict[str, Any]:
-        if os.path.exists(self.state_file_path):
-            try:
-                with open(self.state_file_path, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            except Exception:
-                pass
-        return {
-            "date": self._get_today_key(),
-            "hour": self._get_current_hour_key(),
-            "groq_calls": 0,
-            "gemini_calls": 0,
-            "github_calls": 0,
-            "last_updated": time.time(),
-        }
+        """Loads state from memory cache or falls back to disk."""
+        with self._lock:
+            if self._mem_cache is not None:
+                return dict(self._mem_cache)
 
-    def _save_local_state(self, state: Dict[str, Any]) -> None:
-        os.makedirs(os.path.dirname(self.state_file_path) or ".", exist_ok=True)
-        with open(self.state_file_path, "w", encoding="utf-8") as f:
-            json.dump(state, f, indent=2)
+            if os.path.exists(self.state_file_path):
+                try:
+                    with open(self.state_file_path, "r", encoding="utf-8") as f:
+                        self._mem_cache = json.load(f)
+                        return dict(self._mem_cache)
+                except Exception:
+                    pass
+
+            self._mem_cache = {
+                "date": self._get_today_key(),
+                "hour": self._get_current_hour_key(),
+                "groq_calls": 0,
+                "gemini_calls": 0,
+                "github_calls": 0,
+                "last_updated": time.time(),
+            }
+            return dict(self._mem_cache)
+
+    def flush(self) -> None:
+        """Flushes in-memory dirty cache to persistent disk storage."""
+        with self._lock:
+            if not self._dirty or self._mem_cache is None:
+                return
+            try:
+                os.makedirs(os.path.dirname(self.state_file_path) or ".", exist_ok=True)
+                with open(self.state_file_path, "w", encoding="utf-8") as f:
+                    json.dump(self._mem_cache, f, indent=2)
+                self._dirty = False
+                self._last_flush_time = time.time()
+            except Exception as e:
+                print(f"[!] QuotaTracker flush error: {e}")
 
     def record_call(self, provider: str, count: int = 1) -> Dict[str, Any]:
-        """Record an API invocation and return updated quota snapshot."""
+        """Record an API invocation in memory and conditionally flush."""
         today = self._get_today_key()
         hour = self._get_current_hour_key()
-        state = self._load_local_state()
 
-        # Reset daily counters if day rolled over
-        if state.get("date") != today:
-            state["date"] = today
-            state["groq_calls"] = 0
-            state["gemini_calls"] = 0
+        with self._lock:
+            if self._mem_cache is None:
+                # populate cache
+                if os.path.exists(self.state_file_path):
+                    try:
+                        with open(self.state_file_path, "r", encoding="utf-8") as f:
+                            self._mem_cache = json.load(f)
+                    except Exception:
+                        self._mem_cache = {}
+                else:
+                    self._mem_cache = {}
 
-        # Reset hourly counter if hour rolled over
-        if state.get("hour") != hour:
-            state["hour"] = hour
-            state["github_calls"] = 0
+            # Reset daily counters if day rolled over
+            if self._mem_cache.get("date") != today:
+                self._mem_cache["date"] = today
+                self._mem_cache["groq_calls"] = 0
+                self._mem_cache["gemini_calls"] = 0
 
-        if provider == "groq":
-            state["groq_calls"] = state.get("groq_calls", 0) + count
-        elif provider == "gemini":
-            state["gemini_calls"] = state.get("gemini_calls", 0) + count
-        elif provider == "github":
-            state["github_calls"] = state.get("github_calls", 0) + count
+            # Reset hourly counter if hour rolled over
+            if self._mem_cache.get("hour") != hour:
+                self._mem_cache["hour"] = hour
+                self._mem_cache["github_calls"] = 0
 
-        state["last_updated"] = time.time()
-        self._save_local_state(state)
+            if provider == "groq":
+                self._mem_cache["groq_calls"] = self._mem_cache.get("groq_calls", 0) + count
+            elif provider == "gemini":
+                self._mem_cache["gemini_calls"] = self._mem_cache.get("gemini_calls", 0) + count
+            elif provider == "github":
+                self._mem_cache["github_calls"] = self._mem_cache.get("github_calls", 0) + count
+
+            self._mem_cache["last_updated"] = time.time()
+            self._dirty = True
+
+        # Flush write-behind cache immediately to preserve consistency
+        self.flush()
 
         # Optional Upstash Redis sync if credentials present
         if self.upstash_url and self.upstash_token:
             try:
-                # Fire and forget Redis increment via REST
                 with httpx.Client(timeout=1.0) as client:
                     client.post(
                         f"{self.upstash_url}/incr/quota:{provider}:{today}",
                         headers={"Authorization": f"Bearer {self.upstash_token}"}
                     )
             except Exception:
-                pass  # Local state remains authoritative on network glitch
+                pass
 
         return self.get_snapshot()
 
     def get_snapshot(self) -> Dict[str, Any]:
-        """Get current remaining quotas and recommendation."""
+        """Get current remaining quotas and recommendation with in-memory speed."""
         state = self._load_local_state()
         today = self._get_today_key()
         hour = self._get_current_hour_key()

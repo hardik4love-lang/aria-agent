@@ -73,6 +73,51 @@ def run_instant_liquidity_thread(svc: TelegramAssistantService):
         time.sleep(600)
 
 
+
+
+def run_pr_rebase_watcher_thread(svc: TelegramAssistantService):
+    """Background worker that inspects upstream PR mergeability every 30 minutes."""
+    from aria.github.rebase_watcher import PRRebaseWatcher
+    watcher = PRRebaseWatcher()
+    logger.info("30-Minute Upstream PR Rebase & Conflict Watcher thread active.")
+    while running:
+        try:
+            results = watcher.inspect_all_tracked_prs()
+            flagged = [pr for pr in results if pr.get("health", {}).get("status") != "HEALTHY"]
+            if flagged:
+                for pr in flagged:
+                    h = pr.get("health", {})
+                    msg = (
+                        f"<b>⚠️ UPSTREAM PR ATTENTION REQUIRED</b>\n"
+                        f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                        f"• <b>PR:</b> {pr.get('repo')}#{pr.get('pr_number')}\n"
+                        f"• <b>Title:</b> {pr.get('title')}\n"
+                        f"• <b>Bounty:</b> {pr.get('payout')}\n"
+                        f"• <b>Status:</b> <code>{h.get('status')}</code> ({h.get('mergeable_state', 'unknown')})\n"
+                        f"<i>Check GitHub branch or trigger autonomous rebase.</i>"
+                    )
+                    svc.send_message(msg)
+            else:
+                logger.info(f"[PR-WATCHER] All {len(results)} tracked PRs healthy.")
+        except Exception as e:
+            logger.warning(f"[PR-WATCHER] Exception during check: {e}")
+        time.sleep(1800)
+
+
+def run_daily_briefing_thread(svc: TelegramAssistantService):
+    """Background worker that checks and dispatches 08:00 UTC executive briefings."""
+    from aria.briefing.daily_briefing import DailyBriefingEngine
+    logger.info("08:00 UTC Executive Briefing worker thread active.")
+    while running:
+        try:
+            if DailyBriefingEngine.should_dispatch_today(check_hour=8):
+                logger.info("[BRIEFING] Dispatching 08:00 UTC Executive Intelligence Briefing...")
+                DailyBriefingEngine.dispatch_briefing(svc)
+        except Exception as e:
+            logger.warning(f"[BRIEFING] Exception in briefing loop: {e}")
+        time.sleep(60)
+
+
 def run_continuous_daemon(max_seconds: int = 0, standby_trigger: int = 0):
     global running
     signal.signal(signal.SIGINT, handle_sigterm)
@@ -99,6 +144,15 @@ def run_continuous_daemon(max_seconds: int = 0, standby_trigger: int = 0):
     # Start 10-Minute Instant Liquidity Worker
     liquidity_thread = threading.Thread(target=run_instant_liquidity_thread, args=(svc,), daemon=True)
     liquidity_thread.start()
+
+    # Start 30-Minute PR Rebase Watcher
+    pr_thread = threading.Thread(target=run_pr_rebase_watcher_thread, args=(svc,), daemon=True)
+    pr_thread.start()
+
+    # Start 08:00 UTC Daily Briefing Worker
+    briefing_thread = threading.Thread(target=run_daily_briefing_thread, args=(svc,), daemon=True)
+    briefing_thread.start()
+
     
     # Send startup notification to operator
     try:
