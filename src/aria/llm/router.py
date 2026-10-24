@@ -187,10 +187,13 @@ class CascadeLLMRouter:
     """Production-grade cascading inference router with zero-cost bounds."""
 
     def __init__(self, quota_tracker: Optional[QuotaTracker] = None):
+        from aria.llm.circuit_breaker import CircuitBreaker
         self.quota = quota_tracker or QuotaTracker()
         self.groq_key = os.environ.get("GROQ_API_KEY", "").strip()
         self.gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
         self.ollama_url = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+        self.groq_breaker = CircuitBreaker(failure_threshold=3, cooldown_seconds=60.0)
+        self.gemini_breaker = CircuitBreaker(failure_threshold=3, cooldown_seconds=60.0)
 
     def generate(self, prompt: str, system: Optional[str] = None, role: str = "general", max_tokens: int = 2048) -> str:
         snapshot = self.quota.get_snapshot()
@@ -221,6 +224,8 @@ class CascadeLLMRouter:
         return MockLLMClient(f"cascade-{role}").generate(prompt, system)
 
     def _try_groq(self, model: str, prompt: str, system: Optional[str], max_tokens: int) -> Optional[str]:
+        if not self.groq_breaker.allow_request():
+            return None
         import httpx
         headers = {"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"}
         messages = []
@@ -234,12 +239,17 @@ class CascadeLLMRouter:
                     "model": model, "messages": messages, "max_tokens": max_tokens, "temperature": 0.4
                 })
                 if r.status_code == 200:
+                    self.groq_breaker.record_success()
                     return r.json()["choices"][0]["message"]["content"]
+                elif r.status_code in [429, 500, 502, 503, 504]:
+                    self.groq_breaker.record_failure()
         except Exception:
-            pass
+            self.groq_breaker.record_failure()
         return None
 
     def _try_gemini(self, model: str, prompt: str, system: Optional[str], max_tokens: int) -> Optional[str]:
+        if not self.gemini_breaker.allow_request():
+            return None
         import httpx
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.gemini_key}"
         parts = [{"text": f"SYSTEM: {system}\nUSER: {prompt}"}] if system else [{"text": prompt}]
@@ -247,7 +257,10 @@ class CascadeLLMRouter:
             with httpx.Client(timeout=20.0) as client:
                 r = client.post(url, json={"contents": [{"role": "user", "parts": parts}], "generationConfig": {"maxOutputTokens": max_tokens}})
                 if r.status_code == 200:
+                    self.gemini_breaker.record_success()
                     return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                elif r.status_code in [429, 500, 502, 503, 504]:
+                    self.gemini_breaker.record_failure()
         except Exception:
-            pass
+            self.gemini_breaker.record_failure()
         return None

@@ -184,3 +184,70 @@ def test_rapid_jobs_registry_matches_all_10_jobs():
     match = RapidJobsRegistry.match_task("Need Next.js hydration error fix for theme switcher")
     assert match is not None
     assert match.id == "job-01"
+
+
+def test_syntax_verifier_python():
+    from aria.bounties.syntax_verifier import SyntaxVerifier
+    valid_code = "def add(a: int, b: int) -> int:\n    return a + b\n"
+    res = SyntaxVerifier.verify_python(valid_code)
+    assert res["valid"] is True
+    assert res["error"] is None
+
+    invalid_code = "def broken(:\n    pass"
+    res_bad = SyntaxVerifier.verify_python(invalid_code)
+    assert res_bad["valid"] is False
+    assert "SyntaxError" in res_bad["error"]
+
+
+def test_syntax_verifier_typescript():
+    from aria.bounties.syntax_verifier import SyntaxVerifier
+    valid_ts = "export function normalize(val: string): string {\n  return val.trim();\n}"
+    res = SyntaxVerifier.verify_typescript(valid_ts)
+    assert res["valid"] is True
+
+    unbalanced_ts = "export function broken() {\n  if (true) {\n}"
+    res_bad = SyntaxVerifier.verify_typescript(unbalanced_ts)
+    assert res_bad["valid"] is False
+    assert "Unclosed bracket" in res_bad["error"]
+
+
+def test_circuit_breaker_transitions():
+    from aria.llm.circuit_breaker import CircuitBreaker
+    cb = CircuitBreaker(failure_threshold=3, cooldown_seconds=0.1)
+    assert cb.allow_request() is True
+    assert cb.state == CircuitBreaker.CLOSED
+
+    cb.record_failure()
+    cb.record_failure()
+    assert cb.allow_request() is True
+
+    cb.record_failure()  # 3rd failure trips breaker
+    assert cb.state == CircuitBreaker.OPEN
+    assert cb.allow_request() is False
+
+    import time
+    time.sleep(0.15)
+    # Cooldown passed -> transitions to HALF-OPEN
+    assert cb.allow_request() is True
+    assert cb.state == CircuitBreaker.HALF_OPEN
+
+    cb.record_success()
+    assert cb.state == CircuitBreaker.CLOSED
+
+
+def test_pr_rebase_watcher_scan():
+    from aria.github.rebase_watcher import PRRebaseWatcher
+    watcher = PRRebaseWatcher()
+    prs = watcher.inspect_all_tracked_prs()
+    assert len(prs) == 2
+    assert prs[0]["id"] == "tt-60777"
+    assert prs[1]["id"] == "hy-825"
+    assert prs[0]["health"]["status"] in ["HEALTHY", "REQUIRES_ATTENTION"]
+
+
+def test_submission_engine_ast_pre_check():
+    from aria.bounties.submission_engine import BountySubmissionEngine
+    # Verify dispatching job-01 runs pre-submission check cleanly
+    res = BountySubmissionEngine.dispatch_submission("job-01")
+    assert res["success"] is True
+    assert res["submission_id"].startswith("sub-")

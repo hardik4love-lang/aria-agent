@@ -125,6 +125,14 @@ class BountySubmissionEngine:
         
         deliverable_content = ""
         if os.path.exists(solution_path):
+            # Pre-Submission AST Verification Gate
+            from aria.bounties.syntax_verifier import SyntaxVerifier
+            syntax_res = SyntaxVerifier.verify_file(solution_path)
+            if not syntax_res.get("valid"):
+                return {
+                    "success": False,
+                    "error": f"AST Syntax Verification Failed for {job.solution_file}: {syntax_res.get('error')}"
+                }
             with open(solution_path, "r", encoding="utf-8") as f:
                 deliverable_content = f.read()
 
