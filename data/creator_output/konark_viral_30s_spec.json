@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "generator": "ARIA Autonomous Temple Scholar Daemon",
+  "timestamp": "2026-10-25T11:43:19.585422+00:00",
+  "temple_metadata": {
+    "name": "Konark Sun Temple (Odisha)",
+    "dynasty": "Eastern Ganga Dynasty (King Narasimhadeva I, 1250 CE)",
+    "style": "Kalinga Architectural Grandeur",
+    "dimensions": "Chariot temple with 24 colossal carved wheels and 7 sculpted horses",
+    "mass": "Khondalite and chlorite stone"
+  },
+  "video_format": {
+    "aspect_ratio": "9:16",
+    "resolution": "1080x1920",
+    "target_duration_seconds": 30,
+    "framerate": 60
+  },
+  "short_script": {
+    "title": "The Truth About Stop Using Konark Sun Temple (Odisha) Until You Watch This (Part 1)",
+    "hook_10s": "Before you do anything else, watch this: This 24 astronomical chariot wheels calculate time down to the exact minute from solar shadows. And right now, almost everyone is doing it completely backwards.",
+    "body_core": "Here is what happened when we actually tested it: Step one: Wheels function as sub-minute sundials using spoke shadows.",
+    "loop_outro": "And that is why you should always know that...",
+    "hashtags": [
+      "#Shorts",
+      "#CreatorEconomy",
+      "#TechTips",
+      "#Viral"
+    ]
+  },
+  "packaging_winner": {
+    "title": "Stop Using Konark Sun Temple (Odisha) Until You Watch This",
+    "thumbnail_concept": "Host staring at camera with serious warning expression, holding up a red warning indicator next to the subject.",
+    "on_screen_text": "STOP NOW",
+    "curiosity_gap_score": 5.0,
+    "image_prompt": "Cinematic YouTube thumbnail, hyper-detailed photography, split lighting with red and deep blue rim light, charismatic tech creator with an urgent serious expression holding up an item representing Konark Sun Temple (Odisha), shallow depth of field, high contrast, clean minimalist background, 8k resolution, rule of thirds."
+  },
+  "telemetry": {
+    "retention_health_score": 91.1,
+    "total_words": 158,
+    "avg_wpm": 148.1,
+    "cut_frequency_sec": 6.4
+  }
+}
