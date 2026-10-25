@@ -384,6 +384,24 @@ class TelegramAssistantService:
         elif data.startswith("SOLVE:"):
             job_id = data.split(":", 1)[1]
             self._solve_job_by_id(job_id, edit_msg_id=msg_id)
+        elif data.startswith("CREATOR:"):
+            parts = data.split(":", 2)
+            act = parts[1]
+            param = parts[2] if len(parts) > 2 else ""
+            if act == "temple":
+                self._cmd_temple_heritage(param, edit_msg_id=msg_id)
+            elif act == "packaging":
+                self._cmd_creator_packaging(param, edit_msg_id=msg_id)
+            elif act == "script":
+                self._cmd_creator_script(param, edit_msg_id=msg_id)
+            elif act == "shorts":
+                self._cmd_creator_shorts(param, edit_msg_id=msg_id)
+        elif data.startswith("SCHOLAR:"):
+            parts = data.split(":", 2)
+            act = parts[1]
+            param = parts[2] if len(parts) > 2 else "Kailasa Temple, Ellora"
+            if act == "dispatch":
+                self._dispatch_github_scholar_workflow(param, edit_msg_id=msg_id)
 
     def _handle_text_command(self, text: str):
         cmd = text.split()[0].lower() if text else ""
@@ -419,6 +437,8 @@ class TelegramAssistantService:
             self._cmd_creator_shorts(args)
         elif cmd in ["/temple", "temple", "/heritage", "heritage"]:
             self._cmd_temple_heritage(args)
+        elif cmd in ["/scholar", "scholar", "/dispatch_scholar", "/research_temple"]:
+            self._dispatch_github_scholar_workflow(args or "Kailasa Temple, Ellora")
         elif cmd in ["/payout", "payout", "payment"]:
             self._cmd_payout()
         elif cmd in ["/email", "email"]:
@@ -1165,6 +1185,72 @@ class TelegramAssistantService:
 
 
 
+    def _dispatch_github_scholar_workflow(self, temple_name: str, edit_msg_id: Optional[int] = None):
+        """Triggers the ARIA Temple Scholar & Documentary Producer workflow on GitHub Actions."""
+        github_token = os.environ.get("GITHUB_TOKEN", "")
+        if not github_token:
+            try:
+                import subprocess
+                github_token = subprocess.check_output(["gh", "auth", "token"], text=True).strip()
+            except Exception:
+                pass
+
+        if not github_token:
+            err_msg = (
+                "<b>[⚠️ GitHub Auth Required]</b>\n"
+                "GITHUB_TOKEN is not configured in the daemon environment. "
+                "Please configure GITHUB_TOKEN to trigger cloud workflows from Telegram."
+            )
+            if edit_msg_id:
+                self.edit_message(edit_msg_id, err_msg)
+            else:
+                self.send_message(err_msg)
+            return
+
+        headers = {
+            "Authorization": f"Bearer {github_token}",
+            "Accept": "application/vnd.github.v3+json",
+            "User-Agent": "AriaTelegramBot/2.0"
+        }
+        url = "https://api.github.com/repos/hardik4love-lang/aria-agent/actions/workflows/aria-temple-scholar-daemon.yml/dispatches"
+        payload = {
+            "ref": "main",
+            "inputs": {
+                "temple_name": temple_name,
+                "generate_shorts": True,
+                "generate_master_dossier": True
+            }
+        }
+        try:
+            client = get_http_client()
+            res = client.post(url, json=payload, headers=headers, timeout=12.0)
+            if res.status_code in [200, 204]:
+                msg = (
+                    "<b>🚀 GITHUB ACTIONS SCHOLAR WORKFLOW DISPATCHED!</b>\n"
+                    "━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"• <b>Target Temple:</b> <code>{temple_name}</code>\n"
+                    f"• <b>Repository:</b> <code>hardik4love-lang/aria-agent</code>\n"
+                    f"• <b>Status:</b> <i>Autonomous cloud worker running on GitHub Actions ($0.00 TCO)...</i>\n\n"
+                    "<b>Deliverables Being Synthesized on GitHub:</b>\n"
+                    "1. 🏛️ Master Archaeological Blueprint Dossier (Markdown)\n"
+                    "2. ⚡ 30-Second High-Energy Viral Vertical Script\n"
+                    "3. 🎙️ Neural TTS Voiceover Narration Text\n"
+                    "4. 📝 9:16 Timestamped SubRip Subtitles (.srt)\n"
+                    "5. 🎬 Cinematography & VFX Scene Shot List (.csv)\n"
+                    "6. 📦 Algorithmic 4-Lever Packaging Matrix\n\n"
+                    "<i>Artifacts will automatically commit to <code>main</code> and bundle into the Actions release.</i>\n"
+                    "🔗 <b>Track Live:</b> https://github.com/hardik4love-lang/aria-agent/actions"
+                )
+            else:
+                msg = f"<b>[⚠️ Workflow Dispatch Failed]</b>\nGitHub API status: {res.status_code}\n<code>{res.text[:300]}</code>"
+        except Exception as e:
+            msg = f"<b>[⚠️ Dispatch Exception]</b>\n{e}"
+
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, msg, reply_markup=self.get_main_menu_keyboard())
+        else:
+            self.send_message(msg, reply_markup=self.get_main_menu_keyboard())
+
     def _cmd_temple_heritage(self, query: str = "", edit_msg_id: Optional[int] = None):
         """Ancient Temples of India: Architectural & Engineering Masterclass."""
         q_lower = query.lower()
@@ -1198,6 +1284,50 @@ class TelegramAssistantService:
                 "Sound (Nada Brahma) as the primordial architecture of creation. The pillars transform architectural space into a sonic temple synthesizer."
             )
             viral_hook = "The 500-Year-Old Pillars That Play Exact Harmonic Frequencies"
+        elif any(w in q_lower for w in ["modhera", "gujarat", "solanki"]):
+            title = "SUN TEMPLE, MODHERA (1026 CE)"
+            dynasty = "Chaulukya / Solanki Dynasty (King Bhima I)"
+            style = "Maru-Gurjara Architectural Masterpiece"
+            engineering = (
+                "• <b>Equinoctial Alignment:</b> Built on the Tropic of Cancer; equinox sunrise casts rays directly into the inner sanctum.\n"
+                "• <b>Surya Kund Geometry:</b> 108 stepped miniature shrines acting as a thermodynamic cooling reservoir.\n"
+                "• <b>52 Solar Columns:</b> Assembly hall carved with 52 intricately sculpted pillars mapping the weeks of the year."
+            )
+            metaphysics = "The sun as the eternal cosmic clock. Architectural light sculpting where light directly activates sanctum consciousness."
+            viral_hook = "The Ancient Temple Built on the Tropic of Cancer with 52 Cosmic Pillars"
+        elif any(w in q_lower for w in ["lepakshi", "veerabhadra", "hanging pillar"]):
+            title = "VEERABHADRA TEMPLE, LEPAKSHI (1530 CE)"
+            dynasty = "Vijayanagara Empire (Virupanna & Veeranna)"
+            style = "Vijayanagara Architectural Order"
+            engineering = (
+                "• <b>The Hanging Pillar:</b> Massive carved granite pillar suspended from the ceiling with zero ground contact.\n"
+                "• <b>Monolithic Nandi:</b> India\'s largest monolithic Nandi bull carved from a single granite boulder.\n"
+                "• <b>Mineral Fresco Ceilings:</b> Natural pigment Vijayanagara murals intact across five centuries."
+            )
+            metaphysics = "Defying gravity as an architectural metaphor for spiritual ascension beyond earthly bonds."
+            viral_hook = "The 500-Year-Old Hanging Pillar That Doesn\'t Touch the Ground"
+        elif any(w in q_lower for w in ["meenakshi", "madurai", "nayaka"]):
+            title = "MEENAKSHI AMMAN TEMPLE, MADURAI"
+            dynasty = "Pandya Roots & Nayaka Monumental Architecture"
+            style = "Classical Dravidian Sacred Urban Complex"
+            engineering = (
+                "• <b>Hall of 1000 Pillars:</b> 985 carved granite pillars engineered in perfect perspective alignment.\n"
+                "• <b>14 Soaring Gopurams:</b> 52-meter pyramidal gateway towers covered in 33,000 polychromatic sculptures.\n"
+                "• <b>Urban Mandala:</b> Concentric square city planning aligned to astronomical cardinal axes."
+            )
+            metaphysics = "The temple as a cosmic city. Walking inward through concentric gates simulates the soul\'s return to source."
+            viral_hook = "The 33,000-Sculpture Sacred City Engineered with Perfect Perspective"
+        elif any(w in q_lower for w in ["khajuraho", "kandariya", "chandela"]):
+            title = "KANDARIYA MAHADEVA TEMPLE, KHAJURAHO (1030 CE)"
+            dynasty = "Chandela Dynasty (King Vidyadhara)"
+            style = "Nagara Architectural Style"
+            engineering = (
+                "• <b>84 Fractal Spire Replicas:</b> Main Shikhara surrounded by 84 miniature spires recreating Mount Kailash.\n"
+                "• <b>Zero Binding Mortar:</b> Precision tenon-and-mortise stone joints holding 31-meter elevation.\n"
+                "• <b>Golden Ratio Geometry:</b> Proportions adhere strictly to the logarithmic spirals of Vastu Purusha Mandala."
+            )
+            metaphysics = "The fractal mountain of consciousness. Sculptural progression from mundane existence to supreme transcendence."
+            viral_hook = "The 1000-Year-Old Fractal Temple That Mimics Mount Kailash"
         elif any(w in q_lower for w in ["konark", "sun temple", "odisha", "sundial"]):
             title = "KONARK SUN TEMPLE, ODISHA (1250 CE)"
             dynasty = "Eastern Ganga Dynasty (King Narasimhadeva I)"
@@ -1244,18 +1374,30 @@ class TelegramAssistantService:
             f"<i>Tap below to explore other ancient temple engineering marvels!</i>"
         )
 
+        clean_name = title.split(",")[0].strip()
         kb = {
             "inline_keyboard": [
                 [
                     {"text": "⚡ Kailasa (Ellora)", "callback_data": "CREATOR:temple:kailasa"},
-                    {"text": "👑 Thanjavur (Brihadisvara)", "callback_data": "CREATOR:temple:thanjavur"}
+                    {"text": "👑 Thanjavur", "callback_data": "CREATOR:temple:thanjavur"}
                 ],
                 [
-                    {"text": "🎵 Hampi Musical Pillars", "callback_data": "CREATOR:temple:hampi"},
-                    {"text": "☀️ Konark Sun Temple", "callback_data": "CREATOR:temple:konark"}
+                    {"text": "🎵 Hampi Pillars", "callback_data": "CREATOR:temple:hampi"},
+                    {"text": "☀️ Konark Sun", "callback_data": "CREATOR:temple:konark"}
                 ],
                 [
-                    {"text": "📝 Generate Script for this Temple", "callback_data": f"CREATOR:script:{title.split(',')[0]}"},
+                    {"text": "🔥 Modhera Sun", "callback_data": "CREATOR:temple:modhera"},
+                    {"text": "🪨 Lepakshi Pillar", "callback_data": "CREATOR:temple:lepakshi"}
+                ],
+                [
+                    {"text": "🌸 Meenakshi", "callback_data": "CREATOR:temple:meenakshi"},
+                    {"text": "⛰️ Khajuraho", "callback_data": "CREATOR:temple:khajuraho"}
+                ],
+                [
+                    {"text": f"🚀 Dispatch GitHub Scholar: {clean_name}", "callback_data": f"SCHOLAR:dispatch:{clean_name}"}
+                ],
+                [
+                    {"text": "📝 Fast Script Demo", "callback_data": f"CREATOR:script:{clean_name}"},
                     {"text": "🔙 Creator Studio", "callback_data": "MENU:creator"}
                 ]
             ]

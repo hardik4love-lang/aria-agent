@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "generator": "ARIA Autonomous Temple Scholar Daemon",
+  "timestamp": "2026-10-25T05:53:25.799335+00:00",
+  "temple_metadata": {
+    "name": "Chennakeshava Temple, Belur",
+    "dynasty": "12th-century Vishnu temple complex in Belur, Karnataka (Hoysala Empire era)",
+    "style": "Classical Indian Temple Architecture",
+    "dimensions": "Historic sacred compound footprint",
+    "mass": "Colossal carved stone masonry"
+  },
+  "video_format": {
+    "aspect_ratio": "9:16",
+    "resolution": "1080x1920",
+    "target_duration_seconds": 30,
+    "framerate": 60
+  },
+  "short_script": {
+    "title": "The Truth About Stop Using Chennakeshava Temple, Belur Until You Watch This (Part 1)",
+    "hook_10s": "Before you do anything else, watch this: This the intricate architectural and astronomical engineering embedded into Chennakeshava Temple, Belur. And right now, almost everyone is doing it completely backwards.",
+    "body_core": "Here is what happened when we actually tested it: Step one: The Chennakeshava Temple, also referred to as the Keshava, Kesava or Vijayanarayana Temple, is a 12th-century Hindu temple in the Hassan district of Karnataka, India",
+    "loop_outro": "And that is why you should always know that...",
+    "hashtags": [
+      "#Shorts",
+      "#CreatorEconomy",
+      "#TechTips",
+      "#Viral"
+    ]
+  },
+  "packaging_winner": {
+    "title": "Stop Using Chennakeshava Temple, Belur Until You Watch This",
+    "thumbnail_concept": "Host staring at camera with serious warning expression, holding up a red warning indicator next to the subject.",
+    "on_screen_text": "STOP NOW",
+    "curiosity_gap_score": 5.0,
+    "image_prompt": "Cinematic YouTube thumbnail, hyper-detailed photography, split lighting with red and deep blue rim light, charismatic tech creator with an urgent serious expression holding up an item representing Chennakeshava Temple, Belur, shallow depth of field, high contrast, clean minimalist background, 8k resolution, rule of thirds."
+  },
+  "telemetry": {
+    "retention_health_score": 81.1,
+    "total_words": 201,
+    "avg_wpm": 147.1,
+    "cut_frequency_sec": 8.2
+  }
+}
