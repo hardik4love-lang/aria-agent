@@ -13,6 +13,7 @@ from aria.manager.integrity_guard import IntegrityGuard, EmpiricalIntegrityViola
 from aria.manager.empirical_ledger import EmpiricalFinancialLedger
 from aria.manager.workflow_director import WorkflowDirector
 from aria.manager.proposal_engine import ProposalEngine
+from aria.manager.bounty_pipeline import AutonomousBountyPipeline
 
 __all__ = [
     "SettlementTier",
@@ -25,4 +26,5 @@ __all__ = [
     "EmpiricalFinancialLedger",
     "WorkflowDirector",
     "ProposalEngine",
+    "AutonomousBountyPipeline",
 ]

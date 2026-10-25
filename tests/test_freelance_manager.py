@@ -115,3 +115,33 @@ def test_proposal_engine_generation():
     assert "0494cd0e13d36aae4d0b73ac7b59fb27" in res["proposal_copy"]
     assert "Root Cause:" in res["proposal_copy"]
     assert "Fixed-Price Milestone: $50.00 USD" in res["proposal_copy"]
+
+
+def test_autonomous_bounty_pipeline(tmp_path, monkeypatch):
+    from aria.manager import AutonomousBountyPipeline
+    
+    test_opp_file = str(tmp_path / "active_opportunities.jsonl")
+    monkeypatch.setattr(AutonomousBountyPipeline, "OPPORTUNITIES_FILE", test_opp_file)
+
+    # 1. Triage and stage qualified opportunity
+    staged = AutonomousBountyPipeline.evaluate_and_stage_task(
+        title="Next.js LocalStorage SSR Fix",
+        payout_usd=50.00,
+        channel="Reactiflux Discord",
+        spec_text="Fixing React hydration error when reading window.localStorage in SSR layout",
+        platform="upwork"
+    )
+    assert staged["status"] == "STAGED"
+    assert staged["payout_usd"] == 50.00
+    assert "gist.github.com" in staged["gist_url"]
+
+    # 2. Check retrieval
+    opps = AutonomousBountyPipeline.get_staged_opportunities(limit=5)
+    assert len(opps) == 1
+    assert opps[0]["payout_usd"] == 50.00
+
+    # 3. Check Telegram card formatting
+    card = AutonomousBountyPipeline.format_opportunity_card_html(opps[0])
+    assert "$50.00 USD" in card
+    assert "QUALIFIED HIGH-MARGIN OPPORTUNITY DISCOVERED" in card
+    assert "gist.github.com" in card
