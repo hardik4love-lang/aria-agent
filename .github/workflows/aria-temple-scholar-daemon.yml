@@ -1,0 +1,92 @@
+name: ARIA Temple Scholar & Documentary Producer
+
+on:
+  schedule:
+    # Daily autonomous run at 04:00 UTC
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    inputs:
+      temple_name:
+        description: 'Target Ancient Indian Temple (e.g. "Kailasa Temple, Ellora", "Brihadisvara", "Hampi", "Konark")'
+        required: false
+        default: 'Kailasa Temple, Ellora'
+      generate_shorts:
+        description: 'Generate 30-second high-energy viral vertical video script'
+        type: boolean
+        required: false
+        default: true
+      generate_master_dossier:
+        description: 'Generate master documentary blueprint, authenticity audit, and shot list'
+        type: boolean
+        required: false
+        default: true
+
+concurrency:
+  group: aria-temple-scholar
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  temple-scholar:
+    name: Autonomous Ancient Temple Scholar & Producer
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout Codebase & Heritage Repositories
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Zero-Cost Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run ARIA Autonomous Temple Scholar Engine
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEMPLE_TARGET: ${{ inputs.temple_name || 'Kailasa Temple, Ellora' }}
+        run: |
+          echo "[*] Launching ARIA Temple Scholar for: $TEMPLE_TARGET"
+          python daemon/aria_temple_scholar_daemon.py --temple "$TEMPLE_TARGET"
+
+      - name: Upload Research & Documentary Blueprints Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aria-temple-documentary-dossiers
+          path: data/creator_output/
+          retention-days: 90
+
+      - name: Commit & Publish Blueprints Directly to GitHub
+        run: |
+          git config --global user.name "ARIA Temple Scholar [GitHub Actions]"
+          git config --global user.email "aria-temple-scholar@users.noreply.github.com"
+          git add data/creator_output/
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "feat(scholar): autonomous heritage synthesis for ${{ inputs.temple_name || 'Kailasa Temple, Ellora' }} [skip ci]" || true
+            max_retries=5
+            for i in $(seq 1 $max_retries); do
+              echo "[*] Pushing scholar outputs (attempt $i/$max_retries)..."
+              if git push origin main; then
+                echo "[✓] Successfully published temple research blueprints to GitHub main."
+                break
+              fi
+              git pull --rebase origin main
+              sleep 2
+            done
+          else
+            echo "[*] No new dossiers generated or modified."
+          fi
