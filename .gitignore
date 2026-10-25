@@ -33,13 +33,17 @@ ENV/
 *.pem
 *.enc
 tool_credentials.enc
-state/agent_wallet.json
-*wallet*.json
 
 # Testing & Coverage
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Temporary video render artifacts
+data/creator_output/temp_*
+data/creator_output/temp_scenes/
+data/creator_output/*.mp4
+data/creator_output/*.mp3
 
 # IDE
 .idea/
