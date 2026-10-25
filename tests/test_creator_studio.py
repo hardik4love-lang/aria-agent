@@ -174,3 +174,24 @@ def test_shorts_repurposing():
     assert "Vertical 9:16" in shorts[0].visual_framing_9x16
     assert len(shorts[0].hashtags) >= 2
     assert shorts[0].audio_loop_outro.endswith("...")
+
+
+def test_audio_synthesizer_local():
+    from aria.creator.audio_synthesizer import AudioSynthesizer
+    import tempfile, os
+    with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as tf:
+        out_path = tf.name
+    try:
+        res = AudioSynthesizer.synthesize_text('Aria testing voice.', out_path)
+        assert os.path.exists(res)
+        assert os.path.getsize(res) > 500
+    finally:
+        if os.path.exists(out_path):
+            os.remove(out_path)
+
+
+def test_video_renderer_binary_location():
+    from aria.creator.video_renderer import VideoRenderer
+    bin_path = VideoRenderer.get_ffmpeg_binary()
+    assert bin_path is not None
+    assert 'ffmpeg' in bin_path.lower()

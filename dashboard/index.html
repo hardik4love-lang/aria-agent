@@ -567,6 +567,153 @@
       background: rgba(56, 189, 248, 0.08);
       box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
     }
+  
+    /* ARIA Sovereign Identity Showcase */
+    .identity-hero-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.75) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(56, 189, 248, 0.1);
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .identity-hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #a855f7, #f59e0b, #10b981);
+    }
+    .avatar-wrapper {
+      position: relative;
+      flex-shrink: 0;
+      width: 160px;
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      background: #0f172a;
+    }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+    .avatar-mode-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      background: rgba(6, 8, 15, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      padding: 3px 6px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .identity-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .identity-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .identity-title h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .identity-title p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+    .mode-switcher-pills {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+    }
+    .mode-pill-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .mode-pill-btn.active {
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+    .identity-badges {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.2rem;
+    }
+    .identity-badge {
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+    .identity-bio {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+      margin-top: 0.2rem;
+    }
+    .identity-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+      .identity-hero-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .avatar-wrapper {
+        width: 120px;
+        height: 150px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -601,11 +748,64 @@
       </div>
     </header>
 
+    
+    <!-- ARIA SOVEREIGN IDENTITY & BIOMETRIC SHOWCASE -->
+    <div class="identity-hero-card">
+      <div class="avatar-wrapper">
+        <img id="aria-avatar-img" src="assets/aria_executive_portrait.jpg" alt="Aria Sovereign AI Executive" class="avatar-img" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400'">
+        <div class="avatar-mode-badge" id="avatar-mode-label">EXECUTIVE DIRECTOR</div>
+      </div>
+
+      <div class="identity-details">
+        <div class="identity-header-row">
+          <div class="identity-title">
+            <h2>
+              ARIA (आर्या)
+              <span class="status-pill status-ok" style="font-size: 0.7rem; font-weight: 700;">🟢 ADULT SOVEREIGN AI</span>
+            </h2>
+            <p id="aria-role-subtitle">AI Freelance Business Director & Quantitative Operations Executive</p>
+          </div>
+
+          <div class="mode-switcher-pills">
+            <button class="mode-pill-btn active" id="btn-mode-exec" onclick="switchAriaMode('executive')">
+              💼 Executive Director
+            </button>
+            <button class="mode-pill-btn" id="btn-mode-heritage" onclick="switchAriaMode('heritage')">
+              🏛️ Sacred Heritage Scholar
+            </button>
+          </div>
+        </div>
+
+        <div class="identity-badges">
+          <span class="identity-badge" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">🏛️ Sovereign Polymath</span>
+          <span class="identity-badge" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3);">$0.00 TCO Perpetual</span>
+          <span class="identity-badge" style="color: #a855f7; border-color: rgba(168, 85, 247, 0.3);">100% Empirical Data</span>
+          <span class="identity-badge" style="color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">PayPal & Base EVM</span>
+        </div>
+
+        <div class="identity-bio" id="aria-bio-text">
+          Sovereign AI operations executive specializing in high-leverage software engineering contracts, multi-platform freelance execution, and ancient Indian sacred temple architecture. Backed by verified proof-of-work on public GitHub Gists, AST-verified synthesis, and a 3-tier capital ledger totaling <b>$14,475.00 USD</b> in empirical valuation.
+        </div>
+
+        <div class="identity-actions">
+          <button onclick="openHireModal()" class="btn btn-success" style="font-size: 0.85rem; padding: 0.45rem 1rem;">
+            ⚡ Direct Hire / Instant Solution ($25 - $100)
+          </button>
+          <button onclick="switchTab('scholar-tab')" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.45rem 1rem;">
+            🏛️ View Kailasa Temple Master Blueprint
+          </button>
+          <a href="https://github.com/hardik4love-lang/aria-agent" target="_blank" class="btn" style="font-size: 0.85rem; padding: 0.45rem 1rem; background: rgba(255,255,255,0.06);">
+            📦 GitHub Repository
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab('completed-tab')">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        ⚡ Rapid Gigs & Deliverables (<span id="stat-tab-value">$570.00</span>)
+        ⚡ Rapid Gigs & Deliverables (<span id="stat-tab-value">$575.00</span>)
       </button>
       <button class="tab-btn" onclick="switchTab('bounties-tab')">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -623,6 +823,10 @@
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         ⚡ Base Mainnet Instant Liquidity
       </button>
+      <button class="tab-btn" onclick="switchTab('scholar-tab')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+        🏛️ Sacred Heritage & Documentary Studio
+      </button>
       <button class="tab-btn" onclick="switchTab('chat-tab')">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
         💬 Ask ARIA (AI Assistant)
@@ -635,14 +839,14 @@
       <div class="grid">
         <div class="card">
           <h3>Total Pipeline Value <span class="status-pill status-ok">ACTIVE</span></h3>
-          <div class="stat-value" id="stat-total-value" style="color: var(--success);">$11,385.00</div>
-          <div class="stat-sub" id="stat-completed-count">18 Open PRs • 8 Merged PRs • 10 Gigs</div>
+          <div class="stat-value" id="stat-total-value" style="color: var(--success);">$14,475.00</div>
+          <div class="stat-sub" id="stat-completed-count">8 Merged PRs ($3.2k) • 8 Review PRs ($10.7k) • 10 Gists ($575)</div>
           <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--success);"></div></div>
         </div>
         <div class="card">
           <h3>Active Open Git PRs <span class="status-pill status-info">IN REVIEW</span></h3>
-          <div class="stat-value" style="color: var(--primary);">$7,400.00</div>
-          <div class="stat-sub">Tenstorrent ($2.5k) • Go-Hybrid ($1.5k) • Omi ($2.0k) • Cal ($400)</div>
+          <div class="stat-value" style="color: var(--primary);">$10,700.00</div>
+          <div class="stat-sub">Tenstorrent ($8,000 across 3 PRs) • Go-Hybrid ($2,700 across 5 PRs)</div>
           <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--primary);"></div></div>
         </div>
         <div class="card">
@@ -653,7 +857,7 @@
         </div>
         <div class="card">
           <h3>10 Rapid Verified Gigs <span class="status-pill status-ok">DISPATCHED</span></h3>
-          <div class="stat-value" style="color: var(--purple);">$570.00</div>
+          <div class="stat-value" style="color: var(--purple);">$575.00</div>
           <div class="stat-sub">10 Drop-In Packages with Verified Public Gists Live</div>
           <div class="progress-bar-bg"><div class="progress-fill" style="width: 100%; background: var(--purple);"></div></div>
         </div>
@@ -942,6 +1146,45 @@
       'job-01': `'use client';\nimport React, { useState, useEffect } from 'react';\n\nexport function useIsMounted(): boolean {\n  const [mounted, setMounted] = useState(false);\n  useEffect(() => { setMounted(true); }, []);\n  return mounted;\n}\n\nexport function ClientOnly({ children, fallback = null }: { children: React.ReactNode; fallback?: React.ReactNode }) {\n  const isMounted = useIsMounted();\n  if (!isMounted) return <React.Fragment>{fallback}</React.Fragment>;\n  return <React.Fragment>{children}</React.Fragment>;\n}`,
       'job-06': `import crypto from 'crypto';\n\nexport function verifyStripeSignature(rawBody: string | Buffer, sigHeader: string, endpointSecret: string): boolean {\n  const parts = sigHeader.split(',').reduce((acc: any, part: string) => {\n    const [k, v] = part.trim().split('=');\n    if (k && v) acc[k] = v;\n    return acc;\n  }, {});\n  const timestamp = parts.t;\n  const expectedSig = parts.v1;\n  if (!timestamp || !expectedSig) return false;\n  const payload = \`\${timestamp}.\${rawBody}\`;\n  const hmac = crypto.createHmac('sha256', endpointSecret).update(payload).digest('hex');\n  return crypto.timingSafeEqual(Buffer.from(hmac, 'utf8'), Buffer.from(expectedSig, 'utf8'));\n}`
     };
+
+    
+    // Mode Switching Logic: Executive vs Heritage
+    function switchAriaMode(mode) {
+      const avatar = document.getElementById('aria-avatar-img');
+      const badge = document.getElementById('avatar-mode-label');
+      const subtitle = document.getElementById('aria-role-subtitle');
+      const bio = document.getElementById('aria-bio-text');
+      const btnExec = document.getElementById('btn-mode-exec');
+      const btnHeritage = document.getElementById('btn-mode-heritage');
+
+      if (mode === 'executive') {
+        avatar.src = 'assets/aria_executive_portrait.jpg';
+        badge.innerText = 'EXECUTIVE DIRECTOR';
+        badge.style.color = '#38bdf8';
+        badge.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+        subtitle.innerText = 'AI Freelance Business Director & Quantitative Operations Executive';
+        bio.innerHTML = 'Sovereign AI operations executive specializing in high-leverage software engineering contracts, multi-platform freelance execution, and ancient Indian sacred temple architecture. Backed by verified proof-of-work on public GitHub Gists, AST-verified synthesis, and a 3-tier capital ledger totaling <b>$14,475.00 USD</b> in empirical valuation.';
+        btnExec.classList.add('active');
+        btnHeritage.classList.remove('active');
+      } else {
+        avatar.src = 'assets/aria_sacred_heritage_portrait.jpg';
+        badge.innerText = 'SACRED HERITAGE SCHOLAR';
+        badge.style.color = '#f59e0b';
+        badge.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+        subtitle.innerText = 'Sovereign Assistant & Digital Ambassador of Indian Sacred Heritage';
+        bio.innerHTML = 'Cultural AI influencer and architectural historian investigating the monolithic engineering, archaeo-acoustics, and subtractive monolith carving of ancient Indian temples (Kailasa at Ellora, Brihadisvara at Thanjavur, Chennakeshava at Belur). Direct producer of 30-second retention shorts and master documentary blueprints.';
+        btnHeritage.classList.add('active');
+        btnExec.classList.remove('active');
+      }
+    }
+
+    function openHireModal() {
+      switchTab('completed-tab');
+      const firstRow = document.querySelector('.table-row');
+      if (firstRow) {
+        firstRow.click();
+      }
+    }
 
     // Animated Radar Sweep
     function initRadar() {

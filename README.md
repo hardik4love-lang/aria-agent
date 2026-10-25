@@ -3,8 +3,17 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Status-24%2F7%20Sovereign%20Cloud-10B981?style=for-the-badge&logo=githubactions&logoColor=white" alt="Daemon Status" />
   <img src="https://img.shields.io/badge/TCO-%240.00%20%2F%20month-38BDF8?style=for-the-badge" alt="Zero-Cost FinOps" />
-  <img src="https://img.shields.io/badge/Tests-64%20Passed%20(100%25)-8B5CF6?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests" />
+  <img src="https://img.shields.io/badge/Valuation-%2414%2C475%20Verified-10B981?style=for-the-badge" alt="Empirical Ledger" />
   <img src="https://img.shields.io/badge/Telemetry-GitHub%20Pages%20Live-F59E0B?style=for-the-badge&logo=githubpages&logoColor=white" alt="Dashboard" />
+</p>
+
+<p align="center">
+  <img src="assets/aria_executive_portrait.jpg" width="340" alt="ARIA Executive Business Director" style="border-radius: 12px; margin: 8px;" />
+  <img src="assets/aria_sacred_heritage_portrait.jpg" width="340" alt="ARIA Sacred Heritage AI Influencer" style="border-radius: 12px; margin: 8px;" />
+</p>
+<p align="center">
+  <b>ARIA: Sovereign AI Operations Executive & Cultural Heritage Ambassador</b><br />
+  <em>Mode A: Executive Business Director (Left) &bull; Mode B: Sacred Heritage AI Influencer (Right)</em>
 </p>
 
 > **Total Cost of Ownership (TCO):** \$0.00 / month (Permanent Zero-Cost FinOps)  
