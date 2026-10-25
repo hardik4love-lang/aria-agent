@@ -99,3 +99,19 @@ def test_workflow_director_triage_gate():
     )
     assert res_qual["decision"] == "QUALIFIED"
     assert res_qual["qualified"] is True
+
+
+def test_proposal_engine_generation():
+    from aria.manager import ProposalEngine
+    res = ProposalEngine.generate_proof_first_proposal(
+        task_title="Next.js Hydration & LocalStorage SSR Mismatch Fix",
+        problem_diagnosis="Window access during pre-render pass produces React hydration mismatch error 418.",
+        solution_mechanism="Created client-only boundary with dynamic mounting state and fallback skeleton.",
+        proof_gist_url="https://gist.github.com/hardik4love-lang/0494cd0e13d36aae4d0b73ac7b59fb27",
+        quote_usd=50.00,
+        platform="upwork"
+    )
+    assert res["quote_usd"] == 50.00
+    assert "0494cd0e13d36aae4d0b73ac7b59fb27" in res["proposal_copy"]
+    assert "Root Cause:" in res["proposal_copy"]
+    assert "Fixed-Price Milestone: $50.00 USD" in res["proposal_copy"]

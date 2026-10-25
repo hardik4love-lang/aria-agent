@@ -12,6 +12,7 @@ from aria.manager.models import (
 from aria.manager.integrity_guard import IntegrityGuard, EmpiricalIntegrityViolation
 from aria.manager.empirical_ledger import EmpiricalFinancialLedger
 from aria.manager.workflow_director import WorkflowDirector
+from aria.manager.proposal_engine import ProposalEngine
 
 __all__ = [
     "SettlementTier",
@@ -23,4 +24,5 @@ __all__ = [
     "EmpiricalIntegrityViolation",
     "EmpiricalFinancialLedger",
     "WorkflowDirector",
+    "ProposalEngine",
 ]
