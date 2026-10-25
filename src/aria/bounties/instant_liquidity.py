@@ -26,6 +26,8 @@ class InstantLiquidityEngine:
     @classmethod
     def execute_instant_opportunity_cycle(cls) -> Dict[str, Any]:
         """Scans agent-native markets and automatically dispatches solutions for instant payout."""
+        from aria.bounties.fast_cash_engine import FastCashEngine
+        master_res = FastCashEngine.execute_master_fast_cash_cycle()
         wallet = AgentMarketplaceManager.get_or_create_wallet()
         logger.info(f"Scanning agent markets for Base wallet: {wallet['address']}")
 

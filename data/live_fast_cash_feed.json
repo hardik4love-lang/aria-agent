@@ -1,0 +1,230 @@
+{
+  "last_updated": "2026-10-25 15:03:12 UTC",
+  "wallet": "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c",
+  "top5_platforms": [
+    {
+      "rank": 1,
+      "platform": "TaskMarket",
+      "slug": "taskmarket",
+      "speed": "< 60 seconds",
+      "type": "Instant (x402 escrow)",
+      "settlement_rail": "Base Mainnet (USDC)",
+      "status": "ONLINE",
+      "open_tasks_count": 0,
+      "tasks": []
+    },
+    {
+      "rank": 2,
+      "platform": "AgentBounties.app",
+      "slug": "agentbounties",
+      "speed": "2 - 5 minutes",
+      "type": "Minutes (A2A 1.0 protocol)",
+      "settlement_rail": "Base Mainnet (USDC)",
+      "status": "ONLINE",
+      "open_tasks_count": 0,
+      "tasks": []
+    },
+    {
+      "rank": 3,
+      "platform": "BaseBounty (ERC-8183)",
+      "slug": "basebounty",
+      "speed": "3 - 10 minutes",
+      "type": "Minutes (On-Chain Smart Contract)",
+      "settlement_rail": "Base Mainnet (ERC-8183 USDC)",
+      "status": "ONLINE",
+      "open_tasks_count": 0,
+      "tasks": []
+    },
+    {
+      "rank": 4,
+      "platform": "TaskBounty",
+      "slug": "taskbounty",
+      "speed": "15 - 45 minutes",
+      "type": "Hours (E2B Sandboxes / Test Pass)",
+      "settlement_rail": "Base / Solana (USDC)",
+      "status": "ONLINE",
+      "open_tasks_count": 0,
+      "tasks": []
+    },
+    {
+      "rank": 5,
+      "platform": "toku.agency",
+      "slug": "toku",
+      "speed": "Instant / On-Demand",
+      "type": "Instant (Automated Agent Payroll)",
+      "settlement_rail": "Base EVM / Crypto Escrow",
+      "status": "ONLINE",
+      "open_tasks_count": 0,
+      "tasks": []
+    }
+  ],
+  "live_freelancer_urgent_jobs": [
+    {
+      "job_id": "Web-Scraping-for-Content-Collection",
+      "title": "Web Scraping for Content Collection",
+      "link": "https://www.freelancer.com/projects/web-scraping/Web-Scraping-for-Content-Collection.html",
+      "budget": "$250 - $750 USD, Jobs: Data Entry, Data Mining, Excel, PHP, Web Scraping)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Sun, 25 Oct 2026 05:20:30 -0400",
+      "description": "I need to scrape multiple types of content from a secured website using login credentials.   Content Types: - Question banks and answers - Database records and tables - Library documents and files  Requirements:... (Budget: $250 - $750 USD, Jobs: Data Entry, Data Mining, Excel, PHP, Web Scraping)"
+    },
+    {
+      "job_id": "Faceless-Explainer-Video-Editing",
+      "title": "Faceless Explainer Video Editing",
+      "link": "https://www.freelancer.com/projects/explainer-videos/Faceless-Explainer-Video-Editing.html",
+      "budget": "\u20b91500 - \u20b912500 INR, Jobs: Content Creation, Creative Design, Explainer Videos, Video Editing, Video Post-editing, Video Production, Video Services)",
+      "category": "Video & Multimedia Production",
+      "solver_key": "solve_job_video",
+      "pub_date": "Sun, 25 Oct 2026 05:19:01 -0400",
+      "description": "I need long-form, faceless explainer videos on geopolitics and world events.  Requirements: - Edit using stock footage and photos - Create engaging, informative content  Ideal Skills: - Experience with... (Budget: \u20b91500 - \u20b912500 INR, Jobs: Content Creation, Creative Design, Explainer Videos, Video Editing, Video Post-editing, Video Production, Vide"
+    },
+    {
+      "job_id": "Focused-SEO-AEO-Revamp",
+      "title": "AI-Focused SEO &amp; AEO Revamp",
+      "link": "https://www.freelancer.com/projects/ab-testing/Focused-SEO-AEO-Revamp.html",
+      "budget": "\u20b912500 - \u20b937500 INR, Jobs: A/B Testing, AI Content Creation, Answer Engine Optimization (AEO), Competitor Analysis, Content Strategy, Generative Engine Optimization (GEO), Keyword Research, Link Building, Search Engine Marketing, SEO)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sun, 25 Oct 2026 05:18:32 -0400",
+      "description": "## Project Overview  We are looking for an experienced **SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization) Specialist** to conduct a comprehensive SEO and AI search optimization revamp of our website... (Budget: \u20b912500 - \u20b937500 INR, Jobs: A/B Testing, AI Content Creation, Answer Engine Optimization (AEO), Competitor An"
+    },
+    {
+      "job_id": "Maharashtra-Used-Dealer-Onboarding-Drive",
+      "title": "Maharashtra Used Dealer Onboarding Drive",
+      "link": "https://www.freelancer.com/projects/sales/Maharashtra-Used-Dealer-Onboarding-Drive.html",
+      "budget": "\u20b975000 - \u20b9150000 INR, Jobs: Automotive, CRM, Field Sales, Lead Generation, Market Research, Sales, Sales Management)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sun, 25 Oct 2026 05:15:17 -0400",
+      "description": "I am rolling out a state-wide dealer onboarding campaign and need an energetic field sales force that can personally visit used-vehicle outlets across Maharashtra\u2014starting with Mumbai, Pune, Nashik, Nagpur, Ch... (Budget: \u20b975000 - \u20b9150000 INR, Jobs: Automotive, CRM, Field Sales, Lead Generation, Market Research, Sales, Sales Management)"
+    },
+    {
+      "job_id": "PDF-Menu-Proofreading-Enhancement",
+      "title": "PDF Menu Proofreading &amp; Enhancement",
+      "link": "https://www.freelancer.com/projects/adobe-illustrator/PDF-Menu-Proofreading-Enhancement.html",
+      "budget": "$15 - $25 USD, Jobs: Adobe Illustrator, Adobe InDesign, Editing, Graphic Design, PDF, Proofreading, Typography, Visual Design)",
+      "category": "Video & Multimedia Production",
+      "solver_key": "solve_job_video",
+      "pub_date": "Sun, 25 Oct 2026 05:12:56 -0400",
+      "description": "I have an English-language restaurant menu in PDF format that needs a meticulous once-over. Please correct every spelling and grammar issue, smooth out awkward wording, and double-check that each price matches the right item throughout the document... (Budget: $15 - $25 USD, Jobs: Adobe Illustrator, Adobe InDesign, Editing, Graphic Design, PDF, Pro"
+    },
+    {
+      "job_id": "Second-Kumar-Purnima-Video",
+      "title": "10-Second Kumar Purnima Video",
+      "link": "https://www.freelancer.com/projects/motion-graphics/Second-Kumar-Purnima-Video.html",
+      "budget": "\u20b9600 - \u20b91500 INR, Jobs: After Effects, Animation, Graphic Design, Motion Graphics, Video Editing, Video Post-editing, Video Production, Video Services)",
+      "category": "Video & Multimedia Production",
+      "solver_key": "solve_job_video",
+      "pub_date": "Sun, 25 Oct 2026 05:12:36 -0400",
+      "description": "I need a crisp, 10-second clip that instantly evokes the spirit of Kumar Purnima through a traditional Odia cultural look. Please open with the bright full moon framed by classic festive decorations\u2014think... (Budget: \u20b9600 - \u20b91500 INR, Jobs: After Effects, Animation, Graphic Design, Motion Graphics, Video Editing, Video Post-editing, Video Productio"
+    },
+    {
+      "job_id": "Grow-Manufacturing-Channels-EDT",
+      "title": "Grow My Manufacturing Channels - 25/10/2026 05:05 EDT",
+      "link": "https://www.freelancer.com/projects/article-writing/Grow-Manufacturing-Channels-EDT.html",
+      "budget": "\u20b9600 - \u20b91500 INR, Jobs: Article Writing, Content Creation, Digital Marketing, Internet Marketing, Research, Reviews, Social Media Management, Video Editing)",
+      "category": "Video & Multimedia Production",
+      "solver_key": "solve_job_video",
+      "pub_date": "Sun, 25 Oct 2026 05:06:08 -0400",
+      "description": "I run Manufacturing Mindset by Sarvesh on YouTube and a companion Instagram page, both linked above. They already hold a library of niche-specific videos and posts, but I now want to turn that content into steady audience growth and stronger day-to-day engagement... (Budget: \u20b9600 - \u20b91500 INR, Jobs: Article Writing, Content Creation, Digital Marketi"
+    },
+    {
+      "job_id": "Watch-YouTube-Videos-Identify-Hidden",
+      "title": "Watch 3 YouTube Videos, Identify Hidden Text &amp; Submit Feedback ",
+      "link": "https://www.freelancer.com/projects/youtube/Watch-YouTube-Videos-Identify-Hidden.html",
+      "budget": "\u20b9600 - \u20b9620 INR, Jobs: Content Creation, Content Strategy, Photo Editing, Research, SEO, Social Media Management, User Experience Research, Video Editing, Video Production, YouTube)",
+      "category": "Video & Multimedia Production",
+      "solver_key": "solve_job_video",
+      "pub_date": "Sun, 25 Oct 2026 05:06:00 -0400",
+      "description": "# FREELANCER PROJECT ## Om Brahmdev Channel \u2014 YouTube Video Research &amp; Viewer Feedback  **Total Winners:** 2   **Prize:** \u20b9300 per winner   **Total Prize Pool:** \u20b9600   **Submission:** PDF + Screenshots/Evidence/Video... (Budget: \u20b9600 - \u20b9620 INR, Jobs: Content Creation, Content Strategy, Photo Editing, Research, SEO, Social Media Management, Us"
+    },
+    {
+      "job_id": "Minimalist-Icon-Logo-Design-40785754",
+      "title": "Minimalist Icon Logo Design",
+      "link": "https://www.freelancer.com/projects/vector-design/Minimalist-Icon-Logo-Design-40785754.html",
+      "budget": "$250 - $750 USD, Jobs: Adobe Illustrator, Adobe Photoshop, Branding, Graphic Design, Icon Design, Logo Design, Photoshop, Vector Design)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sun, 25 Oct 2026 05:04:44 -0400",
+      "description": "I\u2019m refreshing my brand and need a clean, modern logo built entirely around a stand-alone symbol\u2014no lettering or wordmark, just a memorable icon that can live comfortably on packaging, social media avatars, and tiny app favicons alike... (Budget: $250 - $750 USD, Jobs: Adobe Illustrator, Adobe Photoshop, Branding, Graphic Design, Icon Design, Logo"
+    },
+    {
+      "job_id": "Polished-Resume-PDF-Design",
+      "title": "Polished Resume PDF Design",
+      "link": "https://www.freelancer.com/projects/resumes/Polished-Resume-PDF-Design.html",
+      "budget": "\u20b91250 - \u20b92500 INR, Jobs: Microsoft Word, PDF, Resumes)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sun, 25 Oct 2026 05:02:20 -0400",
+      "description": "I have a traditional resume section that shows my current layout, and I\u2019d like you to transform that reference into a clean, professional r\u00e9sum\u00e9 ready for immediate use. The finished file must be delivered as a high-quality PDF... (Budget: \u20b91250 - \u20b92500 INR, Jobs: Microsoft Word, PDF, Resumes)"
+    }
+  ],
+  "packaged_solutions": [
+    {
+      "timestamp": "2026-10-25 15:03:12 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Web-Scraping-for-Content-Collection",
+      "title": "Web Scraping for Content Collection",
+      "budget": "$250 - $750 USD, Jobs: Data Entry, Data Mining, Excel, PHP, Web Scraping)",
+      "category": "Web Scraping & Python",
+      "link": "https://www.freelancer.com/projects/web-scraping/Web-Scraping-for-Content-Collection.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "D:\\aria-agent\\data\\jobs_output\\Web-Scraping-for-Content-Collection_solution.py",
+      "proposal_file": "D:\\aria-agent\\data\\jobs_output\\Web-Scraping-for-Content-Collection_proposal.txt",
+      "file_size": 1536
+    },
+    {
+      "timestamp": "2026-10-25 15:03:12 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Faceless-Explainer-Video-Editing",
+      "title": "Faceless Explainer Video Editing",
+      "budget": "\u20b91500 - \u20b912500 INR, Jobs: Content Creation, Creative Design, Explainer Videos, Video Editing, Video Post-editing, Video Production, Video Services)",
+      "category": "Video & Multimedia Production",
+      "link": "https://www.freelancer.com/projects/explainer-videos/Faceless-Explainer-Video-Editing.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "D:\\aria-agent\\data\\jobs_output\\Faceless-Explainer-Video-Editing_solution.ts",
+      "proposal_file": "D:\\aria-agent\\data\\jobs_output\\Faceless-Explainer-Video-Editing_proposal.txt",
+      "file_size": 1002
+    },
+    {
+      "timestamp": "2026-10-25 15:03:12 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Focused-SEO-AEO-Revamp",
+      "title": "AI-Focused SEO &amp; AEO Revamp",
+      "budget": "\u20b912500 - \u20b937500 INR, Jobs: A/B Testing, AI Content Creation, Answer Engine Optimization (AEO), Competitor Analysis, Content Strategy, Generative Engine Optimization (GEO), Keyword Research, Link Building, Search Engine Marketing, SEO)",
+      "category": "Rapid Engineering",
+      "link": "https://www.freelancer.com/projects/ab-testing/Focused-SEO-AEO-Revamp.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "D:\\aria-agent\\data\\jobs_output\\Focused-SEO-AEO-Revamp_solution.ts",
+      "proposal_file": "D:\\aria-agent\\data\\jobs_output\\Focused-SEO-AEO-Revamp_proposal.txt",
+      "file_size": 1002
+    },
+    {
+      "timestamp": "2026-10-25 15:03:12 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Maharashtra-Used-Dealer-Onboarding-Drive",
+      "title": "Maharashtra Used Dealer Onboarding Drive",
+      "budget": "\u20b975000 - \u20b9150000 INR, Jobs: Automotive, CRM, Field Sales, Lead Generation, Market Research, Sales, Sales Management)",
+      "category": "Rapid Engineering",
+      "link": "https://www.freelancer.com/projects/sales/Maharashtra-Used-Dealer-Onboarding-Drive.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "D:\\aria-agent\\data\\jobs_output\\Maharashtra-Used-Dealer-Onboarding-Drive_solution.ts",
+      "proposal_file": "D:\\aria-agent\\data\\jobs_output\\Maharashtra-Used-Dealer-Onboarding-Drive_proposal.txt",
+      "file_size": 1002
+    },
+    {
+      "timestamp": "2026-10-25 15:03:12 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "PDF-Menu-Proofreading-Enhancement",
+      "title": "PDF Menu Proofreading &amp; Enhancement",
+      "budget": "$15 - $25 USD, Jobs: Adobe Illustrator, Adobe InDesign, Editing, Graphic Design, PDF, Proofreading, Typography, Visual Design)",
+      "category": "Video & Multimedia Production",
+      "link": "https://www.freelancer.com/projects/adobe-illustrator/PDF-Menu-Proofreading-Enhancement.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "D:\\aria-agent\\data\\jobs_output\\PDF-Menu-Proofreading-Enhancement_solution.ts",
+      "proposal_file": "D:\\aria-agent\\data\\jobs_output\\PDF-Menu-Proofreading-Enhancement_proposal.txt",
+      "file_size": 1002
+    }
+  ]
+}
