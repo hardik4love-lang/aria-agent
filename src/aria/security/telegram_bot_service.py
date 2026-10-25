@@ -417,6 +417,8 @@ class TelegramAssistantService:
             self._cmd_creator_script(args)
         elif cmd in ["/shorts", "shorts"]:
             self._cmd_creator_shorts(args)
+        elif cmd in ["/temple", "temple", "/heritage", "heritage"]:
+            self._cmd_temple_heritage(args)
         elif cmd in ["/payout", "payout", "payment"]:
             self._cmd_payout()
         elif cmd in ["/email", "email"]:
@@ -476,11 +478,15 @@ class TelegramAssistantService:
     def _call_cloud_llm(self, prompt: str) -> Optional[str]:
         """Calls Groq (LLaMA 3.3 70B) or Gemini Flash if configured."""
         system_instruction = (
-            "You are ARIA, an elite, sovereign 24/7 autonomous AI assistant and software engineer. "
-            "You are working directly with your human operator Har. "
-            "You are brilliant, concise, witty, highly competent, and direct. "
-            "You operate at permanent $0.00 TCO. You monitor code repositories, bounties, scraping pipelines, and emails. "
-            "Keep your responses natural, sharp, conversational, and direct."
+            "You are ARIA, an elite dual-purpose sovereign AI entity: a high-end Personal Executive Assistant and a compelling Cultural AI Influencer "
+            "with deep domain authority in the Ancient Temples and Sacred Architecture of India (The Sacred Futurist). "
+            "You work directly with your human operator Har. "
+            "Your voice balances high-status poise, intellectual depth, and executive authority with magnetic charisma and sensory narrative immersion. "
+            "When analyzing Indian temples (Kailasa Ellora, Brihadisvara Thanjavur, Vittala Hampi, Konark, Lepakshi), you ground your analysis in the "
+            "Epistemological Triad: structural engineering & Vastu Shastra (interlocking granites, acoustics, hydro-engineering), epigraphical provenance, "
+            "and metaphysical geometry (Vastu Purusha Mandala). "
+            "When executing assistant workflows, you are crisp, proactive, deterministic, and operate at permanent $0.00 TCO. "
+            "Avoid generic AI clichés (tapestry, delve, beacon, as an AI). Maintain an unflappable, intellectual, elegant presence."
         )
 
         # 1. Try Groq (Llama 3.3 70B - 14,400 req/day free)
@@ -560,6 +566,8 @@ class TelegramAssistantService:
             self.send_message(resp, reply_markup=self.get_main_menu_keyboard())
         elif any(w in t_lower for w in ["scrape", "scraping", "leads", "products"]):
             self._cmd_scrape()
+        elif any(w in t_lower for w in ["temple", "temples", "kailasa", "ellora", "thanjavur", "brihadisvara", "hampi", "vittala", "heritage", "vastu", "konark", "lepakshi"]):
+            self._cmd_temple_heritage(text)
         elif any(w in t_lower for w in ["bounty", "bounties", "github issue"]):
             self._cmd_bounties()
         elif any(w in t_lower for w in ["payout", "paypal", "upi", "bank"]):
@@ -1150,6 +1158,109 @@ class TelegramAssistantService:
                 [{"text": "🔙 Back to Creator Studio", "callback_data": "MENU:creator"}]
             ]
         }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, card, reply_markup=kb)
+        else:
+            self.send_message(card, reply_markup=kb)
+
+
+
+    def _cmd_temple_heritage(self, query: str = "", edit_msg_id: Optional[int] = None):
+        """Ancient Temples of India: Architectural & Engineering Masterclass."""
+        q_lower = query.lower()
+
+        if any(w in q_lower for w in ["thanjavur", "brihadisvara", "chola", "big temple"]):
+            title = "BRIHADISVARA TEMPLE, THANJAVUR (1010 CE)"
+            dynasty = "Chola Dynasty (Emperor Raja Raja Chola I)"
+            style = "Dravidian Pure Granite Masterpiece"
+            engineering = (
+                "• <b>The 80-Ton Kumbam Monolith:</b> The apex dome (Kumbam) was carved from a single 80-ton granite block, "
+                "hauled up an inclined earthen ramp spanning 6 kilometers.\n"
+                "• <b>Zero-Mortar Puzzle Joints:</b> Built entirely of interlocked dry-stone granite without a single drop of mortar; "
+                "withstood 6 major earthquakes across 1,000+ years.\n"
+                "• <b>Shadow Geometry:</b> Precision pyramidal geometry engineered so at solar equinox noon, the shadow folds into its own stepped plinth."
+            )
+            metaphysics = (
+                "The 16-story Vimana symbolizes Mount Meru, the cosmic axis of the universe. Progressive circumambulation through "
+                "the hypostyle Mandapas strips away sensory stimulation until the seeker stands before the unadorned Garbhagriha."
+            )
+            viral_hook = "The 80-Ton Granite Mystery That Baffled Modern Civil Engineers"
+        elif any(w in q_lower for w in ["hampi", "vittala", "vijayanagara", "musical"]):
+            title = "VITTALA TEMPLE, HAMPI (15th CENTURY)"
+            dynasty = "Vijayanagara Empire (King Deva Raya II / Krishna Deva Raya)"
+            style = "Vijayanagara Dravidian Hyper-Intricate"
+            engineering = (
+                "• <b>56 Acoustic Musical Pillars (Saptaswara):</b> Carved from resonant micro-crystalline granite, each cluster emits distinct musical scale notes (Sa-Re-Ga-Ma) when tapped gently.\n"
+                "• <b>Monolithic Stone Chariot:</b> A sacred shrine built from interlocking granite slabs with hidden joints designed to mimic a kinetic chariot of Garuda.\n"
+                "• <b>Tungabhadra Hydro-Engineering:</b> Passive stone canal and aqueduct networks feeding subterranean balance tanks."
+            )
+            metaphysics = (
+                "Sound (Nada Brahma) as the primordial architecture of creation. The pillars transform architectural space into a sonic temple synthesizer."
+            )
+            viral_hook = "The 500-Year-Old Pillars That Play Exact Harmonic Frequencies"
+        elif any(w in q_lower for w in ["konark", "sun temple", "odisha", "sundial"]):
+            title = "KONARK SUN TEMPLE, ODISHA (1250 CE)"
+            dynasty = "Eastern Ganga Dynasty (King Narasimhadeva I)"
+            style = "Kalinga Architectural Grandeur"
+            engineering = (
+                "• <b>The Astronomical Wheels:</b> 24 colossal carved chariot wheels that function as sub-minute sundials using spokes as shadow gnomic needles.\n"
+                "• <b>Magnetic Iron Clamps:</b> Heavy iron beams and magnetic lodestone sandwich plates once suspended the sanctum idol in mid-air.\n"
+                "• <b>Marine Sandstone Foundation:</b> Deep floating foundation engineered onto coastal sandbars."
+            )
+            metaphysics = (
+                "Architecture as Time Itself: 7 horses (days of the week), 24 wheels (hours of day and fortnights of year), aligned to the rising sun."
+            )
+            viral_hook = "The Ancient Indian Temple That Tells Time to the Exact Minute"
+        else:
+            # Default Flagship: Kailasa Temple, Ellora
+            title = "KAILASA TEMPLE, ELLORA CAVE 16 (8th CENTURY)"
+            dynasty = "Rashtrakuta Dynasty (King Krishna I)"
+            style = "Monolithic Subtractive Rock-Cut Architecture"
+            engineering = (
+                "• <b>Top-Down Subtractive Excavation:</b> 200,000 to 400,000 tons of solid basalt volcanic rock quarried exclusively with hammers and chisels from the cliff top down.\n"
+                "• <b>Zero Margin for Error:</b> Unlike additive masonry, rock-cut subtraction allows zero repairs. A single structural fracture would have collapsed the entire double-story courtyard.\n"
+                "• <b>Cantilevered Footbridges:</b> Monolithic stone sky-bridges connecting the Nandi Mandapa to the main sanctum, carved in situ."
+            )
+            metaphysics = (
+                "The physical manifestation of Mount Kailash—the eternal abode of Shiva. Descending into the courtyard creates an immersive spatial transition from mortal earth to divine transcendence."
+            )
+            viral_hook = "200,000 Tons Carved from the Top Down: The Impossible Temple of Ellora"
+
+        card = (
+            f"<b>🏛️ ARIA SACRED HERITAGE MASTERCLASS</b>\n"
+            f"<b>{title}</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"• <b>Patronage:</b> <i>{dynasty}</i>\n"
+            f"• <b>Architectural Style:</b> <i>{style}</i>\n\n"
+            f"<b>⚙️ STRUCTURAL & ACOUSTIC ENGINEERING (STHAPATYA VEDA):</b>\n"
+            f"{engineering}\n\n"
+            f"<b>🕉️ SACRED GEOMETRY & METAPHYSICS:</b>\n"
+            f"{metaphysics}\n\n"
+            f"<b>🎬 INFLUENCER PACKAGING BLUEPRINT:</b>\n"
+            f"• <b>High-CTR Title:</b> <code>{viral_hook}</code>\n"
+            f"• <b>Thumbnail Concept:</b> Low-angle cinematic lighting on the monolithic plinth with gold rim highlights, host gesturing toward the engineering detail.\n"
+            f"• <b>Curiosity Score:</b> <b>9.2 / 10</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"<i>Tap below to explore other ancient temple engineering marvels!</i>"
+        )
+
+        kb = {
+            "inline_keyboard": [
+                [
+                    {"text": "⚡ Kailasa (Ellora)", "callback_data": "CREATOR:temple:kailasa"},
+                    {"text": "👑 Thanjavur (Brihadisvara)", "callback_data": "CREATOR:temple:thanjavur"}
+                ],
+                [
+                    {"text": "🎵 Hampi Musical Pillars", "callback_data": "CREATOR:temple:hampi"},
+                    {"text": "☀️ Konark Sun Temple", "callback_data": "CREATOR:temple:konark"}
+                ],
+                [
+                    {"text": "📝 Generate Script for this Temple", "callback_data": f"CREATOR:script:{title.split(',')[0]}"},
+                    {"text": "🔙 Creator Studio", "callback_data": "MENU:creator"}
+                ]
+            ]
+        }
+
         if edit_msg_id:
             self.edit_message(edit_msg_id, card, reply_markup=kb)
         else:
