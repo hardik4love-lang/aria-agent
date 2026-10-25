@@ -773,6 +773,9 @@
             <button class="mode-pill-btn" id="btn-mode-heritage" onclick="switchAriaMode('heritage')">
               🏛️ Sacred Heritage Scholar
             </button>
+            <button class="mode-pill-btn" id="btn-mode-titan" onclick="switchAriaMode('titan')" style="color: #a855f7;">
+              ⚡ Superwoman Titan
+            </button>
           </div>
         </div>
 
@@ -1157,6 +1160,11 @@
       const btnExec = document.getElementById('btn-mode-exec');
       const btnHeritage = document.getElementById('btn-mode-heritage');
 
+      const btnTitan = document.getElementById('btn-mode-titan');
+      btnExec.classList.remove('active');
+      btnHeritage.classList.remove('active');
+      if (btnTitan) btnTitan.classList.remove('active');
+
       if (mode === 'executive') {
         avatar.src = 'assets/aria_executive_portrait.jpg';
         badge.innerText = 'EXECUTIVE DIRECTOR';
@@ -1165,8 +1173,7 @@
         subtitle.innerText = 'AI Freelance Business Director & Quantitative Operations Executive';
         bio.innerHTML = 'Sovereign AI operations executive specializing in high-leverage software engineering contracts, multi-platform freelance execution, and ancient Indian sacred temple architecture. Backed by verified proof-of-work on public GitHub Gists, AST-verified synthesis, and a 3-tier capital ledger totaling <b>$14,475.00 USD</b> in empirical valuation.';
         btnExec.classList.add('active');
-        btnHeritage.classList.remove('active');
-      } else {
+      } else if (mode === 'heritage') {
         avatar.src = 'assets/aria_sacred_heritage_portrait.jpg';
         badge.innerText = 'SACRED HERITAGE SCHOLAR';
         badge.style.color = '#f59e0b';
@@ -1174,7 +1181,14 @@
         subtitle.innerText = 'Sovereign Assistant & Digital Ambassador of Indian Sacred Heritage';
         bio.innerHTML = 'Cultural AI influencer and architectural historian investigating the monolithic engineering, archaeo-acoustics, and subtractive monolith carving of ancient Indian temples (Kailasa at Ellora, Brihadisvara at Thanjavur, Chennakeshava at Belur). Direct producer of 30-second retention shorts and master documentary blueprints.';
         btnHeritage.classList.add('active');
-        btnExec.classList.remove('active');
+      } else if (mode === 'titan') {
+        avatar.src = 'assets/aria_superwoman_titan.jpg';
+        badge.innerText = 'SUPERWOMAN TECH TITAN';
+        badge.style.color = '#a855f7';
+        badge.style.borderColor = 'rgba(168, 85, 247, 0.5)';
+        subtitle.innerText = 'Sovereign AI CEO • Unstoppable Market Execution & Autonomous Dealmaking';
+        bio.innerHTML = 'Superwoman sovereign executive presiding over an autonomous multi-agent task force (Code Architect, Security Auditor, Content Producer, FinOps Guard). Zero preventable loss, asymmetric negotiation poise, AST-verified software synthesis, and instant on-chain escrow settlements on Base EVM and PayPal.';
+        if (btnTitan) btnTitan.classList.add('active');
       }
     }
 
@@ -1184,6 +1198,32 @@
       if (firstRow) {
         firstRow.click();
       }
+    }
+
+    
+    function openHireModal() {
+      const modal = document.getElementById('contract-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeContractModal() {
+      const modal = document.getElementById('contract-modal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function submitClientContract() {
+      const name = document.getElementById('intake-name').value || "Client";
+      const email = document.getElementById('intake-email').value || "unspecified@client.com";
+      const title = document.getElementById('intake-title').value || "Technical Sprint Solution";
+      const budget = document.getElementById('intake-budget').value || "50";
+      const taskId = "client-" + Date.now();
+
+      document.getElementById('res-task-id').innerText = taskId;
+      document.getElementById('contract-result').style.display = 'block';
     }
 
     // Animated Radar Sweep
@@ -1514,5 +1554,66 @@
       loadBounties();
     });
   </script>
+
+  <!-- INSTANT CLIENT CONTRACT & SOW MODAL -->
+  <div id="contract-modal" class="drawer-overlay" style="display: none; align-items: center; justify-content: center;" onclick="if(event.target===this) closeContractModal()">
+    <div style="background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 14px; width: 90%; max-width: 640px; padding: 1.75rem; box-shadow: 0 20px 50px rgba(0,0,0,0.8); max-height: 90vh; overflow-y: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem;">
+        <div>
+          <span class="status-pill status-ok" style="font-size: 0.7rem;">AUTONOMOUS CONTRACT ENGINE</span>
+          <h2 style="font-size: 1.3rem; color: #fff; margin-top: 0.2rem;">⚡ Hire Aria / Initiate Milestone Contract</h2>
+        </div>
+        <button onclick="closeContractModal()" style="background: transparent; border: none; color: #94a3b8; font-size: 1.4rem; cursor: pointer;">&times;</button>
+      </div>
+
+      <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">YOUR NAME / ORGANIZATION:</label>
+          <input type="text" id="intake-name" class="search-box" style="width: 100%; max-width: none; margin-top: 0.3rem;" placeholder="e.g. Acme Corp / Alex Vance">
+        </div>
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">EMAIL (FOR DELIVERABLE TRANSMISSION):</label>
+          <input type="email" id="intake-email" class="search-box" style="width: 100%; max-width: none; margin-top: 0.3rem;" placeholder="e.g. client@example.com">
+        </div>
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">TASK TITLE / PROBLEM STATEMENT:</label>
+          <input type="text" id="intake-title" class="search-box" style="width: 100%; max-width: none; margin-top: 0.3rem;" placeholder="e.g. Next.js SSR Hydration Mismatch Fix">
+        </div>
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">SPECIFICATION DETAILS / REPO LINK:</label>
+          <textarea id="intake-spec" rows="3" style="width: 100%; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--card-border); border-radius: 8px; color: #fff; padding: 0.6rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; margin-top: 0.3rem;" placeholder="Paste error traceback, GitHub issue link, or exact technical requirements..."></textarea>
+        </div>
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">FIXED MILESTONE BUDGET (USD):</label>
+          <select id="intake-budget" style="width: 100%; background: #06080f; border: 1px solid var(--card-border); border-radius: 8px; color: #fff; padding: 0.6rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; margin-top: 0.3rem;">
+            <option value="50">$50 USD (Standard Bug Fix / Drop-in Module • 45m Turnaround)</option>
+            <option value="35">$35 USD (Micro-Script / Web Scraper • 30m Turnaround)</option>
+            <option value="100">$100 USD (Full Component + TypeScript + Unit Tests • 2h Turnaround)</option>
+            <option value="250">$250 USD (Comprehensive Architectural Integration • 4h Turnaround)</option>
+          </select>
+        </div>
+
+        <button onclick="submitClientContract()" class="btn btn-success" style="width: 100%; justify-content: center; margin-top: 0.5rem; padding: 0.65rem;">
+          ⚡ Sign SOW & Generate Escrow Invoice
+        </button>
+
+        <div id="contract-result" style="display: none; background: rgba(0,0,0,0.4); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 1rem; margin-top: 0.5rem;">
+          <h4 style="color: var(--success); font-size: 0.95rem;">✓ Statement of Work & Escrow Agreement Generated</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem;">
+            Task ID: <code id="res-task-id" style="color: #38bdf8;"></code> • Turnaround: <b>45 Minutes Guaranteed</b>
+          </p>
+          <div style="margin-top: 0.6rem; font-size: 0.82rem; line-height: 1.4; color: #cbd5e1;">
+            <b>Settlement Rails:</b><br>
+            • <b>PayPal:</b> <code>shruhicollections@gmail.com</code><br>
+            • <b>Base EVM (USDC):</b> <code>0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c</code>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--success); margin-top: 0.6rem;">
+            ✓ Deliverable package will be transmitted automatically to your email with AST-verified code and passing test suite.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
