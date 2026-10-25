@@ -1,0 +1,88 @@
+{
+  "batch_id": "batch-1792904677",
+  "timestamp": "2026-10-25 05:04:45 UTC",
+  "total_targets": 10,
+  "total_items": 100,
+  "results": [
+    {
+      "target_index": 1,
+      "target_name": "D2C Luxury Linen Catalog",
+      "target_url": "https://shruhicollections.in",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_01.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 2,
+      "target_name": "B2B Diamond CVD Price Index",
+      "target_url": "https://algorise-ai.com/industry/diamond",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_02.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 3,
+      "target_name": "Surat Textile Saree Rates",
+      "target_url": "https://algorise-ai.com/industry/textile",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_03.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 4,
+      "target_name": "Reddit Slavelabour Task Feed",
+      "target_url": "https://reddit.com/r/slavelabour",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_04.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 5,
+      "target_name": "Algora Open Bounties Directory",
+      "target_url": "https://algora.io/bounties",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_05.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 6,
+      "target_name": "Cal.com Component Repos",
+      "target_url": "https://github.com/calcom/cal.diy",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_06.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 7,
+      "target_name": "Twenty CRM Issues Tracker",
+      "target_url": "https://github.com/twentyhq/twenty",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_07.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 8,
+      "target_name": "E-Commerce Tech Electronics Feed",
+      "target_url": "https://example.com/electronics",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_08.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 9,
+      "target_name": "Local Business Lead Directory",
+      "target_url": "https://example.com/b2b-leads",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_09.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    },
+    {
+      "target_index": 10,
+      "target_name": "Real Estate Property Listings",
+      "target_url": "https://example.com/properties",
+      "file": "data/hourly_scrapes/batch-1792904677/scrape_target_10.csv",
+      "items": 10,
+      "status": "EXTRACTED"
+    }
+  ]
+}
