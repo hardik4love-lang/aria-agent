@@ -389,6 +389,11 @@ class TelegramAssistantService:
         elif data.startswith("SOLVE:"):
             job_id = data.split(":", 1)[1]
             self._solve_job_by_id(job_id, edit_msg_id=msg_id)
+        elif data.startswith("PROPOSAL:"):
+            parts = data.split(":")
+            j_id = parts[1] if len(parts) > 1 else "job-01"
+            plat = parts[2] if len(parts) > 2 else "upwork"
+            self._cmd_proposal(query=j_id, edit_msg_id=msg_id, platform=plat)
         elif data.startswith("CREATOR:"):
             parts = data.split(":", 2)
             act = parts[1]
@@ -420,6 +425,8 @@ class TelegramAssistantService:
             self._cmd_status()
         elif cmd in ["/earnings", "earnings", "/finance", "finance", "/ledger", "ledger", "/balance", "balance"]:
             self._cmd_earnings()
+        elif cmd in ["/pitch", "pitch", "/proposal", "proposal", "/bid", "bid"]:
+            self._cmd_proposal(args)
         elif cmd in ["/jobs", "jobs"]:
             self._cmd_jobs()
         elif cmd in ["/scrape", "scrape"]:
@@ -672,6 +679,81 @@ class TelegramAssistantService:
         else:
             self.send_message(status_msg, reply_markup=self.get_main_menu_keyboard())
 
+    def _cmd_proposal(self, query: str = "", edit_msg_id: Optional[int] = None, platform: str = "upwork"):
+        """Generates an adult, proof-first freelance proposal using ProposalEngine."""
+        from aria.bounties.rapid_jobs import RapidJobsRegistry
+        from aria.manager.proposal_engine import ProposalEngine
+
+        gists_map = {}
+        try:
+            with open("data/jobs_output/gists_map.json", "r", encoding="utf-8") as f:
+                gists_map = json.load(f)
+        except Exception:
+            pass
+
+        q_clean = query.strip().lower()
+        job_id = None
+        for j_id in RapidJobsRegistry.JOBS.keys():
+            if j_id in q_clean or j_id.replace("-", "") in q_clean or (len(q_clean) <= 2 and q_clean in j_id):
+                job_id = j_id
+                break
+
+        if not job_id and q_clean:
+            for j_id, spec in RapidJobsRegistry.JOBS.items():
+                if any(k in q_clean for k in spec.keywords) or any(w in spec.title.lower() for w in q_clean.split()):
+                    job_id = j_id
+                    break
+
+        if not job_id:
+            job_id = "job-01"
+
+        spec = RapidJobsRegistry.JOBS[job_id]
+        gist_url = gists_map.get(job_id, "https://gist.github.com/hardik4love-lang")
+
+        proposal_res = ProposalEngine.generate_proof_first_proposal(
+            task_title=spec.title,
+            problem_diagnosis=spec.proof_description,
+            solution_mechanism=f"Implemented verified production code in {os.path.basename(spec.solution_file)} with unit test verification.",
+            proof_gist_url=gist_url,
+            quote_usd=spec.typical_payout_numeric,
+            platform=platform
+        )
+
+        card = (
+            f"<b>💼 ARIIA HIGH-STATUS PROPOSAL GENERATOR</b>\n"
+            f"<i>Platform: <b>{platform.upper()}</b> &bull; Job ID: <code>{job_id}</code></i>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"<b>Target:</b> {spec.title}\n"
+            f"<b>Quote:</b> <code>${spec.typical_payout_numeric:,.2f} USD</code> | <b>Proof:</b> <a href='{gist_url}'>GitHub Gist</a>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"<b>📋 COPY-PASTE PROPOSAL:</b>\n\n"
+            f"<code>{proposal_res['proposal_copy']}</code>\n\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"<i>Tap below to re-format for other freelance platforms:</i>"
+        )
+
+        kb = {
+            "inline_keyboard": [
+                [
+                    {"text": "💼 Upwork / Contra", "callback_data": f"PROPOSAL:{job_id}:upwork"},
+                    {"text": "🔴 Reddit r/forhire", "callback_data": f"PROPOSAL:{job_id}:reddit"}
+                ],
+                [
+                    {"text": "💬 Discord / Algora", "callback_data": f"PROPOSAL:{job_id}:discord"},
+                    {"text": f"🚀 Submit Deliverable", "callback_data": f"SUBMIT:{job_id}"}
+                ],
+                [
+                    {"text": "💼 10 Rapid Jobs", "callback_data": "MENU:jobs"},
+                    {"text": "💰 Real-Time Earnings", "callback_data": "MENU:earnings"}
+                ]
+            ]
+        }
+
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, card, reply_markup=kb)
+        else:
+            self.send_message(card, reply_markup=kb)
+
     def _cmd_earnings(self, edit_msg_id: Optional[int] = None):
         """Displays 100% empirical real-time financial ledger & balance sheet."""
         from aria.manager.empirical_ledger import EmpiricalFinancialLedger
@@ -769,6 +851,9 @@ class TelegramAssistantService:
                 [
                     {"text": "⚡ #9: Cal.com ($100)", "callback_data": "SOLVE:job-09"},
                     {"text": "⚡ #10: Twenty ($100)", "callback_data": "SOLVE:job-10"}
+                ],
+                [
+                    {"text": "📋 High-Status Proposal Generator", "callback_data": "PROPOSAL:job-01:upwork"}
                 ],
                 [
                     {"text": "🔙 Back to Main Menu", "callback_data": "MENU:help"}
