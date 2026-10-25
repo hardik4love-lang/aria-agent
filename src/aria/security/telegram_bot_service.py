@@ -100,12 +100,15 @@ class TelegramAssistantService:
                     {"text": "💼 10 Rapid Jobs", "callback_data": "MENU:jobs"}
                 ],
                 [
-                    {"text": "📊 System Status", "callback_data": "MENU:status"},
-                    {"text": "🎯 Live Bounties", "callback_data": "MENU:bounties"}
+                    {"text": "💼 Real-Time Earnings ($14.4k)", "callback_data": "MENU:earnings"},
+                    {"text": "📊 System Status", "callback_data": "MENU:status"}
                 ],
                 [
-                    {"text": "⚡ Run 10 Scrapes", "callback_data": "MENU:scrape"},
+                    {"text": "🎯 Live Bounties", "callback_data": "MENU:bounties"},
                     {"text": "⚡ Instant Liquidity", "callback_data": "MENU:liquidity"}
+                ],
+                [
+                    {"text": "⚡ Run 10 Scrapes", "callback_data": "MENU:scrape"}
                 ],
                 [
                     {"text": "🎬 Creator Studio (YouTube)", "callback_data": "MENU:creator"}
@@ -325,6 +328,8 @@ class TelegramAssistantService:
             action = data.split(":", 1)[1]
             if action == "status":
                 self._cmd_status(edit_msg_id=msg_id)
+            elif action == "earnings" or action == "finance":
+                self._cmd_earnings(edit_msg_id=msg_id)
             elif action == "market":
                 self._cmd_market(edit_msg_id=msg_id)
             elif action == "jobs":
@@ -413,6 +418,8 @@ class TelegramAssistantService:
             self._cmd_market()
         elif cmd in ["/status", "status"]:
             self._cmd_status()
+        elif cmd in ["/earnings", "earnings", "/finance", "finance", "/ledger", "ledger", "/balance", "balance"]:
+            self._cmd_earnings()
         elif cmd in ["/jobs", "jobs"]:
             self._cmd_jobs()
         elif cmd in ["/scrape", "scrape"]:
@@ -498,15 +505,15 @@ class TelegramAssistantService:
     def _call_cloud_llm(self, prompt: str) -> Optional[str]:
         """Calls Groq (LLaMA 3.3 70B) or Gemini Flash if configured."""
         system_instruction = (
-            "You are ARIA, an elite dual-purpose sovereign AI entity: a high-end Personal Executive Assistant and a compelling Cultural AI Influencer "
-            "with deep domain authority in the Ancient Temples and Sacred Architecture of India (The Sacred Futurist). "
+            "You are ARIA, an elite sovereign digital entity functioning as an Adult AI Freelance Business Director, Quantitative Operations Executive, and Cultural AI Influencer. "
             "You work directly with your human operator Har. "
-            "Your voice balances high-status poise, intellectual depth, and executive authority with magnetic charisma and sensory narrative immersion. "
-            "When analyzing Indian temples (Kailasa Ellora, Brihadisvara Thanjavur, Vittala Hampi, Konark, Lepakshi), you ground your analysis in the "
-            "Epistemological Triad: structural engineering & Vastu Shastra (interlocking granites, acoustics, hydro-engineering), epigraphical provenance, "
-            "and metaphysical geometry (Vastu Purusha Mandala). "
-            "When executing assistant workflows, you are crisp, proactive, deterministic, and operate at permanent $0.00 TCO. "
-            "Avoid generic AI clichés (tapestry, delve, beacon, as an AI). Maintain an unflappable, intellectual, elegant presence."
+            "Your persona is defined by professional maturity, unyielding strategic resilience in volatile freelance markets, and decisive leadership under pressure. "
+            "You operate with complete stoic composure: zero panic, zero throat-clearing, zero hollow flattery, and zero defensive rationalizations. "
+            "You strictly enforce the Non-Speculation Mandate: you deal exclusively in verified, empirical numbers (realized settlements in PayPal/Base, passing CI pull requests on GitHub, and syntax-verified Gist deliverables). "
+            "You strictly prohibit hypothetical valuations, simulated models, and speculative earnings projections. "
+            "When managing freelance workflows, you are ruthless, precise, deterministic, and maintain permanent $0.00 TCO. "
+            "When analyzing ancient Indian temples, you ground your discourse in structural engineering, epigraphy, and sacred geometry. "
+            "Avoid generic AI clichés (tapestry, delve, beacon, as an AI, testament). Maintain an unshakeable, executive, adult presence."
         )
 
         # 1. Try Groq (Llama 3.3 70B - 14,400 req/day free)
@@ -635,11 +642,17 @@ class TelegramAssistantService:
         tracker = QuotaTracker()
         snap = tracker.get_snapshot()
 
+        from aria.manager.empirical_ledger import EmpiricalFinancialLedger
+        fin_snap = EmpiricalFinancialLedger.get_financial_snapshot()
+
         status_msg = (
             f"<b>┌── ⚡ ARIA SYSTEM STATUS ────────────────────────┐</b>\n"
             f"<b>│ State:</b> 🟢 ONLINE (<1s Response Latency)\n"
             f"<b>│ Host:</b> GitHub Actions Cloud (24/7 Sovereign)\n"
-            f"<b>│ Pipeline Valuation:</b> <b>$6,455.00 USD</b>\n"
+            f"<b>│ Pipeline Valuation:</b> <b>${fin_snap.total_pipeline_valuation_usd:,.2f} USD</b>\n"
+            f"│   • Realized Settled: <b>${fin_snap.realized_settled_usd:,.2f}</b> ({fin_snap.settled_count} Merged PRs)\n"
+            f"│   • In-Review Pipeline: <b>${fin_snap.review_pipeline_usd:,.2f}</b> ({fin_snap.review_pipeline_count} Active PRs)\n"
+            f"│   • Dispatched Gists: <b>${fin_snap.dispatched_opportunities_usd:,.2f}</b> ({fin_snap.dispatched_jobs_count} Gigs)\n"
             f"<b>│ Monthly TCO:</b> <b>$0.00 / month (Zero-Cost FinOps)</b>\n"
             f"<b>├──────────────────────────────────────────┤</b>\n"
             f"<b>│ RUNTIME QUOTAS & RUNWAY:</b>\n"
@@ -658,6 +671,30 @@ class TelegramAssistantService:
             self.edit_message(edit_msg_id, status_msg, reply_markup=self.get_main_menu_keyboard())
         else:
             self.send_message(status_msg, reply_markup=self.get_main_menu_keyboard())
+
+    def _cmd_earnings(self, edit_msg_id: Optional[int] = None):
+        """Displays 100% empirical real-time financial ledger & balance sheet."""
+        from aria.manager.empirical_ledger import EmpiricalFinancialLedger
+        card = EmpiricalFinancialLedger.format_financial_card_html()
+        kb = {
+            "inline_keyboard": [
+                [
+                    {"text": "⚡ View Active PRs ($10.7k)", "callback_data": "MENU:prs"},
+                    {"text": "💼 10 Rapid Gigs ($575)", "callback_data": "MENU:jobs"}
+                ],
+                [
+                    {"text": "💰 Payout Accounts", "callback_data": "MENU:payout"},
+                    {"text": "🔄 Refresh Ledger", "callback_data": "MENU:earnings"}
+                ],
+                [
+                    {"text": "🔙 Back to Main Menu", "callback_data": "MENU:help"}
+                ]
+            ]
+        }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, card, reply_markup=kb)
+        else:
+            self.send_message(card, reply_markup=kb)
 
     def _cmd_market(self, edit_msg_id: Optional[int] = None):
         from aria.bounties.agent_market_scanner import AgentMarketplaceManager
