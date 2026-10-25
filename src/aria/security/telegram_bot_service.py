@@ -108,6 +108,9 @@ class TelegramAssistantService:
                     {"text": "⚡ Instant Liquidity", "callback_data": "MENU:liquidity"}
                 ],
                 [
+                    {"text": "🎬 Creator Studio (YouTube)", "callback_data": "MENU:creator"}
+                ],
+                [
                     {"text": "💰 Payout Accounts", "callback_data": "MENU:payout"},
                     {"text": "❓ Help & Commands", "callback_data": "MENU:help"}
                 ]
@@ -330,6 +333,14 @@ class TelegramAssistantService:
                 self._cmd_scrape()
             elif action == "bounties":
                 self._cmd_bounties(edit_msg_id=msg_id)
+            elif action == "creator":
+                self._cmd_creator(edit_msg_id=msg_id)
+            elif action == "packaging":
+                self._cmd_creator_packaging(edit_msg_id=msg_id)
+            elif action == "script":
+                self._cmd_creator_script(edit_msg_id=msg_id)
+            elif action == "shorts":
+                self._cmd_creator_shorts(edit_msg_id=msg_id)
             elif action == "payout":
                 self._cmd_payout(edit_msg_id=msg_id)
             elif action == "help":
@@ -398,6 +409,14 @@ class TelegramAssistantService:
             self._cmd_briefing()
         elif cmd in ["/prs", "prs", "/rebase", "rebase"]:
             self._cmd_prs()
+        elif cmd in ["/creator", "creator", "/youtube"]:
+            self._cmd_creator()
+        elif cmd in ["/packaging", "packaging", "/titles"]:
+            self._cmd_creator_packaging(args)
+        elif cmd in ["/script", "script"]:
+            self._cmd_creator_script(args)
+        elif cmd in ["/shorts", "shorts"]:
+            self._cmd_creator_shorts(args)
         elif cmd in ["/payout", "payout", "payment"]:
             self._cmd_payout()
         elif cmd in ["/email", "email"]:
@@ -961,6 +980,180 @@ class TelegramAssistantService:
                 f"<blockquote>Hey! I saw your post regarding: '{query}'. I have a clean production solution ready to deliver right away. Payout to PayPal ({PAYPAL_PAYOUT}). Let me know if you'd like me to send the code and proof!</blockquote>"
             )
             self.send_message(msg, reply_markup=self.get_main_menu_keyboard())
+
+
+
+    def _cmd_creator(self, edit_msg_id: Optional[int] = None):
+        """YouTube Influencer Production Engine Command Center."""
+        msg = (
+            "<b>🎬 ARIA CREATOR STUDIO (YOUTUBE INFLUENCER ENGINE)</b>\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            "Autonomous production engine for viral retention, high-CTR packaging, and content repurposing.\n\n"
+            "<b>Available Tools:</b>\n"
+            "• <b>/packaging &lt;topic&gt;</b> — 4-Lever Title & Thumbnail Matrix with image prompts\n"
+            "• <b>/script &lt;topic&gt;</b> — Dual-Column AV Script with 3-Beat Hook & Pacing Telemetry\n"
+            "• <b>/shorts &lt;topic&gt;</b> — 9:16 Vertical Micro-Narratives with Circular Audio Loops\n\n"
+            "<i>Tap a quick-action button below to run a live demonstration!</i>"
+        )
+        kb = {
+            "inline_keyboard": [
+                [
+                    {"text": "🎨 Packaging Matrix Demo", "callback_data": "CREATOR:packaging"},
+                    {"text": "📝 Retention Script Demo", "callback_data": "CREATOR:script"}
+                ],
+                [
+                    {"text": "📱 9:16 Shorts Extraction", "callback_data": "CREATOR:shorts"},
+                    {"text": "🔙 Back to Main Menu", "callback_data": "MENU:help"}
+                ]
+            ]
+        }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, msg, reply_markup=kb)
+        else:
+            self.send_message(msg, reply_markup=kb)
+
+    def _cmd_creator_packaging(self, topic: str = "", edit_msg_id: Optional[int] = None):
+        """Generates 4-lever packaging matrix for a topic."""
+        from aria.creator import PackagingEngine
+        t = topic.strip() if topic.strip() else "Autonomous AI Agents"
+        packager = PackagingEngine()
+        concepts = packager.generate_packaging_matrix(t, "core viral breakdown")
+
+        card = (
+            f"<b>🎨 PACKAGING MATRIX: {t.upper()}</b>\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"1. <b>High Stakes / FOMO (Score: {concepts[0].curiosity_gap_score}/10):</b>\n"
+            f"• <b>Title:</b> <code>{concepts[0].title}</code>\n"
+            f"• <b>Thumbnail:</b> {concepts[0].thumbnail_concept}\n"
+            f"• <b>Overlay Text:</b> <i>{concepts[0].on_screen_text}</i>\n\n"
+            f"2. <b>Extreme Novelty (Score: {concepts[1].curiosity_gap_score}/10):</b>\n"
+            f"• <b>Title:</b> <code>{concepts[1].title}</code>\n"
+            f"• <b>Thumbnail:</b> {concepts[1].thumbnail_concept}\n"
+            f"• <b>Overlay Text:</b> <i>{concepts[1].on_screen_text}</i>\n\n"
+            f"3. <b>Counter-Intuitive Truth (Score: {concepts[2].curiosity_gap_score}/10):</b>\n"
+            f"• <b>Title:</b> <code>{concepts[2].title}</code>\n"
+            f"• <b>Thumbnail:</b> {concepts[2].thumbnail_concept}\n"
+            f"• <b>Overlay Text:</b> <i>{concepts[2].on_screen_text}</i>\n\n"
+            f"4. <b>Curiosity Loop (Score: {concepts[3].curiosity_gap_score}/10):</b>\n"
+            f"• <b>Title:</b> <code>{concepts[3].title}</code>\n"
+            f"• <b>Thumbnail:</b> {concepts[3].thumbnail_concept}\n"
+            f"• <b>Overlay Text:</b> <i>{concepts[3].on_screen_text}</i>\n\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"<b>🖼️ Recommended Midjourney Prompt:</b>\n"
+            f"<code>{concepts[0].image_generation_prompt}</code>"
+        )
+        kb = {
+            "inline_keyboard": [
+                [{"text": "📝 Draft Script for Concept #1", "callback_data": f"CREATOR:script:{t}"}],
+                [{"text": "🔙 Back to Creator Studio", "callback_data": "MENU:creator"}]
+            ]
+        }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, card, reply_markup=kb)
+        else:
+            self.send_message(card, reply_markup=kb)
+
+    def _cmd_creator_script(self, topic: str = "", edit_msg_id: Optional[int] = None):
+        """Generates dual-column retention script for a topic."""
+        from aria.creator import RetentionScriptwriter, PackagingEngine
+        t = topic.strip() if topic.strip() else "Sovereign AI Infrastructure"
+        packager = PackagingEngine()
+        concepts = packager.generate_packaging_matrix(t, "breakthrough mechanism")
+        chosen = concepts[0]
+
+        writer = RetentionScriptwriter(creator_wpm=150)
+        script = writer.generate_dual_column_script(
+            working_title=chosen.title,
+            topic=t,
+            premise="single sovereign agent operates 24/7 without cloud bills",
+            stakes="you burn all your cash runway on monthly enterprise subscriptions",
+            core_steps=[
+                {"audio": "First, we replace paid proprietary APIs with optimized local reasoning models.", "visual": "Terminal benchmark showing sub-20ms inference latency.", "tactic": "pattern_interrupt"},
+                {"audio": "Next, we set up continuous GitHub Actions runner handoffs for true $0/month persistence.", "visual": "Continuous workflow logs running 24/7.", "tactic": "curiosity_gap"}
+            ],
+            call_to_action_text="If you want the production template, the GitHub repository link is right below.",
+            packaging=chosen
+        )
+
+        hook_md = ""
+        for b in script.hook_3_beat:
+            hook_md += f"• <b>[{b.timecode_range}] ({b.retention_tactic.upper()}):</b>\n  <i>\"{b.audio_narration}\"</i>\n  Visual: {b.visual_cue}\n\n"
+
+        card = (
+            f"<b>📝 DUAL-COLUMN SCRIPT: {t.upper()}</b>\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"<b>Title:</b> <code>{script.working_title}</code>\n"
+            f"• <b>Target Duration:</b> {script.target_duration_minutes} min\n"
+            f"• <b>Word Count:</b> {script.total_words} words\n"
+            f"• <b>Pacing:</b> {script.avg_pacing_wpm} WPM (Target: 140–160)\n"
+            f"• <b>Visual State Change:</b> Every {script.visual_cut_frequency_sec}s\n"
+            f"• <b>Retention Health Score:</b> <b>{script.retention_health_score}/100</b>\n\n"
+            f"<b>🔥 THE 3-BEAT HOOK (FIRST 30 SECONDS):</b>\n"
+            f"{hook_md}"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            "<i>Full 2-column AV production table compiled in ARIA memory.</i>"
+        )
+        kb = {
+            "inline_keyboard": [
+                [{"text": "📱 Extract 9:16 Shorts", "callback_data": f"CREATOR:shorts:{t}"}],
+                [{"text": "🔙 Back to Creator Studio", "callback_data": "MENU:creator"}]
+            ]
+        }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, card, reply_markup=kb)
+        else:
+            self.send_message(card, reply_markup=kb)
+
+    def _cmd_creator_shorts(self, topic: str = "", edit_msg_id: Optional[int] = None):
+        """Extracts vertical 9:16 Shorts with audio loop."""
+        from aria.creator import RetentionScriptwriter, ShortsRepurposer, PackagingEngine
+        t = topic.strip() if topic.strip() else "Autonomous AI Systems"
+        packager = PackagingEngine()
+        concepts = packager.generate_packaging_matrix(t, "breakthrough mechanism")
+        chosen = concepts[0]
+
+        writer = RetentionScriptwriter(creator_wpm=150)
+        script = writer.generate_dual_column_script(
+            working_title=chosen.title,
+            topic=t,
+            premise="single sovereign agent operates 24/7 without cloud bills",
+            stakes="you burn all your cash runway on monthly enterprise subscriptions",
+            core_steps=[
+                {"audio": "First, we replace paid proprietary APIs with optimized local reasoning models.", "visual": "Terminal benchmark showing sub-20ms inference latency.", "tactic": "pattern_interrupt"},
+                {"audio": "Next, we set up continuous GitHub Actions runner handoffs for true $0/month persistence.", "visual": "Continuous workflow logs running 24/7.", "tactic": "curiosity_gap"}
+            ],
+            call_to_action_text="Check the channel description for the free open-source setup.",
+            packaging=chosen
+        )
+
+        repurposer = ShortsRepurposer()
+        shorts = repurposer.extract_shorts_from_script(script)
+        s1 = shorts[0]
+
+        card = (
+            f"<b>📱 VERTICAL 9:16 SHORT: {t.upper()}</b>\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"<b>Title:</b> <code>{s1.title}</code>\n"
+            f"• <b>Target Duration:</b> {s1.target_duration_sec}s\n"
+            f"• <b>Visual Framing:</b> {s1.visual_framing_9x16}\n\n"
+            f"<b>🔥 Opening Hook (0–10s):</b>\n"
+            f"<i>\"{s1.vertical_hook_10s}\"</i>\n\n"
+            f"<b>⚡ Body Core:</b>\n"
+            f"<i>\"{s1.body_core}\"</i>\n\n"
+            f"<b>🔄 Circular Audio Loop Outro:</b>\n"
+            f"<code>{s1.audio_loop_outro}</code>\n"
+            f"<i>(Seamlessly connects back into the opening hook for infinite replay retention)</i>\n\n"
+            f"• <b>Hashtags:</b> {' '.join(s1.hashtags)}"
+        )
+        kb = {
+            "inline_keyboard": [
+                [{"text": "🔙 Back to Creator Studio", "callback_data": "MENU:creator"}]
+            ]
+        }
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, card, reply_markup=kb)
+        else:
+            self.send_message(card, reply_markup=kb)
 
 
 if __name__ == "__main__":

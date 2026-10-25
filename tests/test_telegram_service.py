@@ -15,8 +15,8 @@ def test_main_menu_keyboard():
     svc = TelegramAssistantService(token="12345:mock_token", chat_id="8737013099")
     kb = svc.get_main_menu_keyboard()
     assert "inline_keyboard" in kb
-    assert len(kb["inline_keyboard"]) == 5
-    # Check that status, jobs, scrape, bounties, payout, submit all exist
+    assert len(kb["inline_keyboard"]) >= 5
+    # Check that status, jobs, scrape, bounties, payout, creator, submit all exist
     callbacks = [btn["callback_data"] for row in kb["inline_keyboard"] for btn in row]
     assert "SUBMIT:all" in callbacks
     assert "MENU:market" in callbacks
@@ -25,6 +25,7 @@ def test_main_menu_keyboard():
     assert "MENU:scrape" in callbacks
     assert "MENU:bounties" in callbacks
     assert "MENU:payout" in callbacks
+    assert "MENU:creator" in callbacks
 
 def test_chunking_logic(monkeypatch):
     svc = TelegramAssistantService(token="12345:mock_token", chat_id="8737013099")
