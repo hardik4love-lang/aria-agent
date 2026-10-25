@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "generator": "ARIA Autonomous Temple Scholar Daemon",
+  "timestamp": "2026-10-25T05:56:48.174199+00:00",
+  "temple_metadata": {
+    "name": "Brihadisvara Temple (Thanjavur, Tamil Nadu)",
+    "dynasty": "Chola Dynasty (Emperor Raja Raja Chola I, 1010 CE)",
+    "style": "Dravidian Pure Granite Masterpiece",
+    "dimensions": "16-story Vimana rising 66 meters (216 ft)",
+    "mass": "130,000 tons of granite"
+  },
+  "video_format": {
+    "aspect_ratio": "9:16",
+    "resolution": "1080x1920",
+    "target_duration_seconds": 30,
+    "framerate": 60
+  },
+  "short_script": {
+    "title": "The Truth About Stop Using Brihadisvara Temple (Thanjavur, Tamil Nadu) Until You Watch This (Part 1)",
+    "hook_10s": "Before you do anything else, watch this: This 80-ton single-block granite Kumbam capstone rests 66 meters high without any mortar. And right now, almost everyone is doing it completely backwards.",
+    "body_core": "Here is what happened when we actually tested it: Step one: Built entirely of interlocking dry-stone puzzle joints that survived 6 major earthquakes.",
+    "loop_outro": "And that is why you should always know that...",
+    "hashtags": [
+      "#Shorts",
+      "#CreatorEconomy",
+      "#TechTips",
+      "#Viral"
+    ]
+  },
+  "packaging_winner": {
+    "title": "Stop Using Brihadisvara Temple (Thanjavur, Tamil Nadu) Until You Watch This",
+    "thumbnail_concept": "Host staring at camera with serious warning expression, holding up a red warning indicator next to the subject.",
+    "on_screen_text": "STOP NOW",
+    "curiosity_gap_score": 3.5,
+    "image_prompt": "Cinematic YouTube thumbnail, hyper-detailed photography, split lighting with red and deep blue rim light, charismatic tech creator with an urgent serious expression holding up an item representing Brihadisvara Temple (Thanjavur, Tamil Nadu), shallow depth of field, high contrast, clean minimalist background, 8k resolution, rule of thirds."
+  },
+  "telemetry": {
+    "retention_health_score": 86.5,
+    "total_words": 177,
+    "avg_wpm": 147.5,
+    "cut_frequency_sec": 7.2
+  }
+}
