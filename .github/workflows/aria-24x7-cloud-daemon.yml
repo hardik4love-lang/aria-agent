@@ -60,6 +60,7 @@ jobs:
           PAYPAL_EMAIL: ${{ secrets.PAYPAL_EMAIL }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           BASE_WALLET_ADDRESS: ${{ secrets.BASE_WALLET_ADDRESS }}
+          FREELANCER_OAUTH_TOKEN: ${{ secrets.FREELANCER_OAUTH_TOKEN }}
           DAEMON_MAX_SECONDS: "20400"
           STANDBY_SPAWN_SECONDS: "19200"
           GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}

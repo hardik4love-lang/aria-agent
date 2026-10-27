@@ -162,22 +162,31 @@ class FreelancerBidderEngine:
         seo_url = project.get("seo_url", f"project-{p_id}")
         
         # Determine best solver
-        t_lower = title.lower()
+        t_lower = (title + " " + project.get("description", "")).lower()
         if any(k in t_lower for k in ["scrape", "scraping", "crawler", "extract", "csv"]):
             res = AutonomousJobSolvers.solve_job_02()
             cat = "Python Web Scraping & Data Extraction"
         elif any(k in t_lower for k in ["stripe", "payment", "webhook", "checkout"]):
             res = AutonomousJobSolvers.solve_job_06()
             cat = "Stripe Webhook & Payment Engine"
-        elif any(k in t_lower for k in ["cors", "proxy", "backend", "express"]):
+        elif any(k in t_lower for k in ["cors", "proxy"]):
             res = AutonomousJobSolvers.solve_job_03()
             cat = "Node.js / Express Reverse Proxy"
-        elif any(k in t_lower for k in ["lead", "email", "b2b", "directory"]):
-            res = AutonomousJobSolvers.solve_job_05()
-            cat = "Verified Lead Generation"
         elif any(k in t_lower for k in ["calendar", "schedule", "booking"]):
             res = AutonomousJobSolvers.solve_job_09()
             cat = "Cal.com Integration"
+        elif any(k in t_lower for k in ["lead", "email list", "b2b", "directory"]):
+            res = AutonomousJobSolvers.solve_job_05()
+            cat = "Verified Lead Generation"
+        elif any(k in t_lower for k in ["ai", "agent", "llm", "gpt", "bot", "automate", "automation"]):
+            res = AutonomousJobSolvers.solve_job_08()
+            cat = "Python AI & Workflow Automation Architecture"
+        elif any(k in t_lower for k in ["python", "script", "django", "flask", "fastapi", "bug", "fix", "error"]):
+            res = AutonomousJobSolvers.solve_job_08()
+            cat = "Python Production Architecture & Defect Resolution"
+        elif any(k in t_lower for k in ["backend", "express", "node"]):
+            res = AutonomousJobSolvers.solve_job_03()
+            cat = "Node.js / Express Reverse Proxy"
         else:
             res = AutonomousJobSolvers.solve_job_01()
             cat = "Next.js / TypeScript Web Application"
