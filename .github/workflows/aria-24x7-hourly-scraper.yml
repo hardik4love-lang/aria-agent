@@ -1,4 +1,4 @@
-name: ARIA 24/7 Hourly Scraper & Telegram Approval Daemon
+name: ARIA 24/7 Hourly Autonomous Job Execution & Revenue Daemon
 
 on:
   schedule:
@@ -19,7 +19,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  hourly-scrape-and-gate:
+  hourly-job-execution:
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -42,7 +42,7 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
 
-      - name: Execute 10-Target Hourly Scraping Pipeline
+      - name: Execute Hourly Live Job Intake & Solution Packaging
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}

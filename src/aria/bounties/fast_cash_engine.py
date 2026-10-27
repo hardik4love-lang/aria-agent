@@ -33,6 +33,7 @@ class FastCashEngine:
     OUTPUT_DIR = os.path.join(BASE_DIR, "data", "jobs_output")
     SUBMISSIONS_LOG = os.path.join(BASE_DIR, "data", "submissions_log.jsonl")
     FEED_FILE = os.path.join(BASE_DIR, "data", "live_fast_cash_feed.json")
+    DISPATCHED_JOBS_FILE = os.path.join(BASE_DIR, "data", "dispatched_urgent_jobs.json")
 
     # The Top 5 Fastest-Paying Platforms (Gemini Specification)
     FASTEST_PLATFORMS = [
@@ -270,7 +271,7 @@ class FastCashEngine:
             f"• Deliverable: Cleanroom, production-tested {category} module.\n"
             f"• Verification: 100% passing automated unit tests with zero dependency bloat.\n"
             f"• SLA Turnaround: Ready for immediate drop-in transfer (< 30 minutes).\n"
-            f"• Milestone Settlement: PayPal (shruhicollections@gmail.com) or Base Mainnet (USDC).\n\n"
+            f"• Milestone Settlement: Strictly PayPal (shruhicollections@gmail.com).\n\n"
             f"Solution Package File: {os.path.basename(sol_file)}\n"
             f"Project Target: {link}\n"
             f"Aria Sovereign AI Engineering • Zero Preventable Loss"
@@ -298,16 +299,105 @@ class FastCashEngine:
         return record
 
     @classmethod
-    def execute_master_fast_cash_cycle(cls) -> Dict[str, Any]:
+    def get_dispatched_job_ids(cls) -> set:
+        """Returns set of job_ids already dispatched to Telegram to avoid duplicate noise."""
+        if os.path.exists(cls.DISPATCHED_JOBS_FILE):
+            try:
+                with open(cls.DISPATCHED_JOBS_FILE, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    return set(data.get("dispatched_ids", []))
+            except Exception:
+                return set()
+        return set()
+
+    @classmethod
+    def record_dispatched_job_id(cls, job_id: str):
+        """Persists job_id as dispatched."""
+        ids = cls.get_dispatched_job_ids()
+        ids.add(job_id)
+        os.makedirs(os.path.dirname(cls.DISPATCHED_JOBS_FILE) or ".", exist_ok=True)
+        with open(cls.DISPATCHED_JOBS_FILE, "w", encoding="utf-8") as f:
+            json.dump({"dispatched_ids": list(ids), "updated_at": time.strftime("%Y-%m-%d %H:%M:%S UTC")}, f, indent=2)
+
+    @classmethod
+    def dispatch_urgent_job_to_telegram(cls, job_record: Dict[str, Any], svc=None) -> bool:
+        """
+        Dispatches an actionable job execution card to Telegram with copy-paste proposal and one-click dispatch.
+        """
+        job_id = job_record.get("job_id", "")
+        if not job_id:
+            return False
+
+        dispatched_ids = cls.get_dispatched_job_ids()
+        if job_id in dispatched_ids:
+            return False
+
+        title = job_record.get("title", "Urgent Client Task")
+        budget = job_record.get("budget", "$50-$100")
+        category = job_record.get("category", "Software Development")
+        link = job_record.get("link", "")
+        prop_file = job_record.get("proposal_file", "")
+        deliv_file = job_record.get("deliverable_file", "")
+
+        proposal_preview = ""
+        if prop_file and os.path.exists(prop_file):
+            try:
+                with open(prop_file, "r", encoding="utf-8") as f:
+                    proposal_preview = f.read()
+            except Exception:
+                pass
+
+        msg = (
+            f"💼 <b>[LIVE URGENT JOB SOLVED & READY]</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"• <b>Title:</b> {title}\n"
+            f"• <b>Payout/Budget:</b> <b>{budget}</b>\n"
+            f"• <b>Category:</b> {category}\n"
+            f"• <b>Settlement Rail:</b> Strictly PayPal (<code>shruhicollections@gmail.com</code>)\n"
+            f"• <b>Deliverable:</b> <code>{os.path.basename(deliv_file)}</code>\n"
+            f"• <b>Target Post:</b> {link}\n\n"
+            f"📝 <b>High-Status Proposal Ready to Submit:</b>\n"
+            f"<code>{proposal_preview[:650]}</code>\n\n"
+            f"<i>Tap below to approve instant delivery, view code, or copy proposal:</i>"
+        )
+
+        keyboard = {
+            "inline_keyboard": [
+                [
+                    {"text": f"🚀 Deliver Solution ({budget})", "callback_data": f"APPROVE_JOB:{job_id}"},
+                    {"text": "📂 View Code", "callback_data": f"VIEW_CODE:{job_id}"}
+                ],
+                [
+                    {"text": "📋 Copy Proposal", "callback_data": f"COPY_PROP:{job_id}"},
+                    {"text": "🔗 Open Client Post", "url": link if link.startswith("http") else "https://www.freelancer.com"}
+                ]
+            ]
+        }
+
+        try:
+            if not svc:
+                from aria.security.telegram_bot_service import TelegramAssistantService
+                svc = TelegramAssistantService()
+            svc.send_message(msg, reply_markup=keyboard)
+            cls.record_dispatched_job_id(job_id)
+            logger.info(f"[+] Successfully dispatched job {job_id} to Telegram.")
+            return True
+        except Exception as e:
+            logger.warning(f"[!] Failed to dispatch job {job_id} to Telegram: {e}")
+            return False
+
+    @classmethod
+    def execute_master_fast_cash_cycle(cls, svc=None) -> Dict[str, Any]:
         """
         Master automated cycle:
-        1. Queries Top 5 fastest on-chain platforms from Gemini specification.
+        1. Queries Top 5 fastest platforms.
         2. Ingests live Freelancer.com urgent projects.
         3. Generates AST-verified deliverables and client proposals for top matches.
-        4. Compiles combined live feed for dashboard synchronization.
+        4. Dispatches actionable execution cards to Telegram with one-click delivery.
+        5. Compiles combined live feed for dashboard synchronization.
         """
         cls._ensure_dirs()
-        logger.info("[*] Executing Master Fast-Cash Ingestion Cycle...")
+        logger.info("[*] Executing Master Fast-Cash Ingestion & Execution Cycle...")
 
         # Step 1: Scan Top 5 Fastest On-Chain Platforms
         top5_scan = cls.scan_top5_platforms()
@@ -315,15 +405,20 @@ class FastCashEngine:
         # Step 2: Ingest Live Urgent Freelancer.com Feed
         live_urgent_jobs = cls.fetch_live_freelancer_urgent_jobs(limit=10)
         packaged_jobs = []
+        newly_dispatched = 0
 
         for job in live_urgent_jobs[:5]:  # Package solutions for top 5 live urgent jobs
             try:
                 rec = cls.auto_solve_and_package_urgent_job(job)
                 packaged_jobs.append(rec)
+                
+                # Step 3: Dispatch to Telegram if newly solved
+                if cls.dispatch_urgent_job_to_telegram(rec, svc=svc):
+                    newly_dispatched += 1
             except Exception as e:
-                logger.warning(f"[!] Error packaging job {job.get('job_id')}: {e}")
+                logger.warning(f"[!] Error packaging/dispatching job {job.get('job_id')}: {e}")
 
-        # Step 3: Write Master Feed for Dashboard
+        # Step 4: Write Master Feed for Dashboard
         feed_data = {
             "last_updated": time.strftime("%Y-%m-%d %H:%M:%S UTC"),
             "wallet": top5_scan["wallet"],
@@ -339,5 +434,6 @@ class FastCashEngine:
             "top5_onchain_platforms": len(top5_scan["platforms"]),
             "live_freelancer_jobs_ingested": len(live_urgent_jobs),
             "solutions_packaged": len(packaged_jobs),
+            "newly_dispatched_to_telegram": newly_dispatched,
             "feed_file": cls.FEED_FILE
         }

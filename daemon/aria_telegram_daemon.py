@@ -102,47 +102,19 @@ def run_email_watcher_thread():
 
 
 
-def run_instant_liquidity_thread(svc: TelegramAssistantService):
-
-    """Background worker that executes instant liquidity cycles every 10 minutes."""
-
-    from aria.bounties.instant_liquidity import InstantLiquidityEngine
-
-    logger.info("10-Minute Instant Liquidity & Base EVM Solver thread active.")
-
+def run_autonomous_job_execution_thread(svc: TelegramAssistantService):
+    """Background worker that continuously ingests, solves, and dispatches live urgent freelance jobs."""
+    from aria.bounties.fast_cash_engine import FastCashEngine
+    logger.info("20-Minute Autonomous Job Execution & Telegram Dispatch worker active.")
     while running:
-
         try:
-
-            res = InstantLiquidityEngine.execute_instant_opportunity_cycle()
-
-            if res.get("dispatched_count", 0) > 0:
-
-                logger.info(f"[LIQUIDITY] Dispatched {res['dispatched_count']} instant on-chain solutions.")
-
-                msg = (
-
-                    f"<b>⚡ INSTANT LIQUIDITY SETTLEMENT DISPATCHED</b>\n"
-
-                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
-
-                    f"• <b>Dispatched:</b> {res['dispatched_count']} tasks\n"
-
-                    f"• <b>Base Wallet:</b> <code>{res['wallet']}</code>\n"
-
-                    f"• <b>Settlement Rail:</b> Base Mainnet (USDC)\n"
-
-                    f"<i>Check your Base wallet or dashboard for incoming settlement.</i>"
-
-                )
-
-                svc.send_message(msg, reply_markup=svc.get_main_menu_keyboard())
-
+            logger.info("[JOBS] Scanning live freelance project feeds and generating urgent solves...")
+            res = FastCashEngine.execute_master_fast_cash_cycle(svc=svc)
+            if res.get("newly_dispatched_to_telegram", 0) > 0:
+                logger.info(f"[JOBS] Dispatched {res['newly_dispatched_to_telegram']} new solved jobs to Telegram.")
         except Exception as e:
-
-            logger.warning(f"[LIQUIDITY] Cycle exception: {e}")
-
-        time.sleep(600)
+            logger.warning(f"[JOBS] Job execution worker exception: {e}")
+        time.sleep(1200)
 
 
 
@@ -339,11 +311,9 @@ def run_continuous_daemon(max_seconds: int = 0, standby_trigger: int = 0):
 
 
 
-    # Start 10-Minute Instant Liquidity Worker
-
-    liquidity_thread = threading.Thread(target=run_instant_liquidity_thread, args=(svc,), daemon=True)
-
-    liquidity_thread.start()
+    # Start 20-Minute Live Job Execution & Dispatch Worker
+    job_exec_thread = threading.Thread(target=run_autonomous_job_execution_thread, args=(svc,), daemon=True)
+    job_exec_thread.start()
 
 
 

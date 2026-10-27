@@ -34,6 +34,22 @@ class PRRebaseWatcher:
             "title": "Reject User Declarations Colliding with Prelude Names",
             "payout": "$1,500 USD",
             "branch": "fix-prelude-collisions"
+        },
+        {
+            "id": "omi-23806",
+            "repo": "BasedHardware/omi",
+            "pr_number": 23806,
+            "title": "Fix Recovery cancellation Store bypass & crash after privacy fencing on Postgres",
+            "payout": "$50-$100 USD",
+            "branch": "fix/recovery-cancellation-store-postgres-23761"
+        },
+        {
+            "id": "hy-569",
+            "repo": "limitlessprojects/Go-Hybrid",
+            "pr_number": 569,
+            "title": "Refactor parser AST validation and hybrid syntax safety",
+            "payout": "$250 USD",
+            "branch": "fix/hybrid-parser-ast-safety"
         }
     ]
 

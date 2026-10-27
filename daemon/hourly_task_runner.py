@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 ARIA Hourly Autonomous Daemon.
-Runs continuously, triggering 10 web scrapings every hour at $0.00 cost.
+Runs continuously, fetching, solving, and packaging live freelance jobs and bounties.
 Gated by Telegram mobile push approval.
 """
 
@@ -19,7 +19,7 @@ from aria.bounties.hourly_scraper import HourlyScrapingEngine
 
 def run_daemon_loop(interval_seconds: int = 3600, run_once: bool = False):
     print("==================================================================")
-    print("  ARIA HOURLY SCRAPING & TELEGRAM APPROVAL DAEMON")
+    print("  ARIA AUTONOMOUS JOB EXECUTION & REVENUE DAEMON")
     print("  Total Cost of Ownership (TCO): $0.00 / month")
     print(f"  Cycle Interval: {interval_seconds}s (1 hour)")
     print("==================================================================")
