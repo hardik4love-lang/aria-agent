@@ -62,7 +62,9 @@ jobs:
           BASE_WALLET_ADDRESS: ${{ secrets.BASE_WALLET_ADDRESS }}
           DAEMON_MAX_SECONDS: "20400"
           STANDBY_SPAWN_SECONDS: "19200"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           python daemon/aria_telegram_daemon.py --max-seconds 20400 --standby-trigger 19200
 

@@ -100,7 +100,7 @@ def test_pr_rebase_watcher_health_check():
     """Verifies PRRebaseWatcher inspects tracked repositories."""
     watcher = PRRebaseWatcher()
     results = watcher.inspect_all_tracked_prs()
-    assert len(results) == 2
+    assert len(results) >= 2
     ids = [r["id"] for r in results]
     assert "tt-60777" in ids
     assert "hy-825" in ids

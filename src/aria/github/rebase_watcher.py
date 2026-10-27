@@ -104,10 +104,38 @@ class PRRebaseWatcher:
             "status": "HEALTHY"
         }
 
+    def get_all_active_specs(self) -> List[Dict[str, Any]]:
+        """Merges canonical high-ticket PRs with dynamic active PRs discovered via GitHub API."""
+        from aria.github.pr_review_fixer import PRReviewAutoFixer
+        specs = list(self.TRACKED_PRS)
+        seen = {(s["repo"].lower(), s["pr_number"]) for s in specs}
+
+        try:
+            discovered = PRReviewAutoFixer(token=self.token).discover_active_prs()
+            for d in discovered:
+                repo_name = d.get("repo", "")
+                pr_num = d.get("pr_number")
+                if not repo_name or not pr_num:
+                    continue
+                key = (repo_name.lower(), pr_num)
+                if key not in seen:
+                    specs.append({
+                        "id": f"gh-{repo_name.split('/')[-1]}-{pr_num}".lower(),
+                        "repo": repo_name,
+                        "pr_number": pr_num,
+                        "title": d.get("title", f"PR #{pr_num}"),
+                        "payout": "Active Bounty",
+                        "branch": d.get("head_ref", "main")
+                    })
+                    seen.add(key)
+        except Exception as e:
+            logger.warning(f"Could not merge dynamic PRs: {e}")
+        return specs
+
     def inspect_all_tracked_prs(self) -> List[Dict[str, Any]]:
-        """Scans all tracked high-ticket pull requests."""
+        """Scans all tracked high-ticket and dynamically discovered pull requests."""
         results = []
-        for pr_spec in self.TRACKED_PRS:
+        for pr_spec in self.get_all_active_specs():
             health = self.check_pr_health(pr_spec["repo"], pr_spec["pr_number"])
             results.append({**pr_spec, "health": health})
         return results
