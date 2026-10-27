@@ -20,8 +20,9 @@ class BountyMailWatcher:
     """Watches inbox every 60 seconds and notifies operator of bounty updates."""
 
     BOUNTY_KEYWORDS = [
-        "go-hybrid", "limitlessprojects", "tenstorrent", "tt-metal",
-        "algora", "bounty", "pull request", "shepherd", "preflight",
+        "omi", "basedhardware", "rayban", "ray-ban", "david zhang", "git-on-my-level", "mdmohsin7",
+        "go-hybrid", "limitlessprojects", "tenstorrent", "tt-metal", "hackerone",
+        "algora", "bounty", "pull request", "shepherd", "preflight", "verdict",
         "slavelabour", "paypal", "payment", "upi", "hiring", "invoice"
     ]
 
