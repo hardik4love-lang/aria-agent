@@ -505,6 +505,20 @@ class TelegramAssistantService:
             parts = text.split()
             task_id = parts[1] if len(parts) > 1 else "latest"
             self.send_message(f"<b>[✕] TASK {task_id} MANUALLY REJECTED</b>\nAria has safely cancelled the task.")
+        elif cmd in ["/fixprs", "/reviewfixes", "/autofix"]:
+            self.send_message("<b>🛠️ [ARIA AUTONOMOUS PR AUTO-FIX TRIGGERED]</b>\nScanning all open PRs, maintainer reviews, and CI failure logs...")
+            try:
+                from aria.github.pr_review_fixer import PRReviewAutoFixer
+                fixer = PRReviewAutoFixer()
+                fixed_count = fixer.run_auto_fix_cycle(svc=self)
+                self.send_message(
+                    f"<b>✅ [AUTO-FIX CYCLE COMPLETE]</b>\n"
+                    f"• Resolved & Pushed: <b>{fixed_count}</b> PR patches\n"
+                    f"<i>All active PRs are currently up to date.</i>",
+                    reply_markup=self.get_main_menu_keyboard()
+                )
+            except Exception as e:
+                self.send_message(f"<b>⚠️ Auto-Fix Error:</b> <code>{e}</code>", reply_markup=self.get_main_menu_keyboard())
         else:
             # Full conversational intelligence with Groq / Gemini / Fallback
             self._handle_conversational_chat(text)

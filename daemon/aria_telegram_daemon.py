@@ -154,13 +154,15 @@ def run_instant_liquidity_thread(svc: TelegramAssistantService):
 
 def run_pr_rebase_watcher_thread(svc: TelegramAssistantService):
 
-    """Background worker that inspects upstream PR mergeability every 30 minutes."""
+    """Background worker that inspects upstream PR mergeability and auto-fixes reviews every 15 minutes."""
 
     from aria.github.rebase_watcher import PRRebaseWatcher
+    from aria.github.pr_review_fixer import PRReviewAutoFixer
 
     watcher = PRRebaseWatcher()
+    fixer = PRReviewAutoFixer()
 
-    logger.info("30-Minute Upstream PR Rebase & Conflict Watcher thread active.")
+    logger.info("15-Minute Upstream PR Rebase & Autonomous Review Fixer thread active.")
 
     last_alerted_prs = set()
 
@@ -169,7 +171,16 @@ def run_pr_rebase_watcher_thread(svc: TelegramAssistantService):
     while running:
 
         try:
+            # 1. Run Autonomous PR Review & CI Fixer across all in-flight PRs
+            logger.info("[AUTO-FIX] Running autonomous PR review and CI failure resolution cycle...")
+            try:
+                fixed_count = fixer.run_auto_fix_cycle(svc=svc)
+                if fixed_count > 0:
+                    logger.info(f"[AUTO-FIX] Successfully resolved and committed {fixed_count} PR fixes.")
+            except Exception as e:
+                logger.warning(f"[AUTO-FIX] Exception during review auto-fix cycle: {e}")
 
+            # 2. Inspect PR mergeability and git conflicts
             results = watcher.inspect_all_tracked_prs()
 
             for pr in results:
@@ -248,7 +259,7 @@ def run_pr_rebase_watcher_thread(svc: TelegramAssistantService):
 
             logger.warning(f"[PR-WATCHER] Exception during check: {e}")
 
-        time.sleep(1800)
+        time.sleep(900)
 
 
 
