@@ -96,8 +96,11 @@ class TelegramAssistantService:
                     {"text": "🚀 Submit All 10 Jobs ($565)", "callback_data": "SUBMIT:all"}
                 ],
                 [
-                    {"text": "⚡ Instant Agent Bounties (USDC)", "callback_data": "MENU:market"},
+                    {"text": "🎯 Freelancer Auto-Bidder", "callback_data": "FREELANCER:view_projects"},
                     {"text": "💼 10 Rapid Jobs", "callback_data": "MENU:jobs"}
+                ],
+                [
+                    {"text": "⚡ Instant Agent Bounties", "callback_data": "MENU:market"}
                 ],
                 [
                     {"text": "💼 Real-Time Earnings ($14.4k)", "callback_data": "MENU:earnings"},
@@ -423,6 +426,22 @@ class TelegramAssistantService:
             self._send_proposal_copyable(job_id)
         elif data == "SOLVE_LIVE_JOBS":
             self._cmd_execute_live_jobs(edit_msg_id=msg_id)
+        elif data.startswith("FREELANCER:"):
+            act = data.split(":", 1)[1]
+            if act == "bid_now":
+                from aria.bounties.freelancer_bidder import FreelancerBidderEngine
+                self.send_message("<b>🎯 [RUNNING FREELANCER BIDDING CYCLE]</b>\nSearching active projects and placing bids...")
+                res = FreelancerBidderEngine.execute_bidding_cycle(svc=self)
+                if res.get("authenticated"):
+                    b_count = res.get("bids_placed_count", 0)
+                    self.send_message(f"<b>✅ [FREELANCER CYCLE COMPLETE]</b>\nPlaced <b>{b_count}</b> bids autonomously!")
+                else:
+                    self.send_message(
+                        f"<b>ℹ️ [FREELANCER TOKEN NOT YET CONFIGURED]</b>\n"
+                        f"Packaged {res.get('packaged_proposals_count', 0)} proposals. Set your token with <code>/setfreelancer &lt;token&gt;</code> for 100% automatic hands-free bidding!"
+                    )
+            elif act == "view_projects":
+                self._cmd_freelancer(edit_msg_id=msg_id)
 
     def _handle_text_command(self, text: str):
         cmd = text.split()[0].lower() if text else ""
@@ -510,6 +529,10 @@ class TelegramAssistantService:
                 )
         elif cmd in ["/executejobs", "/solvejobs", "/solveall", "/runjobs"]:
             self._cmd_execute_live_jobs()
+        elif cmd in ["/freelancer", "/autobid", "/bids"]:
+            self._cmd_freelancer(args)
+        elif cmd in ["/setfreelancer", "/setfreelancertoken"]:
+            self._cmd_freelancer(args)
         elif cmd.startswith("/approve"):
             parts = text.split()
             task_id = parts[1] if len(parts) > 1 else "latest"
@@ -535,6 +558,95 @@ class TelegramAssistantService:
         else:
             # Full conversational intelligence with Groq / Gemini / Fallback
             self._handle_conversational_chat(text)
+
+    def _cmd_freelancer(self, args: str = "", edit_msg_id: Optional[int] = None):
+        """Manages Freelancer.com autonomous bidding, credentials, and live project biddings."""
+        from aria.bounties.freelancer_bidder import FreelancerBidderEngine
+        token = args.strip()
+        if token:
+            self.send_message("<b>🔑 [AUTHENTICATING FREELANCER.COM TOKEN]</b>\nVerifying token with Freelancer REST API...")
+            profile = FreelancerBidderEngine.get_self_profile(token=token)
+            if profile.get("authenticated"):
+                FreelancerBidderEngine.set_token(token)
+                user_id = profile.get("user_id")
+                username = profile.get("username")
+                email = profile.get("email")
+                auth_msg = (
+                    f"<b>✅ [FREELANCER.COM AUTHENTICATED SUCCESSFULLY]</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"• <b>Username:</b> @{username}\n"
+                    f"• <b>User ID:</b> <code>{user_id}</code>\n"
+                    f"• <b>Email:</b> {email}\n"
+                    f"• <b>Payout Settlement:</b> Strictly PayPal (<code>{PAYPAL_PAYOUT}</code>)\n"
+                    f"• <b>Status:</b> Zero-Touch Auto-Bidding is now <b>ACTIVE</b>!\n\n"
+                    f"<i>ARIA will now automatically consume available monthly bids on software projects and notify you for every bid placed.</i>"
+                )
+                self.send_message(auth_msg, reply_markup=self.get_main_menu_keyboard())
+                FreelancerBidderEngine.execute_bidding_cycle(svc=self)
+                return
+            else:
+                err_msg = (
+                    f"<b>❌ [FREELANCER AUTHENTICATION FAILED]</b>\n"
+                    f"• <b>Error:</b> <code>{profile.get('error', 'Invalid token')}</code>\n\n"
+                    f"Please verify your Personal Access Token from <a href='https://www.freelancer.com/developers'>Freelancer Developer Portal</a> and try again with:\n"
+                    f"<code>/setfreelancer &lt;token&gt;</code>"
+                )
+                self.send_message(err_msg, reply_markup=self.get_main_menu_keyboard())
+                return
+
+        profile = FreelancerBidderEngine.get_self_profile()
+        if profile.get("authenticated"):
+            user_id = profile.get("user_id")
+            username = profile.get("username")
+            bids_placed = len(FreelancerBidderEngine.get_already_bid_project_ids())
+            fl_msg = (
+                f"<b>🎯 [FREELANCER AUTONOMOUS BIDDER: ACTIVE]</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                f"• <b>User:</b> @{username} (ID: <code>{user_id}</code>)\n"
+                f"• <b>Total Bids Executed:</b> {bids_placed}\n"
+                f"• <b>Payout Rails:</b> PayPal (<code>{PAYPAL_PAYOUT}</code>)\n"
+                f"• <b>Scheduler:</b> 20-minute continuous background worker active\n\n"
+                f"<i>ARIA automatically searches active projects and places bids with AST-verified solutions to ensure 100% of your paid bids are utilized.</i>"
+            )
+            kb = {
+                "inline_keyboard": [
+                    [{"text": "🎯 Run Bidding Cycle Now", "callback_data": "FREELANCER:bid_now"}],
+                    [{"text": "💼 10 Rapid Cash Jobs", "callback_data": "MENU:jobs"}],
+                    [{"text": "🔙 Back to Main Menu", "callback_data": "MENU:help"}]
+                ]
+            }
+        else:
+            projects = FreelancerBidderEngine.search_active_projects(limit_per_query=2)[:3]
+            proj_lines = []
+            for p in projects:
+                b = p.get("budget", {})
+                proj_lines.append(f"• <b>{p.get('title')}</b> (${b.get('minimum', 30)} - ${b.get('maximum', 150)})\n  <a href='https://www.freelancer.com/projects/{p.get('seo_url', p.get('id'))}.html'>Open Project Link</a>")
+            proj_str = "\n\n".join(proj_lines) if proj_lines else "Scanning..."
+
+            fl_msg = (
+                f"<b>🎯 [FREELANCER.COM AUTONOMOUS BIDDER]</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                f"Freelancer charged a monthly subscription with allocated bids. To let ARIA automatically place bids on your behalf and consume 100% of your available bids:\n\n"
+                f"<b>How to connect in 30 seconds:</b>\n"
+                f"1. Go to <a href='https://www.freelancer.com/developers'>Freelancer Developer Portal</a>\n"
+                f"2. Generate a <b>Personal Access Token</b> (with <i>Bids</i> & <i>Projects</i> scopes)\n"
+                f"3. Send the command here: <code>/setfreelancer &lt;your_token&gt;</code>\n\n"
+                f"<b>Current Live High-Paying Projects Ready to Bid:</b>\n"
+                f"{proj_str}\n\n"
+                f"<i>Tap below to trigger an immediate scan or package ready proposals.</i>"
+            )
+            kb = {
+                "inline_keyboard": [
+                    [{"text": "⚡ Run Freelancer Scan & Solve", "callback_data": "FREELANCER:bid_now"}],
+                    [{"text": "💼 10 Rapid Cash Jobs", "callback_data": "MENU:jobs"}],
+                    [{"text": "🔙 Back to Main Menu", "callback_data": "MENU:help"}]
+                ]
+            }
+
+        if edit_msg_id:
+            self.edit_message(edit_msg_id, fl_msg, reply_markup=kb)
+        else:
+            self.send_message(fl_msg, reply_markup=kb)
 
     def _call_cloud_llm(self, prompt: str) -> Optional[str]:
         """Calls Groq (LLaMA 3.3 70B) or Gemini Flash if configured."""

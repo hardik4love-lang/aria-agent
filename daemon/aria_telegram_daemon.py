@@ -103,15 +103,21 @@ def run_email_watcher_thread():
 
 
 def run_autonomous_job_execution_thread(svc: TelegramAssistantService):
-    """Background worker that continuously ingests, solves, and dispatches live urgent freelance jobs."""
+    """Background worker that continuously ingests, solves, and dispatches live urgent freelance jobs & Freelancer bids."""
     from aria.bounties.fast_cash_engine import FastCashEngine
-    logger.info("20-Minute Autonomous Job Execution & Telegram Dispatch worker active.")
+    from aria.bounties.freelancer_bidder import FreelancerBidderEngine
+    logger.info("20-Minute Autonomous Job Execution & Freelancer Bidding worker active.")
     while running:
         try:
             logger.info("[JOBS] Scanning live freelance project feeds and generating urgent solves...")
             res = FastCashEngine.execute_master_fast_cash_cycle(svc=svc)
             if res.get("newly_dispatched_to_telegram", 0) > 0:
                 logger.info(f"[JOBS] Dispatched {res['newly_dispatched_to_telegram']} new solved jobs to Telegram.")
+
+            # Run Freelancer Autonomous Bidding Cycle
+            fl_res = FreelancerBidderEngine.execute_bidding_cycle(svc=svc)
+            if fl_res.get("bids_placed_count", 0) > 0:
+                logger.info(f"[FREELANCER] Placed {fl_res['bids_placed_count']} live bids autonomously.")
         except Exception as e:
             logger.warning(f"[JOBS] Job execution worker exception: {e}")
         time.sleep(1200)
