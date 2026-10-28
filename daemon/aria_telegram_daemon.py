@@ -115,7 +115,9 @@ def run_autonomous_job_execution_thread(svc: TelegramAssistantService):
                 logger.info(f"[JOBS] Dispatched {res['newly_dispatched_to_telegram']} new solved jobs to Telegram.")
 
             # Run Freelancer Autonomous Bidding Cycle
-            fl_res = FreelancerBidderEngine.execute_bidding_cycle(svc=svc)
+            # Auto-bidding disabled by operator to conserve monthly bids
+            # fl_res = FreelancerBidderEngine.execute_bidding_cycle(svc=svc)
+            fl_res = {"bids_placed_count": 0}
             if fl_res.get("bids_placed_count", 0) > 0:
                 logger.info(f"[FREELANCER] Placed {fl_res['bids_placed_count']} live bids autonomously.")
         except Exception as e:

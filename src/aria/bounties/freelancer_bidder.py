@@ -286,12 +286,10 @@ class FreelancerBidderEngine:
 
     @classmethod
     def execute_bidding_cycle(cls, svc=None, max_bids: int = 3) -> Dict[str, Any]:
-        """
-        Master cycle:
-        1. Checks profile authentication.
-        2. If authenticated, places live bids on the top matched software projects.
-        3. If unauthenticated, packages the top projects with proposals and alerts Telegram.
-        """
+        """Master cycle paused by operator to conserve remaining monthly bids."""
+        if getattr(cls, "AUTO_BID_DISABLED", True):
+            logger.info("[AUTO-BID GUARD] Freelancer Auto-Bidding is STRICTLY PAUSED. Conserving monthly bids.")
+            return {"cycle_complete": True, "bids_placed_count": 0, "status": "BIDDING_PAUSED", "placed_bids": []}
         profile = cls.get_self_profile()
         already_bid = cls.get_already_bid_project_ids()
         projects = cls.search_active_projects(limit_per_query=3)
