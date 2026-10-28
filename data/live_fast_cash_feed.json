@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 02:24:05 UTC",
+  "last_updated": "2026-10-28 04:44:17 UTC",
   "wallet": "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c",
   "top5_platforms": [
     {
@@ -60,6 +60,26 @@
   ],
   "live_freelancer_urgent_jobs": [
     {
+      "job_id": "Hierarchical-Betting-Exchange-Software",
+      "title": "Hierarchical Betting Exchange Software Build",
+      "link": "https://www.freelancer.com/projects/api-developmet/Hierarchical-Betting-Exchange-Software.html",
+      "budget": "$5000 - $10000 USD, Jobs: .NET, API Development, Backend Development, C# Programming, Database Development, Microservices, PHP, Software Architecture)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Wed, 28 Oct 2026 00:28:52 -0400",
+      "description": "I\u2019m commissioning a full-featured betting exchange that runs on a Super Master \u2192 Master \u2192 Agent \u2192 User hierarchy. Each level must be able to create and manage the tier directly beneath it, with every transaction automatically mirrored in a tight, tamper-proof ledger... (Budget: $5000 - $10000 USD, Jobs: .NET, API Development, Backend Development, C"
+    },
+    {
+      "job_id": "Elegant-Family-Video-Editing",
+      "title": "Elegant Family Video Editing",
+      "link": "https://www.freelancer.com/projects/adobe-premiere-pro/Elegant-Family-Video-Editing.html",
+      "budget": "$250 - $750 USD, Jobs: Adobe Premiere Pro, Audio Editing, Final Cut Pro, Sound Engineering, Video Editing, Video Post-editing, Video Processing, Video Production, Video Services, Videography)",
+      "category": "Video & Multimedia Production",
+      "solver_key": "solve_job_video",
+      "pub_date": "Wed, 28 Oct 2026 00:24:04 -0400",
+      "description": "I'm looking for a skilled video editor to create a cinematic family video. The project involves editing footage, adding background music, and overlaying voice messages.  Key requirements: - Elegant and... (Budget: $250 - $750 USD, Jobs: Adobe Premiere Pro, Audio Editing, Final Cut Pro, Sound Engineering, Video Editing, Video Post-editing, Video Pro"
+    },
+    {
       "job_id": "Wine-Glass-Painting",
       "title": "Wine Glass Painting",
       "link": "https://www.freelancer.com/projects/painting/Wine-Glass-Painting.html",
@@ -70,99 +90,105 @@
       "description": "I'm seeking an artist to paint a photograph of a glass of wine. The painting can be in any style, and I'm open to suggestions for the mood.  Requirements: - Experience in various painting styles (realistic,... (Budget: $250 - $750 USD, Jobs: Art Consulting, Art Direction (Bijutsu Kantoku), Arts & Crafts, Caricature & Cartoons, Creative Design, Illu"
     },
     {
-      "job_id": "Thesis-Based-Papers-Race-Colonialism",
-      "title": "Thesis-Based Papers on Race and Colonialism",
-      "link": "https://www.freelancer.com/projects/academic-writing/Thesis-Based-Papers-Race-Colonialism.html",
-      "budget": "$30 - $250 USD, Jobs: Academic Research, Academic Writing, Anthropology, Content Writing, Qualitative Research, Report Writing, Research, Research Writing, Technical Writing, Writing Tutoring)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Tue, 27 Oct 2026 22:09:34 -0400",
-      "description": "I need two academic papers on &quot;trans-global representations of race.&quot;  Requirements: - A short midterm paper - A 4-5 page final paper  Focus: - Must use any readings from the course syllabus - Focus on... (Budget: $30 - $250 USD, Jobs: Academic Research, Academic Writing, Anthropology, Content Writing, Qualitative Research, Report Writing"
-    },
-    {
-      "job_id": "Urgent-Brochure-Refresh",
-      "title": "Urgent Brochure Refresh",
-      "link": "https://www.freelancer.com/projects/adobe-creative-cloud/Urgent-Brochure-Refresh.html",
-      "budget": "$250 - $750 AUD, Jobs: Adobe Creative Cloud, Adobe Illustrator, Adobe InDesign, Branding, Brochure Design, Graphic Design, Illustrator, Photoshop, Print Design, Visual Design)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Tue, 27 Oct 2026 22:07:29 -0400",
-      "description": "I need my existing brochure / product leaflet overhauled right away so it looks current, polished, and fully aligned with our latest messaging. You will start from the current file, refine the layout,... (Budget: $250 - $750 AUD, Jobs: Adobe Creative Cloud, Adobe Illustrator, Adobe InDesign, Branding, Brochure Design, Graphic Design, Illustrator, P"
-    },
-    {
-      "job_id": "Game-Ready-Modular-Cyclist-Avatar",
-      "title": "Game-Ready Modular Cyclist Avatar Assets",
-      "link": "https://www.freelancer.com/projects/3d-game-art/Game-Ready-Modular-Cyclist-Avatar.html",
-      "budget": "$250 - $750 USD, Jobs: 3D Animation, 3D Game Art, 3D Modelling, 3D Rendering, Game Design, Game Development, OpenGL, Unity 3D)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Tue, 27 Oct 2026 22:04:22 -0400",
-      "description": "I need a professional 3D artist to create the final, game-ready avatar assets for Tramo, an Android cycling app. Each user has a 3D human cyclist that levels up and can equip clothing, gear and bikes.... (Budget: $250 - $750 USD, Jobs: 3D Animation, 3D Game Art, 3D Modelling, 3D Rendering, Game Design, Game Development, OpenGL, Unity 3D)"
-    },
-    {
-      "job_id": "Android-Call-Recording-App-Development",
-      "title": "Android Call Recording App Development(Record all incoming and outgoing calls)",
-      "link": "https://www.freelancer.com/projects/android/Android-Call-Recording-App-Development.html",
-      "budget": "\u20b9600 - \u20b91500 INR, Jobs: Android, Android App Development, Android SDK, Android Studio, Java, Mobile App Development, Mobile Development)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Tue, 27 Oct 2026 22:04:21 -0400",
-      "description": "# Freelancer Project: Simple Android Phone Call Recording App (Java)  ## 1. Project Overview  I need a very simple Android application developed in **Java using Android Studio** that can record phone calls on supported Android devices... (Budget: \u20b9600 - \u20b91500 INR, Jobs: Android, Android App Development, Android SDK, Android Studio, Java, Mobile App"
-    },
-    {
-      "job_id": "Hard-Surface-Character-Modeling",
-      "title": "UE5 Hard-Surface Character Modeling",
-      "link": "https://www.freelancer.com/projects/3d-art/Hard-Surface-Character-Modeling.html",
-      "budget": "$30 - $250 NZD, Jobs: 3D Animation, 3D Art, 3D Design, 3D Game Art, 3D Modelling, 3D Rendering, 3D Rigging, Unreal Engine)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Tue, 27 Oct 2026 22:03:25 -0400",
-      "description": "We are looking for a skilled hard-surface 3D character artist and rigger to create a game-ready sci-fi robotic character for an Unreal Engine 5 project.  The character requires precise industrial micro-paneling, faceted hard-surface armor plates, and a clean skeletal rig optimized for UE5... (Budget: $30 - $250 NZD, Jobs: 3D Animation, 3D Art, 3D D"
-    },
-    {
-      "job_id": "Create-Pre-Launch-Reels-for",
-      "title": "Create Pre-Launch Reels for Student Hub",
-      "link": "https://www.freelancer.com/projects/social-media-marketing/Create-Pre-Launch-Reels-for.html",
-      "budget": "\u20b91500 - \u20b912500 INR, Jobs: After Effects, Animation, Content Creation, Instagram Marketing, Social Media Marketing, Video Editing, Video Production, Video Services)",
+      "job_id": "Hindi-English-YouTube-Transcription",
+      "title": "Hindi&ndash;English YouTube Transcription &amp; Translation",
+      "link": "https://www.freelancer.com/projects/audio-editing/Hindi-English-YouTube-Transcription.html",
+      "budget": "\u20b912500 - \u20b937500 INR, Jobs: Audio Editing, Content Creation, Content Writing, English (US) Translator, Hindi Translator, Transcription, Translation, Video Editing)",
       "category": "Video & Multimedia Production",
       "solver_key": "solve_job_video",
-      "pub_date": "Tue, 27 Oct 2026 22:00:14 -0400",
-      "description": "Pre-Launch Reels Freelancer  About    Out  Space is a new student-focused workspace and innovation community in Bengaluru.  It is being built for students, creators, freelancers, builders and founders to study, work, meet, collaborate and build... (Budget: \u20b91500 - \u20b912500 INR, Jobs: After Effects, Animation, Content Creation, Instagram Marketing, So"
+      "pub_date": "Wed, 28 Oct 2026 00:20:11 -0400",
+      "description": "I need ongoing support translating and transcribing short-form YouTube or other social-media videos that switch between Hindi and English. The job involves three steps for every file I send:  1. Produce a time-stamped transcript of the original audio... (Budget: \u20b912500 - \u20b937500 INR, Jobs: Audio Editing, Content Creation, Content Writing, English (U"
     },
     {
-      "job_id": "English-Arabic-Article-Translation-40790389",
-      "title": "English to Arabic Article Translation",
-      "link": "https://www.freelancer.com/projects/english-translation/English-Arabic-Article-Translation-40790389.html",
-      "budget": "$250 - $750 USD, Jobs: Arabic Translator, Business Writing, Content Writing, Editing, English (US) Translator, English Translation, Marketing, Translation)",
-      "category": "Video & Multimedia Production",
-      "solver_key": "solve_job_video",
-      "pub_date": "Tue, 27 Oct 2026 21:58:41 -0400",
-      "description": "I have a business-oriented English article that I need rendered into clear, polished Modern Standard Arabic. The piece is destined for marketing use, so the final copy must read as formally and professionally as any well-edited publication our audience would expect... (Budget: $250 - $750 USD, Jobs: Arabic Translator, Business Writing, Content Writ"
-    },
-    {
-      "job_id": "Amazon-KDP-Sales-Boost-Campaign",
-      "title": "Amazon KDP Sales Boost Campaign",
-      "link": "https://www.freelancer.com/projects/amazon-ads/Amazon-KDP-Sales-Boost-Campaign.html",
-      "budget": "$8 - $15 USD, Jobs: Advertising, Amazon Ads, Data Analysis, Digital Marketing, Facebook Marketing, Google Adwords, Internet Marketing, Keyword Research, Product Descriptions, Social Media Marketing)",
+      "job_id": "Cadence-Virtuoso-Circuit-Simulation",
+      "title": "Cadence Virtuoso Circuit &amp; Simulation",
+      "link": "https://www.freelancer.com/projects/simulation/Cadence-Virtuoso-Circuit-Simulation.html",
+      "budget": "$30 - $250 CAD, Jobs: Analog Electronics, Circuit Design, Data Analysis, Electrical Engineering, Electronic Design, Electronics, Report Writing, Simulation, Technical Documentation)",
       "category": "Web Scraping & Python",
       "solver_key": "solve_job_02",
-      "pub_date": "Tue, 27 Oct 2026 21:58:28 -0400",
-      "description": "I need a seasoned Amazon KDP marketer who can move the needle on sales through well-planned, data-driven Amazon Ads. My chief objective is simple: more purchases on Amazon, both for the Kindle edition and the paperback... (Budget: $8 - $15 USD, Jobs: Advertising, Amazon Ads, Data Analysis, Digital Marketing, Facebook Marketing, Google Adwords, Inte"
+      "pub_date": "Wed, 28 Oct 2026 00:19:30 -0400",
+      "description": "I have a small Cadence Virtuoso project that needs to move from concept to verified schematic. (Budget: $30 - $250 CAD, Jobs: Analog Electronics, Circuit Design, Data Analysis, Electrical Engineering, Electronic Design, Electronics, Report Writing, Simulation, Technical Documentation)"
     },
     {
-      "job_id": "Freehand-Chair-Sketch",
-      "title": "Freehand 3D Chair Sketch",
-      "link": "https://www.freelancer.com/projects/3d-animation/Freehand-Chair-Sketch.html",
-      "budget": "$30 - $250 USD, Jobs: 3D Animation, 3D Design, 3D Graphic Design, 3D Modelling, 3D Rendering, 3D Visualization, 3ds Max, Drawing Artist, Product Design, Sketching)",
+      "job_id": "Ticketmaster-API-Dashboard-Integration",
+      "title": "Ticketmaster API Dashboard Integration",
+      "link": "https://www.freelancer.com/projects/api-developmet/Ticketmaster-API-Dashboard-Integration.html",
+      "budget": "$250 - $750 USD, Jobs: API Development, Data Integration, JavaScript, JSON, Mobile App Development, Node.js, PHP, Python, Software Architecture, Web Development)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Wed, 28 Oct 2026 00:17:48 -0400",
+      "description": "I\u2019m enhancing my existing internal dashboard and want real-time Ticketmaster data wired straight in. The main focus is ticket availability and pricing: I need to pull restocks, prices, status, quantity,... (Budget: $250 - $750 USD, Jobs: API Development, Data Integration, JavaScript, JSON, Mobile App Development, Node.js, PHP, Python, Software Arch"
+    },
+    {
+      "job_id": "Assign-IPDRG-Codes-Charts",
+      "title": "Assign IPDRG Codes to Charts",
+      "link": "https://www.freelancer.com/projects/medical-coding/Assign-IPDRG-Codes-Charts.html",
+      "budget": "\u20b937500 - \u20b975000 INR, Jobs: Analytics, Data Analysis, Data Entry, Data Management, Medical Coding, Statistical Analysis)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Wed, 28 Oct 2026 00:17:34 -0400",
+      "description": "I have a batch of complete inpatient medical charts that need to be run through the IP-DRG grouper and assigned the correct codes. Your role is to read each record in full, capture the relevant diagnoses and procedures, and return the accurate IPDRG code for every encounter... (Budget: \u20b937500 - \u20b975000 INR, Jobs: Analytics, Data Analysis, Data Entry"
+    },
+    {
+      "job_id": "Cybersecurity-Harassment-Defense",
+      "title": "Cybersecurity and Harassment Defense",
+      "link": "https://www.freelancer.com/projects/computer-security/Cybersecurity-Harassment-Defense.html",
+      "budget": "$250 - $750 USD, Jobs: Computer Security, Data Protection, Digital Forensics, Incident Response, Malware Removal, Network Security, Privacy Compliance, Security Auditing)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Wed, 28 Oct 2026 00:15:13 -0400",
+      "description": "I need urgent help securing my devices and gathering evidence against online harassment. I've noticed unusual activity on my phone and computer, my online accounts have been accessed, and I'm being harassed and tracked... (Budget: $250 - $750 USD, Jobs: Computer Security, Data Protection, Digital Forensics, Incident Response, Malware Removal, Netwo"
+    },
+    {
+      "job_id": "Soporte-WhatsApp-Clientes",
+      "title": "Soporte WhatsApp a Clientes",
+      "link": "https://www.freelancer.com/projects/customer-experience/Soporte-WhatsApp-Clientes.html",
+      "budget": "$15 - $25 USD, Jobs: Castilian Spanish Translator, Customer Experience, Customer Support, Spanish Translator, Technical Support)",
       "category": "Rapid Engineering",
       "solver_key": "solve_job_01",
-      "pub_date": "Tue, 27 Oct 2026 21:57:59 -0400",
-      "description": "My Product Design  The object is a desktop organizer with a rectangular, box-shaped body, drawers, storage compartments, trays, and upright dividers for files or papers.  I already have an initial design from a previous assignment (8.1C-1), which I can provide as a reference... (Budget: $30 - $250 USD, Jobs: 3D Animation, 3D Design, 3D Graphic Desi"
+      "pub_date": "Wed, 28 Oct 2026 00:14:33 -0400",
+      "description": "Necesito a alguien que asuma la atenci\u00f3n de mi l\u00ednea oficial de WhatsApp. El objetivo principal es responder consultas y dar informaci\u00f3n de forma \u00e1gil y cordial.    \u00bfQu\u00e9 har\u00e1s exactamente?   \u2022 Atender cada mensaje entrante y ofrecer respuestas claras sobre nuestros productos o servicios y precios... (Budget: $15 - $25 USD, Jobs: Castilian Spanish T"
+    },
+    {
+      "job_id": "Tailored-Blackout-Curtains-Installation",
+      "title": "Tailored Blackout Curtains Installation",
+      "link": "https://www.freelancer.com/projects/fabric-research-materials-consultancy/Tailored-Blackout-Curtains-Installation.html",
+      "budget": "$250 - $750 USD, Jobs: Fabric Research & Materials Consultancy, Home Design, Interior Design, Project Management, Sewing, Textile Design)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Wed, 28 Oct 2026 00:12:15 -0400",
+      "description": "I need a skilled tailor to create floor-length blackout curtains for three separate rooms using fabrics I recently purchased. The curtains will need to hang from a curtain pole with rings or eyelets. ... (Budget: $250 - $750 USD, Jobs: Fabric Research & Materials Consultancy, Home Design, Interior Design, Project Management, Sewing, Textile Design)"
     }
   ],
   "packaged_solutions": [
     {
-      "timestamp": "2026-10-28 02:24:05 UTC",
+      "timestamp": "2026-10-28 04:44:16 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Hierarchical-Betting-Exchange-Software",
+      "title": "Hierarchical Betting Exchange Software Build",
+      "budget": "$5000 - $10000 USD, Jobs: .NET, API Development, Backend Development, C# Programming, Database Development, Microservices, PHP, Software Architecture)",
+      "category": "Web Scraping & Python",
+      "link": "https://www.freelancer.com/projects/api-developmet/Hierarchical-Betting-Exchange-Software.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Hierarchical-Betting-Exchange-Software_solution.py",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Hierarchical-Betting-Exchange-Software_proposal.txt",
+      "file_size": 1536
+    },
+    {
+      "timestamp": "2026-10-28 04:44:16 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Elegant-Family-Video-Editing",
+      "title": "Elegant Family Video Editing",
+      "budget": "$250 - $750 USD, Jobs: Adobe Premiere Pro, Audio Editing, Final Cut Pro, Sound Engineering, Video Editing, Video Post-editing, Video Processing, Video Production, Video Services, Videography)",
+      "category": "Video & Multimedia Production",
+      "link": "https://www.freelancer.com/projects/adobe-premiere-pro/Elegant-Family-Video-Editing.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Elegant-Family-Video-Editing_solution.ts",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Elegant-Family-Video-Editing_proposal.txt",
+      "file_size": 1002
+    },
+    {
+      "timestamp": "2026-10-28 04:44:17 UTC",
       "platform": "Freelancer.com Live Project Feed",
       "job_id": "Wine-Glass-Painting",
       "title": "Wine Glass Painting",
@@ -175,56 +201,30 @@
       "file_size": 1002
     },
     {
-      "timestamp": "2026-10-28 02:24:05 UTC",
+      "timestamp": "2026-10-28 04:44:17 UTC",
       "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Thesis-Based-Papers-Race-Colonialism",
-      "title": "Thesis-Based Papers on Race and Colonialism",
-      "budget": "$30 - $250 USD, Jobs: Academic Research, Academic Writing, Anthropology, Content Writing, Qualitative Research, Report Writing, Research, Research Writing, Technical Writing, Writing Tutoring)",
-      "category": "Rapid Engineering",
-      "link": "https://www.freelancer.com/projects/academic-writing/Thesis-Based-Papers-Race-Colonialism.html",
+      "job_id": "Hindi-English-YouTube-Transcription",
+      "title": "Hindi&ndash;English YouTube Transcription &amp; Translation",
+      "budget": "\u20b912500 - \u20b937500 INR, Jobs: Audio Editing, Content Creation, Content Writing, English (US) Translator, Hindi Translator, Transcription, Translation, Video Editing)",
+      "category": "Video & Multimedia Production",
+      "link": "https://www.freelancer.com/projects/audio-editing/Hindi-English-YouTube-Transcription.html",
       "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Thesis-Based-Papers-Race-Colonialism_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Thesis-Based-Papers-Race-Colonialism_proposal.txt",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Hindi-English-YouTube-Transcription_solution.ts",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Hindi-English-YouTube-Transcription_proposal.txt",
       "file_size": 1002
     },
     {
-      "timestamp": "2026-10-28 02:24:05 UTC",
+      "timestamp": "2026-10-28 04:44:17 UTC",
       "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Urgent-Brochure-Refresh",
-      "title": "Urgent Brochure Refresh",
-      "budget": "$250 - $750 AUD, Jobs: Adobe Creative Cloud, Adobe Illustrator, Adobe InDesign, Branding, Brochure Design, Graphic Design, Illustrator, Photoshop, Print Design, Visual Design)",
-      "category": "Rapid Engineering",
-      "link": "https://www.freelancer.com/projects/adobe-creative-cloud/Urgent-Brochure-Refresh.html",
+      "job_id": "Cadence-Virtuoso-Circuit-Simulation",
+      "title": "Cadence Virtuoso Circuit &amp; Simulation",
+      "budget": "$30 - $250 CAD, Jobs: Analog Electronics, Circuit Design, Data Analysis, Electrical Engineering, Electronic Design, Electronics, Report Writing, Simulation, Technical Documentation)",
+      "category": "Web Scraping & Python",
+      "link": "https://www.freelancer.com/projects/simulation/Cadence-Virtuoso-Circuit-Simulation.html",
       "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Urgent-Brochure-Refresh_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Urgent-Brochure-Refresh_proposal.txt",
-      "file_size": 1002
-    },
-    {
-      "timestamp": "2026-10-28 02:24:05 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Game-Ready-Modular-Cyclist-Avatar",
-      "title": "Game-Ready Modular Cyclist Avatar Assets",
-      "budget": "$250 - $750 USD, Jobs: 3D Animation, 3D Game Art, 3D Modelling, 3D Rendering, Game Design, Game Development, OpenGL, Unity 3D)",
-      "category": "Rapid Engineering",
-      "link": "https://www.freelancer.com/projects/3d-game-art/Game-Ready-Modular-Cyclist-Avatar.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Game-Ready-Modular-Cyclist-Avatar_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Game-Ready-Modular-Cyclist-Avatar_proposal.txt",
-      "file_size": 1002
-    },
-    {
-      "timestamp": "2026-10-28 02:24:05 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Android-Call-Recording-App-Development",
-      "title": "Android Call Recording App Development(Record all incoming and outgoing calls)",
-      "budget": "\u20b9600 - \u20b91500 INR, Jobs: Android, Android App Development, Android SDK, Android Studio, Java, Mobile App Development, Mobile Development)",
-      "category": "Rapid Engineering",
-      "link": "https://www.freelancer.com/projects/android/Android-Call-Recording-App-Development.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Android-Call-Recording-App-Development_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Android-Call-Recording-App-Development_proposal.txt",
-      "file_size": 1002
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Cadence-Virtuoso-Circuit-Simulation_solution.py",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Cadence-Virtuoso-Circuit-Simulation_proposal.txt",
+      "file_size": 1536
     }
   ]
 }
