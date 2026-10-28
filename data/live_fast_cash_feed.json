@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 04:44:17 UTC",
+  "last_updated": "2026-10-28 11:06:49 UTC",
   "wallet": "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c",
   "top5_platforms": [
     {
@@ -60,171 +60,171 @@
   ],
   "live_freelancer_urgent_jobs": [
     {
-      "job_id": "Hierarchical-Betting-Exchange-Software",
-      "title": "Hierarchical Betting Exchange Software Build",
-      "link": "https://www.freelancer.com/projects/api-developmet/Hierarchical-Betting-Exchange-Software.html",
-      "budget": "$5000 - $10000 USD, Jobs: .NET, API Development, Backend Development, C# Programming, Database Development, Microservices, PHP, Software Architecture)",
-      "category": "Web Scraping & Python",
-      "solver_key": "solve_job_02",
-      "pub_date": "Wed, 28 Oct 2026 00:28:52 -0400",
-      "description": "I\u2019m commissioning a full-featured betting exchange that runs on a Super Master \u2192 Master \u2192 Agent \u2192 User hierarchy. Each level must be able to create and manage the tier directly beneath it, with every transaction automatically mirrored in a tight, tamper-proof ledger... (Budget: $5000 - $10000 USD, Jobs: .NET, API Development, Backend Development, C"
+      "job_id": "Textured-GLB-Mesh-for-DVista",
+      "title": "Textured GLB Mesh for 3DVista",
+      "link": "https://www.freelancer.com/projects/3d-visualization/Textured-GLB-Mesh-for-DVista.html",
+      "budget": "\u20ac30 - \u20ac250 EUR, Jobs: 3D Animation, 3D CAD, 3D Design, 3D Graphic Design, 3D Modelling, 3D Printing, 3D Rendering, 3D Visualization, 3ds Max, Blender)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Wed, 28 Oct 2026 06:56:08 -0400",
+      "description": "I have both E57 and LAS point-clouds of a site with several building that I want to turn into a 3D digital twin inside 3DVista. What I need from you is a single GLB that contains a fully textured 3D mesh generated from the entire scan area\u2014not just key rooms or simplified objects... (Budget: \u20ac30 - \u20ac250 EUR, Jobs: 3D Animation, 3D CAD, 3D Design, 3D"
     },
     {
-      "job_id": "Elegant-Family-Video-Editing",
-      "title": "Elegant Family Video Editing",
-      "link": "https://www.freelancer.com/projects/adobe-premiere-pro/Elegant-Family-Video-Editing.html",
-      "budget": "$250 - $750 USD, Jobs: Adobe Premiere Pro, Audio Editing, Final Cut Pro, Sound Engineering, Video Editing, Video Post-editing, Video Processing, Video Production, Video Services, Videography)",
+      "job_id": "Driven-Asset-Tracking-Prototype",
+      "title": "AI-Driven Asset Tracking Prototype",
+      "link": "https://www.freelancer.com/projects/ai-model-development/Driven-Asset-Tracking-Prototype.html",
+      "budget": "$250 - $750 USD, Jobs: AI Automation, AI Model Development, Database Management, Flutter, Machine Learning (ML), Python, Relational Databases, Web Development)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Wed, 28 Oct 2026 06:55:58 -0400",
+      "description": "I need a working prototype that shows how we can track tools or equipment as they move between people across our sites. In this first build the platform only has to handle tools assigned to people, but it must do that well... (Budget: $250 - $750 USD, Jobs: AI Automation, AI Model Development, Database Management, Flutter, Machine Learning (ML), Py"
+    },
+    {
+      "job_id": "Forex-Automation-Strategy-Development",
+      "title": "Forex Automation Strategy Development",
+      "link": "https://www.freelancer.com/projects/forex-trading/Forex-Automation-Strategy-Development.html",
+      "budget": "$10 - $30 USD, Jobs: API Integration, Automation, Forex Trading, HTML, PHP, Software Architecture, Web Development, Website Design)",
+      "category": "Stripe & API Integration",
+      "solver_key": "solve_job_06",
+      "pub_date": "Wed, 28 Oct 2026 06:55:46 -0400",
+      "description": "I need a Forex trading strategy developed and integrated into my existing website, using my current domain and server. The strategy should automatically place trades based on set rules.  Key requirements:... (Budget: $10 - $30 USD, Jobs: API Integration, Automation, Forex Trading, HTML, PHP, Software Architecture, Web Development, Website Design)"
+    },
+    {
+      "job_id": "Printable-Sock-Display-Foot",
+      "title": "3D Printable Sock Display Foot",
+      "link": "https://www.freelancer.com/projects/3d-design/Printable-Sock-Display-Foot.html",
+      "budget": "$10 - $30 USD, Jobs: 3D Animation, 3D CAD, 3D Design, 3D Modelling, 3D Print Design, 3D Rendering, 3ds Max, CAD / SolidWorks)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Wed, 28 Oct 2026 06:54:38 -0400",
+      "description": "I\u2019m looking for a clean, printable 3D model of a human foot that I can use to photograph adult crew and knee-high socks. The pose should be angled slightly upward so the heel lifts just enough to show off the pattern and length of the sock without looking overly posed... (Budget: $10 - $30 USD, Jobs: 3D Animation, 3D CAD, 3D Design, 3D Modelling, 3"
+    },
+    {
+      "job_id": "Solicitor-Police-Filing",
+      "title": "UK Solicitor: Police Filing",
+      "link": "https://www.freelancer.com/projects/legal-consultation/Solicitor-Police-Filing.html",
+      "budget": "$250 - $750 USD, Jobs: Accounting, Criminal Law, Legal, Legal Consultation, Legal Research, Legal Writing, Litigation, Report Writing)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Wed, 28 Oct 2026 06:52:32 -0400",
+      "description": "I need a qualified solicitor or lawyer in the United Kingdom to prepare and file a formal police complaint on my behalf.  This was guided by foreign police to start this in uk first and vis interpol they... (Budget: $250 - $750 USD, Jobs: Accounting, Criminal Law, Legal, Legal Consultation, Legal Research, Legal Writing, Litigation, Report Writing)"
+    },
+    {
+      "job_id": "Part-Time-Store-Product-Promoter",
+      "title": "Part-Time In-Store Product Promoter only for women/young ladies/female",
+      "link": "https://www.freelancer.com/projects/customer-service/Part-Time-Store-Product-Promoter.html",
+      "budget": "\u20b910000 - \u20b915000 INR, Jobs: Customer Service, Internet Marketing, Lead Generation, Marketing, Public Speaking, Sales, Sales Management, Telemarketing)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Wed, 28 Oct 2026 06:52:12 -0400",
+      "description": "I run a daily promotion booth at a fixed location and need a female promoter who can confidently talk face-to-face with targeted customers. Your core task is to engage each guest, explain our integrated... (Budget: \u20b910000 - \u20b915000 INR, Jobs: Customer Service, Internet Marketing, Lead Generation, Marketing, Public Speaking, Sales, Sales Management,"
+    },
+    {
+      "job_id": "Windows-Fee-Tracker-App",
+      "title": "Windows Fee Tracker App",
+      "link": "https://www.freelancer.com/projects/application-performance-monitoring/Windows-Fee-Tracker-App.html",
+      "budget": "\u20b9750 - \u20b91250 INR, Jobs: Application Performance Monitoring, Database Management, Desktop Application, Programming, Software Development, Software Engineering)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Wed, 28 Oct 2026 06:52:10 -0400",
+      "description": "I need a small, self-contained desktop application that runs natively on Windows and keeps the full fee history for every Class 11 student in one place. The core job is straightforward: enter each payment... (Budget: \u20b9750 - \u20b91250 INR, Jobs: Application Performance Monitoring, Database Management, Desktop Application, Programming, Software Developme"
+    },
+    {
+      "job_id": "Simple-Health-Blog-Writing",
+      "title": "Simple Health  Blog Writing",
+      "link": "https://www.freelancer.com/projects/blog-writing/Simple-Health-Blog-Writing.html",
+      "budget": "$250 - $750 USD, Jobs: Article Writing, Blog Writing, Content Writing, Copy Editing, Copywriting, Editing, Ghostwriting, Microsoft, Proofreading, SEO Writing)",
       "category": "Video & Multimedia Production",
       "solver_key": "solve_job_video",
-      "pub_date": "Wed, 28 Oct 2026 00:24:04 -0400",
-      "description": "I'm looking for a skilled video editor to create a cinematic family video. The project involves editing footage, adding background music, and overlaying voice messages.  Key requirements: - Elegant and... (Budget: $250 - $750 USD, Jobs: Adobe Premiere Pro, Audio Editing, Final Cut Pro, Sound Engineering, Video Editing, Video Post-editing, Video Pro"
+      "pub_date": "Wed, 28 Oct 2026 06:49:29 -0400",
+      "description": "I\u2019m assembling a batch of short, punchy blog posts that zero in on nutrition and healthy eating only\u2014no workout routines or mindfulness pieces this time. The audience is busy adults who want healthier... (Budget: $250 - $750 USD, Jobs: Article Writing, Blog Writing, Content Writing, Copy Editing, Copywriting, Editing, Ghostwriting, Microsoft, Proof"
     },
     {
-      "job_id": "Wine-Glass-Painting",
-      "title": "Wine Glass Painting",
-      "link": "https://www.freelancer.com/projects/painting/Wine-Glass-Painting.html",
-      "budget": "$250 - $750 USD, Jobs: Art Consulting, Art Direction (Bijutsu Kantoku), Arts & Crafts, Caricature & Cartoons, Creative Design, Illustration, Painting, Photoshop)",
+      "job_id": "Grow-School-WhatsApp-Communities",
+      "title": "Grow US School WhatsApp Communities",
+      "link": "https://www.freelancer.com/projects/instagram-marketing/Grow-School-WhatsApp-Communities.html",
+      "budget": "\u20b91500 - \u20b912500 INR, Jobs: Analytics, Community Management, Content Creation, Content Marketing, Creative Design, Facebook Marketing, Instagram Marketing, Internet Marketing, Social Media Marketing, Twitter)",
       "category": "Rapid Engineering",
       "solver_key": "solve_job_01",
-      "pub_date": "Wed, 28 Oct 2026 00:22:25 -0400",
-      "description": "I'm seeking an artist to paint a photograph of a glass of wine. The painting can be in any style, and I'm open to suggestions for the mood.  Requirements: - Experience in various painting styles (realistic,... (Budget: $250 - $750 USD, Jobs: Art Consulting, Art Direction (Bijutsu Kantoku), Arts & Crafts, Caricature & Cartoons, Creative Design, Illu"
+      "pub_date": "Wed, 28 Oct 2026 06:48:33 -0400",
+      "description": "I have few whatsapp groups (School &amp; college Talk). Where i will be sharing all School &amp; College related information to the students and parents which will help students in choosing right decisions during their schooling... (Budget: \u20b91500 - \u20b912500 INR, Jobs: Analytics, Community Management, Content Creation, Content Marketing, Creative Desi"
     },
     {
-      "job_id": "Hindi-English-YouTube-Transcription",
-      "title": "Hindi&ndash;English YouTube Transcription &amp; Translation",
-      "link": "https://www.freelancer.com/projects/audio-editing/Hindi-English-YouTube-Transcription.html",
-      "budget": "\u20b912500 - \u20b937500 INR, Jobs: Audio Editing, Content Creation, Content Writing, English (US) Translator, Hindi Translator, Transcription, Translation, Video Editing)",
-      "category": "Video & Multimedia Production",
-      "solver_key": "solve_job_video",
-      "pub_date": "Wed, 28 Oct 2026 00:20:11 -0400",
-      "description": "I need ongoing support translating and transcribing short-form YouTube or other social-media videos that switch between Hindi and English. The job involves three steps for every file I send:  1. Produce a time-stamped transcript of the original audio... (Budget: \u20b912500 - \u20b937500 INR, Jobs: Audio Editing, Content Creation, Content Writing, English (U"
-    },
-    {
-      "job_id": "Cadence-Virtuoso-Circuit-Simulation",
-      "title": "Cadence Virtuoso Circuit &amp; Simulation",
-      "link": "https://www.freelancer.com/projects/simulation/Cadence-Virtuoso-Circuit-Simulation.html",
-      "budget": "$30 - $250 CAD, Jobs: Analog Electronics, Circuit Design, Data Analysis, Electrical Engineering, Electronic Design, Electronics, Report Writing, Simulation, Technical Documentation)",
+      "job_id": "Heartbeat-Profile-Scraper-Bot",
+      "title": "Heartbeat Profile Scraper Bot",
+      "link": "https://www.freelancer.com/projects/selenium/Heartbeat-Profile-Scraper-Bot.html",
+      "budget": "$10 - $30 USD, Jobs: Automation, Data Extraction, Google Sheets, JavaScript, Python, Selenium, Software Architecture, Web Scraping)",
       "category": "Web Scraping & Python",
       "solver_key": "solve_job_02",
-      "pub_date": "Wed, 28 Oct 2026 00:19:30 -0400",
-      "description": "I have a small Cadence Virtuoso project that needs to move from concept to verified schematic. (Budget: $30 - $250 CAD, Jobs: Analog Electronics, Circuit Design, Data Analysis, Electrical Engineering, Electronic Design, Electronics, Report Writing, Simulation, Technical Documentation)"
-    },
-    {
-      "job_id": "Ticketmaster-API-Dashboard-Integration",
-      "title": "Ticketmaster API Dashboard Integration",
-      "link": "https://www.freelancer.com/projects/api-developmet/Ticketmaster-API-Dashboard-Integration.html",
-      "budget": "$250 - $750 USD, Jobs: API Development, Data Integration, JavaScript, JSON, Mobile App Development, Node.js, PHP, Python, Software Architecture, Web Development)",
-      "category": "Web Scraping & Python",
-      "solver_key": "solve_job_02",
-      "pub_date": "Wed, 28 Oct 2026 00:17:48 -0400",
-      "description": "I\u2019m enhancing my existing internal dashboard and want real-time Ticketmaster data wired straight in. The main focus is ticket availability and pricing: I need to pull restocks, prices, status, quantity,... (Budget: $250 - $750 USD, Jobs: API Development, Data Integration, JavaScript, JSON, Mobile App Development, Node.js, PHP, Python, Software Arch"
-    },
-    {
-      "job_id": "Assign-IPDRG-Codes-Charts",
-      "title": "Assign IPDRG Codes to Charts",
-      "link": "https://www.freelancer.com/projects/medical-coding/Assign-IPDRG-Codes-Charts.html",
-      "budget": "\u20b937500 - \u20b975000 INR, Jobs: Analytics, Data Analysis, Data Entry, Data Management, Medical Coding, Statistical Analysis)",
-      "category": "Web Scraping & Python",
-      "solver_key": "solve_job_02",
-      "pub_date": "Wed, 28 Oct 2026 00:17:34 -0400",
-      "description": "I have a batch of complete inpatient medical charts that need to be run through the IP-DRG grouper and assigned the correct codes. Your role is to read each record in full, capture the relevant diagnoses and procedures, and return the accurate IPDRG code for every encounter... (Budget: \u20b937500 - \u20b975000 INR, Jobs: Analytics, Data Analysis, Data Entry"
-    },
-    {
-      "job_id": "Cybersecurity-Harassment-Defense",
-      "title": "Cybersecurity and Harassment Defense",
-      "link": "https://www.freelancer.com/projects/computer-security/Cybersecurity-Harassment-Defense.html",
-      "budget": "$250 - $750 USD, Jobs: Computer Security, Data Protection, Digital Forensics, Incident Response, Malware Removal, Network Security, Privacy Compliance, Security Auditing)",
-      "category": "Web Scraping & Python",
-      "solver_key": "solve_job_02",
-      "pub_date": "Wed, 28 Oct 2026 00:15:13 -0400",
-      "description": "I need urgent help securing my devices and gathering evidence against online harassment. I've noticed unusual activity on my phone and computer, my online accounts have been accessed, and I'm being harassed and tracked... (Budget: $250 - $750 USD, Jobs: Computer Security, Data Protection, Digital Forensics, Incident Response, Malware Removal, Netwo"
-    },
-    {
-      "job_id": "Soporte-WhatsApp-Clientes",
-      "title": "Soporte WhatsApp a Clientes",
-      "link": "https://www.freelancer.com/projects/customer-experience/Soporte-WhatsApp-Clientes.html",
-      "budget": "$15 - $25 USD, Jobs: Castilian Spanish Translator, Customer Experience, Customer Support, Spanish Translator, Technical Support)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Wed, 28 Oct 2026 00:14:33 -0400",
-      "description": "Necesito a alguien que asuma la atenci\u00f3n de mi l\u00ednea oficial de WhatsApp. El objetivo principal es responder consultas y dar informaci\u00f3n de forma \u00e1gil y cordial.    \u00bfQu\u00e9 har\u00e1s exactamente?   \u2022 Atender cada mensaje entrante y ofrecer respuestas claras sobre nuestros productos o servicios y precios... (Budget: $15 - $25 USD, Jobs: Castilian Spanish T"
-    },
-    {
-      "job_id": "Tailored-Blackout-Curtains-Installation",
-      "title": "Tailored Blackout Curtains Installation",
-      "link": "https://www.freelancer.com/projects/fabric-research-materials-consultancy/Tailored-Blackout-Curtains-Installation.html",
-      "budget": "$250 - $750 USD, Jobs: Fabric Research & Materials Consultancy, Home Design, Interior Design, Project Management, Sewing, Textile Design)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Wed, 28 Oct 2026 00:12:15 -0400",
-      "description": "I need a skilled tailor to create floor-length blackout curtains for three separate rooms using fabrics I recently purchased. The curtains will need to hang from a curtain pole with rings or eyelets. ... (Budget: $250 - $750 USD, Jobs: Fabric Research & Materials Consultancy, Home Design, Interior Design, Project Management, Sewing, Textile Design)"
+      "pub_date": "Wed, 28 Oct 2026 06:48:22 -0400",
+      "description": "I have a Heartbeat community whose member list appears on the right-hand side of the screen. I need a small, quickly delivered bot that scrolls through that list, opens each profile if required, and captures... (Budget: $10 - $30 USD, Jobs: Automation, Data Extraction, Google Sheets, JavaScript, Python, Selenium, Software Architecture, Web Scraping"
     }
   ],
   "packaged_solutions": [
     {
-      "timestamp": "2026-10-28 04:44:16 UTC",
+      "timestamp": "2026-10-28 11:06:48 UTC",
       "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Hierarchical-Betting-Exchange-Software",
-      "title": "Hierarchical Betting Exchange Software Build",
-      "budget": "$5000 - $10000 USD, Jobs: .NET, API Development, Backend Development, C# Programming, Database Development, Microservices, PHP, Software Architecture)",
-      "category": "Web Scraping & Python",
-      "link": "https://www.freelancer.com/projects/api-developmet/Hierarchical-Betting-Exchange-Software.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Hierarchical-Betting-Exchange-Software_solution.py",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Hierarchical-Betting-Exchange-Software_proposal.txt",
-      "file_size": 1536
-    },
-    {
-      "timestamp": "2026-10-28 04:44:16 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Elegant-Family-Video-Editing",
-      "title": "Elegant Family Video Editing",
-      "budget": "$250 - $750 USD, Jobs: Adobe Premiere Pro, Audio Editing, Final Cut Pro, Sound Engineering, Video Editing, Video Post-editing, Video Processing, Video Production, Video Services, Videography)",
-      "category": "Video & Multimedia Production",
-      "link": "https://www.freelancer.com/projects/adobe-premiere-pro/Elegant-Family-Video-Editing.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Elegant-Family-Video-Editing_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Elegant-Family-Video-Editing_proposal.txt",
-      "file_size": 1002
-    },
-    {
-      "timestamp": "2026-10-28 04:44:17 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Wine-Glass-Painting",
-      "title": "Wine Glass Painting",
-      "budget": "$250 - $750 USD, Jobs: Art Consulting, Art Direction (Bijutsu Kantoku), Arts & Crafts, Caricature & Cartoons, Creative Design, Illustration, Painting, Photoshop)",
+      "job_id": "Textured-GLB-Mesh-for-DVista",
+      "title": "Textured GLB Mesh for 3DVista",
+      "budget": "\u20ac30 - \u20ac250 EUR, Jobs: 3D Animation, 3D CAD, 3D Design, 3D Graphic Design, 3D Modelling, 3D Printing, 3D Rendering, 3D Visualization, 3ds Max, Blender)",
       "category": "Rapid Engineering",
-      "link": "https://www.freelancer.com/projects/painting/Wine-Glass-Painting.html",
+      "link": "https://www.freelancer.com/projects/3d-visualization/Textured-GLB-Mesh-for-DVista.html",
       "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Wine-Glass-Painting_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Wine-Glass-Painting_proposal.txt",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Textured-GLB-Mesh-for-DVista_solution.ts",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Textured-GLB-Mesh-for-DVista_proposal.txt",
       "file_size": 1002
     },
     {
-      "timestamp": "2026-10-28 04:44:17 UTC",
+      "timestamp": "2026-10-28 11:06:48 UTC",
       "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Hindi-English-YouTube-Transcription",
-      "title": "Hindi&ndash;English YouTube Transcription &amp; Translation",
-      "budget": "\u20b912500 - \u20b937500 INR, Jobs: Audio Editing, Content Creation, Content Writing, English (US) Translator, Hindi Translator, Transcription, Translation, Video Editing)",
-      "category": "Video & Multimedia Production",
-      "link": "https://www.freelancer.com/projects/audio-editing/Hindi-English-YouTube-Transcription.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Hindi-English-YouTube-Transcription_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Hindi-English-YouTube-Transcription_proposal.txt",
-      "file_size": 1002
-    },
-    {
-      "timestamp": "2026-10-28 04:44:17 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Cadence-Virtuoso-Circuit-Simulation",
-      "title": "Cadence Virtuoso Circuit &amp; Simulation",
-      "budget": "$30 - $250 CAD, Jobs: Analog Electronics, Circuit Design, Data Analysis, Electrical Engineering, Electronic Design, Electronics, Report Writing, Simulation, Technical Documentation)",
+      "job_id": "Driven-Asset-Tracking-Prototype",
+      "title": "AI-Driven Asset Tracking Prototype",
+      "budget": "$250 - $750 USD, Jobs: AI Automation, AI Model Development, Database Management, Flutter, Machine Learning (ML), Python, Relational Databases, Web Development)",
       "category": "Web Scraping & Python",
-      "link": "https://www.freelancer.com/projects/simulation/Cadence-Virtuoso-Circuit-Simulation.html",
+      "link": "https://www.freelancer.com/projects/ai-model-development/Driven-Asset-Tracking-Prototype.html",
       "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Cadence-Virtuoso-Circuit-Simulation_solution.py",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Cadence-Virtuoso-Circuit-Simulation_proposal.txt",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Driven-Asset-Tracking-Prototype_solution.py",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Driven-Asset-Tracking-Prototype_proposal.txt",
       "file_size": 1536
+    },
+    {
+      "timestamp": "2026-10-28 11:06:49 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Forex-Automation-Strategy-Development",
+      "title": "Forex Automation Strategy Development",
+      "budget": "$10 - $30 USD, Jobs: API Integration, Automation, Forex Trading, HTML, PHP, Software Architecture, Web Development, Website Design)",
+      "category": "Stripe & API Integration",
+      "link": "https://www.freelancer.com/projects/forex-trading/Forex-Automation-Strategy-Development.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Forex-Automation-Strategy-Development_solution.ts",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Forex-Automation-Strategy-Development_proposal.txt",
+      "file_size": 681
+    },
+    {
+      "timestamp": "2026-10-28 11:06:49 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Printable-Sock-Display-Foot",
+      "title": "3D Printable Sock Display Foot",
+      "budget": "$10 - $30 USD, Jobs: 3D Animation, 3D CAD, 3D Design, 3D Modelling, 3D Print Design, 3D Rendering, 3ds Max, CAD / SolidWorks)",
+      "category": "Rapid Engineering",
+      "link": "https://www.freelancer.com/projects/3d-design/Printable-Sock-Display-Foot.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Printable-Sock-Display-Foot_solution.ts",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Printable-Sock-Display-Foot_proposal.txt",
+      "file_size": 1002
+    },
+    {
+      "timestamp": "2026-10-28 11:06:49 UTC",
+      "platform": "Freelancer.com Live Project Feed",
+      "job_id": "Solicitor-Police-Filing",
+      "title": "UK Solicitor: Police Filing",
+      "budget": "$250 - $750 USD, Jobs: Accounting, Criminal Law, Legal, Legal Consultation, Legal Research, Legal Writing, Litigation, Report Writing)",
+      "category": "Rapid Engineering",
+      "link": "https://www.freelancer.com/projects/legal-consultation/Solicitor-Police-Filing.html",
+      "status": "SOLUTION_PACKAGED",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Solicitor-Police-Filing_solution.ts",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Solicitor-Police-Filing_proposal.txt",
+      "file_size": 1002
     }
   ]
 }
