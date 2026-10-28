@@ -1,0 +1,122 @@
+[
+  {
+    "additions": 481,
+    "author": {
+      "id": "U_kgDODyB_cg",
+      "is_bot": false,
+      "login": "hardik4love-lang",
+      "name": ""
+    },
+    "changedFiles": 5,
+    "deletions": 2,
+    "mergedAt": "2026-10-18T19:58:18Z",
+    "state": "MERGED",
+    "title": "fix(hy-check): reject constant overflow and float truncation in binary comparisons, binary arithmetic, and map indexing (fixes #576)",
+    "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/587"
+  },
+  {
+    "additions": 118,
+    "author": {
+      "id": "U_kgDODyB_cg",
+      "is_bot": false,
+      "login": "hardik4love-lang",
+      "name": ""
+    },
+    "changedFiles": 3,
+    "deletions": 5,
+    "mergedAt": "2026-10-18T05:11:37Z",
+    "state": "MERGED",
+    "title": "fix(tools): decode checker JSON as UTF-8 independently of host locale (fixes #492)",
+    "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/497"
+  },
+  {
+    "additions": 1384,
+    "author": {
+      "id": "U_kgDODyB_cg",
+      "is_bot": false,
+      "login": "hardik4love-lang",
+      "name": ""
+    },
+    "changedFiles": 1,
+    "deletions": 42,
+    "mergedAt": "2026-10-18T06:26:36Z",
+    "state": "MERGED",
+    "title": "fix(check): type-check operand types for conditions, index, slice, call, and builtins (fixes #425)",
+    "url": "https://github.com/limitlessprojects/Go-Hybrid/pull/430"
+  },
+  {
+    "additions": 110,
+    "author": {
+      "id": "U_kgDODyB_cg",
+      "is_bot": false,
+      "login": "hardik4love-lang",
+      "name": ""
+    },
+    "changedFiles": 3,
+    "deletions": 6,
+    "mergedAt": "2026-10-16T14:47:57Z",
+    "state": "MERGED",
+    "title": "fix(sync): unblock backfill queue with owner deferral and NotFound resilience (#21122)",
+    "url": "https://github.com/BasedHardware/omi/pull/21811"
+  },
+  {
+    "additions": 177,
+    "author": {
+      "id": "U_kgDODyB_cg",
+      "is_bot": false,
+      "login": "hardik4love-lang",
+      "name": ""
+    },
+    "changedFiles": 2,
+    "deletions": 1,
+    "mergedAt": "2026-10-16T14:48:15Z",
+    "state": "MERGED",
+    "title": "fix(bee): support 3-byte millivolts battery format and clamp legacy percentage (#21749)",
+    "url": "https://github.com/BasedHardware/omi/pull/21768"
+  },
+  {
+    "additions": 8,
+    "author": {
+      "id": "U_kgDODyB_cg",
+      "is_bot": false,
+      "login": "hardik4love-lang",
+      "name": ""
+    },
+    "changedFiles": 2,
+    "deletions": 3,
+    "mergedAt": "2026-10-15T20:33:15Z",
+    "state": "MERGED",
+    "title": "fix(deploy): specify --cpu=2 for backend-sync to support 6Gi/8Gi memory (#21668)",
+    "url": "https://github.com/BasedHardware/omi/pull/21671"
+  },
+  {
+    "additions": 151,
+    "author": {
+      "id": "U_kgDODyB_cg",
+      "is_bot": false,
+      "login": "hardik4love-lang",
+      "name": ""
+    },
+    "changedFiles": 5,
+    "deletions": 22,
+    "mergedAt": "2026-10-16T14:49:46Z",
+    "state": "MERGED",
+    "title": "fix(ble): retry failed codec reads and prevent defaulting to PCM8 (#20779)",
+    "url": "https://github.com/BasedHardware/omi/pull/21524"
+  },
+  {
+    "additions": 409,
+    "author": {
+      "id": "U_kgDODyB_cg",
+      "is_bot": false,
+      "login": "hardik4love-lang",
+      "name": ""
+    },
+    "changedFiles": 2,
+    "deletions": 323,
+    "mergedAt": "2026-10-15T14:42:28Z",
+    "state": "MERGED",
+    "title": "fix(watch): stop Apple Watch recording when disconnecting or forgetting device (#20780)",
+    "url": "https://github.com/BasedHardware/omi/pull/21521"
+  }
+]

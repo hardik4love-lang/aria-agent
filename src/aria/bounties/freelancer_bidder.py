@@ -35,6 +35,14 @@ class FreelancerBidderEngine:
         "api integration", "stripe", "typescript", "bug fix"
     ]
 
+    DISALLOWED_KEYWORDS = [
+        "elementor", "wordpress", "wix", "shopify", "squarespace", "webflow",
+        "canva", "logo", "photoshop", "illustrator", "video", "reels", "tiktok", "instagram",
+        "translation", "typing", "data entry", "academic", "essay", "article",
+        "seo", "backlink", "cold call", "virtual assistant", "graphic design",
+        "telemarketing", "bookkeeping", "accounting", "voiceover"
+    ]
+
     @classmethod
     def get_token(cls) -> str:
         """Retrieves Freelancer OAuth Access Token from environment or .env."""
@@ -130,6 +138,9 @@ class FreelancerBidderEngine:
                         projects = res.json().get("result", {}).get("projects", [])
                         for p in projects:
                             p_id = p.get("id")
+                            p_title = (p.get("title", "") + " " + p.get("description", "")).lower()
+                            if any(bad in p_title for bad in cls.DISALLOWED_KEYWORDS):
+                                continue
                             if p_id and p_id not in matched_projects:
                                 matched_projects[p_id] = p
                 except Exception as e:
@@ -201,15 +212,15 @@ class FreelancerBidderEngine:
                 pass
 
         proposal = (
-            f"Hello,\n\n"
-            f"I have already engineered and tested a production-ready solution for '{title}'.\n\n"
-            f"• Approach: Clean, production-grade {cat} architecture with 100% test pass.\n"
-            f"• Verified SLA: Tested and ready for immediate drop-in integration (< 1 hour).\n"
-            f"• Milestone Settlement: Milestone payment released upon your complete verification.\n\n"
-            f"Verified Implementation Snippet:\n"
-            f"```\n{code_preview}\n```\n\n"
-            f"Ready to deliver the full source code and verify integration immediately upon award.\n"
-            f"Aria Sovereign Engineering"
+            f"Hi,\n\n"
+            f"I reviewed your requirements for '{title}'. As an experienced software engineer specializing in {cat}, I can deliver this cleanly and reliably.\n\n"
+            f"Key Deliverables:\n"
+            f"• Production-grade implementation with clean, maintainable architecture\n"
+            f"• Full verification and testing for smooth, drop-in integration\n"
+            f"• Fast turnaround with clear communication and updates\n\n"
+            f"All milestones remain securely held on Freelancer Escrow until you have thoroughly reviewed and approved the deliverable.\n\n"
+            f"Looking forward to discussing the specifics and getting started immediately.\n\n"
+            f"Best regards,\nHardik / Algorise AI"
         )
         return proposal, sol_file
 

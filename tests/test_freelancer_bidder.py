@@ -24,7 +24,7 @@ def test_synthesize_proposal_for_scraper():
     proposal, sol_file = FreelancerBidderEngine.synthesize_proposal(sample_project)
     assert "Need Python scraper for e-commerce catalog to CSV" in proposal
     assert "Python Web Scraping & Data Extraction" in proposal
-    assert "Aria Sovereign Engineering" in proposal
+    assert "Hardik / Algorise AI" in proposal
     assert sol_file != ""
 
 def test_synthesize_proposal_for_stripe():

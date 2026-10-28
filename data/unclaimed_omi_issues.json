@@ -1,0 +1,158 @@
+[
+  {
+    "createdAt": "2026-10-27T15:55:00Z",
+    "labels": [],
+    "number": 23814,
+    "title": "CI post-merge failure: Android Emulator Acceptance"
+  },
+  {
+    "createdAt": "2026-10-26T13:21:24Z",
+    "labels": [],
+    "number": 23723,
+    "title": "Browser control fails: \"The client uses an unsupported protocol version\" (bundled @playwright/mcp 0.0.68 is outdated)"
+  },
+  {
+    "createdAt": "2026-10-26T04:30:47Z",
+    "labels": [],
+    "number": 23667,
+    "title": "[loop-c] main CI red: other-Release Android Internal Production"
+  },
+  {
+    "createdAt": "2026-10-26T03:45:45Z",
+    "labels": [],
+    "number": 23661,
+    "title": "[loop-c] main CI red: other-Auto Deploy Android to Internal Play Store"
+  },
+  {
+    "createdAt": "2026-10-25T11:34:46Z",
+    "labels": [],
+    "number": 23589,
+    "title": "Proposal: calm progress for delegated desktop work"
+  },
+  {
+    "createdAt": "2026-10-24T13:50:57Z",
+    "labels": [],
+    "number": 23511,
+    "title": "Limitless Pendant: explicit bounded metadata query on the existing session"
+  },
+  {
+    "createdAt": "2026-10-24T04:09:08Z",
+    "labels": [],
+    "number": 23467,
+    "title": "Question: Contributor compensation / bounty program status"
+  },
+  {
+    "createdAt": "2026-10-23T20:35:06Z",
+    "labels": [],
+    "number": 23448,
+    "title": "iOS App Store review submitted 2026-10-21T19:14Z was withdrawn"
+  },
+  {
+    "createdAt": "2026-10-23T17:22:38Z",
+    "labels": [],
+    "number": 23430,
+    "title": "Automated agents ship duplicates of open community PRs without credit"
+  },
+  {
+    "createdAt": "2026-10-22T19:36:45Z",
+    "labels": [],
+    "number": 23337,
+    "title": "[Bounty proposal] fix(demand-processing-tools): harden process_recent_conversations validation, numeric coercion, and config resilience ($50\u2013$100 proposed)"
+  },
+  {
+    "createdAt": "2026-10-22T17:37:32Z",
+    "labels": [],
+    "number": 23328,
+    "title": "[Bounty proposal] fix(preference-tools): harden save_user_preference_tool validation, user_stated coercion, and config resilience ($50 proposed)"
+  },
+  {
+    "createdAt": "2026-10-22T14:15:36Z",
+    "labels": [],
+    "number": 23307,
+    "title": "[Bounty proposal] fix(notification-tools): harden manage_daily_summary_tool validation, hour coercion, and config extraction ( proposed)"
+  },
+  {
+    "createdAt": "2026-10-22T14:06:05Z",
+    "labels": [],
+    "number": 23305,
+    "title": "[Bounty proposal] fix(graph-tools): harden traverse_knowledge_graph_tool validation, hops coercion, and config extraction ( proposed)"
+  },
+  {
+    "createdAt": "2026-10-22T13:17:03Z",
+    "labels": [],
+    "number": 23297,
+    "title": "[Bounty proposal] fix(app-tools): harden create_app_tool schema validation, method normalization, and config resilience ( proposed)"
+  },
+  {
+    "createdAt": "2026-10-22T12:23:13Z",
+    "labels": [],
+    "number": 23292,
+    "title": "[Bounty proposal] fix(file-tools): harden search_files_tool input validation, numeric coercion, and configurable resilience ( proposed)"
+  },
+  {
+    "createdAt": "2026-10-22T03:55:46Z",
+    "labels": [],
+    "number": 23190,
+    "title": "test title"
+  },
+  {
+    "createdAt": "2026-10-22T02:00:04Z",
+    "labels": [],
+    "number": 23177,
+    "title": "[Security] omi-github-app: settings routes trust a bare uid \u2014 anyone can overwrite another user\u2019s agent key, provider, or repo binding"
+  },
+  {
+    "createdAt": "2026-10-21T03:44:36Z",
+    "labels": [],
+    "number": 22972,
+    "title": "Python CLI: concurrent profile logins silently lose one credential"
+  },
+  {
+    "createdAt": "2026-10-20T08:01:55Z",
+    "labels": [],
+    "number": 22803,
+    "title": "Web Tasks: a partly failed bulk delete restores tasks the server already deleted"
+  },
+  {
+    "createdAt": "2026-10-19T20:42:13Z",
+    "labels": [],
+    "number": 22641,
+    "title": "fix(backend): normalize naive/aware/ISO timestamps in smart_merge_policy and smart_merge_state"
+  },
+  {
+    "createdAt": "2026-10-19T17:15:20Z",
+    "labels": [],
+    "number": 22562,
+    "title": "CI post-merge failure: Hermetic scope detection"
+  },
+  {
+    "createdAt": "2026-10-19T17:01:22Z",
+    "labels": [],
+    "number": 22557,
+    "title": "CI post-merge failure: Listen Pusher Stack Gauntlet"
+  },
+  {
+    "createdAt": "2026-10-19T16:31:29Z",
+    "labels": [],
+    "number": 22554,
+    "title": "CI post-merge failure: Sync Cloud Tasks Stack Gauntlet"
+  },
+  {
+    "createdAt": "2026-10-19T11:58:47Z",
+    "labels": [],
+    "number": 22487,
+    "title": "[iOS][Bug] Transcribe Later misrecognizes Japanese as English when Automatic Translation is enabled"
+  },
+  {
+    "createdAt": "2026-10-19T05:17:49Z",
+    "labels": [],
+    "number": 22393,
+    "title": "Dart device SDK Whisper drops the batch being transcribed when stop() is called"
+  },
+  {
+    "createdAt": "2026-10-19T03:34:44Z",
+    "labels": [],
+    "number": 22346,
+    "title": "Dart device SDK drops all audio without an error when Parakeet closes the stream before ready"
+  }
+]
