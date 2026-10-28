@@ -20,36 +20,44 @@ class PRRebaseWatcher:
 
     TRACKED_PRS = [
         {
+            "id": "omi-23841",
+            "repo": "BasedHardware/omi",
+            "pr_number": 23841,
+            "title": "fix(backend): bring SimStore and PostgresStore to parity on allowance holds (#23840)",
+            "payout": "$100 USD",
+            "branch": "fix/queue-signals-parity-store-23840"
+        },
+        {
+            "id": "omi-23842",
+            "repo": "BasedHardware/omi",
+            "pr_number": 23842,
+            "title": "fix(plugins): require auth on omi-github-app settings routes keyed only by uid (#23177)",
+            "payout": "$100 USD",
+            "branch": "fix/github-app-settings-auth-23177"
+        },
+        {
+            "id": "omi-23659",
+            "repo": "BasedHardware/omi",
+            "pr_number": 23659,
+            "title": "fix(plugins): require auth on zapier data-plane routes keyed only by uid (#14428)",
+            "payout": "$100 USD",
+            "branch": "fix/zapier-webhook-auth-isolation-14428"
+        },
+        {
+            "id": "cal-30365",
+            "repo": "calcom/cal.diy",
+            "pr_number": 30365,
+            "title": "fix(settings): honor old primary email deletion and disconnect event types (#30365)",
+            "payout": "$150 USD",
+            "branch": "fix/settings-primary-email-deletion-30365"
+        },
+        {
             "id": "tt-60777",
             "repo": "tenstorrent/tt-metal",
             "pr_number": 60777,
             "title": "Fix FP32 NaN Padding Leak & Sort Parametrization in TT-Metal",
             "payout": "$2,500 USD",
             "branch": "fix-sort-fp32-padding"
-        },
-        {
-            "id": "hy-825",
-            "repo": "limitlessprojects/Go-Hybrid",
-            "pr_number": 825,
-            "title": "Reject User Declarations Colliding with Prelude Names",
-            "payout": "$1,500 USD",
-            "branch": "fix-prelude-collisions"
-        },
-        {
-            "id": "omi-23806",
-            "repo": "BasedHardware/omi",
-            "pr_number": 23806,
-            "title": "Fix Recovery cancellation Store bypass & crash after privacy fencing on Postgres",
-            "payout": "$50-$100 USD",
-            "branch": "fix/recovery-cancellation-store-postgres-23761"
-        },
-        {
-            "id": "hy-569",
-            "repo": "limitlessprojects/Go-Hybrid",
-            "pr_number": 569,
-            "title": "Refactor parser AST validation and hybrid syntax safety",
-            "payout": "$250 USD",
-            "branch": "fix/hybrid-parser-ast-safety"
         }
     ]
 
