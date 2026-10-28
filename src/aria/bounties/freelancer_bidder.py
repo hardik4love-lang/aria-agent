@@ -23,6 +23,9 @@ logger = logging.getLogger("FreelancerBidder")
 class FreelancerBidderEngine:
     """Autonomous bidding engine integrating with Freelancer.com REST API."""
 
+    # HARD GUARD: Auto-bidding strictly PAUSED (Only 9 monthly bids remaining)
+    AUTO_BID_DISABLED: bool = True
+
     BASE_URL = "https://www.freelancer.com/api"
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     BIDS_LOG = os.path.join(BASE_DIR, "data", "freelancer_bids_placed.jsonl")
