@@ -7,7 +7,7 @@ I have already engineered and AST-verified the drop-in production solution for y
 • Deliverable: Cleanroom, production-tested Next.js / TypeScript Fix module.
 • Verification: 100% passing automated unit tests with zero dependency bloat.
 • SLA Turnaround: Ready for immediate drop-in transfer (< 30 minutes).
-• Milestone Settlement: PayPal (shruhicollections@gmail.com) or Base Mainnet (USDC).
+• Milestone Settlement: Strictly PayPal (shruhicollections@gmail.com).
 
 Solution Package File: Glycol-Defoamer-Formulation_solution.ts
 Project Target: https://www.freelancer.com/projects/chemical-engineering/Glycol-Defoamer-Formulation.html
