@@ -1,0 +1,452 @@
+[
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Preserve 502 for exchange transport failures",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6255",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Return 401 for rejected Passport exchange codes",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6253",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<15 Minutes",
+    "title": "Fix wrapper paths in lint tooling package scripts",
+    "amount": "18 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6252",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "New Proposal Router",
+    "amount": "300 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6251",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<15 Minutes",
+    "title": "Keep the catalog failure notice visible during proposal edits",
+    "amount": "9 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6250",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "DevPool Directory Matchmaking UI",
+    "amount": "900 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6249",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<4 Hours",
+    "title": "Bundle Performance Split \u2013 Handoff",
+    "amount": "150 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6248",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "Config Protection",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6247",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "Generalized \"GitHub Webhook + Contributor Role -> Rewards\" With Config v3",
+    "amount": "300 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6246",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "command-plan",
+    "amount": "600 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6245",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "Check dev experience on starting an issue",
+    "amount": "300 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6244",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "Self Invalidations",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6243",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Week",
+    "title": "Cow Swap Cash Out",
+    "amount": "600 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6242",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Phase 3: Update database types and improve type safety",
+    "amount": "37.5 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6241",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "Health Dashboard",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6240",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Honor no-transform and strip modern digest headers when rewriting HTML",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6239",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Set `organization/repository` names in the plugins' configs",
+    "amount": "37.5 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6238",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "Specialized Prompts",
+    "amount": "600 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6237",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<4 Hours",
+    "title": "Review Incentive Double Check Calculations",
+    "amount": "450 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6236",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "Retry and token limits",
+    "amount": "225 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6235",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "Implement Differential Reward Distribution for Reopened Issues",
+    "amount": "600 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6234",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Week",
+    "title": "GitHub Decoupling",
+    "amount": "1200 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6233",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<15 Minutes",
+    "title": "No annotate matches error message",
+    "amount": "9 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6232",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "Formal Deduplication",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6231",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Multiple Matchmaking Comments",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6230",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Week",
+    "title": "Automating Call To Action Delivery (Repo XP Report)",
+    "amount": "400 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6229",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Test ubiquity-os",
+    "amount": "50 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6228",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Week",
+    "title": "Multi Chain Arbitrage",
+    "amount": "400 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6227",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "Arbitrage bot",
+    "amount": "600 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6226",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "Nudge to claim DEMO currency",
+    "amount": "150 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6225",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<15 Minutes",
+    "title": "Staking v2 production deploy",
+    "amount": "27 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6224",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Week",
+    "title": "Governance Token emissions to `ubq.eth` new strategy",
+    "amount": "600 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6223",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Week",
+    "title": "Add `UUSD` and `UBQ` tokens to popular services",
+    "amount": "2400 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6222",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Day",
+    "title": "CI: fix `check_storage_layout` for new contracts",
+    "amount": "300 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6221",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "CI: fix failing `Diamond Storage Check`",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6220",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Make successful pull-request ownership decisions observable",
+    "amount": "112.5 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6216",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Keep HTTP diagnostic Boolean parsing consistent for n",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6215",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<15 Minutes",
+    "title": "Enable JavaScript inputs in the JSX lint recipe",
+    "amount": "18 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6170",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "Pass transport factories to viem's fallback",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6142",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Resolve the selected RPC when each request is made",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6141",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Apply the health-check deadline to response decoding",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6140",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Dismiss reverted-receipt toasts when the status clears",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6139",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<15 Minutes",
+    "title": "Bulk permit deletion copy claims bogus-only scope while the action invalidates every owned pending permit",
+    "amount": "27 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6138",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "Preserve token selector holdings and amount labels across inventory refreshes",
+    "amount": "150 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6022",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Honor no-transform and strip modern digest headers when rewriting HTML",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6021",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<15 Minutes",
+    "title": "Keep the catalog failure notice visible during proposal edits",
+    "amount": "9 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6020",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<1 Hour",
+    "title": "Preserve explicit repository choice and title edits in the proposal router",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/6019",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<4 Hours",
+    "title": "RPC Robustness & Fallback \u2013 Handoff",
+    "amount": "150 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/5969",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "2 Hours",
+    "title": "Reminder is sent on PR reopening even with no assignee",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/5957",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  },
+  {
+    "platform": "Ubiquity DevPool (Automated Bot Permit)",
+    "payout_rail": "Automated Bot Permit -> Direct Wallet/Cashout",
+    "turnaround": "<2 Hours",
+    "title": "CoWSwap Integration Improvements",
+    "amount": "75 USD",
+    "url": "https://github.com/devpool-directory/devpool-directory/issues/5954",
+    "action": "Claim with /start, push PR, bot releases permit automatically"
+  }
+]
