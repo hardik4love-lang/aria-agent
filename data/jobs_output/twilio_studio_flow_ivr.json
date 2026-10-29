@@ -1,0 +1,233 @@
+{
+  "description": "Full Twilio IVR Menu & Warm Conference Call Routing Flow",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        {
+          "event": "incomingMessage"
+        },
+        {
+          "next": "greeting_and_menu",
+          "event": "incomingCall"
+        },
+        {
+          "event": "incomingConversationMessage"
+        },
+        {
+          "event": "incomingRequest"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "greeting_and_menu",
+      "type": "gather-input-on-call",
+      "transitions": [
+        {
+          "next": "menu_switch",
+          "event": "keypress"
+        },
+        {
+          "next": "repeat_or_default_receptionist",
+          "event": "timeout"
+        }
+      ],
+      "properties": {
+        "voice": "Polly.Joanna-Neural",
+        "loop": 1,
+        "finish_on_key": "#",
+        "say": "Thank you for calling. Please listen carefully to the following options. Press 1 for Reception. Press 2 to leave a voicemail. Press 3 to speak with a team member. Or press 0 to speak directly with an operator.",
+        "language": "en-US",
+        "stop_gather": true,
+        "gather_language": "en-US",
+        "profanity_filter": "true",
+        "timeout": 5,
+        "number_of_digits": 1
+      }
+    },
+    {
+      "name": "menu_switch",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "route_receptionist",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Press 1 (Receptionist)",
+              "arguments": [
+                "{{widgets.greeting_and_menu.Digits}}"
+              ],
+              "type": "equal_to",
+              "value": "1"
+            }
+          ]
+        },
+        {
+          "next": "record_voicemail",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Press 2 (Voicemail)",
+              "arguments": [
+                "{{widgets.greeting_and_menu.Digits}}"
+              ],
+              "type": "equal_to",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "next": "route_team_group",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Press 3 (Team Member)",
+              "arguments": [
+                "{{widgets.greeting_and_menu.Digits}}"
+              ],
+              "type": "equal_to",
+              "value": "3"
+            }
+          ]
+        },
+        {
+          "next": "route_receptionist",
+          "event": "noMatch"
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.greeting_and_menu.Digits}}"
+      }
+    },
+    {
+      "name": "route_receptionist",
+      "type": "connect-call-to",
+      "transitions": [
+        {
+          "next": "record_voicemail_on_busy",
+          "event": "callFailure"
+        },
+        {
+          "next": "record_voicemail_on_busy",
+          "event": "busy"
+        },
+        {
+          "next": "record_voicemail_on_busy",
+          "event": "noAnswer"
+        },
+        {
+          "event": "hangup"
+        }
+      ],
+      "properties": {
+        "caller_id": "{{contact.channel.address}}",
+        "timeout": 25,
+        "noun": "number",
+        "number": "+1RECEPTIONIST_NUMBER_PLACEHOLDER"
+      }
+    },
+    {
+      "name": "route_team_group",
+      "type": "connect-call-to",
+      "transitions": [
+        {
+          "next": "record_voicemail_on_busy",
+          "event": "callFailure"
+        },
+        {
+          "next": "record_voicemail_on_busy",
+          "event": "busy"
+        },
+        {
+          "next": "record_voicemail_on_busy",
+          "event": "noAnswer"
+        },
+        {
+          "event": "hangup"
+        }
+      ],
+      "properties": {
+        "caller_id": "{{contact.channel.address}}",
+        "timeout": 30,
+        "noun": "number",
+        "number": "+1TEAM_RING_GROUP_PLACEHOLDER"
+      }
+    },
+    {
+      "name": "record_voicemail",
+      "type": "record-call",
+      "transitions": [
+        {
+          "next": "say_goodbye",
+          "event": "recordingComplete"
+        },
+        {
+          "event": "hangup"
+        }
+      ],
+      "properties": {
+        "max_length": 120,
+        "play_beep": "true",
+        "trim": "trim-silence",
+        "transcribe": "true",
+        "transcription_callback_url": "https://api.yourdomain.com/webhooks/twilio/voicemail"
+      }
+    },
+    {
+      "name": "record_voicemail_on_busy",
+      "type": "say-play",
+      "transitions": [
+        {
+          "next": "record_voicemail",
+          "event": "audioComplete"
+        }
+      ],
+      "properties": {
+        "voice": "Polly.Joanna-Neural",
+        "say": "All our representatives are currently on other calls. Please leave your name, number, and a detailed message after the beep, and we will get back to you promptly.",
+        "language": "en-US"
+      }
+    },
+    {
+      "name": "say_goodbye",
+      "type": "say-play",
+      "transitions": [
+        {
+          "event": "audioComplete"
+        }
+      ],
+      "properties": {
+        "voice": "Polly.Joanna-Neural",
+        "say": "Thank you for your message. Goodbye.",
+        "language": "en-US"
+      }
+    },
+    {
+      "name": "repeat_or_default_receptionist",
+      "type": "say-play",
+      "transitions": [
+        {
+          "next": "route_receptionist",
+          "event": "audioComplete"
+        }
+      ],
+      "properties": {
+        "voice": "Polly.Joanna-Neural",
+        "say": "We did not receive your selection. Connecting you directly to Reception. Please hold.",
+        "language": "en-US"
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}
