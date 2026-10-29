@@ -8,26 +8,26 @@ DATA = {
     "last_updated": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "last_updated_display": "October 29, 2026 - 02:00 PM IST",
     "summary": {
-        "total_pipeline_value_usd": 9925.0,
+        "total_pipeline_value_usd": 9825.0,
         "total_merged_settled_usd": 900.0,
-        "total_approved_imminent_usd": 200.0,
-        "total_open_prs_usd": 7025.0,
+        "total_approved_imminent_usd": 2700.0,
+        "total_open_prs_usd": 4425.0,
         "total_opire_bounties_usd": 575.0,
         "total_client_contracts_usd": 660.0,
         "total_rapid_jobs_usd": 565.0,
         "merged_prs_count": 9,
-        "approved_prs_count": 2,
-        "open_prs_count": 13,
+        "approved_prs_count": 3,
+        "open_prs_count": 11,
         "opire_bounties_count": 5,
         "client_contracts_count": 3,
         "rapid_jobs_count": 10,
         "settlement_rail_primary": "PayPal: shruhicollections@gmail.com",
         "settlement_rail_backup": "Direct Bank Wire via PayPal: shruhicollections@gmail.com"
     },
-    "total_pipeline_value": "$9,925.00 USD",
+    "total_pipeline_value": "$9,825.00 USD",
     "total_merged_value": "$900.00 USD",
-    "total_approved_value": "$200.00 USD",
-    "total_open_prs_value": "$7,025.00 USD",
+    "total_approved_value": "$2,700.00 USD",
+    "total_open_prs_value": "$4,425.00 USD",
     "total_client_contracts_value": "$660.00 USD",
     "total_rapid_jobs_value": "$565.00 USD",
     "dashboard_live_url": "https://hardik4love-lang.github.io/aria-agent/",
@@ -302,19 +302,19 @@ DATA = {
             "id": "ttmetal-60777",
             "repo": "tenstorrent/tt-metal",
             "pr_number": 60777,
-            "title": "[Bug fix] ttnn.sort: pad float32 with max-magnitude sentinels and align tile unpacking (#60777)",
+            "title": "[Bug fix] ttnn.sort: pad float32 with max-magnitude sentinels and align tile unpacking (#60613)",
             "payout": "$2,500.00",
             "payout_numeric": 2500.0,
             "category": "AI Hardware / RISC-V Kernel",
-            "state": "OPEN",
-            "status": "IN REVIEW (NO-PING)",
-            "maintainer": "Tenstorrent Engineering Team",
+            "state": "APPROVED",
+            "status": "APPROVED BY MAINTAINER",
+            "maintainer": "Izajasz Wrosz (@iwroszTT)",
             "pr_url": "https://github.com/tenstorrent/tt-metal/pull/60777",
-            "issue_url": "https://github.com/tenstorrent/tt-metal/issues/60777",
-            "process_stage": "Step 3/5: Maintainer Review",
-            "process_pin": "📍 IN REVIEW: Rebased cleanly on upstream main (commit 2e301358). RISC-V fp32 matmul verified. Strict No-Ping protocol active.",
+            "issue_url": "https://github.com/tenstorrent/tt-metal/issues/60613",
+            "process_stage": "Step 4/5: Approved by Maintainer",
+            "process_pin": "📍 APPROVED: Officially approved by Izajasz Wrosz (@iwroszTT). /codeowners ping triggered for data movement sign-off.",
             "payment_rail": "PayPal (shruhicollections@gmail.com)",
-            "payment_pin": "💰 BOUNTY BOUND: $2,500.00 USD bounty bound to PR #60777. Payout destination: PayPal (shruhicollections@gmail.com)."
+            "payment_pin": "💰 BOUNTY BOUND: $2,500.00 USD bounty locked to PR #60777. Payout destination: PayPal (shruhicollections@gmail.com)."
         },
         {
             "id": "gohybrid-825",
@@ -916,11 +916,11 @@ def run():
     content = re.sub(r'id="kpi-merged-value"[^>]*>[\s\S]*?</div>', 'id="kpi-merged-value" style="color: var(--success); font-size: 1.8rem; margin: 0.3rem 0;">$900.00</div>', content)
     content = re.sub(r'id="kpi-merged-sub"[^>]*>[\s\S]*?</div>', 'id="kpi-merged-sub" style="font-size: 0.75rem; color: #cbd5e1;">9 PRs Merged (6 Omi + 3 Go-Hybrid) &bull; Claim comments logged</div>', content)
     
-    content = re.sub(r'id="kpi-approved-value"[^>]*>[\s\S]*?</div>', 'id="kpi-approved-value" style="color: #f59e0b; font-size: 1.8rem; margin: 0.3rem 0;">$200.00</div>', content)
-    content = re.sub(r'id="kpi-approved-sub"[^>]*>[\s\S]*?</div>', 'id="kpi-approved-sub" style="font-size: 0.75rem; color: #cbd5e1;">PR #23806 Approved &bull; PR #23841 Review Passed &bull; Awaiting merge</div>', content)
+    content = re.sub(r'id="kpi-approved-value"[^>]*>[\s\S]*?</div>', 'id="kpi-approved-value" style="color: #f59e0b; font-size: 1.8rem; margin: 0.3rem 0;">$2,700.00</div>', content)
+    content = re.sub(r'id="kpi-approved-sub"[^>]*>[\s\S]*?</div>', 'id="kpi-approved-sub" style="font-size: 0.75rem; color: #cbd5e1;">Tenstorrent #60777 ($2.5k Approved) &bull; Omi #23806 & #23841 Green</div>', content)
     
-    content = re.sub(r'id="kpi-open-value"[^>]*>[\s\S]*?</div>', 'id="kpi-open-value" style="color: #38bdf8; font-size: 1.8rem; margin: 0.3rem 0;">$7,025.00</div>', content)
-    content = re.sub(r'id="kpi-open-sub"[^>]*>[\s\S]*?</div>', 'id="kpi-open-sub" style="font-size: 0.75rem; color: #cbd5e1;">HackerOne ($1.5k) &bull; Tenstorrent ($2.5k) &bull; Go-Hybrid ($1.5k) &bull; Omi ($750) &bull; Expensify ($525) &bull; Cal.com ($150)</div>', content)
+    content = re.sub(r'id="kpi-open-value"[^>]*>[\s\S]*?</div>', 'id="kpi-open-value" style="color: #38bdf8; font-size: 1.8rem; margin: 0.3rem 0;">$4,425.00</div>', content)
+    content = re.sub(r'id="kpi-open-sub"[^>]*>[\s\S]*?</div>', 'id="kpi-open-sub" style="font-size: 0.75rem; color: #cbd5e1;">HackerOne ($1.5k) &bull; Go-Hybrid ($1.5k) &bull; Omi ($750) &bull; Expensify ($525) &bull; Cal.com ($150)</div>', content)
     
     content = re.sub(r'id="kpi-opire-value"[^>]*>[\s\S]*?</div>', 'id="kpi-opire-value" style="color: #a855f7; font-size: 1.8rem; margin: 0.3rem 0;">$575.00</div>', content)
     content = re.sub(r'id="kpi-opire-sub"[^>]*>[\s\S]*?</div>', 'id="kpi-opire-sub" style="font-size: 0.75rem; color: #cbd5e1;">5 PRs claimed via /opire try comments</div>', content)
@@ -930,19 +930,19 @@ def run():
     
     # Update filter pills static numbers
     filter_pills_html = '''<div class="filter-pills" id="pin-filter-pills">
-          <button class="category-pill active" onclick="filterPinTable('ALL', this)">All Items (32 &bull; $9,925)</button>
+          <button class="category-pill active" onclick="filterPinTable('ALL', this)">All Items (31 &bull; $9,260)</button>
           <button class="category-pill" onclick="filterPinTable('MERGED', this)">&#127942; Merged (9 &bull; $900)</button>
-          <button class="category-pill" onclick="filterPinTable('APPROVED', this)">&#9989; Approved (2 &bull; $200)</button>
-          <button class="category-pill" onclick="filterPinTable('QUEUE', this)">&#128205; In Queue (13 &bull; $7,025)</button>
+          <button class="category-pill" onclick="filterPinTable('APPROVED', this)">&#9989; Approved (3 &bull; $2,700)</button>
+          <button class="category-pill" onclick="filterPinTable('QUEUE', this)">&#128205; In Queue (11 &bull; $4,425)</button>
           <button class="category-pill" onclick="filterPinTable('OPIRE', this)">&#9889; Opire (5 &bull; $575)</button>
           <button class="category-pill" onclick="filterPinTable('CLIENT', this)">&#128188; Clients (3 &bull; $660)</button>
         </div>'''
     content = re.sub(r'<div class="filter-pills" id="pin-filter-pills">[\s\S]*?</div>', filter_pills_html, content)
     
     # Update tab counts in header
-    content = re.sub(r'id="stat-pin-count">[\s\S]*?</span>', 'id="stat-pin-count">32 Items &bull; $9,925.00</span>', content)
+    content = re.sub(r'id="stat-pin-count">[\s\S]*?</span>', 'id="stat-pin-count">31 Items &bull; $9,260.00</span>', content)
     content = re.sub(r'id="merged-tab-count">[\s\S]*?</span>', 'id="merged-tab-count">9 PRs &bull; $900.00</span>', content)
-    content = re.sub(r'id="bounty-count">[\s\S]*?</span>', 'id="bounty-count">13 Items &bull; $7,025.00</span>', content)
+    content = re.sub(r'id="bounty-count">[\s\S]*?</span>', 'id="bounty-count">14 Items &bull; $7,125.00</span>', content)
 
     # Embed EMBEDDED_BOUNTIES_DATA safely without re.sub template escape issues
     json_str = json.dumps(DATA)
