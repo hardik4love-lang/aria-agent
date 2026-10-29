@@ -1,0 +1,35 @@
+{
+  "common": {
+    "welcome": "Bienvenue sur votre plateforme financière",
+    "dashboard": "Tableau de bord",
+    "portfolio": "Portefeuille d'actifs",
+    "transactions": "Historique des transactions",
+    "settings": "Paramètres du compte",
+    "logout": "Déconnexion"
+  },
+  "trading": {
+    "buy": "Acheter",
+    "sell": "Vendre",
+    "market_order": "Ordre au marché",
+    "limit_order": "Ordre à cours limité",
+    "stop_loss": "Ordre stop-loss",
+    "executed_price": "Prix d'exécution",
+    "order_book": "Carnet d'ordres",
+    "liquidity_pool": "Pôle de liquidité",
+    "slippage_tolerance": "Tolérance de glissement"
+  },
+  "wallet": {
+    "available_balance": "Solde disponible",
+    "locked_in_orders": "Fonds engagés dans les ordres",
+    "deposit_funds": "Déposer des fonds",
+    "withdraw_funds": "Retirer des fonds",
+    "wire_transfer": "Virement bancaire SEPA / SWIFT",
+    "instant_settlement": "Règlement instantané"
+  },
+  "compliance_kyc": {
+    "verification_status": "Statut de vérification d'identité",
+    "verified": "Vérifié conforme (KYC niveau 2)",
+    "anti_money_laundering": "Conformité lutte anti-blanchiment (LCB-FT)",
+    "tax_reporting": "Relevé fiscal et récapitulatif annuel"
+  }
+}

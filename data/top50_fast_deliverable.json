@@ -1,0 +1,539 @@
+{
+  "scraped_at": "2026-10-29T17:59:19Z",
+  "tier1": [
+    {
+      "id": 40793491,
+      "title": "Personal Assistant \u2013 Flexible Work ($1000\u2013$3,000/Month)",
+      "query": "stripe payment integration",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 10,
+      "score": 817.5,
+      "url": "https://www.freelancer.com/projects/data-entry/Personal-Assistant-Flexible-Work-Month",
+      "description": "Personal Assistant \u2013 Flexible Work ($500\u2013$3,000/Month)  I'm looking for a reliable, friendly, and motivated person to help me with ongoing online tasks.  This is a flexible, remote opportunity that co",
+      "skills": [
+        "Data Entry",
+        "Customer Support",
+        "Virtual Assistant",
+        "Customer Service"
+      ]
+    },
+    {
+      "id": 40792962,
+      "title": "Financial Platform French Translation",
+      "query": "react nextjs web app",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 22,
+      "score": 787.5,
+      "url": "https://www.freelancer.com/projects/content-writing/Financial-Platform-French-Translation",
+      "description": "I need our web-based financial platform brought into flawless French for users around the globe. The work covers every visible string that shapes the experience\u2014menus, buttons, system messages\u2014as well",
+      "skills": [
+        "Translation",
+        "Proofreading",
+        "Technical Writing",
+        "Editing"
+      ]
+    },
+    {
+      "id": 40793513,
+      "title": "Outil d\u2019audit EMV/NFC Windows",
+      "query": "python script automation",
+      "min_usd": 472.0,
+      "max_usd": 945.0,
+      "mid_usd": 821.0,
+      "currency": "CAD",
+      "bid_count": 8,
+      "score": 610.9,
+      "url": "https://www.freelancer.com/projects/Outil-audit-EMV-NFC-Windows",
+      "description": "Je recherche un d\u00e9veloppeur exp\u00e9riment\u00e9 en s\u00e9curit\u00e9 informatique, poss\u00e9dant une exp\u00e9rience concr\u00e8te des technologies **EMV/NFC et des syst\u00e8mes de paiement**, pour faire \u00e9voluer plusieurs briques logic",
+      "skills": [
+        "C Programming",
+        "Python",
+        "Software Architecture",
+        "Software Testing"
+      ]
+    },
+    {
+      "id": 40793504,
+      "title": "The Mitchelin Cookbook - Editing, Design, and Layout for Rustic Family Keepsake",
+      "query": "api integration rest",
+      "min_usd": 472.0,
+      "max_usd": 945.0,
+      "mid_usd": 821.0,
+      "currency": "CAD",
+      "bid_count": 19,
+      "score": 577.9,
+      "url": "https://www.freelancer.com/projects/adobe-illustrator/The-Mitchelin-Cookbook-Editing-Design",
+      "description": "I have finalized the manuscript for my personal cookbook, The Mitchelin Cookbook, and am looking to start professional formatting and design. This cookbook combines heartfelt recipes, family stories, ",
+      "skills": [
+        "Graphic Design",
+        "Proofreading",
+        "Editing",
+        "Publishing"
+      ]
+    },
+    {
+      "id": 40793418,
+      "title": "Virtual assistant from india",
+      "query": "react nextjs web app",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 14,
+      "score": 368.0,
+      "url": "https://www.freelancer.com/projects/market-research/Virtual-assistant-from-india",
+      "description": "I\u2019ve reached the point where tracking market prices is eating into time I should be spending on strategy, so I\u2019m looking for a detail-oriented assistant to take over the day-to-day research. Your prim",
+      "skills": [
+        "Data Entry",
+        "Excel",
+        "Web Search",
+        "Data Mining"
+      ]
+    },
+    {
+      "id": 40792739,
+      "title": "CEH & OSCP Mentorship -- 2",
+      "query": "python script automation",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 17,
+      "score": 359.0,
+      "url": "https://www.freelancer.com/projects/penetration-testing/CEH-OSCP-Mentorship",
+      "description": "I\u2019m getting ready for the CEH exam while laying the groundwork for OSCP, and I\u2019d like a seasoned security professional to guide me through both tracks in parallel. My immediate priority is preparing f",
+      "skills": [
+        "Linux",
+        "Computer Security",
+        "Network Administration",
+        "Internet Security"
+      ]
+    }
+  ],
+  "all_fast": [
+    {
+      "id": 40792355,
+      "title": "Motor de Recomendaci\u00f3n para App de Pel\u00edculas",
+      "query": "python script automation",
+      "min_usd": 3000.0,
+      "max_usd": 5000.0,
+      "mid_usd": 4000.0,
+      "currency": "USD",
+      "bid_count": 133,
+      "score": 2800.0,
+      "url": "https://www.freelancer.com/projects/machine-learning/Motor-Recomendaci-para-App-Pel",
+      "description": "Buscamos a un desarrollador o equipo para construir el motor de recomendaci\u00f3n de una app m\u00f3vil de pel\u00edculas y una interfaz b\u00e1sica para probarlo con usuarios. Ya tenemos el dise\u00f1o de referencia: necesi",
+      "skills": [
+        "Python",
+        "Graphic Design",
+        "Logo Design",
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 40792220,
+      "title": "MVP Web de App Educativa 2",
+      "query": "node express backend",
+      "min_usd": 3000.0,
+      "max_usd": 5000.0,
+      "mid_usd": 4000.0,
+      "currency": "USD",
+      "bid_count": 164,
+      "score": 2800.0,
+      "url": "https://www.freelancer.com/projects/frontend-development/MVP-Web-App-Educativa-40792220",
+      "description": "Quiero llevar a la web de escritorio nuestro producto m\u00f3vil y necesito un MVP funcional que respete la identidad de marca existente. Ya dispongo de los wireframes principales en Figma; las pantallas c",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "Software Architecture",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40793377,
+      "title": "WooCommerce Interactive Product Gallery Revamp",
+      "query": "react nextjs web app",
+      "min_usd": 945.0,
+      "max_usd": 1890.0,
+      "mid_usd": 2430.0,
+      "currency": "EUR",
+      "bid_count": 234,
+      "score": 1701.0,
+      "url": "https://www.freelancer.com/projects/html/WooCommerce-Interactive-Product-Gallery",
+      "description": "I need a developer to overhaul the WooCommerce product gallery so shoppers can examine every item in detail without extra clicks or page reloads.    What the finished gallery must do: \u2022 Hover-based le",
+      "skills": [
+        "PHP",
+        "JavaScript",
+        "WordPress",
+        "CSS"
+      ]
+    },
+    {
+      "id": 40788936,
+      "title": "Multi-Client GST Automation Platform",
+      "query": "fastapi django flask",
+      "min_usd": 47250.0,
+      "max_usd": 94500.0,
+      "mid_usd": 1350.0,
+      "currency": "INR",
+      "bid_count": 109,
+      "score": 945.0,
+      "url": "https://www.freelancer.com/projects/cloud-computing/Multi-Client-GST-Automation-Platform",
+      "description": "I need a cloud-based GST compliance platform built specifically for a CA firm that handles multiple clients and registrations. The application must automate everything from data ingestion to final fil",
+      "skills": [
+        "PHP",
+        "Visual Basic",
+        "Cloud Computing",
+        "C# Programming"
+      ]
+    },
+    {
+      "id": 40793491,
+      "title": "Personal Assistant \u2013 Flexible Work ($1000\u2013$3,000/Month)",
+      "query": "stripe payment integration",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 10,
+      "score": 817.5,
+      "url": "https://www.freelancer.com/projects/data-entry/Personal-Assistant-Flexible-Work-Month",
+      "description": "Personal Assistant \u2013 Flexible Work ($500\u2013$3,000/Month)  I'm looking for a reliable, friendly, and motivated person to help me with ongoing online tasks.  This is a flexible, remote opportunity that co",
+      "skills": [
+        "Data Entry",
+        "Customer Support",
+        "Virtual Assistant",
+        "Customer Service"
+      ]
+    },
+    {
+      "id": 40792962,
+      "title": "Financial Platform French Translation",
+      "query": "react nextjs web app",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 22,
+      "score": 787.5,
+      "url": "https://www.freelancer.com/projects/content-writing/Financial-Platform-French-Translation",
+      "description": "I need our web-based financial platform brought into flawless French for users around the globe. The work covers every visible string that shapes the experience\u2014menus, buttons, system messages\u2014as well",
+      "skills": [
+        "Translation",
+        "Proofreading",
+        "Technical Writing",
+        "Editing"
+      ]
+    },
+    {
+      "id": 40792900,
+      "title": "Build Multi Vendor Marketplace Platform",
+      "query": "api integration rest",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 447,
+      "score": 787.5,
+      "url": "https://www.freelancer.com/projects/full-stack-development/Build-Multi-Vendor-Marketplace-Platform",
+      "description": "We are looking for an experienced Full-Stack Developer to build a modern, responsive multi-vendor e-commerce platform where multiple sellers can register, manage their products, and sell online.  Proj",
+      "skills": [
+        "PHP",
+        "JavaScript",
+        "MySQL",
+        "Node.js"
+      ]
+    },
+    {
+      "id": 40793513,
+      "title": "Outil d\u2019audit EMV/NFC Windows",
+      "query": "python script automation",
+      "min_usd": 472.0,
+      "max_usd": 945.0,
+      "mid_usd": 821.0,
+      "currency": "CAD",
+      "bid_count": 8,
+      "score": 610.9,
+      "url": "https://www.freelancer.com/projects/Outil-audit-EMV-NFC-Windows",
+      "description": "Je recherche un d\u00e9veloppeur exp\u00e9riment\u00e9 en s\u00e9curit\u00e9 informatique, poss\u00e9dant une exp\u00e9rience concr\u00e8te des technologies **EMV/NFC et des syst\u00e8mes de paiement**, pour faire \u00e9voluer plusieurs briques logic",
+      "skills": [
+        "C Programming",
+        "Python",
+        "Software Architecture",
+        "Software Testing"
+      ]
+    },
+    {
+      "id": 40793504,
+      "title": "The Mitchelin Cookbook - Editing, Design, and Layout for Rustic Family Keepsake",
+      "query": "api integration rest",
+      "min_usd": 472.0,
+      "max_usd": 945.0,
+      "mid_usd": 821.0,
+      "currency": "CAD",
+      "bid_count": 19,
+      "score": 577.9,
+      "url": "https://www.freelancer.com/projects/adobe-illustrator/The-Mitchelin-Cookbook-Editing-Design",
+      "description": "I have finalized the manuscript for my personal cookbook, The Mitchelin Cookbook, and am looking to start professional formatting and design. This cookbook combines heartfelt recipes, family stories, ",
+      "skills": [
+        "Graphic Design",
+        "Proofreading",
+        "Editing",
+        "Publishing"
+      ]
+    },
+    {
+      "id": 40791901,
+      "title": "Hospital Operations Web App Development",
+      "query": "sql database query",
+      "min_usd": 472.0,
+      "max_usd": 945.0,
+      "mid_usd": 821.0,
+      "currency": "CAD",
+      "bid_count": 267,
+      "score": 574.9,
+      "url": "https://www.freelancer.com/projects/api-developmet/Hospital-Operations-Web-App-Development",
+      "description": "I want to replace our scattered spreadsheets and legacy software with one secure, browser-based application that keeps the whole hospital running smoothly. The core focus is on the operational side\u2014as",
+      "skills": [
+        "JavaScript",
+        "Django",
+        "Node.js",
+        "Database Development"
+      ]
+    },
+    {
+      "id": 40791190,
+      "title": "Automated Videographer Hiring Platform",
+      "query": "node express backend",
+      "min_usd": 23625.0,
+      "max_usd": 47250.0,
+      "mid_usd": 675.0,
+      "currency": "INR",
+      "bid_count": 119,
+      "score": 472.5,
+      "url": "https://www.freelancer.com/projects/web-development/Automated-Videographer-Hiring-Platform",
+      "description": "I\u2019m building a web-based platform that lets businesses instantly secure the right videographer for any project\u2014whether that\u2019s full-scale event coverage, polished marketing spots, or simply turning raw",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "MySQL",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40787670,
+      "title": "Full-Stack & Social Media Partner",
+      "query": "fastapi django flask",
+      "min_usd": 23625.0,
+      "max_usd": 47250.0,
+      "mid_usd": 675.0,
+      "currency": "INR",
+      "bid_count": 101,
+      "score": 472.5,
+      "url": "https://www.freelancer.com/projects/full-stack-development/Full-Stack-Social-Media-Partner",
+      "description": "I\u2019m looking for someone who can comfortably wear two hats: a full-stack developer who can build a robust internal tool for my team, and a marketing mind who can keep our social channels buzzing.  Here",
+      "skills": [
+        "PHP",
+        "Python",
+        "MySQL",
+        "Social Media Marketing"
+      ]
+    },
+    {
+      "id": 40792920,
+      "title": "Updating ASP.NET Web Forms, VB.NET, SQL Server to latest version of web forms - Only Bid if your a senior full stack dev - Don't waste my time",
+      "query": "react nextjs web app",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 625.0,
+      "currency": "GBP",
+      "bid_count": 238,
+      "score": 437.5,
+      "url": "https://www.freelancer.com/projects/javascript/Updating-ASP-NET-Web-Forms-40792920",
+      "description": "Full-Stack Developer Needed to Upgrade Existing Website, Backend, Features & Mobile Compatibility  ## Project Overview  I am looking for an experienced full-stack developer to upgrade and modernize my",
+      "skills": [
+        "JavaScript",
+        ".NET",
+        "CSS",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40792873,
+      "title": "Backlog Bookkeeping From Bank Statements",
+      "query": "excel vba macro",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 625.0,
+      "currency": "GBP",
+      "bid_count": 75,
+      "score": 437.5,
+      "url": "https://www.freelancer.com/projects/financial-analysis/Backlog-Bookkeeping-From-Bank-Statements",
+      "description": "I need help get my records back to date following a divorce. I can supply complete bank statements in FIVE different accounts, with money coming in and out as well as transfers FROM one of these FIVE ",
+      "skills": [
+        "Data Entry",
+        "Accounting",
+        "Intuit QuickBooks",
+        "Financial Analysis"
+      ]
+    },
+    {
+      "id": 40793460,
+      "title": "Booking-Style Hotel Site MVP",
+      "query": "react nextjs web app",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 276,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/web-development/Booking-Style-Hotel-Site-MVP",
+      "description": "I need an MVP that lets travellers search for hotels, see real-time availability, and secure a room in just a few clicks. For this first release the scope is intentionally narrow: hotels only\u2014no apart",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "Graphic Design",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40792701,
+      "title": "B\u00fasqueda de Partners / Consultores de Social Media para gesti\u00f3n y captaci\u00f3n de cuentas ",
+      "query": "react nextjs web app",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 53,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/graphic-design/squeda-Partners-Consultores-Social-Media",
+      "description": "  Agencia de marketing digital con m\u00e1s de 15 a\u00f1os de experiencia, partners oficiales de Shopify y Google Ads, busca Consultores de Social Media, Estrategas Digitales y Freelancers independientes para ",
+      "skills": [
+        "Graphic Design",
+        "Internet Marketing",
+        "Logo Design",
+        "SEO"
+      ]
+    },
+    {
+      "id": 40792961,
+      "title": "WordPress katal\u00f3gus Malfini API integr\u00e1ci\u00f3val",
+      "query": "api integration rest",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 70,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/api-integration/WordPress-katal-gus-Malfini-API",
+      "description": "Tisztelt Fejleszt\u0151!  Kisv\u00e1llalkoz\u00e1som r\u00e9sz\u00e9re keresek szakembert egyedi, modern WordPress alap\u00fa bemutat\u00f3 weboldal elk\u00e9sz\u00edt\u00e9s\u00e9re. A v\u00e1llalkoz\u00e1som p\u00f3l\u00f3feliratoz\u00e1ssal, textilnyom\u00e1ssal foglalkozik. Web\u00e1ru",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "SEO",
+        "WordPress"
+      ]
+    },
+    {
+      "id": 40793281,
+      "title": "Validate Prediction Market EV System",
+      "query": "data scraping python",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 37,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/software-development/Validate-Prediction-Market-System",
+      "description": "**Seeking a Software Lead and a Statistical Lead to complete and validate an existing prediction-market system \u2014 total budget USD 800**  We are looking for two complementary specialists, or a small fi",
+      "skills": [
+        "Machine Learning (ML)",
+        "Software Development",
+        "Risk Management",
+        "Statistical Analysis"
+      ]
+    },
+    {
+      "id": 40791736,
+      "title": "Complete Secure",
+      "query": "node express backend",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 409,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/backend-development/Complete-Secure",
+      "description": "I am looking for an experienced Full-Stack Developer to complete an existing web platform for young handball players.  Current Status:  Website already developed (HTML, CSS, JavaScript).  Website is o",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "CSS",
+        "MySQL"
+      ]
+    },
+    {
+      "id": 40793418,
+      "title": "Virtual assistant from india",
+      "query": "react nextjs web app",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 14,
+      "score": 368.0,
+      "url": "https://www.freelancer.com/projects/market-research/Virtual-assistant-from-india",
+      "description": "I\u2019ve reached the point where tracking market prices is eating into time I should be spending on strategy, so I\u2019m looking for a detail-oriented assistant to take over the day-to-day research. Your prim",
+      "skills": [
+        "Data Entry",
+        "Excel",
+        "Web Search",
+        "Data Mining"
+      ]
+    },
+    {
+      "id": 40792739,
+      "title": "CEH & OSCP Mentorship -- 2",
+      "query": "python script automation",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 17,
+      "score": 359.0,
+      "url": "https://www.freelancer.com/projects/penetration-testing/CEH-OSCP-Mentorship",
+      "description": "I\u2019m getting ready for the CEH exam while laying the groundwork for OSCP, and I\u2019d like a seasoned security professional to guide me through both tracks in parallel. My immediate priority is preparing f",
+      "skills": [
+        "Linux",
+        "Computer Security",
+        "Network Administration",
+        "Internet Security"
+      ]
+    },
+    {
+      "id": 40793342,
+      "title": "Open-Source Fund Data Chatbot",
+      "query": "react nextjs web app",
+      "min_usd": 6300.0,
+      "max_usd": 47250.0,
+      "mid_usd": 510.0,
+      "currency": "INR",
+      "bid_count": 98,
+      "score": 357.0,
+      "url": "https://www.freelancer.com/projects/natural-language-processing/Open-Source-Fund-Data-Chatbot",
+      "description": "I already maintain a well-structured MySQL database that stores exhaustive mutual-fund research\u2014historical returns, risk metrics, holdings breakdowns, ratings, fees, and manager information. What I no",
+      "skills": [
+        "PHP",
+        "Research",
+        "MySQL",
+        "Database Programming"
+      ]
+    }
+  ]
+}

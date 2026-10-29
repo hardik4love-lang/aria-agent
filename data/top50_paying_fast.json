@@ -1,0 +1,955 @@
+{
+  "scraped_at": "2026-10-29T17:59:19Z",
+  "top50": [
+    {
+      "id": 40790821,
+      "title": "Service Website With User Accounts",
+      "query": "fastapi django flask",
+      "min_usd": 50000.0,
+      "max_usd": 100000.0,
+      "mid_usd": 75000.0,
+      "currency": "USD",
+      "bid_count": 146,
+      "score": 52500.0,
+      "url": "https://www.freelancer.com/projects/web-development/Service-Website-With-User-Accounts",
+      "description": "I\u2019m ready to turn my idea into a full-featured web experience that people can open in any modern browser. The core of the project is a service-driven site that lets visitors create their own accounts,",
+      "skills": [
+        "PHP",
+        "JavaScript",
+        "Website Design",
+        "Graphic Design"
+      ]
+    },
+    {
+      "id": 40793296,
+      "title": "Data Entry Automation Script -- 2",
+      "query": "python script automation",
+      "min_usd": 100000.0,
+      "max_usd": 0,
+      "mid_usd": 50000.0,
+      "currency": "USD",
+      "bid_count": 13,
+      "score": 35021.0,
+      "url": "https://www.freelancer.com/projects/scripting/Data-Entry-Automation-Script",
+      "description": "Data entry  Write script  Assistant",
+      "skills": [
+        "Data Entry",
+        "Excel",
+        "Scripting",
+        "Data Management"
+      ]
+    },
+    {
+      "id": 40793174,
+      "title": "Data Entry Automation Script",
+      "query": "python script automation",
+      "min_usd": 100000.0,
+      "max_usd": 0,
+      "mid_usd": 50000.0,
+      "currency": "USD",
+      "bid_count": 21,
+      "score": 35000.0,
+      "url": "https://www.freelancer.com/projects/data-entry/Data-Entry-Automation-Script",
+      "description": "Data entry  Write script  Assistant",
+      "skills": [
+        "Data Entry",
+        "Excel",
+        "Scripting",
+        "Data Management"
+      ]
+    },
+    {
+      "id": 40792212,
+      "title": "MVP Web de App Educativa",
+      "query": "node express backend",
+      "min_usd": 100000.0,
+      "max_usd": 0,
+      "mid_usd": 50000.0,
+      "currency": "USD",
+      "bid_count": 126,
+      "score": 35000.0,
+      "url": "https://www.freelancer.com/projects/frontend-development/MVP-Web-App-Educativa",
+      "description": "Ya contamos con una app m\u00f3vil funcionando y ahora quiero llevar sus funciones clave a una versi\u00f3n web de escritorio. Entrego identidad de marca, wireframes y flujos de usuario en Figma para que trabaj",
+      "skills": [
+        "PHP",
+        "JavaScript",
+        "Website Design",
+        "HTML5"
+      ]
+    },
+    {
+      "id": 40791981,
+      "title": "Tesla & SpaceX Fan Learning App",
+      "query": "node express backend",
+      "min_usd": 100000.0,
+      "max_usd": 0,
+      "mid_usd": 50000.0,
+      "currency": "USD",
+      "bid_count": 174,
+      "score": 35000.0,
+      "url": "https://www.freelancer.com/projects/android/Tesla-SpaceX-Fan-Learning-App",
+      "description": "I\u2019m building a mobile app that helps devoted Tesla, SpaceX, and general AI enthusiasts go beyond headline news and truly learn. The idea is simple: a clean, intuitive platform that streams high-qualit",
+      "skills": [
+        "PHP",
+        "Mobile App Development",
+        "iPhone",
+        "Android"
+      ]
+    },
+    {
+      "id": 40791962,
+      "title": "Plataforma de Turismo y Experiencias Inmersivas",
+      "query": "node express backend",
+      "min_usd": 100000.0,
+      "max_usd": 0,
+      "mid_usd": 50000.0,
+      "currency": "USD",
+      "bid_count": 106,
+      "score": 35000.0,
+      "url": "https://www.freelancer.com/projects/web-development/Plataforma-Turismo-Experiencias",
+      "description": "Buscamos un desarrollador o equipo de desarrollo de software para dise\u00f1ar una APP de turismo, con un funcionamiento similar al de Airbnb Experiences. Requerimos una aplicaci\u00f3n web responsive, escalabl",
+      "skills": [
+        "Mobile App Development",
+        "iPhone",
+        "Android",
+        "PhoneGap"
+      ]
+    },
+    {
+      "id": 40790363,
+      "title": "HR Records & Document Platform",
+      "query": "fastapi django flask",
+      "min_usd": 315000.0,
+      "max_usd": 630000.0,
+      "mid_usd": 9000.0,
+      "currency": "INR",
+      "bid_count": 83,
+      "score": 6300.0,
+      "url": "https://www.freelancer.com/projects/web-development/Records-Document-Platform",
+      "description": "I am kicking off a modular HR management suite that will ultimately link into a broader school system, but Phase 1 is laser-focused on core staff administration. In this first release I need a secure,",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "MySQL",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40792950,
+      "title": "Adobe-Savvy Social Media Manager",
+      "query": "twilio sms voice",
+      "min_usd": 5000.0,
+      "max_usd": 10000.0,
+      "mid_usd": 7500.0,
+      "currency": "USD",
+      "bid_count": 37,
+      "score": 5250.0,
+      "url": "https://www.freelancer.com/projects/adobe-premiere-pro/Adobe-Savvy-Social-Media-Manager",
+      "description": "I\u2019m ready to hand the daily management of Bubbler Media\u2019s social channels to someone who can plan, produce, and post without hand-holding. You\u2019ll work directly with our founders in EST hours, owning e",
+      "skills": [
+        "Video Services",
+        "Animation",
+        "After Effects",
+        "Videography"
+      ]
+    },
+    {
+      "id": 40793320,
+      "title": "Real-Time Alcohol Test Management Software",
+      "query": "api integration rest",
+      "min_usd": 5000.0,
+      "max_usd": 5000.0,
+      "mid_usd": 5000.0,
+      "currency": "USD",
+      "bid_count": 174,
+      "score": 3500.0,
+      "url": "https://www.freelancer.com/projects/cloud/Real-Time-Alcohol-Test-Management",
+      "description": "I need software for a portable alcohol testing device. This software will be used primarily by employers or program managers to monitor individuals.\r \r Key functionalities include:\r - Show alcohol tes",
+      "skills": [
+        "PHP",
+        "C Programming",
+        "Data Processing",
+        "Mobile App Development"
+      ]
+    },
+    {
+      "id": 40792355,
+      "title": "Motor de Recomendaci\u00f3n para App de Pel\u00edculas",
+      "query": "python script automation",
+      "min_usd": 3000.0,
+      "max_usd": 5000.0,
+      "mid_usd": 4000.0,
+      "currency": "USD",
+      "bid_count": 133,
+      "score": 2800.0,
+      "url": "https://www.freelancer.com/projects/machine-learning/Motor-Recomendaci-para-App-Pel",
+      "description": "Buscamos a un desarrollador o equipo para construir el motor de recomendaci\u00f3n de una app m\u00f3vil de pel\u00edculas y una interfaz b\u00e1sica para probarlo con usuarios. Ya tenemos el dise\u00f1o de referencia: necesi",
+      "skills": [
+        "Python",
+        "Graphic Design",
+        "Logo Design",
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 40792220,
+      "title": "MVP Web de App Educativa 2",
+      "query": "node express backend",
+      "min_usd": 3000.0,
+      "max_usd": 5000.0,
+      "mid_usd": 4000.0,
+      "currency": "USD",
+      "bid_count": 164,
+      "score": 2800.0,
+      "url": "https://www.freelancer.com/projects/frontend-development/MVP-Web-App-Educativa-40792220",
+      "description": "Quiero llevar a la web de escritorio nuestro producto m\u00f3vil y necesito un MVP funcional que respete la identidad de marca existente. Ya dispongo de los wireframes principales en Figma; las pantallas c",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "Software Architecture",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40793377,
+      "title": "WooCommerce Interactive Product Gallery Revamp",
+      "query": "react nextjs web app",
+      "min_usd": 945.0,
+      "max_usd": 1890.0,
+      "mid_usd": 2430.0,
+      "currency": "EUR",
+      "bid_count": 234,
+      "score": 1701.0,
+      "url": "https://www.freelancer.com/projects/html/WooCommerce-Interactive-Product-Gallery",
+      "description": "I need a developer to overhaul the WooCommerce product gallery so shoppers can examine every item in detail without extra clicks or page reloads.    What the finished gallery must do: \u2022 Hover-based le",
+      "skills": [
+        "PHP",
+        "JavaScript",
+        "WordPress",
+        "CSS"
+      ]
+    },
+    {
+      "id": 40791348,
+      "title": "Daily Data Alerts Platform",
+      "query": "node express backend",
+      "min_usd": 94500.0,
+      "max_usd": 157500.0,
+      "mid_usd": 2400.0,
+      "currency": "INR",
+      "bid_count": 143,
+      "score": 1680.0,
+      "url": "https://www.freelancer.com/projects/full-stack-development/Daily-Data-Alerts-Platform",
+      "description": "I\u2019m looking for a seasoned full-stack developer who can take an idea that already has its data sources lined up and turn it into a polished web and mobile experience that automatically pushes a fresh ",
+      "skills": [
+        "JavaScript",
+        "Python",
+        "Mobile App Development",
+        "Django"
+      ]
+    },
+    {
+      "id": 40789499,
+      "title": "Full-Stack Package Compatibility Upgrade and LMS Reimplementation ( WebAPP +Mobile APP)",
+      "query": "fastapi django flask",
+      "min_usd": 94500.0,
+      "max_usd": 157500.0,
+      "mid_usd": 2400.0,
+      "currency": "INR",
+      "bid_count": 102,
+      "score": 1680.0,
+      "url": "https://www.freelancer.com/projects/django/Full-Stack-Package-Compatibility-Upgrade",
+      "description": "Job Description: We are looking for a senior full-stack developer or a small, agile agency from India to handle a comprehensive platform upgrade and a new mobile app build. Our current ecosystem uses ",
+      "skills": [
+        "Python",
+        "Mobile App Development",
+        "Django",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "id": 40785566,
+      "title": "Customer Portal Development with FastAPI and Next.js and an android app",
+      "query": "fastapi django flask",
+      "min_usd": 94500.0,
+      "max_usd": 157500.0,
+      "mid_usd": 2400.0,
+      "currency": "INR",
+      "bid_count": 152,
+      "score": 1680.0,
+      "url": "https://www.freelancer.com/projects/fastapi/Customer-Portal-Development-with-FastAPI",
+      "description": "I'm seeking an experienced Python developer to build a customer-facing portal using FastAPI and Next.js  Below are the things to build. Product requirements document draft version uploaded in files 1.",
+      "skills": [
+        "PHP",
+        "JavaScript",
+        "Python",
+        "Google App Engine"
+      ]
+    },
+    {
+      "id": 40793385,
+      "title": "Injection-Moulded Tackle Storage CAD Design",
+      "query": "logo design brand",
+      "min_usd": 1500.0,
+      "max_usd": 3000.0,
+      "mid_usd": 2250.0,
+      "currency": "USD",
+      "bid_count": 11,
+      "score": 1602.0,
+      "url": "https://www.freelancer.com/projects/3d-cad/Injection-Moulded-Tackle-Storage-CAD-40793385",
+      "description": "Senior Mechanical Product Design Engineer \u2013 Injection-Moulded Plastic Tackle Storage System  VANTEXA is developing a premium range of fishing tackle storage products for the UK and European markets. W",
+      "skills": [
+        "Industrial Design",
+        "CAD/CAM",
+        "Solidworks",
+        "Mechanical Engineering"
+      ]
+    },
+    {
+      "id": 40755651,
+      "title": "Kids Playcenter Event App",
+      "query": "node express backend",
+      "min_usd": 630.0,
+      "max_usd": 1890.0,
+      "mid_usd": 2160.0,
+      "currency": "EUR",
+      "bid_count": 299,
+      "score": 1512.0,
+      "url": "https://www.freelancer.com/projects/video-editing/Kids-Playcenter-Event-App",
+      "description": "I\u2019m building an all-in-one application that lets our playcenter team craft a personalized \u201cbirthday show\u201d for every party and instantly hand the family a downloadable keepsake video.  Core flow   \u2022 Fr",
+      "skills": [
+        "Mobile App Development",
+        "iPhone",
+        "Android",
+        "Animation"
+      ]
+    },
+    {
+      "id": 40791914,
+      "title": "Full-Stack Developer for Quick Commerce MVP (Construction Materials, India)",
+      "query": "javascript typescript fix",
+      "min_usd": 47250.0,
+      "max_usd": 94500.0,
+      "mid_usd": 1350.0,
+      "currency": "INR",
+      "bid_count": 146,
+      "score": 945.0,
+      "url": "https://www.freelancer.com/projects/mobile-app-development/Full-Stack-Developer-for-Quick",
+      "description": "We are building a hyperlocal multi-vendor marketplace for construction and hardware materials in India. Local shops (hardware, building material, electrical, paint, sanitary, tools) will list their pr",
+      "skills": [
+        "Graphic Design",
+        "Mobile App Development",
+        "Logistics",
+        "Node.js"
+      ]
+    },
+    {
+      "id": 40788936,
+      "title": "Multi-Client GST Automation Platform",
+      "query": "fastapi django flask",
+      "min_usd": 47250.0,
+      "max_usd": 94500.0,
+      "mid_usd": 1350.0,
+      "currency": "INR",
+      "bid_count": 109,
+      "score": 945.0,
+      "url": "https://www.freelancer.com/projects/cloud-computing/Multi-Client-GST-Automation-Platform",
+      "description": "I need a cloud-based GST compliance platform built specifically for a CA firm that handles multiple clients and registrations. The application must automate everything from data ingestion to final fil",
+      "skills": [
+        "PHP",
+        "Visual Basic",
+        "Cloud Computing",
+        "C# Programming"
+      ]
+    },
+    {
+      "id": 40793277,
+      "title": "Cross-Platform Artist Music App",
+      "query": "react nextjs web app",
+      "min_usd": 315.0,
+      "max_usd": 945.0,
+      "mid_usd": 1250.0,
+      "currency": "GBP",
+      "bid_count": 234,
+      "score": 875.0,
+      "url": "https://www.freelancer.com/projects/flutter/Cross-Platform-Artist-Music-App",
+      "description": "I\u2019m ready to give my fans a dedicated space where they can easily stream and discover all of my releases while growing a real sense of community around the music. I need a developer who can design and",
+      "skills": [
+        "Mobile App Development",
+        "iPhone",
+        "Android",
+        "PhoneGap"
+      ]
+    },
+    {
+      "id": 40792577,
+      "title": "Japanese + Korean speaking interviewer, one week (31 Oct to 7 Nov), remote, paid per call",
+      "query": "twilio sms voice",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 1,
+      "score": 844.5,
+      "url": "https://www.freelancer.com/projects/korean-translator/Japanese-Korean-speaking-interviewer-one",
+      "description": "Japanese + Korean speaking interviewer for one week (31 Oct to 7 Nov), remote, paid per call.  We are casting native Japanese and Korean speakers for a paid speech recording project for a global AI co",
+      "skills": [
+        "Translation",
+        "Recruitment",
+        "Korean Translator",
+        "Japanese Translator"
+      ]
+    },
+    {
+      "id": 40792592,
+      "title": "Global IT Sales Partner \u2013 BI, Analytics & Data Solutions | Uncapped Commission Opportunity | 100% Remote",
+      "query": "python script automation",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 5,
+      "score": 832.5,
+      "url": "https://www.freelancer.com/projects/business-development/Global-Sales-Partner-Analytics-Data",
+      "description": "# About the Opportunity  We are seeking experienced IT sales professionals who can independently acquire international clients for Power BI, Tableau, BI dashboards, data analytics, reporting automatio",
+      "skills": [
+        "Proposal Writing",
+        "Data Analytics",
+        "Analytics Sales",
+        "Technology Sales"
+      ]
+    },
+    {
+      "id": 40793491,
+      "title": "Personal Assistant \u2013 Flexible Work ($1000\u2013$3,000/Month)",
+      "query": "stripe payment integration",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 10,
+      "score": 817.5,
+      "url": "https://www.freelancer.com/projects/data-entry/Personal-Assistant-Flexible-Work-Month",
+      "description": "Personal Assistant \u2013 Flexible Work ($500\u2013$3,000/Month)  I'm looking for a reliable, friendly, and motivated person to help me with ongoing online tasks.  This is a flexible, remote opportunity that co",
+      "skills": [
+        "Data Entry",
+        "Customer Support",
+        "Virtual Assistant",
+        "Customer Service"
+      ]
+    },
+    {
+      "id": 40793087,
+      "title": "Music Link Landing Page Platform",
+      "query": "react nextjs web app",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 406,
+      "score": 787.5,
+      "url": "https://www.freelancer.com/projects/web-development/Music-Link-Landing-Page-Platform",
+      "description": "I want to build a web-based landing-page generator geared toward musicians who need a single, shareable link for every new release. Think of the core experience of Hypeddit or Soundplate blended with ",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "WordPress",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40792962,
+      "title": "Financial Platform French Translation",
+      "query": "react nextjs web app",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 22,
+      "score": 787.5,
+      "url": "https://www.freelancer.com/projects/content-writing/Financial-Platform-French-Translation",
+      "description": "I need our web-based financial platform brought into flawless French for users around the globe. The work covers every visible string that shapes the experience\u2014menus, buttons, system messages\u2014as well",
+      "skills": [
+        "Translation",
+        "Proofreading",
+        "Technical Writing",
+        "Editing"
+      ]
+    },
+    {
+      "id": 40793042,
+      "title": "Smart LPG IoT Hardware Development",
+      "query": "api integration rest",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 35,
+      "score": 787.5,
+      "url": "https://www.freelancer.com/projects/embedded-systems/Smart-LPG-IoT-Hardware-Development",
+      "description": "Job Title: Embedded Systems & Cellular IoT Engineer for Smart LPG Utility Platform Project Overview:  We are developing SDP Elite, an IoT-enabled mobile LPG distribution and utility platform. We are s",
+      "skills": [
+        "Electronics",
+        "Microcontroller",
+        "Embedded Software",
+        "PCB Layout"
+      ]
+    },
+    {
+      "id": 40793024,
+      "title": "Smart LPG IoT Hardware Engineer",
+      "query": "api integration rest",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 29,
+      "score": 787.5,
+      "url": "https://www.freelancer.com/projects/embedded-systems/Smart-LPG-IoT-Hardware-Engineer",
+      "description": "Job Title: Embedded Systems & Cellular IoT Engineer for Smart LPG Utility Platform Project Overview:  We are developing SDP Elite, an IoT-enabled mobile LPG distribution and utility platform. We are s",
+      "skills": [
+        "Wireless",
+        "Electronics",
+        "Microcontroller",
+        "PCB Layout"
+      ]
+    },
+    {
+      "id": 40792900,
+      "title": "Build Multi Vendor Marketplace Platform",
+      "query": "api integration rest",
+      "min_usd": 750.0,
+      "max_usd": 1500.0,
+      "mid_usd": 1125.0,
+      "currency": "USD",
+      "bid_count": 447,
+      "score": 787.5,
+      "url": "https://www.freelancer.com/projects/full-stack-development/Build-Multi-Vendor-Marketplace-Platform",
+      "description": "We are looking for an experienced Full-Stack Developer to build a modern, responsive multi-vendor e-commerce platform where multiple sellers can register, manage their products, and sell online.  Proj",
+      "skills": [
+        "PHP",
+        "JavaScript",
+        "MySQL",
+        "Node.js"
+      ]
+    },
+    {
+      "id": 40793513,
+      "title": "Outil d\u2019audit EMV/NFC Windows",
+      "query": "python script automation",
+      "min_usd": 472.0,
+      "max_usd": 945.0,
+      "mid_usd": 821.0,
+      "currency": "CAD",
+      "bid_count": 8,
+      "score": 610.9,
+      "url": "https://www.freelancer.com/projects/Outil-audit-EMV-NFC-Windows",
+      "description": "Je recherche un d\u00e9veloppeur exp\u00e9riment\u00e9 en s\u00e9curit\u00e9 informatique, poss\u00e9dant une exp\u00e9rience concr\u00e8te des technologies **EMV/NFC et des syst\u00e8mes de paiement**, pour faire \u00e9voluer plusieurs briques logic",
+      "skills": [
+        "C Programming",
+        "Python",
+        "Software Architecture",
+        "Software Testing"
+      ]
+    },
+    {
+      "id": 40793504,
+      "title": "The Mitchelin Cookbook - Editing, Design, and Layout for Rustic Family Keepsake",
+      "query": "api integration rest",
+      "min_usd": 472.0,
+      "max_usd": 945.0,
+      "mid_usd": 821.0,
+      "currency": "CAD",
+      "bid_count": 19,
+      "score": 577.9,
+      "url": "https://www.freelancer.com/projects/adobe-illustrator/The-Mitchelin-Cookbook-Editing-Design",
+      "description": "I have finalized the manuscript for my personal cookbook, The Mitchelin Cookbook, and am looking to start professional formatting and design. This cookbook combines heartfelt recipes, family stories, ",
+      "skills": [
+        "Graphic Design",
+        "Proofreading",
+        "Editing",
+        "Publishing"
+      ]
+    },
+    {
+      "id": 40791901,
+      "title": "Hospital Operations Web App Development",
+      "query": "sql database query",
+      "min_usd": 472.0,
+      "max_usd": 945.0,
+      "mid_usd": 821.0,
+      "currency": "CAD",
+      "bid_count": 267,
+      "score": 574.9,
+      "url": "https://www.freelancer.com/projects/api-developmet/Hospital-Operations-Web-App-Development",
+      "description": "I want to replace our scattered spreadsheets and legacy software with one secure, browser-based application that keeps the whole hospital running smoothly. The core focus is on the operational side\u2014as",
+      "skills": [
+        "JavaScript",
+        "Django",
+        "Node.js",
+        "Database Development"
+      ]
+    },
+    {
+      "id": 40793300,
+      "title": "SDR Appointment Setter for Insurance Agencies",
+      "query": "twilio sms voice",
+      "min_usd": 23625.0,
+      "max_usd": 47250.0,
+      "mid_usd": 675.0,
+      "currency": "INR",
+      "bid_count": 4,
+      "score": 520.5,
+      "url": "https://www.freelancer.com/projects/lead-generation/SDR-Appointment-Setter-for-Insurance",
+      "description": "Title: Cold Calling SDR / Appointment Setter: B2B Outbound to US Insurance Agencies | $30 per Attended Demo + $150 per Client  About the role US company supplying remote staff to insurance agencies, b",
+      "skills": [
+        "Data Entry",
+        "Telemarketing",
+        "Sales",
+        "CRM"
+      ]
+    },
+    {
+      "id": 40791190,
+      "title": "Automated Videographer Hiring Platform",
+      "query": "node express backend",
+      "min_usd": 23625.0,
+      "max_usd": 47250.0,
+      "mid_usd": 675.0,
+      "currency": "INR",
+      "bid_count": 119,
+      "score": 472.5,
+      "url": "https://www.freelancer.com/projects/web-development/Automated-Videographer-Hiring-Platform",
+      "description": "I\u2019m building a web-based platform that lets businesses instantly secure the right videographer for any project\u2014whether that\u2019s full-scale event coverage, polished marketing spots, or simply turning raw",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "MySQL",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40787670,
+      "title": "Full-Stack & Social Media Partner",
+      "query": "fastapi django flask",
+      "min_usd": 23625.0,
+      "max_usd": 47250.0,
+      "mid_usd": 675.0,
+      "currency": "INR",
+      "bid_count": 101,
+      "score": 472.5,
+      "url": "https://www.freelancer.com/projects/full-stack-development/Full-Stack-Social-Media-Partner",
+      "description": "I\u2019m looking for someone who can comfortably wear two hats: a full-stack developer who can build a robust internal tool for my team, and a marketing mind who can keep our social channels buzzing.  Here",
+      "skills": [
+        "PHP",
+        "Python",
+        "MySQL",
+        "Social Media Marketing"
+      ]
+    },
+    {
+      "id": 40792920,
+      "title": "Updating ASP.NET Web Forms, VB.NET, SQL Server to latest version of web forms - Only Bid if your a senior full stack dev - Don't waste my time",
+      "query": "react nextjs web app",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 625.0,
+      "currency": "GBP",
+      "bid_count": 238,
+      "score": 437.5,
+      "url": "https://www.freelancer.com/projects/javascript/Updating-ASP-NET-Web-Forms-40792920",
+      "description": "Full-Stack Developer Needed to Upgrade Existing Website, Backend, Features & Mobile Compatibility  ## Project Overview  I am looking for an experienced full-stack developer to upgrade and modernize my",
+      "skills": [
+        "JavaScript",
+        ".NET",
+        "CSS",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40792873,
+      "title": "Backlog Bookkeeping From Bank Statements",
+      "query": "excel vba macro",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 625.0,
+      "currency": "GBP",
+      "bid_count": 75,
+      "score": 437.5,
+      "url": "https://www.freelancer.com/projects/financial-analysis/Backlog-Bookkeeping-From-Bank-Statements",
+      "description": "I need help get my records back to date following a divorce. I can supply complete bank statements in FIVE different accounts, with money coming in and out as well as transfers FROM one of these FIVE ",
+      "skills": [
+        "Data Entry",
+        "Accounting",
+        "Intuit QuickBooks",
+        "Financial Analysis"
+      ]
+    },
+    {
+      "id": 40793367,
+      "title": "Venditore Internazionale di Marketing Digitale | Italiano",
+      "query": "logo design brand",
+      "min_usd": 10.0,
+      "max_usd": 1000.0,
+      "mid_usd": 505.0,
+      "currency": "USD",
+      "bid_count": 3,
+      "score": 404.5,
+      "url": "https://www.freelancer.com/projects/telemarketing/Venditore-Internazionale-Marketing",
+      "description": "IL PROGETTO  Komp \u00e8 un\u2019agenzia di marketing digitale specializzata nella distribuzione di contenuti e nelle campagne di video brevi per i social media. Aiutiamo creator, imprenditori, podcaster, perso",
+      "skills": [
+        "Telemarketing",
+        "Sales",
+        "Customer Support",
+        "Affiliate Marketing"
+      ]
+    },
+    {
+      "id": 40793373,
+      "title": "International Salesperson for Digital Marketing | English",
+      "query": "stripe payment integration",
+      "min_usd": 10.0,
+      "max_usd": 1000.0,
+      "mid_usd": 505.0,
+      "currency": "USD",
+      "bid_count": 7,
+      "score": 392.5,
+      "url": "https://www.freelancer.com/projects/telemarketing/International-Salesperson-for-Digital",
+      "description": "ABOUT THE PROJECT  Komp is a digital marketing agency specializing in content distribution and short-form video campaigns for social media. We help content creators, entrepreneurs, podcasters, persona",
+      "skills": [
+        "Telemarketing",
+        "Sales",
+        "Customer Support",
+        "Affiliate Marketing"
+      ]
+    },
+    {
+      "id": 40792662,
+      "title": "Project 540: Live Singing Project",
+      "query": "twilio sms voice",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 8,
+      "score": 386.0,
+      "url": "https://www.freelancer.com/projects/audio-services/Project-Live-Singing-Project",
+      "description": "We\u2019re collecting solo vocal recordings for an AI and machine-learning audio dataset. We\u2019re looking for skilled singers to record at least an hour (around 20 songs) of English songs. This is one part o",
+      "skills": [
+        "Audio Services",
+        "Music",
+        "Voice Talent",
+        "Music Lesson"
+      ]
+    },
+    {
+      "id": 40793308,
+      "title": "Comprehensive Property Maintenance Tasks",
+      "query": "wordpress fix bug",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 9,
+      "score": 383.0,
+      "url": "https://www.freelancer.com/projects/plumbing/Comprehensive-Property-Maintenance-Tasks",
+      "description": "I need a reliable professional to take care of several general\u2010maintenance items around the property. The current punch-list covers:  \u2022 Electrical: inspect and repair or replace faulty lighting fixtur",
+      "skills": [
+        "Property Management",
+        "Carpentry",
+        "Handyman",
+        "Flooring"
+      ]
+    },
+    {
+      "id": 40793460,
+      "title": "Booking-Style Hotel Site MVP",
+      "query": "react nextjs web app",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 276,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/web-development/Booking-Style-Hotel-Site-MVP",
+      "description": "I need an MVP that lets travellers search for hotels, see real-time availability, and secure a room in just a few clicks. For this first release the scope is intentionally narrow: hotels only\u2014no apart",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "Graphic Design",
+        "HTML"
+      ]
+    },
+    {
+      "id": 40792701,
+      "title": "B\u00fasqueda de Partners / Consultores de Social Media para gesti\u00f3n y captaci\u00f3n de cuentas ",
+      "query": "react nextjs web app",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 53,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/graphic-design/squeda-Partners-Consultores-Social-Media",
+      "description": "  Agencia de marketing digital con m\u00e1s de 15 a\u00f1os de experiencia, partners oficiales de Shopify y Google Ads, busca Consultores de Social Media, Estrategas Digitales y Freelancers independientes para ",
+      "skills": [
+        "Graphic Design",
+        "Internet Marketing",
+        "Logo Design",
+        "SEO"
+      ]
+    },
+    {
+      "id": 40792961,
+      "title": "WordPress katal\u00f3gus Malfini API integr\u00e1ci\u00f3val",
+      "query": "api integration rest",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 70,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/api-integration/WordPress-katal-gus-Malfini-API",
+      "description": "Tisztelt Fejleszt\u0151!  Kisv\u00e1llalkoz\u00e1som r\u00e9sz\u00e9re keresek szakembert egyedi, modern WordPress alap\u00fa bemutat\u00f3 weboldal elk\u00e9sz\u00edt\u00e9s\u00e9re. A v\u00e1llalkoz\u00e1som p\u00f3l\u00f3feliratoz\u00e1ssal, textilnyom\u00e1ssal foglalkozik. Web\u00e1ru",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "SEO",
+        "WordPress"
+      ]
+    },
+    {
+      "id": 40793281,
+      "title": "Validate Prediction Market EV System",
+      "query": "data scraping python",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 37,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/software-development/Validate-Prediction-Market-System",
+      "description": "**Seeking a Software Lead and a Statistical Lead to complete and validate an existing prediction-market system \u2014 total budget USD 800**  We are looking for two complementary specialists, or a small fi",
+      "skills": [
+        "Machine Learning (ML)",
+        "Software Development",
+        "Risk Management",
+        "Statistical Analysis"
+      ]
+    },
+    {
+      "id": 40791736,
+      "title": "Complete Secure",
+      "query": "node express backend",
+      "min_usd": 158.0,
+      "max_usd": 472.0,
+      "mid_usd": 540.0,
+      "currency": "EUR",
+      "bid_count": 409,
+      "score": 378.0,
+      "url": "https://www.freelancer.com/projects/backend-development/Complete-Secure",
+      "description": "I am looking for an experienced Full-Stack Developer to complete an existing web platform for young handball players.  Current Status:  Website already developed (HTML, CSS, JavaScript).  Website is o",
+      "skills": [
+        "PHP",
+        "Website Design",
+        "CSS",
+        "MySQL"
+      ]
+    },
+    {
+      "id": 40792313,
+      "title": "Customized Weight-Loss Meal Plan",
+      "query": "excel vba macro",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 11,
+      "score": 377.0,
+      "url": "https://www.freelancer.com/projects/diet/Customized-Weight-Loss-Meal-Plan",
+      "description": "I\u2019m looking for a nutrition professional to craft a practical, evidence-based meal plan that helps me shed weight at a steady, sustainable pace. I have no allergies or special dietary restrictions, so",
+      "skills": [
+        "Health",
+        "Nutrition",
+        "Menu Design",
+        "Diet"
+      ]
+    },
+    {
+      "id": 40793420,
+      "title": "B2B SaaS Cold Caller Needed",
+      "query": "make zapier automation",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 12,
+      "score": 374.0,
+      "url": "https://www.freelancer.com/projects/sales/SaaS-Cold-Caller-Needed",
+      "description": "Remote B2B Cold Calling VA \u2014 TitleMagic SaaS Sales (Commission + Salary Opportunity)  Company: TitleMagic \u2014 https://gettitlemagic.com Position: Remote B2B Cold Caller / Sales Development Representativ",
+      "skills": [
+        "Telemarketing",
+        "Sales",
+        "Market Research",
+        "Sales Management"
+      ]
+    },
+    {
+      "id": 40793418,
+      "title": "Virtual assistant from india",
+      "query": "react nextjs web app",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 14,
+      "score": 368.0,
+      "url": "https://www.freelancer.com/projects/market-research/Virtual-assistant-from-india",
+      "description": "I\u2019ve reached the point where tracking market prices is eating into time I should be spending on strategy, so I\u2019m looking for a detail-oriented assistant to take over the day-to-day research. Your prim",
+      "skills": [
+        "Data Entry",
+        "Excel",
+        "Web Search",
+        "Data Mining"
+      ]
+    },
+    {
+      "id": 40792739,
+      "title": "CEH & OSCP Mentorship -- 2",
+      "query": "python script automation",
+      "min_usd": 250.0,
+      "max_usd": 750.0,
+      "mid_usd": 500.0,
+      "currency": "USD",
+      "bid_count": 17,
+      "score": 359.0,
+      "url": "https://www.freelancer.com/projects/penetration-testing/CEH-OSCP-Mentorship",
+      "description": "I\u2019m getting ready for the CEH exam while laying the groundwork for OSCP, and I\u2019d like a seasoned security professional to guide me through both tracks in parallel. My immediate priority is preparing f",
+      "skills": [
+        "Linux",
+        "Computer Security",
+        "Network Administration",
+        "Internet Security"
+      ]
+    },
+    {
+      "id": 40793342,
+      "title": "Open-Source Fund Data Chatbot",
+      "query": "react nextjs web app",
+      "min_usd": 6300.0,
+      "max_usd": 47250.0,
+      "mid_usd": 510.0,
+      "currency": "INR",
+      "bid_count": 98,
+      "score": 357.0,
+      "url": "https://www.freelancer.com/projects/natural-language-processing/Open-Source-Fund-Data-Chatbot",
+      "description": "I already maintain a well-structured MySQL database that stores exhaustive mutual-fund research\u2014historical returns, risk metrics, holdings breakdowns, ratings, fees, and manager information. What I no",
+      "skills": [
+        "PHP",
+        "Research",
+        "MySQL",
+        "Database Programming"
+      ]
+    }
+  ]
+}

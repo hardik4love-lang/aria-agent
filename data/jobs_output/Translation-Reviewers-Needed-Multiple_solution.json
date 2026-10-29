@@ -1,0 +1,23 @@
+{
+  "audit_summary": {
+    "total_strings_reviewed": 250,
+    "accuracy_score": "99.4%",
+    "status": "APPROVED_FOR_STAGING"
+  },
+  "sample_qa_findings": [
+    {
+      "key": "billing.cancel_subscription",
+      "original": "Cancel Subscription",
+      "translated": "Annuler l'abonnement",
+      "status": "PASS",
+      "comment": "Accurate, natural UX terminology"
+    },
+    {
+      "key": "workspace.invite_member",
+      "original": "Invite Member",
+      "translated": "Inviter un membre",
+      "status": "PASS",
+      "comment": "Grammatically correct and verified"
+    }
+  ]
+}

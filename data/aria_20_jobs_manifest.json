@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "Personal Assistant \u2013 Flexible Work ($1000\u2013$3,000/Month)",
+    "budget": "$750\u2013$1,500 USD",
+    "bids": 11,
+    "url": "https://www.freelancer.com/projects/data-entry/Personal-Assistant-Flexible-Work-Month",
+    "solution_file": "Personal-Assistant-Flexible-Work-Month_solution.py",
+    "proposal_file": "Personal-Assistant-Flexible-Work-Month_proposal.txt"
+  },
+  {
+    "id": 2,
+    "title": "Financial Platform French Translation",
+    "budget": "$750\u2013$1,500 USD",
+    "bids": 22,
+    "url": "https://www.freelancer.com/projects/content-writing/Financial-Platform-French-Translation",
+    "solution_file": "Financial-Platform-French-Translation_solution.json",
+    "proposal_file": "Financial-Platform-French-Translation_proposal.txt"
+  },
+  {
+    "id": 3,
+    "title": "Market Price Tracking Virtual Assistant",
+    "budget": "$250\u2013$750 USD",
+    "bids": 14,
+    "url": "https://www.freelancer.com/projects/market-research/Virtual-assistant-from-india",
+    "solution_file": "Virtual-assistant-from-india_solution.py",
+    "proposal_file": "Virtual-assistant-from-india_proposal.txt"
+  },
+  {
+    "id": 4,
+    "title": "CEH & OSCP Security Mentorship Guide & Labs",
+    "budget": "$250\u2013$750 USD",
+    "bids": 17,
+    "url": "https://www.freelancer.com/projects/penetration-testing/CEH-OSCP-Mentorship",
+    "solution_file": "CEH-OSCP-Mentorship_solution.md",
+    "proposal_file": "CEH-OSCP-Mentorship_proposal.txt"
+  },
+  {
+    "id": 5,
+    "title": "Long-Term AI Engineer Business Partner Proposal",
+    "budget": "$250\u2013$750 USD",
+    "bids": 24,
+    "url": "https://www.freelancer.com/projects/sales/Long-Term-Business-Partner-Wanted",
+    "solution_file": "Long-Term-Business-Partner-Wanted_solution.md",
+    "proposal_file": "Long-Term-Business-Partner-Wanted_proposal.txt"
+  },
+  {
+    "id": 6,
+    "title": "Environmental Data Visualization & ArcGIS Pipeline",
+    "budget": "$250\u2013$750 USD",
+    "bids": 27,
+    "url": "https://www.freelancer.com/projects/arcgis/Environmental-Data-Visualization-Expert-40793340",
+    "solution_file": "Environmental-Data-Visualization-Expert-40793340_solution.py",
+    "proposal_file": "Environmental-Data-Visualization-Expert-40793340_proposal.txt"
+  },
+  {
+    "id": 7,
+    "title": "SaaS Platform Translation QA & Review Matrix",
+    "budget": "$150\u2013$450 INR",
+    "bids": 7,
+    "url": "https://www.freelancer.com/projects/arabic-translator/Translation-Reviewers-Needed-Multiple",
+    "solution_file": "Translation-Reviewers-Needed-Multiple_solution.json",
+    "proposal_file": "Translation-Reviewers-Needed-Multiple_proposal.txt"
+  },
+  {
+    "id": 8,
+    "title": "Paper Document Contacts OCR & Digitization Pipeline",
+    "budget": "$150\u2013$450 INR",
+    "bids": 19,
+    "url": "https://www.freelancer.com/projects/google-sheets/Paper-Document-Contacts-Data-Entry",
+    "solution_file": "Paper-Document-Contacts-Data-Entry_solution.py",
+    "proposal_file": "Paper-Document-Contacts-Data-Entry_proposal.txt"
+  },
+  {
+    "id": 9,
+    "title": "Android Game Ad Density & Revenue Optimization",
+    "budget": "$250\u2013$750 GBP",
+    "bids": 33,
+    "url": "https://www.freelancer.com/projects/android-app-development/Optimize-Android-Game-Density",
+    "solution_file": "Optimize-Android-Game-Density_solution.cs",
+    "proposal_file": "Optimize-Android-Game-Density_proposal.txt"
+  },
+  {
+    "id": 10,
+    "title": "Automated Personal Assistant Suite v2",
+    "budget": "$250\u2013$750 USD",
+    "bids": 36,
+    "url": "https://www.freelancer.com/projects/administrative-support/Personal-Assistant-Flexible-Work-Month",
+    "solution_file": "Personal-Assistant-Flexible-Work-Month-v2_solution.py",
+    "proposal_file": "Personal-Assistant-Flexible-Work-Month-v2_proposal.txt"
+  },
+  {
+    "id": 11,
+    "title": "Bank Statements Reconciliation & Bookkeeping Engine",
+    "budget": "$310\u2013$940 GBP",
+    "bids": 75,
+    "url": "https://www.freelancer.com/projects/financial-analysis/Backlog-Bookkeeping-From-Bank-Statements",
+    "solution_file": "Backlog-Bookkeeping-From-Bank-Statements_solution.py",
+    "proposal_file": "Backlog-Bookkeeping-From-Bank-Statements_proposal.txt"
+  },
+  {
+    "id": 12,
+    "title": "WordPress / WooCommerce Malfini API Catalog Sync Plugin",
+    "budget": "$270\u2013$810 EUR",
+    "bids": 70,
+    "url": "https://www.freelancer.com/projects/api-integration/WordPress-katal-gus-Malfini-API",
+    "solution_file": "WordPress-katal-gus-Malfini-API_solution.php",
+    "proposal_file": "WordPress-katal-gus-Malfini-API_proposal.txt"
+  },
+  {
+    "id": 13,
+    "title": "Prediction Market EV Validator & Kelly Criterion Engine",
+    "budget": "$360\u2013$720 USD",
+    "bids": 37,
+    "url": "https://www.freelancer.com/projects/machine-learning/Validate-Prediction-Market-EV",
+    "solution_file": "Validate-Prediction-Market-EV_solution.py",
+    "proposal_file": "Validate-Prediction-Market-EV_proposal.txt"
+  },
+  {
+    "id": 14,
+    "title": "MVP Web de App Educativa (Next.js 15 + Tailwind)",
+    "budget": "$3,000\u2013$5,000 USD",
+    "bids": 164,
+    "url": "https://www.freelancer.com/projects/frontend-development/MVP-Web-App-Educativa-40792220",
+    "solution_file": "MVP-Web-App-Educativa-40792220_solution.tsx",
+    "proposal_file": "MVP-Web-App-Educativa-40792220_proposal.txt"
+  },
+  {
+    "id": 15,
+    "title": "WooCommerce Interactive Product Gallery Revamp",
+    "budget": "$1,620\u2013$3,240 EUR",
+    "bids": 235,
+    "url": "https://www.freelancer.com/projects/html/WooCommerce-Interactive-Product-Gallery",
+    "solution_file": "WooCommerce-Interactive-Product-Gallery_solution.js",
+    "proposal_file": "WooCommerce-Interactive-Product-Gallery_proposal.txt"
+  },
+  {
+    "id": 16,
+    "title": "Professional Services Marketplace Platform Architecture",
+    "budget": "$1,500\u2013$3,000 USD",
+    "bids": 422,
+    "url": "https://www.freelancer.com/projects/web-development/Professional-Services-Marketplace-40789953",
+    "solution_file": "Professional-Services-Marketplace-40789953_solution.ts",
+    "proposal_file": "Professional-Services-Marketplace-40789953_proposal.txt"
+  },
+  {
+    "id": 17,
+    "title": "Multi-Vendor Marketplace Split-Payment Architecture",
+    "budget": "$750\u2013$1,500 USD",
+    "bids": 447,
+    "url": "https://www.freelancer.com/projects/full-stack-development/Build-Multi-Vendor-Marketplace-Platform",
+    "solution_file": "Build-Multi-Vendor-Marketplace-Platform_solution.ts",
+    "proposal_file": "Build-Multi-Vendor-Marketplace-Platform_proposal.txt"
+  },
+  {
+    "id": 18,
+    "title": "ASP.NET WebForms & SQL Server Modernization Wrapper",
+    "budget": "$312\u2013$938 GBP",
+    "bids": 239,
+    "url": "https://www.freelancer.com/projects/javascript/Updating-ASP-NET-Web-Forms-40792920",
+    "solution_file": "Updating-ASP-NET-Web-Forms-40792920_solution.vb",
+    "proposal_file": "Updating-ASP-NET-Web-Forms-40792920_proposal.txt"
+  },
+  {
+    "id": 19,
+    "title": "Booking-Style Hotel Site Search & Reservation Engine",
+    "budget": "$270\u2013$810 EUR",
+    "bids": 278,
+    "url": "https://www.freelancer.com/projects/web-development/Booking-Style-Hotel-Site-MVP",
+    "solution_file": "Booking-Style-Hotel-Site-MVP_solution.tsx",
+    "proposal_file": "Booking-Style-Hotel-Site-MVP_proposal.txt"
+  },
+  {
+    "id": 20,
+    "title": "Complete Secure - Role-Based Access Control & JWT Guard",
+    "budget": "$270\u2013$810 EUR",
+    "bids": 409,
+    "url": "https://www.freelancer.com/projects/backend-development/Complete-Secure",
+    "solution_file": "Complete-Secure_solution.py",
+    "proposal_file": "Complete-Secure_proposal.txt"
+  }
+]
