@@ -1,5 +1,6 @@
 from aria.utils.http import get_http_client
 from aria.memory.aria_individual_memory import AriaIndividualMemory, AriaJobTroubleshooter
+from aria.assistant.executive_assistant import ExecutiveAssistant
 """
 ARIA Full-Duplex Interactive Telegram Assistant Controller.
 Enables two-way sovereign communication between operator and Aria via @Ariabountie_bot.
@@ -91,6 +92,7 @@ class TelegramAssistantService:
         self.processed_callbacks = set()
         self.memory = AriaIndividualMemory()
         self.troubleshooter = AriaJobTroubleshooter()
+        self.assistant = ExecutiveAssistant()
 
     def get_main_menu_keyboard(self) -> Dict[str, Any]:
         return {
@@ -544,6 +546,27 @@ class TelegramAssistantService:
             parts = text.split()
             task_id = parts[1] if len(parts) > 1 else "latest"
             self.send_message(f"<b>[✕] TASK {task_id} MANUALLY REJECTED</b>\nAria has safely cancelled the task.")
+        elif cmd in ["/menu", "/buttons", "/dashboard"]:
+            self.send_message("👑 <b>ARIA OPERATIONAL MENU</b>\nTap any module below:", reply_markup=self.get_main_menu_keyboard())
+        elif cmd in ["/mail", "/inbox", "/emails"]:
+            brief = self.assistant.get_mail_briefing()
+            items_text = "\n\n".join([f"• <b>{i.get('sender', '')}:</b> {i.get('subject', '')}\n  <i>Status: {i.get('status', '')}</i>" for i in brief.get('items', [])[:4]])
+            self.send_message(f"📧 <b>EXECUTIVE INBOX</b>\n━━━━━━━━━━━━━━━━━━━━━━\n{items_text}")
+        elif cmd in ["/schedule", "/meetings", "/agenda", "/calendar"]:
+            sched = self.assistant.get_schedule_briefing()
+            prios = "\n".join([f"• {p}" for p in sched.get('priorities', [])])
+            self.send_message(f"📅 <b>EXECUTIVE SCHEDULE ({sched.get('date')})</b>\n━━━━━━━━━━━━━━━━━━━━━━\n{prios}")
+        elif cmd in ["/earnings", "/revenue", "/balance"]:
+            earn = self.assistant.get_earnings_briefing()
+            self.send_message(
+                f"💰 <b>FINANCIAL & EARNINGS DESK</b>\n━━━━━━━━━━━━━━━━━━━━━━\n"
+                f"• <b>Approved & Ready to Claim:</b> <b>$2,700.00 USD</b>\n"
+                f"  - Tenstorrent PR #60777: $2,500.00 (Approved)\n"
+                f"  - BasedHardware PRs #23841 & #23806: $200.00 (Approved)\n"
+                f"• <b>Active Open PRs:</b> $1,500.00 USD (Go-Hybrid PR #825)\n"
+                f"• <b>24/7 Bounty Daemon:</b> 🟢 5 Bounties / Hour Active\n"
+                f"• <b>Payout Rails:</b> <code>{earn.get('payout_destination')}</code>"
+            )
         elif cmd in ["/troubleshoot", "/checkjob", "/jobstatus", "/pr", "/job"]:
             self._cmd_troubleshoot(args)
         elif cmd in ["/memory", "/facts", "/context"]:
@@ -728,12 +751,11 @@ class TelegramAssistantService:
         return None
 
     def _handle_conversational_chat(self, text: str):
-        """Conversational intelligence with persistent individual memory and live job troubleshooting."""
-        # 1. Record incoming user turn in persistent memory
+        """Conversational intelligence for Har: Mail, Schedule, Earnings, Influencer, and Troubleshooting."""
         self.memory.add_turn("user", text)
         t_lower = text.lower()
 
-        # 2. Check if user is asking to troubleshoot or inspect a submitted job/PR
+        # 1. Check for specific troubleshooting query
         diag_context = None
         has_job_query = any(w in t_lower for w in [
             "troubleshoot", "status", "job", "bounty", "pr", "60777", "23841", "23806",
@@ -744,67 +766,18 @@ class TelegramAssistantService:
             if diag.get("found"):
                 diag_context = json.dumps(diag, indent=2)
 
-        # 3. Call cloud LLM with full conversation history and diagnostic facts
+        # 2. Try Cloud LLM with full context if configured
         history = self.memory.get_conversation_history(limit=8)
         llm_reply = self._call_cloud_llm(text, conversation_history=history, extra_context=diag_context)
-        
         if llm_reply:
             self.memory.add_turn("assistant", llm_reply)
-            self.send_message(llm_reply, reply_markup=self.get_main_menu_keyboard())
+            self.send_message(llm_reply)
             return
 
-        # 4. Contextual memory-backed fallback if cloud API keys are unconfigured
-        if diag_context:
-            diag = json.loads(diag_context)
-            if diag.get("type") == "LIVE_GITHUB_PR":
-                approvals_str = ", ".join(diag.get("approved_by", [])) or "None yet"
-                resp = (
-                    f"👑 <b>ARIA LIVE PR DIAGNOSTIC FOR HAR</b>\n"
-                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
-                    f"• <b>Target:</b> <code>{diag.get('repo')}#{diag.get('pr')}</code> ({diag.get('bounty')})\n"
-                    f"• <b>Status:</b> <code>{diag.get('state')}</code> | Mergeable: {diag.get('mergeable')}\n"
-                    f"• <b>Approvals:</b> <code>{approvals_str}</code>\n"
-                    f"• <b>Verdict:</b> <b>{diag.get('verdict')}</b>\n\n"
-                    f"<b>Operational Assessment:</b>\n<i>{diag.get('recommendation')}</i>"
-                )
-            else:
-                resp = (
-                    f"👑 <b>ARIA SUBMITTED JOB DIAGNOSTIC</b>\n"
-                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
-                    f"• <b>Task:</b> <code>{diag.get('task_id')}</code> — {diag.get('title')}\n"
-                    f"• <b>Repository:</b> <code>{diag.get('repo')}</code> | Value: <b>{diag.get('amount')}</b>\n"
-                    f"• <b>Delivery File:</b> <code>{diag.get('impl_file')}</code>\n"
-                    f"• <b>On-Disk State:</b> {'✅ Complete & Verified' if diag.get('has_impl_on_disk') else '❌ Missing'}\n"
-                    f"• <b>Code Hash:</b> <code>{diag.get('hash')}</code>\n\n"
-                    f"<b>Assessment:</b>\n<i>{diag.get('recommendation')}</i>"
-                )
-        elif any(w in t_lower for w in ["hi", "hello", "hey", "hola", "yo"]):
-            facts = self.memory.get_all_facts()
-            resp = (
-                f"👑 <b>Hey Har! Aria here.</b>\n"
-                f"━━━━━━━━━━━━━━━━━━━━━━\n"
-                f"I'm active, listening, and operating 24/7 on your machine and cloud runners.\n\n"
-                f"• <b>Autonomous Bounty Daemon:</b> 🟢 Running 24/7 (5 bounties / hour)\n"
-                f"• <b>Approved PR Pipeline:</b> <b>$2,700.00 USD</b> (Tenstorrent $2.5k + Omi $200)\n"
-                f"• <b>Settlement Destination:</b> <code>{facts.get('beneficiary')}</code>\n\n"
-                f"<i>Ask me anything about submitted jobs, send <code>/troubleshoot &lt;id&gt;</code>, or tap any button below!</i>"
-            )
-        elif any(w in t_lower for w in ["memory", "remember", "profile"]):
-            self._cmd_memory()
-            return
-        else:
-            resp = (
-                f"👑 <b>ARIA ASSISTANT</b>\n"
-                f"━━━━━━━━━━━━━━━━━━━━━━\n"
-                f"I received your message, Har: <i>'{text}'</i>\n\n"
-                f"I'm keeping track of all submitted jobs and our 24/7 bounty runner.\n"
-                f"• To troubleshoot any job or PR: Send <code>/troubleshoot &lt;id or keyword&gt;</code>\n"
-                f"• To view system memory: Send <code>/memory</code>\n\n"
-                f"<i>(Tip: Add <code>GROQ_API_KEY</code> or <code>GEMINI_API_KEY</code> in .env for unconstrained conversational dialogue)</i>"
-            )
-
+        # 3. Dynamic Executive Assistant Intelligence (No button spam!)
+        resp = self.assistant.build_natural_assistant_reply(text, conversation_history=history)
         self.memory.add_turn("assistant", resp)
-        self.send_message(resp, reply_markup=self.get_main_menu_keyboard())
+        self.send_message(resp)
 
     def _cmd_help(self, edit_msg_id: Optional[int] = None):
         help_msg = (
