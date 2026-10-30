@@ -54,3 +54,7 @@ data/creator_output/*.mp3
 # OS
 .DS_Store
 Thumbs.db
+
+# Autonomous runner workspaces
+data/workspace_repos/
+data/screenshots/

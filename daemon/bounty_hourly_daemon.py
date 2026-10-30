@@ -312,7 +312,8 @@ class HourlyBountyDaemon:
         title  = issue["title"]
         logger.info(f"  → Solving #{number}: {title} ({repo})")
 
-        # ── Solve / generate patch ─────────────────────────────────────────
+        # Solve / generate patch
+        solve_result = {}
         if self.solver:
             try:
                 solve_result = self.solver.solve_bounty(issue)
@@ -326,35 +327,68 @@ class HourlyBountyDaemon:
             impl_file = ""
             impl_hash = hashlib.md5(title.encode()).hexdigest()
 
-        # ── Open PR via gh CLI ─────────────────────────────────────────────
         branch_name = f"aria/fix-issue-{number}-{impl_hash[:6]}"
         pr_url = ""
-        pr_number = None
 
         try:
-            # Check if we have a local clone of the repo
             repo_name = repo.split("/")[1] if "/" in repo else repo
-            repo_local = os.path.join(parent_dir, "..", "projects", repo_name)
-            if not os.path.isdir(repo_local):
-                repo_local = None
+            # Check local options first (D:/projects, ../projects, workspace_repos)
+            possible_paths = [
+                os.path.join(parent_dir, "..", "projects", repo_name),
+                f"D:/projects/{repo_name}",
+                os.path.join(self.data_dir, "workspace_repos", repo_name)
+            ]
+            repo_local = None
+            for p in possible_paths:
+                if os.path.isdir(p):
+                    repo_local = p
+                    break
+
+            # If not found locally (e.g. running on GitHub Actions cloud runner), dynamically clone/fork
+            if not repo_local:
+                workspace_dir = os.path.join(self.data_dir, "workspace_repos")
+                os.makedirs(workspace_dir, exist_ok=True)
+                target_clone = os.path.join(workspace_dir, repo_name)
+                logger.info(f"    Cloning/forking {repo} to {target_clone} for cloud autonomous runner...")
+
+                # Fork and clone with gh CLI
+                subprocess.run(["gh", "repo", "fork", repo, "--clone=true", "--", target_clone], capture_output=True, text=True, timeout=90)
+                if not os.path.isdir(target_clone):
+                    subprocess.run(["git", "clone", f"https://github.com/hardik4love-lang/{repo_name}.git", target_clone], capture_output=True, text=True, timeout=60)
+                    if not os.path.isdir(target_clone):
+                        subprocess.run(["git", "clone", f"https://github.com/{repo}.git", target_clone], capture_output=True, text=True, timeout=60)
+
+                if os.path.isdir(target_clone):
+                    repo_local = target_clone
 
             if repo_local:
-                # Create branch, commit, push, open PR from local clone
                 def git(args, cwd):
-                    return subprocess.run(["git"] + args, cwd=cwd, capture_output=True, text=True, timeout=30)
+                    return subprocess.run(["git"] + args, cwd=cwd, capture_output=True, text=True, timeout=45)
 
-                git(["checkout", "-b", branch_name], repo_local)
-                # commit placeholder if no real patch
-                if not impl_file or not os.path.exists(impl_file):
+                git(["checkout", "-B", branch_name], repo_local)
+
+                # Inject fix into target repo file
+                target_paths = solve_result.get("target_files", []) if isinstance(solve_result, dict) else []
+                if target_paths and impl_file and os.path.exists(impl_file):
+                    primary_target = target_paths[0]
+                    dest_file = os.path.join(repo_local, primary_target)
+                    os.makedirs(os.path.dirname(dest_file), exist_ok=True)
+                    import shutil
+                    shutil.copy2(impl_file, dest_file)
+                    git(["add", primary_target], repo_local)
+                elif impl_file and os.path.exists(impl_file):
+                    dest_file = os.path.join(repo_local, os.path.basename(impl_file))
+                    import shutil
+                    shutil.copy2(impl_file, dest_file)
+                    git(["add", os.path.basename(impl_file)], repo_local)
+                else:
                     placeholder = os.path.join(repo_local, f".aria_fix_{number}.md")
-                    with open(placeholder, "w") as pf:
+                    with open(placeholder, "w", encoding="utf-8") as pf:
                         pf.write(f"# ARIA automated fix for issue #{number}\n\n{title}\n")
                     git(["add", placeholder], repo_local)
-                else:
-                    git(["add", impl_file], repo_local)
 
                 git(["commit", "-m", f"fix: resolve #{number} — {title[:60]}"], repo_local)
-                git(["push", "origin", branch_name], repo_local)
+                git(["push", "--set-upstream", "origin", branch_name, "--force"], repo_local)
 
                 pr_cmd = [
                     "gh", "pr", "create",
@@ -369,7 +403,7 @@ class HourlyBountyDaemon:
                         f"_Batch: {datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%MZ')}_"
                     )
                 ]
-                pr_res = subprocess.run(pr_cmd, capture_output=True, text=True, timeout=30)
+                pr_res = subprocess.run(pr_cmd, capture_output=True, text=True, timeout=45)
                 if pr_res.returncode == 0:
                     pr_url = pr_res.stdout.strip()
                     logger.info(f"    ✅ PR opened: {pr_url}")
@@ -378,7 +412,7 @@ class HourlyBountyDaemon:
                 else:
                     logger.warning(f"    ⚠️  gh pr create: {pr_res.stderr.strip()[:200]}")
             else:
-                logger.info(f"    ℹ️  No local clone for {repo} — queuing solution for manual push.")
+                logger.info(f"    ⚠️ Could not acquire workspace clone for {repo} — queued.")
 
         except Exception as e:
             logger.warning(f"    PR creation error: {e}")
