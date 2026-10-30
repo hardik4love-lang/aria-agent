@@ -35,6 +35,12 @@ try:
 except ImportError:
     SOLVER_AVAILABLE = False
 
+try:
+    from aria.memory.vector_brain import ARIAVectorBrain
+    BRAIN_AVAILABLE = True
+except ImportError:
+    BRAIN_AVAILABLE = False
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] [ARIA-SMART-2] %(message)s",
@@ -121,6 +127,8 @@ class HourlyBountyDaemon:
             self.solver = RealBountySolver(output_dir=self.output_dir)
         else:
             self.solver = None
+
+        self.brain = ARIAVectorBrain(data_dir=self.data_dir) if BRAIN_AVAILABLE else None
 
     # ── Persistence helpers ────────────────────────────────────────────────────
 
@@ -233,6 +241,12 @@ class HourlyBountyDaemon:
         combined = self.queue + fresh          # queue items already scored
         ranked   = self.rank_pool(combined)
 
+        # Apply vector brain repo score adjustment before final ranking
+        if self.brain:
+            for item in ranked:
+                item["score"] *= self.brain.repo_score_adjustment(item["repo"])
+            ranked = sorted(ranked, key=lambda x: x["score"], reverse=True)
+
         to_submit  = ranked[:SUBMIT_PER_HOUR]
         to_queue   = ranked[SUBMIT_PER_HOUR:]
 
@@ -313,6 +327,8 @@ class HourlyBountyDaemon:
                 if pr_res.returncode == 0:
                     pr_url = pr_res.stdout.strip()
                     logger.info(f"    ✅ PR opened: {pr_url}")
+                    if self.brain:
+                        self.brain.record_pr_outcome(repo, number, title, "pending", "PR opened")
                 else:
                     logger.warning(f"    ⚠️  gh pr create: {pr_res.stderr.strip()[:200]}")
             else:
@@ -320,6 +336,8 @@ class HourlyBountyDaemon:
 
         except Exception as e:
             logger.warning(f"    PR creation error: {e}")
+            if self.brain:
+                self.brain.record_pr_outcome(repo, number, title, "rejected", str(e)[:100])
 
         return {
             "id":       issue["id"],
