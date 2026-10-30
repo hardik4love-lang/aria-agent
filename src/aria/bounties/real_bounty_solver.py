@@ -8,9 +8,10 @@ import os
 import hashlib
 import datetime
 import logging
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional, Tuple, List
 
 from aria.llm.router import CascadeLLMRouter
+from aria.bounties.repo_context import RepoContextFetcher
 
 logger = logging.getLogger(__name__)
 
@@ -20,9 +21,14 @@ class RealBountySolver:
 
     OUTPUT_DIR = "D:/aria-agent/data/bounties_output"
 
-    def __init__(self, output_dir: Optional[str] = None):
+    def __init__(
+        self,
+        output_dir: Optional[str] = None,
+        context_fetcher: Optional[RepoContextFetcher] = None,
+    ):
         self.output_dir = output_dir or self.OUTPUT_DIR
         os.makedirs(self.output_dir, exist_ok=True)
+        self.context_fetcher = context_fetcher or RepoContextFetcher()
 
     def calculate_hash(self, content: str) -> str:
         return hashlib.sha256(content.encode('utf-8')).hexdigest()[:16]
@@ -53,7 +59,9 @@ class RealBountySolver:
             lang = "typescript"
             ext = "ts"
 
-        impl_code, test_code = self._synthesize_solution_via_llm(title, body, repo, lang, ext)
+        impl_code, test_code, target_files = self._synthesize_solution_via_llm(
+            title, body, repo, lang, ext
+        )
 
         impl_filename = f"{task_id}_{slug}_impl.{ext}"
         impl_path = os.path.join(self.output_dir, impl_filename)
@@ -72,11 +80,13 @@ class RealBountySolver:
         # Build claim markdown
         claim_filename = f"{task_id}_{slug}_claim.md"
         claim_path = os.path.join(self.output_dir, claim_filename)
+        target_files_str = ", ".join(f"`{f}`" for f in target_files) if target_files else "None (New File Proposed)"
         claim_content = (
             f"# ARIA Autonomous Bounty Delivery & Verification Packet\n\n"
             f"- **Task Identifier**: `{task_id}`\n"
             f"- **Repository**: `{repo}`\n"
             f"- **Issue Reference**: [{title}]({issue_url})\n"
+            f"- **Target Files**: {target_files_str}\n"
             f"- **Bounty Value**: `{price}`\n"
             f"- **Timestamp**: `{now_iso}`\n"
             f"- **Settlement Destination**: PayPal `shruhicollections@gmail.com`\n\n"
@@ -106,7 +116,9 @@ class RealBountySolver:
             "test_hash": test_hash,
             "language": lang,
             "timestamp": now_iso,
-            "status": "SOLVED_AND_VERIFIED"
+            "status": "SOLVED_AND_VERIFIED",
+            "target_files": target_files,
+            "relevant_paths": target_files,
         }
 
     def _synthesize_solution_via_llm(
@@ -116,23 +128,49 @@ class RealBountySolver:
         repo: str,
         lang: str,
         ext: str,
-    ) -> Tuple[str, str]:
+    ) -> Tuple[str, str, List[str]]:
         """
         Calls CascadeLLMRouter to generate real implementation and test code.
         Falls back to a minimal skeleton stub only if the LLM call fails or returns empty.
+        Injects repository context snippets if available.
         """
         router = CascadeLLMRouter()
+
+        context = {}
+        try:
+            context = self.context_fetcher.build_context_bundle(repo, title, body)
+        except Exception as exc:
+            logger.warning("Error fetching repo context for %s: %s", repo, exc)
+            context = {"relevant_paths": [], "file_snippets": {}, "repo_tree_sample": []}
+
+        relevant_paths = context.get("relevant_paths", [])
+        file_snippets = context.get("file_snippets", {})
+
+        context_prompt_part = ""
+        if file_snippets:
+            formatted_snippets = "\n\n".join(
+                f"--- File: {path} ---\n{content}"
+                for path, content in file_snippets.items()
+            )
+            context_prompt_part = (
+                f"\nEXISTING REPOSITORY CONTEXT:\n"
+                f"Target Files: {relevant_paths}\n"
+                f"Existing Code Snippets:\n"
+                f"{formatted_snippets}\n\n"
+            )
 
         # --- Implementation prompt ---
         impl_prompt = (
             f"You are a senior {lang} engineer contributing to open-source repo {repo}.\n"
             f"Fix this GitHub issue with a minimal, correct, production-ready patch.\n\n"
             f"ISSUE TITLE: {title}\n"
-            f"ISSUE BODY:\n{body}\n\n"
+            f"ISSUE BODY:\n{body}\n"
+            f"{context_prompt_part}"
             f"Rules:\n"
             f"- Return ONLY the implementation code (no markdown, no fences, no explanation)\n"
             f"- Match the coding style of the repo\n"
             f"- Fix the exact bug described, nothing more\n"
+            f"- Fix or modify the relevant existing file(s) directly. Do not create unnecessary new files if modifying an existing file is appropriate.\n"
             f"- If it is a TypeScript file, use proper TypeScript types\n"
             f"- If it is Python, use type hints\n\n"
             f"Write the complete implementation file content:"
@@ -169,9 +207,14 @@ class RealBountySolver:
                 )
 
         # --- Test generation prompt ---
+        test_context_part = ""
+        if relevant_paths:
+            test_context_part = f"TARGET FILES MODIFIED: {relevant_paths}\n"
+
         test_prompt = (
             f"Write unit tests for this {lang} fix.\n"
             f"ORIGINAL ISSUE: {title}\n"
+            f"{test_context_part}"
             f"IMPLEMENTATION:\n{impl_code[:2000]}\n\n"
             f"Return ONLY the test file content, no markdown fences."
         )
@@ -205,4 +248,4 @@ class RealBountySolver:
                     f"}});\n"
                 )
 
-        return impl_code, test_code
+        return impl_code, test_code, relevant_paths
