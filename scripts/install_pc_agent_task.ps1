@@ -69,6 +69,6 @@ Write-Host "   Task: $TaskName" -ForegroundColor Green
 Write-Host "   Fires: every 5 minutes" -ForegroundColor Green
 Write-Host "   Script: $AgentScript" -ForegroundColor Green
 Write-Host ""
-Write-Host "To verify:  Get-ScheduledTask -TaskName '$TaskName'" -ForegroundColor Yellow
-Write-Host "To remove:  Unregister-ScheduledTask -TaskName '$TaskName' -Confirm:`$false" -ForegroundColor Yellow
-Write-Host "To run now: Start-ScheduledTask -TaskName '$TaskName'" -ForegroundColor Yellow
+Write-Host ("To verify:  Get-ScheduledTask -TaskName '" + $TaskName + "'") -ForegroundColor Yellow
+Write-Host ("To remove:  Unregister-ScheduledTask -TaskName '" + $TaskName + "' -Confirm:`$false") -ForegroundColor Yellow
+Write-Host ("To run now: Start-ScheduledTask -TaskName '" + $TaskName + "'") -ForegroundColor Yellow
