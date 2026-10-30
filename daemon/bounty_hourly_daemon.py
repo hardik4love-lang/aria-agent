@@ -41,6 +41,12 @@ try:
 except ImportError:
     BRAIN_AVAILABLE = False
 
+try:
+    from aria.bounties.bounty_radar import GlobalBountyRadar
+    RADAR_AVAILABLE = True
+except ImportError:
+    RADAR_AVAILABLE = False
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] [ARIA-SMART-2] %(message)s",
@@ -129,6 +135,7 @@ class HourlyBountyDaemon:
             self.solver = None
 
         self.brain = ARIAVectorBrain(data_dir=self.data_dir) if BRAIN_AVAILABLE else None
+        self.radar = GlobalBountyRadar() if RADAR_AVAILABLE else None
 
     # ── Persistence helpers ────────────────────────────────────────────────────
 
@@ -177,51 +184,89 @@ class HourlyBountyDaemon:
         return f"gh_{repo.replace('/', '_')}_{number}"
 
     def fetch_fresh_issues(self, count: int = SCRAPE_PER_HOUR) -> list:
-        """Fetch `count` unique, unseen, open issues across TARGET_REPOS."""
+        """
+        Fetch `count` unique, unseen, open issues.
+        Prioritizes dynamic, global bounties discovered via GlobalBountyRadar across
+        Algora, Polar.sh, and GitHub Search; fills remaining capacity with TARGET_REPOS.
+        """
         candidates = []
-        for target in TARGET_REPOS:
-            if len(candidates) >= count:
-                break
-            repo = target["repo"]
+        seen_keys = set(self.solved_ids)
+        for q in self.queue:
+            seen_keys.add(q["id"])
+
+        # 1. First, query dynamic global bounty radar
+        if self.radar:
             try:
-                cmd = [
-                    "gh", "issue", "list",
-                    "--repo", repo,
-                    "--state", "open",
-                    "--limit", "30",
-                    "--json", "number,title,url,body,labels"
-                ]
-                res = subprocess.run(cmd, capture_output=True, text=True, timeout=20)
-                if res.returncode != 0:
-                    continue
-                items = json.loads(res.stdout or "[]")
-                for item in items:
-                    key = self._issue_key(repo, item["number"])
-                    if key in self.solved_ids:
+                logger.info(f"Querying Global Bounty Radar for top live bounties (target count: {count * 2})...")
+                radar_candidates = self.radar.get_top_radar_bounties(count=count * 2)
+                for item in radar_candidates:
+                    key = item.get("id") or self._issue_key(item["repo"], item["number"])
+                    if key in seen_keys:
                         continue
-                    # Also skip if already in queue
-                    if any(q["id"] == key for q in self.queue):
-                        continue
-                    price = _extract_price_from_issue(
-                        (item.get("body") or "") + item.get("title", ""),
-                        target["base_price"]
-                    )
-                    candidates.append({
-                        "id":       key,
-                        "number":   item["number"],
-                        "title":    item["title"],
-                        "repo":     repo,
-                        "url":      item["url"],
-                        "body":     item.get("body", ""),
-                        "labels":   [l.get("name", "") for l in item.get("labels", [])],
-                        "platform": target["platform"],
-                        "price":    price,
-                        "queued_at": datetime.datetime.utcnow().isoformat(),
-                    })
+                    item_dict = dict(item)
+                    item_dict["id"] = key
+                    item_dict.setdefault("queued_at", datetime.datetime.utcnow().isoformat())
+                    candidates.append(item_dict)
+                    seen_keys.add(key)
                     if len(candidates) >= count:
                         break
+                if candidates:
+                    logger.info(f"  → Bounty Radar prioritized {len(candidates)} high-value verified live bounties.")
             except Exception as e:
-                logger.warning(f"Could not query {repo}: {e}")
+                logger.warning(f"Bounty Radar query exception: {e}")
+
+        # 2. Fill any remaining slots up to count with the fallback TARGET_REPOS
+        if len(candidates) < count:
+            remaining = count - len(candidates)
+            logger.info(f"Filling remaining {remaining} slot(s) from fallback ecosystem repos...")
+            for target in TARGET_REPOS:
+                if len(candidates) >= count:
+                    break
+                repo = target["repo"]
+                try:
+                    cmd = [
+                        "gh", "issue", "list",
+                        "--repo", repo,
+                        "--state", "open",
+                        "--limit", "30",
+                        "--json", "number,title,url,body,labels"
+                    ]
+                    res = subprocess.run(
+                        cmd,
+                        capture_output=True,
+                        text=True,
+                        encoding="utf-8",
+                        errors="replace",
+                        timeout=20
+                    )
+                    if res.returncode != 0:
+                        continue
+                    items = json.loads(res.stdout or "[]")
+                    for item in items:
+                        key = self._issue_key(repo, item["number"])
+                        if key in seen_keys:
+                            continue
+                        price = _extract_price_from_issue(
+                            (item.get("body") or "") + item.get("title", ""),
+                            target["base_price"]
+                        )
+                        candidates.append({
+                            "id":       key,
+                            "number":   item["number"],
+                            "title":    item["title"],
+                            "repo":     repo,
+                            "url":      item["url"],
+                            "body":     item.get("body", ""),
+                            "labels":   [l.get("name", "") if isinstance(l, dict) else str(l) for l in item.get("labels", [])],
+                            "platform": target["platform"],
+                            "price":    price,
+                            "queued_at": datetime.datetime.utcnow().isoformat(),
+                        })
+                        seen_keys.add(key)
+                        if len(candidates) >= count:
+                            break
+                except Exception as e:
+                    logger.warning(f"Could not query {repo}: {e}")
         return candidates
 
     # ── Scoring & Selection ────────────────────────────────────────────────────
@@ -288,7 +333,8 @@ class HourlyBountyDaemon:
 
         try:
             # Check if we have a local clone of the repo
-            repo_local = os.path.join(parent_dir, "..", "projects", repo.split("/")[1])
+            repo_name = repo.split("/")[1] if "/" in repo else repo
+            repo_local = os.path.join(parent_dir, "..", "projects", repo_name)
             if not os.path.isdir(repo_local):
                 repo_local = None
 
