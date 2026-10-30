@@ -50,7 +50,7 @@ jobs:
           FREELANCER_OAUTH_TOKEN: ${{ secrets.FREELANCER_OAUTH_TOKEN }}
           UPI_ID: ""
         run: |
-          python daemon/hourly_task_runner.py --run-once
+          python daemon/bounty_hourly_daemon.py --run-once
 
       - name: Listen for Operator Telegram Commands & Approvals
         env:
