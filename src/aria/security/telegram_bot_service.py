@@ -715,7 +715,7 @@ class TelegramAssistantService:
             try:
                 headers = {"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"}
                 payload = {
-                    "model": "llama-3.3-70b-versatile",
+                    "model": os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b"),
                     "messages": messages,
                     "temperature": 0.7,
                     "max_tokens": 1024
@@ -725,7 +725,14 @@ class TelegramAssistantService:
                 if resp.status_code == 200:
                     return resp.json()["choices"][0]["message"]["content"]
             except Exception as e:
-                print(f"[!] Groq inference error: {e}")
+                print(f"[!] Groq inference error with primary model: {e}. Trying qwen/qwen3.8-27b...")
+                try:
+                    payload["model"] = "qwen/qwen3.8-27b"
+                    resp = client.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=payload, timeout=15.0)
+                    if resp.status_code == 200:
+                        return resp.json()["choices"][0]["message"]["content"]
+                except Exception as e2:
+                    print(f"[!] Groq secondary error: {e2}")
 
         # 2. Try Gemini 2.0 Flash (1,500 req/day free)
         gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
