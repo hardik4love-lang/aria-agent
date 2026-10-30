@@ -1,0 +1,12 @@
+{
+  "2376": {
+    "timestamp": "2026-10-30T19:56:39.366450+00:00",
+    "status": "LIVE_PR_SUBMITTED_ONLINE",
+    "repo": "limitlessprojects/Go-Hybrid",
+    "pr_number": 2376,
+    "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/2376",
+    "title": "fix(hy-check): resolve each hop in struct field chains and assignment places (fixes #2375)",
+    "bounty_usd": "$100.00 USD",
+    "beneficiary": "shruhicollections@gmail.com"
+  }
+}
