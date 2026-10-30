@@ -1,0 +1,28 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.91,ViralActive,,0,0,0,,{\c&H0000E6FF&}PORTUGUESE {\c&H00FFFFFF&}SEA {\c&H00FFFFFF&}CAPTAINS
+Dialogue: 0,0:00:01.91,0:00:02.95,ViralActive,,0,0,0,,{\c&H0000E6FF&}WROTE {\c&H00FFFFFF&}IN {\c&H00FFFFFF&}THEIR
+Dialogue: 0,0:00:02.95,0:00:03.81,ViralActive,,0,0,0,,{\c&H0000E6FF&}LOGS {\c&H00FFFFFF&}DO {\c&H00FFFFFF&}NOT
+Dialogue: 0,0:00:03.81,0:00:04.77,ViralActive,,0,0,0,,{\c&H0000E6FF&}SAIL {\c&H00FFFFFF&}NEAR {\c&H00FFFFFF&}THE
+Dialogue: 0,0:00:04.77,0:00:05.80,ViralActive,,0,0,0,,{\c&H00FFFFFF&}BLACK {\c&H0000E6FF&}PAGODA
+Dialogue: 0,0:00:05.75,0:00:06.84,ViralActive,,0,0,0,,{\c&H0000E6FF&}WHY
+Dialogue: 0,0:00:06.84,0:00:08.25,ViralActive,,0,0,0,,{\c&H00FFFFFF&}BECAUSE {\c&H00FFFFFF&}AN {\c&H0000E6FF&}INVISIBLE
+Dialogue: 0,0:00:08.25,0:00:09.74,ViralActive,,0,0,0,,{\c&H0000E6FF&}MAGNETIC {\c&H00FFFFFF&}FORCE {\c&H00FFFFFF&}PULLED
+Dialogue: 0,0:00:09.74,0:00:11.07,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THEIR {\c&H0000E6FF&}COMPASSES {\c&H00FFFFFF&}OFF
+Dialogue: 0,0:00:11.07,0:00:12.32,ViralActive,,0,0,0,,{\c&H00FFFFFF&}COURSE {\c&H00FFFFFF&}AND {\c&H0000E6FF&}DRAGGED
+Dialogue: 0,0:00:12.32,0:00:13.50,ViralActive,,0,0,0,,{\c&H0000E6FF&}WOODEN {\c&H00FFFFFF&}SHIPS {\c&H00FFFFFF&}ONTO
+Dialogue: 0,0:00:13.50,0:00:14.20,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THE {\c&H0000E6FF&}ROCKS
+Dialogue: 0,0:00:14.20,0:00:15.41,ViralActive,,0,0,0,,{\c&H00FFFFFF&}DID {\c&H0000E6FF&}ANCIENT {\c&H00FFFFFF&}INDIA
+Dialogue: 0,0:00:15.41,0:00:17.19,ViralActive,,0,0,0,,{\c&H00FFFFFF&}BUILD {\c&H00FFFFFF&}AN {\c&H0000E6FF&}ELECTROMAGNETIC
+Dialogue: 0,0:00:17.19,0:00:18.57,ViralActive,,0,0,0,,{\c&H0000E6FF&}NAVIGATION {\c&H00FFFFFF&}SHIELD

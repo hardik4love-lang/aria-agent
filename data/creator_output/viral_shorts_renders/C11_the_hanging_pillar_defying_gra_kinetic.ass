@@ -1,0 +1,29 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.17,ViralActive,,0,0,0,,{\c&H0000E6FF&}WATCH {\c&H00FFFFFF&}THIS
+Dialogue: 0,0:00:01.17,0:00:01.89,ViralActive,,0,0,0,,{\c&H0000E6FF&}CLOTH
+Dialogue: 0,0:00:01.84,0:00:03.27,ViralActive,,0,0,0,,{\c&H00FFFFFF&}IT {\c&H00FFFFFF&}PASSES {\c&H0000E6FF&}COMPLETELY
+Dialogue: 0,0:00:03.27,0:00:04.70,ViralActive,,0,0,0,,{\c&H00FFFFFF&}UNDER {\c&H00FFFFFF&}THIS {\c&H0000E6FF&}EIGHT-TON
+Dialogue: 0,0:00:04.70,0:00:05.65,ViralActive,,0,0,0,,{\c&H00FFFFFF&}STONE {\c&H0000E6FF&}PILLAR
+Dialogue: 0,0:00:05.65,0:00:06.53,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THE {\c&H0000E6FF&}PILLAR {\c&H00FFFFFF&}IS
+Dialogue: 0,0:00:06.53,0:00:07.65,ViralActive,,0,0,0,,{\c&H0000E6FF&}HANGING {\c&H00FFFFFF&}FROM {\c&H00FFFFFF&}THE
+Dialogue: 0,0:00:07.65,0:00:08.29,ViralActive,,0,0,0,,{\c&H0000E6FF&}CEILING
+Dialogue: 0,0:00:08.29,0:00:09.31,ViralActive,,0,0,0,,{\c&H00FFFFFF&}WHEN {\c&H00FFFFFF&}A {\c&H0000E6FF&}BRITISH
+Dialogue: 0,0:00:09.31,0:00:10.60,ViralActive,,0,0,0,,{\c&H0000E6FF&}ENGINEER {\c&H00FFFFFF&}TRIED {\c&H00FFFFFF&}TO
+Dialogue: 0,0:00:10.60,0:00:11.37,ViralActive,,0,0,0,,{\c&H0000E6FF&}FIX {\c&H00FFFFFF&}IT {\c&H00FFFFFF&}THE
+Dialogue: 0,0:00:11.37,0:00:12.82,ViralActive,,0,0,0,,{\c&H00FFFFFF&}ENTIRE {\c&H00FFFFFF&}ROOF {\c&H0000E6FF&}STARTED
+Dialogue: 0,0:00:12.82,0:00:13.59,ViralActive,,0,0,0,,{\c&H0000E6FF&}BUCKLING
+Dialogue: 0,0:00:13.59,0:00:14.29,ViralActive,,0,0,0,,{\c&H0000E6FF&}IT'S {\c&H00FFFFFF&}NOT {\c&H00FFFFFF&}A
+Dialogue: 0,0:00:14.29,0:00:16.41,ViralActive,,0,0,0,,{\c&H0000E6FF&}MYSTERY—IT'S {\c&H00FFFFFF&}AN {\c&H00FFFFFF&}IMPOSSIBLE
+Dialogue: 0,0:00:16.41,0:00:18.52,ViralActive,,0,0,0,,{\c&H00FFFFFF&}ANCIENT {\c&H0000E6FF&}CANTILEVER {\c&H00FFFFFF&}SYSTEM

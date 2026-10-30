@@ -1,0 +1,28 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:02.00,ViralActive,,0,0,0,,{\c&H00FFFFFF&}WHEN {\c&H00FFFFFF&}ACOUSTIC {\c&H0000E6FF&}SCIENTISTS
+Dialogue: 0,0:00:02.00,0:00:03.73,ViralActive,,0,0,0,,{\c&H00FFFFFF&}TOOK {\c&H0000E6FF&}FREQUENCY {\c&H00FFFFFF&}SENSORS
+Dialogue: 0,0:00:03.73,0:00:05.11,ViralActive,,0,0,0,,{\c&H00FFFFFF&}INSIDE {\c&H00FFFFFF&}THE {\c&H0000E6FF&}DEEPEST
+Dialogue: 0,0:00:05.11,0:00:06.58,ViralActive,,0,0,0,,{\c&H0000E6FF&}CHAMBER {\c&H00FFFFFF&}OF {\c&H00FFFFFF&}KAILASA
+Dialogue: 0,0:00:06.58,0:00:07.88,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THE {\c&H0000E6FF&}METERS {\c&H00FFFFFF&}SPIKED
+Dialogue: 0,0:00:07.88,0:00:08.91,ViralActive,,0,0,0,,{\c&H00FFFFFF&}AT {\c&H0000E6FF&}EXACTLY {\c&H00FFFFFF&}110
+Dialogue: 0,0:00:08.91,0:00:09.43,ViralActive,,0,0,0,,{\c&H0000E6FF&}HERTZ
+Dialogue: 0,0:00:09.38,0:00:10.10,ViralActive,,0,0,0,,{\c&H0000E6FF&}THAT {\c&H00FFFFFF&}IS {\c&H00FFFFFF&}THE
+Dialogue: 0,0:00:10.10,0:00:11.54,ViralActive,,0,0,0,,{\c&H00FFFFFF&}EXACT {\c&H0000E6FF&}RESONANT {\c&H00FFFFFF&}PITCH
+Dialogue: 0,0:00:11.54,0:00:12.58,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THAT {\c&H0000E6FF&}SHIFTS {\c&H00FFFFFF&}THE
+Dialogue: 0,0:00:12.58,0:00:13.70,ViralActive,,0,0,0,,{\c&H0000E6FF&}HUMAN {\c&H00FFFFFF&}BRAIN {\c&H00FFFFFF&}INTO
+Dialogue: 0,0:00:13.70,0:00:15.30,ViralActive,,0,0,0,,{\c&H00FFFFFF&}DEEP {\c&H00FFFFFF&}THETA {\c&H0000E6FF&}MEDITATION
+Dialogue: 0,0:00:15.30,0:00:16.47,ViralActive,,0,0,0,,{\c&H00FFFFFF&}HOW {\c&H00FFFFFF&}DID {\c&H0000E6FF&}ANCIENT
+Dialogue: 0,0:00:16.47,0:00:17.46,ViralActive,,0,0,0,,{\c&H0000E6FF&}MASONS {\c&H00FFFFFF&}TUNE {\c&H00FFFFFF&}A
+Dialogue: 0,0:00:17.46,0:00:18.72,ViralActive,,0,0,0,,{\c&H00FFFFFF&}SOLID {\c&H0000E6FF&}MOUNTAIN

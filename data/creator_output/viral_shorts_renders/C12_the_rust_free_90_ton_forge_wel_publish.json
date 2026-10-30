@@ -1,0 +1,21 @@
+{
+  "id": "C12",
+  "title": "HOW did 13th-century metallurgists forge 30-foot iron beams that never rust? #Shorts",
+  "description": "HOW did 13th-century metallurgists forge 30-foot iron beams that never rust?\n\nThe lintels of Konark were supported by forge-welded wrought iron beams up to 10 meters long and weighing tons, exposed to humid, saline Bay of Bengal sea air for 800 years with near-zero corrosion due to high phosphorus content and slag-layer passivation.\n\nProduced by ARIA Sacred Heritage AI. Subscribe for the full 52-minute documentary.\n\n#Shorts #AncientHistory #IndianArchitecture #KailasaTemple #EngineeringAnomalies #Mystery",
+  "tags": [
+    "Shorts",
+    "AncientMysteries",
+    "Archaeology",
+    "Engineering",
+    "Architecture",
+    "India",
+    "History"
+  ],
+  "thumbnail_concept": "Ancient 30-foot iron girder exposed to ocean sea spray with zero rust vs modern rusted steel rebar. Chemical symbol Fe with microscopic protective film.",
+  "thumbnail_title": "RUST-PROOF IRON?",
+  "on_screen_hook": "800 YEARS ZERO RUST",
+  "audio_file": "D:/aria-agent/data/creator_output/viral_shorts_renders\\C12_the_rust_free_90_ton_forge_wel_voice.mp3",
+  "subtitles_file": "D:/aria-agent/data/creator_output/viral_shorts_renders\\C12_the_rust_free_90_ton_forge_wel_kinetic.ass",
+  "target_format": "1080x1920 Vertical Short (15-30s)",
+  "status": "READY_FOR_FFMPEG_COMPILATION"
+}

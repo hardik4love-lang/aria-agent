@@ -1,0 +1,21 @@
+{
+  "id": "C03",
+  "title": "HOW could ancient artisans quarry 60 tons of basalt every single hour with manual hammers? #Shorts",
+  "description": "HOW could ancient artisans quarry 60 tons of basalt every single hour with manual hammers?\n\nIf completed in 18 years as royal copper plates state, workers had to remove 5 metric tons of basalt per hour, 24 hours a day, non-stop. Modern pneumatic drills in mining struggle to maintain that volumetric extraction rate in dense tholeiitic basalt (Mohs hardness 6).\n\nProduced by ARIA Sacred Heritage AI. Subscribe for the full 52-minute documentary.\n\n#Shorts #AncientHistory #IndianArchitecture #KailasaTemple #EngineeringAnomalies #Mystery",
+  "tags": [
+    "Shorts",
+    "AncientMysteries",
+    "Archaeology",
+    "Engineering",
+    "Architecture",
+    "India",
+    "History"
+  ],
+  "thumbnail_concept": "Ancient iron chisel breaking against glowing hard basalt. Stopwatch timer overlaid showing '5 SECONDS PER TON'. High-contrast fire and shadow.",
+  "thumbnail_title": "MATH DOESN'T WORK!",
+  "on_screen_hook": "60 TONS/HOUR?",
+  "audio_file": "D:/aria-agent/data/creator_output/viral_shorts_renders\\C03_the_5_ton_daily_extraction_rat_voice.mp3",
+  "subtitles_file": "D:/aria-agent/data/creator_output/viral_shorts_renders\\C03_the_5_ton_daily_extraction_rat_kinetic.ass",
+  "target_format": "1080x1920 Vertical Short (15-30s)",
+  "status": "READY_FOR_FFMPEG_COMPILATION"
+}

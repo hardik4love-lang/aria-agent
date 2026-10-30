@@ -1,0 +1,30 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.18,ViralActive,,0,0,0,,{\c&H00FFFFFF&}WHEN {\c&H00FFFFFF&}THE {\c&H0000E6FF&}BRITISH
+Dialogue: 0,0:00:01.18,0:00:02.56,ViralActive,,0,0,0,,{\c&H0000E6FF&}OCCUPIED {\c&H00FFFFFF&}HAMPI {\c&H00FFFFFF&}THEY
+Dialogue: 0,0:00:02.56,0:00:04.26,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THOUGHT {\c&H00FFFFFF&}INDIAN {\c&H0000E6FF&}MUSICIANS
+Dialogue: 0,0:00:04.26,0:00:05.42,ViralActive,,0,0,0,,{\c&H00FFFFFF&}WERE {\c&H0000E6FF&}HIDING {\c&H00FFFFFF&}BELLS
+Dialogue: 0,0:00:05.42,0:00:06.89,ViralActive,,0,0,0,,{\c&H00FFFFFF&}INSIDE {\c&H00FFFFFF&}THESE {\c&H0000E6FF&}PILLARS
+Dialogue: 0,0:00:06.84,0:00:07.99,ViralActive,,0,0,0,,{\c&H00FFFFFF&}SO {\c&H00FFFFFF&}THEY {\c&H0000E6FF&}CHOPPED
+Dialogue: 0,0:00:07.99,0:00:09.05,ViralActive,,0,0,0,,{\c&H00FFFFFF&}TWO {\c&H0000E6FF&}PILLARS {\c&H00FFFFFF&}IN
+Dialogue: 0,0:00:09.05,0:00:10.21,ViralActive,,0,0,0,,{\c&H0000E6FF&}HALF {\c&H00FFFFFF&}WITH {\c&H00FFFFFF&}SAWS
+Dialogue: 0,0:00:10.21,0:00:10.97,ViralActive,,0,0,0,,{\c&H0000E6FF&}WHAT {\c&H00FFFFFF&}DID
+Dialogue: 0,0:00:10.97,0:00:11.84,ViralActive,,0,0,0,,{\c&H0000E6FF&}THEY {\c&H00FFFFFF&}FIND
+Dialogue: 0,0:00:11.84,0:00:12.60,ViralActive,,0,0,0,,{\c&H0000E6FF&}INSIDE
+Dialogue: 0,0:00:12.60,0:00:14.14,ViralActive,,0,0,0,,{\c&H0000E6FF&}SOLID {\c&H00FFFFFF&}ROCK
+Dialogue: 0,0:00:14.14,0:00:14.75,ViralActive,,0,0,0,,{\c&H0000E6FF&}HOW {\c&H00FFFFFF&}DO {\c&H00FFFFFF&}YOU
+Dialogue: 0,0:00:14.75,0:00:16.07,ViralActive,,0,0,0,,{\c&H00FFFFFF&}CARVE {\c&H00FFFFFF&}SOLID {\c&H0000E6FF&}GRANITE
+Dialogue: 0,0:00:16.07,0:00:17.08,ViralActive,,0,0,0,,{\c&H00FFFFFF&}SO {\c&H00FFFFFF&}THAT {\c&H0000E6FF&}TAPPING
+Dialogue: 0,0:00:17.08,0:00:18.39,ViralActive,,0,0,0,,{\c&H00FFFFFF&}IT {\c&H0000E6FF&}PRODUCES {\c&H00FFFFFF&}MUSICAL
+Dialogue: 0,0:00:18.39,0:00:18.86,ViralActive,,0,0,0,,{\c&H0000E6FF&}NOTES

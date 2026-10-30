@@ -1,0 +1,33 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:00.83,ViralActive,,0,0,0,,{\c&H0000E6FF&}LOOK {\c&H00FFFFFF&}AT
+Dialogue: 0,0:00:00.83,0:00:01.80,ViralActive,,0,0,0,,{\c&H0000E6FF&}THIS {\c&H00FFFFFF&}IRON
+Dialogue: 0,0:00:01.80,0:00:02.41,ViralActive,,0,0,0,,{\c&H0000E6FF&}BEAM
+Dialogue: 0,0:00:02.36,0:00:03.67,ViralActive,,0,0,0,,{\c&H00FFFFFF&}IT'S {\c&H0000E6FF&}THIRTY {\c&H00FFFFFF&}FEET
+Dialogue: 0,0:00:03.67,0:00:04.70,ViralActive,,0,0,0,,{\c&H0000E6FF&}LONG {\c&H00FFFFFF&}AND {\c&H00FFFFFF&}SITS
+Dialogue: 0,0:00:04.70,0:00:05.73,ViralActive,,0,0,0,,{\c&H0000E6FF&}RIGHT {\c&H00FFFFFF&}NEXT {\c&H00FFFFFF&}TO
+Dialogue: 0,0:00:05.73,0:00:06.95,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THE {\c&H0000E6FF&}SALTY {\c&H00FFFFFF&}OCEAN
+Dialogue: 0,0:00:06.95,0:00:07.33,ViralActive,,0,0,0,,{\c&H0000E6FF&}AIR
+Dialogue: 0,0:00:07.33,0:00:08.72,ViralActive,,0,0,0,,{\c&H00FFFFFF&}FOR {\c&H00FFFFFF&}EIGHT {\c&H0000E6FF&}HUNDRED
+Dialogue: 0,0:00:08.72,0:00:10.11,ViralActive,,0,0,0,,{\c&H0000E6FF&}YEARS {\c&H00FFFFFF&}WAVES {\c&H00FFFFFF&}HAVE
+Dialogue: 0,0:00:10.11,0:00:11.04,ViralActive,,0,0,0,,{\c&H0000E6FF&}BLASTED {\c&H00FFFFFF&}IT
+Dialogue: 0,0:00:11.04,0:00:12.55,ViralActive,,0,0,0,,{\c&H0000E6FF&}MODERN {\c&H00FFFFFF&}STEEL {\c&H00FFFFFF&}WOULD
+Dialogue: 0,0:00:12.55,0:00:13.49,ViralActive,,0,0,0,,{\c&H0000E6FF&}RUST {\c&H00FFFFFF&}AWAY {\c&H00FFFFFF&}IN
+Dialogue: 0,0:00:13.49,0:00:14.53,ViralActive,,0,0,0,,{\c&H0000E6FF&}FIFTY {\c&H00FFFFFF&}YEARS
+Dialogue: 0,0:00:14.53,0:00:15.36,ViralActive,,0,0,0,,{\c&H0000E6FF&}THIS {\c&H00FFFFFF&}BEAM
+Dialogue: 0,0:00:15.36,0:00:16.09,ViralActive,,0,0,0,,{\c&H00FFFFFF&}HAS {\c&H0000E6FF&}ZERO
+Dialogue: 0,0:00:16.09,0:00:17.13,ViralActive,,0,0,0,,{\c&H0000E6FF&}CORROSION
+Dialogue: 0,0:00:17.13,0:00:18.26,ViralActive,,0,0,0,,{\c&H00FFFFFF&}HOW {\c&H00FFFFFF&}DID {\c&H0000E6FF&}ANCIENT
+Dialogue: 0,0:00:18.26,0:00:20.53,ViralActive,,0,0,0,,{\c&H0000E6FF&}BLACKSMITHS {\c&H00FFFFFF&}FORGE {\c&H00FFFFFF&}RUST-PROOF
+Dialogue: 0,0:00:20.53,0:00:20.97,ViralActive,,0,0,0,,{\c&H0000E6FF&}IRON

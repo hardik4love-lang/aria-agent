@@ -1,0 +1,28 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:02.11,ViralActive,,0,0,0,,{\c&H00FFFFFF&}MODERN {\c&H00FFFFFF&}MINING {\c&H0000E6FF&}ENGINEERS
+Dialogue: 0,0:00:02.11,0:00:03.17,ViralActive,,0,0,0,,{\c&H00FFFFFF&}DID {\c&H00FFFFFF&}THE {\c&H0000E6FF&}MATH
+Dialogue: 0,0:00:03.12,0:00:04.37,ViralActive,,0,0,0,,{\c&H00FFFFFF&}TO {\c&H00FFFFFF&}FINISH {\c&H0000E6FF&}KAILASA
+Dialogue: 0,0:00:04.37,0:00:05.71,ViralActive,,0,0,0,,{\c&H00FFFFFF&}IN {\c&H0000E6FF&}EIGHTEEN {\c&H00FFFFFF&}YEARS
+Dialogue: 0,0:00:05.71,0:00:07.13,ViralActive,,0,0,0,,{\c&H0000E6FF&}ANCIENT {\c&H00FFFFFF&}WORKERS {\c&H00FFFFFF&}HAD
+Dialogue: 0,0:00:07.13,0:00:08.13,ViralActive,,0,0,0,,{\c&H00FFFFFF&}TO {\c&H0000E6FF&}QUARRY {\c&H00FFFFFF&}FIVE
+Dialogue: 0,0:00:08.13,0:00:08.97,ViralActive,,0,0,0,,{\c&H0000E6FF&}TONS {\c&H00FFFFFF&}OF {\c&H00FFFFFF&}ROCK
+Dialogue: 0,0:00:08.97,0:00:10.47,ViralActive,,0,0,0,,{\c&H00FFFFFF&}EVERY {\c&H00FFFFFF&}SIXTY {\c&H0000E6FF&}MINUTES
+Dialogue: 0,0:00:10.47,0:00:11.60,ViralActive,,0,0,0,,{\c&H0000E6FF&}THAT'S {\c&H00FFFFFF&}ONE {\c&H00FFFFFF&}TON
+Dialogue: 0,0:00:11.60,0:00:13.38,ViralActive,,0,0,0,,{\c&H00FFFFFF&}EVERY {\c&H00FFFFFF&}TWELVE {\c&H0000E6FF&}MINUTES
+Dialogue: 0,0:00:13.38,0:00:14.50,ViralActive,,0,0,0,,{\c&H00FFFFFF&}DAY {\c&H00FFFFFF&}AND {\c&H0000E6FF&}NIGHT
+Dialogue: 0,0:00:14.50,0:00:16.00,ViralActive,,0,0,0,,{\c&H00FFFFFF&}WITH {\c&H0000E6FF&}HANDHELD {\c&H00FFFFFF&}IRON
+Dialogue: 0,0:00:16.00,0:00:16.75,ViralActive,,0,0,0,,{\c&H0000E6FF&}CHISELS
+Dialogue: 0,0:00:16.75,0:00:18.22,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THE {\c&H00FFFFFF&}MATH {\c&H0000E6FF&}LITERALLY
+Dialogue: 0,0:00:18.22,0:00:19.33,ViralActive,,0,0,0,,{\c&H0000E6FF&}DOES {\c&H00FFFFFF&}NOT {\c&H00FFFFFF&}WORK

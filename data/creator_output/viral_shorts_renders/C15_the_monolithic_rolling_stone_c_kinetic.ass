@@ -1,0 +1,28 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:00.78,ViralActive,,0,0,0,,{\c&H00FFFFFF&}SEE {\c&H0000E6FF&}THIS
+Dialogue: 0,0:00:00.78,0:00:01.85,ViralActive,,0,0,0,,{\c&H0000E6FF&}FAMOUS {\c&H00FFFFFF&}STONE
+Dialogue: 0,0:00:01.85,0:00:02.62,ViralActive,,0,0,0,,{\c&H0000E6FF&}CHARIOT
+Dialogue: 0,0:00:02.57,0:00:03.90,ViralActive,,0,0,0,,{\c&H0000E6FF&}YOU'VE {\c&H00FFFFFF&}BEEN {\c&H00FFFFFF&}TOLD
+Dialogue: 0,0:00:03.90,0:00:04.85,ViralActive,,0,0,0,,{\c&H00FFFFFF&}IT'S {\c&H00FFFFFF&}A {\c&H0000E6FF&}SOLID
+Dialogue: 0,0:00:04.85,0:00:05.52,ViralActive,,0,0,0,,{\c&H0000E6FF&}STATUE
+Dialogue: 0,0:00:05.52,0:00:07.28,ViralActive,,0,0,0,,{\c&H00FFFFFF&}BUT {\c&H0000E6FF&}HISTORICAL {\c&H00FFFFFF&}PHOTOS
+Dialogue: 0,0:00:07.28,0:00:08.48,ViralActive,,0,0,0,,{\c&H00FFFFFF&}FROM {\c&H00FFFFFF&}1856 {\c&H0000E6FF&}PROVE
+Dialogue: 0,0:00:08.48,0:00:10.24,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THE {\c&H00FFFFFF&}WHEELS {\c&H0000E6FF&}ORIGINALLY
+Dialogue: 0,0:00:10.24,0:00:11.54,ViralActive,,0,0,0,,{\c&H0000E6FF&}ROTATED {\c&H00FFFFFF&}ON {\c&H00FFFFFF&}STONE
+Dialogue: 0,0:00:11.54,0:00:12.09,ViralActive,,0,0,0,,{\c&H0000E6FF&}AXLES
+Dialogue: 0,0:00:12.09,0:00:13.81,ViralActive,,0,0,0,,{\c&H00FFFFFF&}ANCIENT {\c&H0000E6FF&}ARTISANS {\c&H00FFFFFF&}CARVED
+Dialogue: 0,0:00:13.81,0:00:15.12,ViralActive,,0,0,0,,{\c&H00FFFFFF&}AN {\c&H0000E6FF&}EIGHT-TON {\c&H00FFFFFF&}STONE
+Dialogue: 0,0:00:15.12,0:00:16.59,ViralActive,,0,0,0,,{\c&H0000E6FF&}VEHICLE {\c&H00FFFFFF&}WITH {\c&H00FFFFFF&}WORKING
+Dialogue: 0,0:00:16.59,0:00:17.08,ViralActive,,0,0,0,,{\c&H0000E6FF&}PARTS

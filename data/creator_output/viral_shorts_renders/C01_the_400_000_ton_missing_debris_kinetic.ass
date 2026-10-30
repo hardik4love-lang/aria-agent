@@ -1,0 +1,29 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.57,ViralActive,,0,0,0,,{\c&H00FFFFFF&}FOUR {\c&H00FFFFFF&}HUNDRED {\c&H0000E6FF&}THOUSAND
+Dialogue: 0,0:00:01.57,0:00:02.43,ViralActive,,0,0,0,,{\c&H00FFFFFF&}TONS {\c&H00FFFFFF&}OF {\c&H0000E6FF&}SOLID
+Dialogue: 0,0:00:02.43,0:00:03.52,ViralActive,,0,0,0,,{\c&H00FFFFFF&}ROCK {\c&H00FFFFFF&}WERE {\c&H0000E6FF&}CARVED
+Dialogue: 0,0:00:03.52,0:00:04.22,ViralActive,,0,0,0,,{\c&H00FFFFFF&}OUT {\c&H00FFFFFF&}OF {\c&H0000E6FF&}THIS
+Dialogue: 0,0:00:04.22,0:00:04.92,ViralActive,,0,0,0,,{\c&H0000E6FF&}MOUNTAIN
+Dialogue: 0,0:00:04.87,0:00:06.44,ViralActive,,0,0,0,,{\c&H00FFFFFF&}BUT {\c&H00FFFFFF&}WHEN {\c&H0000E6FF&}ARCHAEOLOGISTS
+Dialogue: 0,0:00:06.44,0:00:08.08,ViralActive,,0,0,0,,{\c&H00FFFFFF&}SURVEYED {\c&H00FFFFFF&}THE {\c&H0000E6FF&}SURROUNDING
+Dialogue: 0,0:00:08.08,0:00:09.27,ViralActive,,0,0,0,,{\c&H0000E6FF&}TWENTY {\c&H00FFFFFF&}MILES {\c&H00FFFFFF&}THEY
+Dialogue: 0,0:00:09.27,0:00:10.46,ViralActive,,0,0,0,,{\c&H00FFFFFF&}FOUND {\c&H00FFFFFF&}ZERO {\c&H0000E6FF&}DEBRIS
+Dialogue: 0,0:00:10.46,0:00:11.57,ViralActive,,0,0,0,,{\c&H0000E6FF&}NONE
+Dialogue: 0,0:00:11.57,0:00:11.99,ViralActive,,0,0,0,,{\c&H0000E6FF&}NOT {\c&H00FFFFFF&}A
+Dialogue: 0,0:00:11.99,0:00:13.26,ViralActive,,0,0,0,,{\c&H0000E6FF&}SINGLE {\c&H00FFFFFF&}QUARRY
+Dialogue: 0,0:00:13.26,0:00:13.79,ViralActive,,0,0,0,,{\c&H0000E6FF&}PILE
+Dialogue: 0,0:00:13.79,0:00:14.81,ViralActive,,0,0,0,,{\c&H00FFFFFF&}SO {\c&H0000E6FF&}WHERE {\c&H00FFFFFF&}DID
+Dialogue: 0,0:00:14.81,0:00:16.43,ViralActive,,0,0,0,,{\c&H00FFFFFF&}AN {\c&H00FFFFFF&}ENTIRE {\c&H0000E6FF&}MOUNTAIN
+Dialogue: 0,0:00:16.43,0:00:16.74,ViralActive,,0,0,0,,{\c&H0000E6FF&}GO

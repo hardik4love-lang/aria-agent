@@ -1,0 +1,30 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.51,ViralActive,,0,0,0,,{\c&H0000E6FF&}KAILASA {\c&H00FFFFFF&}SITS {\c&H00FFFFFF&}INSIDE
+Dialogue: 0,0:00:01.51,0:00:03.26,ViralActive,,0,0,0,,{\c&H00FFFFFF&}A {\c&H0000E6FF&}ONE-HUNDRED-FOOT {\c&H00FFFFFF&}DEEP
+Dialogue: 0,0:00:03.26,0:00:04.00,ViralActive,,0,0,0,,{\c&H0000E6FF&}HOLE {\c&H00FFFFFF&}IN {\c&H00FFFFFF&}THE
+Dialogue: 0,0:00:04.00,0:00:04.42,ViralActive,,0,0,0,,{\c&H0000E6FF&}ROCK
+Dialogue: 0,0:00:04.37,0:00:06.30,ViralActive,,0,0,0,,{\c&H00FFFFFF&}DURING {\c&H0000E6FF&}MONSOON {\c&H00FFFFFF&}SEASON
+Dialogue: 0,0:00:06.30,0:00:07.55,ViralActive,,0,0,0,,{\c&H00FFFFFF&}FIFTY {\c&H0000E6FF&}INCHES {\c&H00FFFFFF&}OF
+Dialogue: 0,0:00:07.55,0:00:08.51,ViralActive,,0,0,0,,{\c&H00FFFFFF&}RAIN {\c&H0000E6FF&}FALLS
+Dialogue: 0,0:00:08.51,0:00:09.67,ViralActive,,0,0,0,,{\c&H00FFFFFF&}IT {\c&H0000E6FF&}SHOULD {\c&H00FFFFFF&}TURN
+Dialogue: 0,0:00:09.67,0:00:10.64,ViralActive,,0,0,0,,{\c&H00FFFFFF&}INTO {\c&H00FFFFFF&}A {\c&H0000E6FF&}GIANT
+Dialogue: 0,0:00:10.64,0:00:11.60,ViralActive,,0,0,0,,{\c&H0000E6FF&}MUDDY {\c&H00FFFFFF&}LAKE
+Dialogue: 0,0:00:11.60,0:00:12.58,ViralActive,,0,0,0,,{\c&H00FFFFFF&}BUT {\c&H00FFFFFF&}IN {\c&H0000E6FF&}TWELVE
+Dialogue: 0,0:00:12.58,0:00:13.91,ViralActive,,0,0,0,,{\c&H0000E6FF&}HUNDRED {\c&H00FFFFFF&}YEARS {\c&H00FFFFFF&}IT
+Dialogue: 0,0:00:13.91,0:00:15.24,ViralActive,,0,0,0,,{\c&H00FFFFFF&}HAS {\c&H00FFFFFF&}NEVER {\c&H0000E6FF&}FLOODED
+Dialogue: 0,0:00:15.24,0:00:15.69,ViralActive,,0,0,0,,{\c&H0000E6FF&}ONCE
+Dialogue: 0,0:00:15.69,0:00:16.61,ViralActive,,0,0,0,,{\c&H0000E6FF&}WHERE {\c&H00FFFFFF&}DOES
+Dialogue: 0,0:00:16.61,0:00:17.43,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THE {\c&H0000E6FF&}WATER
+Dialogue: 0,0:00:17.43,0:00:17.74,ViralActive,,0,0,0,,{\c&H0000E6FF&}GO

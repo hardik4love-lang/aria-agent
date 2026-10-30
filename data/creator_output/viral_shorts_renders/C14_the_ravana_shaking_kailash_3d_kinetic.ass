@@ -1,0 +1,28 @@
+[Script Info]
+Title: ARIA Viral Kinetic Subtitles
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: ViralActive,Arial,74,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,4,2,40,40,460,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.39,ViralActive,,0,0,0,,{\c&H00FFFFFF&}ART {\c&H0000E6FF&}HISTORIANS {\c&H00FFFFFF&}CALL
+Dialogue: 0,0:00:01.39,0:00:02.39,ViralActive,,0,0,0,,{\c&H00FFFFFF&}THIS {\c&H00FFFFFF&}THE {\c&H0000E6FF&}SINGLE
+Dialogue: 0,0:00:02.39,0:00:03.84,ViralActive,,0,0,0,,{\c&H0000E6FF&}GREATEST {\c&H00FFFFFF&}ROCK {\c&H00FFFFFF&}CARVING
+Dialogue: 0,0:00:03.84,0:00:04.68,ViralActive,,0,0,0,,{\c&H00FFFFFF&}IN {\c&H00FFFFFF&}THE {\c&H0000E6FF&}WORLD
+Dialogue: 0,0:00:04.63,0:00:05.28,ViralActive,,0,0,0,,{\c&H0000E6FF&}IT’S {\c&H00FFFFFF&}NOT {\c&H00FFFFFF&}A
+Dialogue: 0,0:00:05.28,0:00:07.14,ViralActive,,0,0,0,,{\c&H00FFFFFF&}FLAT {\c&H0000E6FF&}CARVING—THE {\c&H00FFFFFF&}SCULPTOR
+Dialogue: 0,0:00:07.14,0:00:08.44,ViralActive,,0,0,0,,{\c&H0000E6FF&}REACHED {\c&H00FFFFFF&}BEHIND {\c&H00FFFFFF&}THE
+Dialogue: 0,0:00:08.44,0:00:09.50,ViralActive,,0,0,0,,{\c&H00FFFFFF&}STONE {\c&H0000E6FF&}BODIES {\c&H00FFFFFF&}TO
+Dialogue: 0,0:00:09.50,0:00:10.88,ViralActive,,0,0,0,,{\c&H00FFFFFF&}HOLLOW {\c&H00FFFFFF&}OUT {\c&H0000E6FF&}NEGATIVE
+Dialogue: 0,0:00:10.88,0:00:11.93,ViralActive,,0,0,0,,{\c&H0000E6FF&}SPACE {\c&H00FFFFFF&}FOUR {\c&H00FFFFFF&}FEET
+Dialogue: 0,0:00:11.93,0:00:12.34,ViralActive,,0,0,0,,{\c&H0000E6FF&}DEEP
+Dialogue: 0,0:00:12.34,0:00:13.20,ViralActive,,0,0,0,,{\c&H00FFFFFF&}ONE {\c&H0000E6FF&}SLIP {\c&H00FFFFFF&}OF
+Dialogue: 0,0:00:13.20,0:00:14.35,ViralActive,,0,0,0,,{\c&H00FFFFFF&}A {\c&H0000E6FF&}HAMMER {\c&H00FFFFFF&}WOULD
+Dialogue: 0,0:00:14.35,0:00:15.79,ViralActive,,0,0,0,,{\c&H00FFFFFF&}RUIN {\c&H0000E6FF&}TWENTY {\c&H00FFFFFF&}YEARS
+Dialogue: 0,0:00:15.79,0:00:16.46,ViralActive,,0,0,0,,{\c&H00FFFFFF&}OF {\c&H0000E6FF&}WORK
