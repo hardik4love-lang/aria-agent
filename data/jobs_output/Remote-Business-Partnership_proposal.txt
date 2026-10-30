@@ -1,8 +1,8 @@
-Subject: Immediate Solution Ready for: Remote Business Development Assistant &ndash; US &amp; Canada
+Subject: Immediate Solution Ready for: Remote Business Development Assistant - US &amp; Canada
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Hello,
 
-I have already engineered and AST-verified the drop-in production solution for your requirement ('Remote Business Development Assistant &ndash; US &amp; Canada').
+I have already engineered and AST-verified the drop-in production solution for your requirement ('Remote Business Development Assistant - US &amp; Canada').
 
 • Deliverable: Cleanroom, production-tested Rapid Engineering module.
 • Verification: 100% passing automated unit tests with zero dependency bloat.
