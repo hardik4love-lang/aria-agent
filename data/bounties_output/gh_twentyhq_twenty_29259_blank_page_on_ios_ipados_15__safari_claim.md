@@ -4,7 +4,7 @@
 - **Repository**: `twentyhq/twenty`
 - **Issue Reference**: [Blank page on iOS/iPadOS 15 (Safari < 16.4): Vite's default build target drops marked's lookbehind fallback; front components need Safari 16.4+](https://github.com/twentyhq/twenty/issues/29259)
 - **Bounty Value**: `$150.00 USD`
-- **Timestamp**: `2026-10-30T07:27:24.545336+00:00`
+- **Timestamp**: `2026-10-30T12:27:42.160742+00:00`
 - **Settlement Destination**: PayPal `shruhicollections@gmail.com`
 
 ---

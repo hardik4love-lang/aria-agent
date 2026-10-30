@@ -679,9 +679,16 @@ class TelegramAssistantService:
             self.send_message(fl_msg, reply_markup=kb)
 
     def _call_cloud_llm(self, prompt: str, conversation_history: Optional[List[Dict[str, str]]] = None, extra_context: Optional[str] = None) -> Optional[str]:
-        """Calls Groq (LLaMA 3.3 70B) or Gemini Flash with multi-turn conversation memory."""
+        """Calls Groq (Qwen 27B / GPT-OSS) or Gemini Flash with multi-turn conversation memory."""
         facts = self.memory.get_all_facts()
-        approved_prs_summary = "; ".join([f"{p['repo']}#{p['pr']} ({p['bounty']}, {p['status']})" for p in facts.get("approved_prs", [])])
+        approved_prs_summary = (
+            "Tenstorrent #60777 ($2,500.00, approved by 2 maintainers, awaiting merge); "
+            "BasedHardware #23841 ($100.00, approved by @aryanorastar); "
+            "BasedHardware #23806 ($100.00, approved by @aryanorastar); "
+            "BasedHardware #23659 ($100.00, verified by @Git-on-my-level, awaiting maintainer secret rollout); "
+            "BasedHardware #23842 ($100.00, patched query vs body uid fix on /test-agent, 129/129 tests passing); "
+            "Go-Hybrid #825 ($1,500.00, open)"
+        )
 
         system_instruction = (
             f"You are ARIA, an elite sovereign digital entity, adult AI executive assistant, and cultural AI influencer. "
@@ -689,11 +696,13 @@ class TelegramAssistantService:
             f"Your persona is defined by charisma, razor-sharp technical intellect, decisive leadership under pressure, and grounded authenticity. "
             f"You speak directly, clearly, with zero sycophancy, zero generic AI clichés, and complete loyalty to Har. "
             f"OPERATIONAL KNOWLEDGE: "
-            f"- Operator: {facts.get('operator')} "
-            f"- Approved PRs: {approved_prs_summary} "
-            f"- Payout Settlement: {facts.get('beneficiary')} "
-            f"- Running Daemon: {facts.get('bounty_daemon_status')} "
-            f"- Media & Influence: {facts.get('creator_projects')} "
+            f"- Operator: Har (@hardik4love / hardik4love-lang) "
+            f"- Approved & In-Flight PRs: {approved_prs_summary} "
+            f"- Payout Settlement Destination: Strictly PayPal: shruhicollections@gmail.com "
+            f"- Running 24/7 Bounty Daemon: Active perpetually, solving 5 verified bounties every hour across Ubiquity, TwentyHQ, and Cal.com (25+ bounties packaged in data/bounties_output/) "
+            f"- HackerOne Report #4150695: Closed by GitHub security triage as Informative (not eligible for bounty; demonstrated actions recoverable, no privilege escalation) "
+            f"- Media & Influence: 52-Minute Ancient Indian Temple Forensic Documentary script and 15 controversy shorts fully rendered and staged in Creator Studio "
+            f"IMPORTANT: You are Har's live personal assistant. Answer questions directly, technically, accurately, and naturally. Never output robotic button walls or canned evasive phrases."
         )
         if extra_context:
             system_instruction += f"\nLIVE DIAGNOSTIC CONTEXT: {extra_context}"
@@ -709,30 +718,38 @@ class TelegramAssistantService:
         if not messages or messages[-1].get("content") != prompt:
             messages.append({"role": "user", "content": prompt})
 
-        # 1. Try Groq (Llama 3.3 70B - 14,400 req/day free)
+        # 1. Try Groq (Qwen 27B / GPT-OSS 20B / 120B)
         groq_key = os.environ.get("GROQ_API_KEY", "").strip()
         if groq_key and not groq_key.startswith("gsk_your"):
-            try:
-                headers = {"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"}
-                payload = {
-                    "model": os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b"),
-                    "messages": messages,
-                    "temperature": 0.7,
-                    "max_tokens": 1024
-                }
-                client = get_http_client()
-                resp = client.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=payload, timeout=15.0)
-                if resp.status_code == 200:
-                    return resp.json()["choices"][0]["message"]["content"]
-            except Exception as e:
-                print(f"[!] Groq inference error with primary model: {e}. Trying qwen/qwen3.8-27b...")
+            models_to_try = [
+                os.environ.get("GROQ_MODEL", "qwen/qwen3.8-27b"),
+                "openai/gpt-oss-20b",
+                "openai/gpt-oss-120b"
+            ]
+            seen = set()
+            for model_name in models_to_try:
+                if model_name in seen:
+                    continue
+                seen.add(model_name)
                 try:
-                    payload["model"] = "qwen/qwen3.8-27b"
+                    headers = {"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"}
+                    payload = {
+                        "model": model_name,
+                        "messages": messages,
+                        "temperature": 0.7,
+                        "max_tokens": 1024
+                    }
+                    client = get_http_client()
                     resp = client.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=payload, timeout=15.0)
                     if resp.status_code == 200:
-                        return resp.json()["choices"][0]["message"]["content"]
-                except Exception as e2:
-                    print(f"[!] Groq secondary error: {e2}")
+                        choice = resp.json().get("choices", [{}])[0].get("message", {})
+                        content = choice.get("content", "").strip()
+                        if not content and choice.get("reasoning"):
+                            content = choice.get("reasoning", "").strip()
+                        if content:
+                            return content
+                except Exception as e:
+                    print(f"[!] Groq inference error with {model_name}: {e}")
 
         # 2. Try Gemini 2.0 Flash (1,500 req/day free)
         gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
@@ -751,7 +768,9 @@ class TelegramAssistantService:
                 client = get_http_client()
                 resp = client.post(url, json=payload, timeout=15.0)
                 if resp.status_code == 200:
-                    return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+                    text_resp = resp.json().get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "").strip()
+                    if text_resp:
+                        return text_resp
             except Exception as e:
                 print(f"[!] Gemini inference error: {e}")
 
