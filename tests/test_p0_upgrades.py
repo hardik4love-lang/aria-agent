@@ -240,8 +240,8 @@ def test_pr_rebase_watcher_scan():
     watcher = PRRebaseWatcher()
     prs = watcher.inspect_all_tracked_prs()
     assert len(prs) >= 2
-    assert prs[0]["id"] == "tt-60777"
-    assert prs[1]["id"] == "hy-825"
+    assert prs[0]["id"] == "omi-23841"
+    assert prs[1]["id"] == "omi-23842"
     assert prs[0]["health"]["status"] in ["HEALTHY", "REQUIRES_ATTENTION"]
 
 

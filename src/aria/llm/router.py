@@ -161,7 +161,7 @@ class ModelRouter:
         # 2. Primary Provider: Groq Cloud (with automatic Gemini/Mock runtime cascade)
         if self.groq_key and snapshot["groq_remaining"] > 2000:
             self.quota.record_call("groq")
-            model = "llama-3.3-70b-versatile" if role == "planner" else "llama-3.1-8b-instant"
+            model = "llama-3.3-70b-versatile" if role in ("planner", "executor") else "llama-3.1-8b-instant"
             return GroqClient(self.groq_key, model, fallback_client=gemini_fallback or mock_fallback)
 
         # 3. Secondary Provider: Google AI Studio
@@ -187,8 +187,9 @@ class ModelRouter:
 class CascadeLLMRouter:
     """Production-grade cascading inference router with zero-cost bounds."""
 
-    def __init__(self, quota_tracker: Optional[QuotaTracker] = None):
+    def __init__(self, quota_tracker: Optional[QuotaTracker] = None, role: str = "general", **kwargs):
         from aria.llm.circuit_breaker import CircuitBreaker
+        self.role = role
         self.quota = quota_tracker or QuotaTracker()
         self.groq_key = os.environ.get("GROQ_API_KEY", "").strip()
         self.gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
@@ -196,12 +197,13 @@ class CascadeLLMRouter:
         self.groq_breaker = CircuitBreaker(failure_threshold=3, cooldown_seconds=60.0)
         self.gemini_breaker = CircuitBreaker(failure_threshold=3, cooldown_seconds=60.0)
 
-    def generate(self, prompt: str, system: Optional[str] = None, role: str = "general", max_tokens: int = 2048) -> str:
+    def generate(self, prompt: str, system: Optional[str] = None, role: Optional[str] = None, max_tokens: int = 2048) -> str:
+        active_role = role or self.role
         snapshot = self.quota.get_snapshot()
 
         # 1. Attempt Groq Primary
         if self.groq_key and snapshot["groq_remaining"] > 500:
-            model = "llama-3.3-70b-versatile" if role == "planner" else "llama-3.1-8b-instant"
+            model = "llama-3.3-70b-versatile" if active_role in ("planner", "executor") else "llama-3.1-8b-instant"
             res = self._try_groq(model, prompt, system, max_tokens)
             if res:
                 self.quota.record_call("groq")
@@ -222,7 +224,7 @@ class CascadeLLMRouter:
                 return res
 
         # 4. Deterministic safe mock fallback
-        return MockLLMClient(f"cascade-{role}").generate(prompt, system)
+        return MockLLMClient(f"cascade-{active_role}").generate(prompt, system)
 
     def _try_groq(self, model: str, prompt: str, system: Optional[str], max_tokens: int) -> Optional[str]:
         if not self.groq_breaker.allow_request():
