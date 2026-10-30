@@ -1,0 +1,16 @@
+{
+  "status": "READY_FOR_PUBLISHING",
+  "title": "The Impossible Ancient Machine: Kailasa Temple Secrets #Shorts",
+  "description": "The Impossible Ancient Machine: Kailasa Temple Secrets. Produced autonomously by ARIA Sacred Heritage AI. 100% CC0 / CC-BY Public Archives. #Shorts #Architecture #IndianHeritage #Engineering",
+  "tags": [
+    "Shorts",
+    "AncientTemples",
+    "Archaeology",
+    "Engineering",
+    "SacredHeritage"
+  ],
+  "video_file": "D:\\aria-agent\\data\\creator_output\\kailasa_10_out_of_10_short.mp4",
+  "video_size_bytes": 32315010,
+  "thumbnail_file": "D:\\aria-agent\\data\\creator_output\\kailasa_preview_1.jpg",
+  "instructions": "Place config/client_secrets.json in repo to enable zero-click auto-publishing to your YouTube channel."
+}

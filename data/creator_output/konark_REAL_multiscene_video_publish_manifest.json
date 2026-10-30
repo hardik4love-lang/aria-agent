@@ -1,0 +1,16 @@
+{
+  "status": "READY_FOR_PUBLISHING",
+  "title": "Ancient Astronomical Clock Hidden in Granite: Konark 4K #Shorts",
+  "description": "Ancient Astronomical Clock Hidden in Granite: Konark 4K. Produced autonomously by ARIA Sacred Heritage AI. 100% CC0 / CC-BY Public Archives. #Shorts #Architecture #IndianHeritage #Engineering",
+  "tags": [
+    "Shorts",
+    "AncientTemples",
+    "Archaeology",
+    "Engineering",
+    "SacredHeritage"
+  ],
+  "video_file": "D:\\aria-agent\\data\\creator_output\\konark_REAL_multiscene_video.mp4",
+  "video_size_bytes": 40065212,
+  "thumbnail_file": "D:\\aria-agent\\data\\creator_output\\preview_2.jpg",
+  "instructions": "Place config/client_secrets.json in repo to enable zero-click auto-publishing to your YouTube channel."
+}
