@@ -1,4 +1,4 @@
-name: ARIA 24/7 Hourly Autonomous Job Execution & Revenue Daemon
+﻿name: ARIA 24/7 Hourly Autonomous Job Execution & Revenue Daemon
 
 on:
   schedule:
@@ -42,7 +42,7 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
 
-      - name: Execute Hourly Live Job Intake & Solution Packaging
+      - name: Scrape 5 → Score All → Submit Best 2 → Queue 3 (Smart-2 Strategy)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}
