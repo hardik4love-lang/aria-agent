@@ -1,0 +1,51 @@
+{
+  "facts": {
+    "operator": "Har",
+    "identity": "ARIA - Autonomous Sovereign Assistant & Cultural AI Influencer",
+    "beneficiary": "PayPal: shruhicollections@gmail.com",
+    "payout_rails": "PayPal (Primary), Wire / ACH (Enterprise), Base USDC (On-Chain)",
+    "approved_prs": [
+      {
+        "repo": "tenstorrent/tt-metal",
+        "pr": 60777,
+        "bounty": "$2,500.00 USD",
+        "status": "APPROVED by @iwroszTT and @mgajewskiTT, awaiting final team merge"
+      },
+      {
+        "repo": "BasedHardware/omi",
+        "pr": 23841,
+        "bounty": "$100.00 USD",
+        "status": "APPROVED by @aryanorastar, awaiting master merge"
+      },
+      {
+        "repo": "BasedHardware/omi",
+        "pr": 23806,
+        "bounty": "$100.00 USD",
+        "status": "APPROVED by @aryanorastar, awaiting master merge"
+      }
+    ],
+    "active_prs": [
+      {
+        "repo": "limitlessprojects/Go-Hybrid",
+        "pr": 825,
+        "bounty": "$1,500.00 USD",
+        "status": "OPEN (active spike)"
+      }
+    ],
+    "bounty_daemon_status": "Active 24/7 (5 bounties / hour)",
+    "creator_projects": "52-min Indian Ancient Architecture Master Documentary + 15 Viral Shorts Suite"
+  },
+  "conversation_history": [
+    {
+      "role": "user",
+      "content": "Test message from Har",
+      "timestamp": "2026-10-30T07:33:05.738933+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello Har, Aria here.",
+      "timestamp": "2026-10-30T07:33:05.762427+00:00"
+    }
+  ],
+  "troubleshooting_notes": []
+}
