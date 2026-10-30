@@ -4,7 +4,7 @@
 - **Repository**: `calcom/cal.com`
 - **Issue Reference**: [BLACKLISTED_GUEST_EMAILS entries with surrounding whitespace are silently ignored (blocklist bypass)](https://github.com/calcom/cal.diy/issues/30460)
 - **Bounty Value**: `$100.00 USD`
-- **Timestamp**: `2026-10-30T12:27:42.250711+00:00`
+- **Timestamp**: `2026-10-30T14:53:52.201634+00:00`
 - **Settlement Destination**: PayPal `shruhicollections@gmail.com`
 
 ---

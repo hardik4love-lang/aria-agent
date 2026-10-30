@@ -4,7 +4,7 @@
 - **Repository**: `twentyhq/twenty`
 - **Issue Reference**: [Cron trigger description drops the day of week when the day of month is also set](https://github.com/twentyhq/twenty/issues/29260)
 - **Bounty Value**: `$150.00 USD`
-- **Timestamp**: `2026-10-30T12:27:42.116531+00:00`
+- **Timestamp**: `2026-10-30T19:20:08.202511+00:00`
 - **Settlement Destination**: PayPal `shruhicollections@gmail.com`
 
 ---
