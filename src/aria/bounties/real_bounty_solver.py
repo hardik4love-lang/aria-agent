@@ -12,6 +12,7 @@ from typing import Dict, Any, Optional, Tuple, List
 
 from aria.llm.router import CascadeLLMRouter
 from aria.bounties.repo_context import RepoContextFetcher
+from aria.bounties.patch_validator import PatchValidator
 
 logger = logging.getLogger(__name__)
 
@@ -65,6 +66,39 @@ class RealBountySolver:
 
         impl_filename = f"{task_id}_{slug}_impl.{ext}"
         impl_path = os.path.join(self.output_dir, impl_filename)
+
+        # --- Pre-flight patch validation ---
+        validator = PatchValidator()
+        router_for_regen = CascadeLLMRouter()
+
+        def _llm_regen(error_msg: str) -> str:
+            """Re-ask the LLM to fix the patch given the compile/syntax error."""
+            regen_prompt = (
+                f"You are a senior {lang} engineer.\n"
+                f"The previous patch had this error:\n{error_msg}\n\n"
+                f"Please fix it and return only the corrected code (no markdown fences, no explanation).\n\n"
+                f"Broken code:\n{impl_code}"
+            )
+            fixed = router_for_regen.generate(regen_prompt, role="executor")
+            return fixed.strip() if fixed and fixed.strip() else impl_code
+
+        patch_ok, impl_code, patch_err = validator.validate_with_retry(
+            impl_filename, impl_code, llm_regenerate_fn=_llm_regen
+        )
+
+        if not patch_ok:
+            logger.warning(
+                "[Validator] PATCH_INVALID_SKIPPED for %s#%s — %s",
+                repo, issue.get("number", "?"), patch_err[:200],
+            )
+            return {
+                "status": "PATCH_INVALID_SKIPPED",
+                "reason": patch_err,
+                "task_id": task_id,
+                "repo": repo,
+                "title": title,
+            }
+        # --- End pre-flight validation ---
         with open(impl_path, "w", encoding="utf-8") as f:
             f.write(impl_code)
 
