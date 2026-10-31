@@ -151,16 +151,7 @@ def run_pr_rebase_watcher_thread(svc: TelegramAssistantService):
     while running:
 
         try:
-            # 1. Run Autonomous PR Review & CI Fixer across all in-flight PRs
-            logger.info("[AUTO-FIX] Running autonomous PR review and CI failure resolution cycle...")
-            try:
-                fixed_count = fixer.run_auto_fix_cycle(svc=svc)
-                if fixed_count > 0:
-                    logger.info(f"[AUTO-FIX] Successfully resolved and committed {fixed_count} PR fixes.")
-            except Exception as e:
-                logger.warning(f"[AUTO-FIX] Exception during review auto-fix cycle: {e}")
-
-            # 2. Inspect PR mergeability and git conflicts
+            # 1. Inspect PR mergeability and git conflicts (Auto-fix is handled safely by dedicated guardian schedule)
             results = watcher.inspect_all_tracked_prs()
 
             for pr in results:
