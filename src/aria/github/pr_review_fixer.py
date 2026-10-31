@@ -807,8 +807,8 @@ class PRReviewFixer:
             {"repo": "BasedHardware/omi", "pr_number": 23747, "title": "fix(cli): harden conversations_to_tsv against speaker 0 drops (#23720)"},
             {"repo": "limitlessprojects/Go-Hybrid", "pr_number": 1924, "title": "fix(hy-check): check result arity for try-unwrapped calls (fixes #1835)"},
             {"repo": "limitlessprojects/Go-Hybrid", "pr_number": 1925, "title": "fix(hy-check): reject indirect send-only channels (fixes #1829)"},
-            {"repo": "tenstorrent/tt-metal", "pr_number": 62546, "title": "[Bug fix] allocator: preserve default L1 address alignment after explicit reservations (#62539)"},
-            {"repo": "calcom/cal.diy", "pr_number": 30365, "title": "fix(settings): honor old primary email deletion (#30365)"}
+            {"repo": "tenstorrent/tt-metal", "pr_number": 62546, "title": "[Bug fix] allocator: preserve default L1 address alignment after explicit reservations (#62539)"}
+            # calcom/cal.diy permanently excluded - PRs closed 2026-10-31 (spams CI emails)
         ]
 
     def inspect_pr_for_actionable_feedback(self, repo: str, pr_number: int) -> Optional[Dict[str, Any]]:
