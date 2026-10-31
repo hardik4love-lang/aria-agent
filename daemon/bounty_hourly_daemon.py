@@ -47,6 +47,12 @@ try:
 except ImportError:
     RADAR_AVAILABLE = False
 
+try:
+    from aria.memory.repo_fingerprints import RepoFingerprints
+    FINGERPRINTS_AVAILABLE = True
+except ImportError:
+    FINGERPRINTS_AVAILABLE = False
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] [ARIA-SMART-2] %(message)s",
@@ -136,6 +142,17 @@ class HourlyBountyDaemon:
 
         self.brain = ARIAVectorBrain(data_dir=self.data_dir) if BRAIN_AVAILABLE else None
         self.radar = GlobalBountyRadar() if RADAR_AVAILABLE else None
+
+        # Repo language & stack fingerprinting -- learned success-rate multiplier
+        if FINGERPRINTS_AVAILABLE:
+            import pathlib as _pl
+            _fp_path = _pl.Path(data_dir) / "repo_fingerprints.json"
+            self.fingerprints = RepoFingerprints(fingerprints_file=_fp_path)
+            for _repo in ["limitlessprojects/Go-Hybrid", "BasedHardware/omi", "tenstorrent/tt-metal"]:
+                _lang = self.fingerprints.infer_language_from_repo_name(_repo)
+                self.fingerprints.set_language(_repo, _lang)
+        else:
+            self.fingerprints = None
 
     # ── Persistence helpers ────────────────────────────────────────────────────
 
@@ -274,7 +291,12 @@ class HourlyBountyDaemon:
     def rank_pool(self, pool: list) -> list:
         """Score and rank all candidates; return sorted best-first."""
         for item in pool:
-            item["score"] = _score_issue(item)
+            base_score = _score_issue(item)
+            if self.fingerprints:
+                conf = self.fingerprints.get_confidence_multiplier(item["repo"])
+                item["score"] = round(base_score * conf, 2)
+            else:
+                item["score"] = base_score
         return sorted(pool, key=lambda x: x["score"], reverse=True)
 
     def select_batch(self, fresh: list) -> tuple[list, list]:
@@ -409,6 +431,8 @@ class HourlyBountyDaemon:
                     logger.info(f"    ✅ PR opened: {pr_url}")
                     if self.brain:
                         self.brain.record_pr_outcome(repo, number, title, "pending", "PR opened")
+                    if self.fingerprints:
+                        self.fingerprints.record_attempt(repo)
                 else:
                     logger.warning(f"    ⚠️  gh pr create: {pr_res.stderr.strip()[:200]}")
             else:

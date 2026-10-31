@@ -1,0 +1,38 @@
+{
+  "limitlessprojects/Go-Hybrid": {
+    "repo": "limitlessprojects/Go-Hybrid",
+    "language": "go",
+    "stack": ["go", "hy", "compiler"],
+    "attempts": 5,
+    "merges": 5,
+    "rejections": 0,
+    "success_rate": 1.0,
+    "avg_merge_time_days": 2.1,
+    "last_attempt_ts": null,
+    "created_ts": 0
+  },
+  "BasedHardware/omi": {
+    "repo": "BasedHardware/omi",
+    "language": "typescript",
+    "stack": ["typescript", "python", "react-native"],
+    "attempts": 6,
+    "merges": 6,
+    "rejections": 0,
+    "success_rate": 1.0,
+    "avg_merge_time_days": 1.8,
+    "last_attempt_ts": null,
+    "created_ts": 0
+  },
+  "tenstorrent/tt-metal": {
+    "repo": "tenstorrent/tt-metal",
+    "language": "c++",
+    "stack": ["c++", "python", "ml"],
+    "attempts": 1,
+    "merges": 0,
+    "rejections": 0,
+    "success_rate": 0.0,
+    "avg_merge_time_days": null,
+    "last_attempt_ts": null,
+    "created_ts": 0
+  }
+}
