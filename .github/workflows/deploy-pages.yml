@@ -7,6 +7,12 @@ on:
     paths:
       - 'dashboard/**'
       - '.github/workflows/deploy-pages.yml'
+  workflow_run:
+    workflows: ["ARIA 24/7 Hourly Autonomous Job Execution & Revenue Daemon"]
+    types:
+      - completed
+  schedule:
+    - cron: '30 */2 * * *'
   workflow_dispatch:
 
 permissions:

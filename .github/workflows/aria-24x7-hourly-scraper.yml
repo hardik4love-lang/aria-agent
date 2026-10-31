@@ -67,14 +67,21 @@ jobs:
         run: |
           python -c "import sys; sys.path.insert(0, 'src'); from aria.security.telegram_bot_service import TelegramAssistantService; svc = TelegramAssistantService(); svc.process_updates(max_seconds=60)" || true
 
+      - name: Update Telemetry Dashboard State
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GH_AGENT_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/update_dashboard_live.py || true
+
       - name: Persist Scraped Data & Audit Logs to Repository
         if: always()
         run: |
           git config --global user.name "ARIA Autonomous Daemon"
           git config --global user.email "aria-daemon@users.noreply.github.com"
-          git add data/ state/ || true
+          git add data/ state/ dashboard/ || true
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "chore(data): persist hourly scrape batch & approval logs [skip ci]" || true
+            git commit -m "chore(telemetry): update live dashboard and bounty records" || true
             git push origin HEAD:${{ github.ref_name }} || true
           else
             echo "No new state or data changes to commit."
