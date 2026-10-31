@@ -225,19 +225,6 @@
       "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Electronics-Logo-Design_solution.ts",
       "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Electronics-Logo-Design_proposal.txt",
       "file_size": 1002
-    },
-    {
-      "timestamp": "2026-10-31 03:18:05 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Tanzanian-PVC-Pipe-Pricing-Study",
-      "title": "Tanzanian PVC Pipe Pricing Study",
-      "budget": "$30 - $250 USD, Jobs: Business Intelligence, Data Analysis, Data Collection, Data Entry, Excel, Google Sheets, Market Research)",
-      "category": "Web Scraping & Python",
-      "link": "https://www.freelancer.com/projects/data-collection/Tanzanian-PVC-Pipe-Pricing-Study.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Tanzanian-PVC-Pipe-Pricing-Study_solution.py",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Tanzanian-PVC-Pipe-Pricing-Study_proposal.txt",
-      "file_size": 1536
     }
   ]
 }
