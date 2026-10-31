@@ -48,6 +48,12 @@ except ImportError:
     RADAR_AVAILABLE = False
 
 try:
+    from aria.github.pr_audit import PRSubmissionAuditor
+    AUDITOR_AVAILABLE = True
+except ImportError:
+    AUDITOR_AVAILABLE = False
+
+try:
     from aria.memory.repo_fingerprints import RepoFingerprints
     FINGERPRINTS_AVAILABLE = True
 except ImportError:
@@ -486,24 +492,68 @@ class HourlyBountyDaemon:
         submitted_results = []
         total_value = 0.0
 
+        # Build auditor once per batch (token may be empty in dry-run; auditor
+        # degrades gracefully when token is absent).
+        _gh_token = os.environ.get("GH_TOKEN", os.environ.get("GITHUB_TOKEN", ""))
+        _auditor = PRSubmissionAuditor(gh_token=_gh_token) if AUDITOR_AVAILABLE else None
+
         for issue in to_submit:
             result = self._submit_pr(issue)
             submitted_results.append(result)
             self.solved_ids.add(issue["id"])
             total_value += issue.get("price", 75.0)
 
+            # -- Audit & Recovery: confirm PR exists; fall back if not --------
+            audit_status = result["pr_url"]  # default: whatever _submit_pr got
+            if _auditor:
+                _branch = f"aria/fix-issue-{result['number']}-{result['impl_hash'][:6]}"
+                _patch = ""
+                if result.get("impl_file") and os.path.exists(result["impl_file"]):
+                    try:
+                        with open(result["impl_file"], encoding="utf-8") as _pf:
+                            _patch = _pf.read()
+                    except Exception:
+                        pass
+                _pr_title = f"fix: resolve #{result['number']} \u2014 {result['title'][:70]}"
+                _pr_body  = (
+                    f"Closes #{result['number']}\n\n"
+                    f"**Automated fix by ARIA** \u2014 issue ranked score {issue.get('score', 0):.1f}/100.\n\n"
+                    f"**Payout destination:** PayPal `{PAYPAL_EMAIL}`\n"
+                    f"_Batch: {datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%MZ')}_"
+                )
+                try:
+                    audit_result = _auditor.audit_and_recover(
+                        repo=result["repo"],
+                        branch=_branch,
+                        title=_pr_title,
+                        body=_pr_body,
+                        patch_content=_patch,
+                        issue_number=result["number"],
+                    )
+                    audit_status = audit_result.get("status", "FAILED")
+                    if audit_result.get("url"):
+                        result["pr_url"] = audit_result["url"]
+                    logger.info(
+                        f"    [audit] #{result['number']} status: {audit_status} -- {result['pr_url']}"
+                    )
+                except Exception as _ae:
+                    logger.warning(f"    [audit] audit_and_recover error: {_ae}")
+            # ------------------------------------------------------------------
+
             self._append_ledger({
-                "timestamp":   now,
-                "batch_index": batch_index,
-                "status":      "SUBMITTED" if result["pr_url"] else "SOLVED_PENDING_PUSH",
-                "id":          result["id"],
-                "title":       result["title"],
-                "repo":        result["repo"],
-                "price":       result["price"],
-                "score":       result["score"],
-                "pr_url":      result["pr_url"],
-                "impl_hash":   result["impl_hash"],
-                "beneficiary": PAYPAL_EMAIL,
+                "timestamp":    now,
+                "batch_index":  batch_index,
+                "status":       audit_status if AUDITOR_AVAILABLE else (
+                    "SUBMITTED" if result["pr_url"] else "SOLVED_PENDING_PUSH"
+                ),
+                "id":           result["id"],
+                "title":        result["title"],
+                "repo":         result["repo"],
+                "price":        result["price"],
+                "score":        result["score"],
+                "pr_url":       result["pr_url"],
+                "impl_hash":    result["impl_hash"],
+                "beneficiary":  PAYPAL_EMAIL,
             })
             self.submitted.append(result)
 
