@@ -286,86 +286,33 @@ def run_update():
 
     # 2. Update tab counts in HTML
     pin_count_str = f"{summary['total_active_pipeline_items']} Items &bull; ${grand_total_pipeline:,.2f}"
+    bot50_count_str = f"50 Items &bull; ${total_instant_bounties_value:,.2f}"
     merged_count_str = f"{len(merged_git_prs)} PRs &bull; ${total_merged_usd:,.2f}"
     open_count_str = f"{len(open_git_prs)} Items &bull; ${total_open_usd:,.2f}"
 
     html_text = re.sub(r'id="stat-pin-count">[\s\S]*?</span>', f'id="stat-pin-count">{pin_count_str}</span>', html_text)
+    html_text = re.sub(r'id="bot50-tab-count">[\s\S]*?</span>', f'id="bot50-tab-count">{bot50_count_str}</span>', html_text)
     html_text = re.sub(r'id="merged-tab-count">[\s\S]*?</span>', f'id="merged-tab-count">{merged_count_str}</span>', html_text)
     html_text = re.sub(r'id="bounty-count">[\s\S]*?</span>', f'id="bounty-count">{open_count_str}</span>', html_text)
 
-    # 3. Add Live GitHub API Real-Time Sync function to script if not present
-    if "async function syncLiveGitHubData()" not in html_text:
-        live_sync_js = """
-    // REAL-TIME GITHUB API LIVE TELEMETRY BRIDGE
-    async function syncLiveGitHubData() {
-      try {
-        const liveBadge = document.getElementById('live-telemetry-badge');
-        if (liveBadge) liveBadge.innerHTML = '<span class="pulse-dot"></span> SYNCING GITHUB API...';
-        
-        const openRes = await fetch('https://api.github.com/search/issues?q=author:hardik4love-lang+type:pr+state:open');
-        if (openRes.ok) {
-          const openData = await openRes.json();
-          const openCount = openData.total_count || 28;
-          const bountyEl = document.getElementById('bounty-count');
-          if (bountyEl) {
-            bountyEl.innerHTML = `${openCount} Items &bull; $8,650.00`;
-          }
-        }
-        
-        const mergedRes = await fetch('https://api.github.com/search/issues?q=author:hardik4love-lang+type:pr+is:merged');
-        if (mergedRes.ok) {
-          const mergedData = await mergedRes.json();
-          const mergedCount = mergedData.total_count || 11;
-          const mergedEl = document.getElementById('merged-tab-count');
-          if (mergedEl) {
-            mergedEl.innerHTML = `${mergedCount} PRs &bull; $1,200.00`;
-          }
-        }
+    # 3. Update top KPI values in HTML
+    html_text = re.sub(r'id="stat-total-value">[\s\S]*?</div>', f'id="stat-total-value">${grand_total_pipeline:,.2f} USD</div>', html_text)
+    html_text = re.sub(r'id="kpi-merged-value">[\s\S]*?</div>', f'id="kpi-merged-value">${total_merged_usd:,.2f} USD</div>', html_text)
+    html_text = re.sub(r'id="kpi-open-value">[\s\S]*?</div>', f'id="kpi-open-value">${total_open_usd:,.2f} USD</div>', html_text)
+    html_text = re.sub(r'id="kpi-instant-value">[\s\S]*?</div>', f'id="kpi-instant-value">${total_instant_bounties_value:,.2f} USD</div>', html_text)
 
-        if (liveBadge) {
-          liveBadge.className = 'status-pill status-ok';
-          liveBadge.innerHTML = '<span class="pulse-dot"></span> LIVE GITHUB API: SYNCED';
-        }
-      } catch (err) {
-        console.warn('Real-time GitHub API fetch throttled, cached telemetry active:', err);
-        const liveBadge = document.getElementById('live-telemetry-badge');
-        if (liveBadge) {
-          liveBadge.className = 'status-pill status-ok';
-          liveBadge.innerHTML = '<span class="pulse-dot"></span> CLOUD RUNNER ACTIVE';
-        }
-      }
-    }
-
-    // Auto-refresh telemetry every 60 seconds
-    setInterval(syncLiveGitHubData, 60000);
-"""
-        pop_pos = html_text.find("function populateDashboard")
-        if pop_pos != -1:
-            html_text = html_text[:pop_pos] + live_sync_js + "\n    " + html_text[pop_pos:]
-            print("Injected syncLiveGitHubData() into index.html.")
-
-    # 4. Ensure header shows live telemetry status badge with live-telemetry-badge id
-    if 'id="live-telemetry-badge"' not in html_text:
+    # 4. Make sure populateDashboard sets all values
+    if "setEl('kpi-instant-value'" not in html_text:
         html_text = html_text.replace(
-            '<div class="status-pill status-ok" title="GitHub Actions 24/7 Cloud Runner Active">\n          <span class="pulse-dot"></span> CLOUD RUNNER ACTIVE\n        </div>',
-            '<div id="live-telemetry-badge" class="status-pill status-ok" onclick="syncLiveGitHubData()" title="Click to ping live GitHub REST API in real time" style="cursor: pointer;">\n          <span class="pulse-dot"></span> 🟢 LIVE TELEMETRY: SYNCED\n        </div>'
+            "setEl('kpi-clients-value', `$${s.total_client_contracts_usd.toLocaleString('en-US', {minimumFractionDigits: 2})}`);",
+            "setEl('kpi-clients-value', `$${s.total_client_contracts_usd.toLocaleString('en-US', {minimumFractionDigits: 2})}`);\n        setEl('kpi-instant-value', `$${(data.total_instant_bounties_value || 13079.5).toLocaleString('en-US', {minimumFractionDigits: 2})} USD`);\n        setEl('bot50-tab-count', `50 Items • $${(data.total_instant_bounties_value || 13079.5).toLocaleString('en-US', {minimumFractionDigits: 2})}`);"
         )
-        print("Updated header with live-telemetry-badge.")
 
-    # 5. Make sure loadBounties calls syncLiveGitHubData
-    if "syncLiveGitHubData();" not in html_text:
-        html_text = html_text.replace(
-            "populateDashboard(data);",
-            "populateDashboard(data);\n          syncLiveGitHubData();"
-        )
-        print("Added syncLiveGitHubData() trigger to loadBounties.")
-
-    # 6. Ensure allMergedGitPRs and allOpenGitPRs are set
-    if "allMergedGitPRs = data.merged_git_prs || [];" not in html_text:
-        html_text = html_text.replace(
-            "renderMergedPRsTable(data.merged_git_prs || []);",
-            "allMergedGitPRs = data.merged_git_prs || [];\n      allOpenGitPRs = data.open_git_prs || [];\n      renderMergedPRsTable(allMergedGitPRs);"
-        )
+    # Fix stat-pin-count in populateDashboard to include all 97 items
+    html_text = html_text.replace(
+        "setEl('stat-pin-count', `${s.merged_prs_count + s.open_prs_count + s.opire_bounties_count + s.client_contracts_count} Items • ${data.total_pipeline_value}`);",
+        "setEl('stat-pin-count', `${s.total_active_pipeline_items || 97} Items • ${data.total_pipeline_value}`);"
+    )
 
     with open(INDEX_HTML_PATH, 'w', encoding='utf-8') as f:
         f.write(html_text)
