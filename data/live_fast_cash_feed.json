@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 08:51:43 UTC",
+  "last_updated": "2026-10-31 20:13:18 UTC",
   "wallet": "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c",
   "top5_platforms": [
     {
@@ -60,170 +60,131 @@
   ],
   "live_freelancer_urgent_jobs": [
     {
-      "job_id": "Efficient-Quiet-BLDC-Fan-Motor",
-      "title": "Efficient Quiet BLDC Fan Motor -- 2",
-      "link": "https://www.freelancer.com/projects/cad-cam/Efficient-Quiet-BLDC-Fan-Motor.html",
-      "budget": "\u20b912500 - \u20b925000 INR, Jobs: CAD/CAM, Electronics, Manufacturing Design, Mechanical Engineering, Solidworks)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Sat, 31 Oct 2026 07:32:15 -0400",
-      "description": "I need a brushless DC motor engineered specifically for a ceiling fan/blower. The end product has to move plenty of air while staying whisper-quiet and drawing as little power as possible\u2014high airflow, low noise, and low energy use are equally critical, not optional trade-offs... (Budget: \u20b912500 - \u20b925000 INR, Jobs: CAD/CAM, Electronics, Manufacturi"
-    },
-    {
-      "job_id": "Door-Catalogue-Design-CDR-PDF",
-      "title": "Door Catalogue Design CDR &amp; PDF",
-      "link": "https://www.freelancer.com/projects/corel-draw/Door-Catalogue-Design-CDR-PDF.html",
-      "budget": "\u20b9600 - \u20b91500 INR, Jobs: Adobe InDesign, Brochure Design, Catalog Design, Corel Draw, Graphic Design, Photoshop, Print Design, Visual Design)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Sat, 31 Oct 2026 04:45:08 -0400",
-      "description": "I am putting together a straightforward company catalogue that presents roughly 300-400 of our door designs. The layout I have in mind shows several doors on each page, and every image should carry only the door name and its model number\u2014nothing more... (Budget: \u20b9600 - \u20b91500 INR, Jobs: Adobe InDesign, Brochure Design, Catalog Design, Corel Draw, Gr"
-    },
-    {
-      "job_id": "Sydney-Editorial-Shoot-Coordinator",
-      "title": "Sydney Editorial Shoot Coordinator Needed",
-      "link": "https://www.freelancer.com/projects/photography/Sydney-Editorial-Shoot-Coordinator.html",
-      "budget": "$15 - $20 AUD, Jobs: Event Coordination, Photography, Virtual Assistant)",
+      "job_id": "Dark-Artistic-Music-Video-Editing",
+      "title": "Dark Artistic Music Video Editing",
+      "link": "https://www.freelancer.com/projects/adobe-premiere-pro/Dark-Artistic-Music-Video-Editing.html",
+      "budget": "\u20b9400 - \u20b9750 INR, Jobs: Adobe Premiere Pro, After Effects, Animation, Color Grading, DaVinci Resolve, Video Editing, Video Production, Visual Effects)",
       "category": "Video & Multimedia Production",
       "solver_key": "solve_job_video",
-      "pub_date": "Sat, 31 Oct 2026 04:45:05 -0400",
-      "description": "I'm looking for a friendly, confident and well-organised person to help coordinate an upcoming editorial photography project in Sydney.  The role is mainly about communication and keeping things organised, rather than photography itself... (Budget: $15 - $20 AUD, Jobs: Event Coordination, Photography, Virtual Assistant)"
+      "pub_date": "Sat, 31 Oct 2026 16:06:44 -0400",
+      "description": "I have a set of raw performance and B-roll clips that need to be shaped into a dark, moody, and artistic music video. Beyond simple cuts, I\u2019m looking for an edit packed with creative effects, seamless transitions, and expressive colour work that deepens the track\u2019s atmosphere... (Budget: \u20b9400 - \u20b9750 INR, Jobs: Adobe Premiere Pro, After Effects, Ani"
     },
     {
-      "job_id": "Confidence-Building-Memoir-Ghostwriting",
-      "title": "Confidence-Building Memoir Ghostwriting",
-      "link": "https://www.freelancer.com/projects/book-writing/Confidence-Building-Memoir-Ghostwriting.html",
-      "budget": "$10 - $30 USD, Jobs: Book Writing, Content Writing, Editing, Fiction, Ghostwriting, Life Coaching, Memoir Writing, Writing Tutoring)",
+      "job_id": "Unreal-Engine-Realistic-Zombie-Character",
+      "title": "Unreal Engine Realistic Zombie Character",
+      "link": "https://www.freelancer.com/projects/unreal-engine/Unreal-Engine-Realistic-Zombie-Character.html",
+      "budget": "\u00a310 - \u00a320 GBP, Jobs: 3D Animation, 3D Modelling, 3D Rigging, Animation, Character Design, Game Development, Maya, Unreal Engine)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sat, 31 Oct 2026 16:05:07 -0400",
+      "description": "I\u2019m building a new Unreal Engine scene and need a single, fully-game-ready zombie in a realistic horror style. The brief is straightforward: design, model, texture, rig, and animate the creature so it drops straight into UE4/UE5 without extra cleanup... (Budget: \u00a310 - \u00a320 GBP, Jobs: 3D Animation, 3D Modelling, 3D Rigging, Animation, Character Desig"
+    },
+    {
+      "job_id": "Cartoon-Character-Creation",
+      "title": "2D Cartoon Character Creation",
+      "link": "https://www.freelancer.com/projects/2d-drawing/Cartoon-Character-Creation.html",
+      "budget": "$30 - $250 USD, Jobs: 2D Drawing, Animation, Caricature & Cartoons, Character Design, Graphic Design, Illustration)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sat, 31 Oct 2026 16:01:12 -0400",
+      "description": "I'm looking for an artist to turn my friend into a simple 2D cartoon character. This will be a special gift, possibly for a printed poster. I'm looking for a custom illustration inspired by the original 1980s Strawberry Shortcake cartoons and vintage character designs... (Budget: $30 - $250 USD, Jobs: 2D Drawing, Animation, Caricature & Cartoons, C"
+    },
+    {
+      "job_id": "Shopify-Etsy-Launch-Setup",
+      "title": "Shopify &amp; Etsy Launch Setup",
+      "link": "https://www.freelancer.com/projects/shopify-development/Shopify-Etsy-Launch-Setup.html",
+      "budget": "$250 - $750 USD, Jobs: Etsy, Shopify Development)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sat, 31 Oct 2026 15:58:44 -0400",
+      "description": "Hello, I am hiring a freelancer to build the complete online selling setup for Stones Printing Co, a Houston-based startup that makes 3D printed products, laser engraving, DTF apparel and collectible gift box sets... (Budget: $250 - $750 USD, Jobs: Etsy, Shopify Development)"
+    },
+    {
+      "job_id": "Korean-Gen-Jewellery-Trend-Research",
+      "title": "Korean Gen-Z Jewellery Trend Research",
+      "link": "https://www.freelancer.com/projects/fashion-design/Korean-Gen-Jewellery-Trend-Research.html",
+      "budget": "\u20b9750 - \u20b91250 INR, Jobs: Fashion Design, Market Research)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sat, 31 Oct 2026 15:52:30 -0400",
+      "description": "# Project Report: Korean-Style Gen-Z Jewellery Design Research for the Indian Market  ## 1. Project Title  **Latest Korean-Style Gen-Z Fashion Jewellery Design Research for the Indian Market**  ## 2. Project... (Budget: \u20b9750 - \u20b91250 INR, Jobs: Fashion Design, Market Research)"
+    },
+    {
+      "job_id": "Fix-DisplayPort-Signal-Issue",
+      "title": "Fix DisplayPort No-Signal Issue",
+      "link": "https://www.freelancer.com/projects/troubleshooting/Fix-DisplayPort-Signal-Issue.html",
+      "budget": "\u20ac8 - \u20ac30 EUR, Jobs: Computer Repair, TeamViewer, Technical Support, Troubleshooting)",
+      "category": "Rapid Engineering",
+      "solver_key": "solve_job_01",
+      "pub_date": "Sat, 31 Oct 2026 15:52:18 -0400",
+      "description": "My Windows 11 desktop refuses to send an image through the GPU\u2019s DisplayPort. When I plug the monitor in, the screen stays black and shows \u201cNo Signal,\u201d yet Windows still detects the display in Settings and in Device Manager... (Budget: \u20ac8 - \u20ac30 EUR, Jobs: Computer Repair, TeamViewer, Technical Support, Troubleshooting)"
+    },
+    {
+      "job_id": "Bangalore-Android-Testers-for-Community",
+      "title": "Bangalore Android Testers for Community App",
+      "link": "https://www.freelancer.com/projects/user-experience-research/Bangalore-Android-Testers-for-Community.html",
+      "budget": "$10 - $30 USD, Jobs: Android, Data Entry, Mobile App Development, Mobile App Testing, Mobile Development, Social Networking, Social Sales, Testing / QA, Usability Testing, User Experience Research)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Sat, 31 Oct 2026 15:50:09 -0400",
+      "description": "# Android Beta Testers Needed \u2013 Bangalore / Electronic City | 20-Day Paid Testing  **Project:** Hyperlocal Community App   **Location:** Bangalore (Electronic City Phase 1 &amp; 2 preferred)   **Testers Needed:**... (Budget: $10 - $30 USD, Jobs: Android, Data Entry, Mobile App Development, Mobile App Testing, Mobile Development, Social Networking,"
+    },
+    {
+      "job_id": "Tense-Reunion-Caf-Screenplay-Scene",
+      "title": "Tense Reunion Caf&eacute; Screenplay Scene",
+      "link": "https://www.freelancer.com/projects/screenwriting/Tense-Reunion-Caf-Screenplay-Scene.html",
+      "budget": "\u20b93000 - \u20b98000 INR, Jobs: Acting, Creative Writing, Screenwriting)",
+      "category": "Stripe & API Integration",
+      "solver_key": "solve_job_06",
+      "pub_date": "Sat, 31 Oct 2026 15:49:13 -0400",
+      "description": "I\u2019m shaping a POV short film called \u201cWhere Do I Go From Here?\u201d and now need a single, self-contained screenplay scene that captures the first meeting with Divya after years apart. She\u2019s my former co-founder\u2014calm, observant, almost ethereal\u2014yet her return stirs every old wound... (Budget: \u20b93000 - \u20b98000 INR, Jobs: Acting, Creative Writing, Screenwrit"
+    },
+    {
+      "job_id": "Realistic-Helmet-VFX-Video-Editing",
+      "title": "Realistic Helmet VFX Video Editing",
+      "link": "https://www.freelancer.com/projects/rotoscoping/Realistic-Helmet-VFX-Video-Editing.html",
+      "budget": "\u20b9600 - \u20b91500 INR, Jobs: 3D Modelling, 3D Rendering, 3D Visualization, After Effects, Rotoscoping, Video Editing, Video Production, Video Services)",
       "category": "Video & Multimedia Production",
       "solver_key": "solve_job_video",
-      "pub_date": "Sat, 31 Oct 2026 04:44:25 -0400",
-      "description": "I\u2019m ready to turn my own life journey into a true, book-length self-help story that shows how I moved from self-doubt to solid confidence\u2014and, in doing so, give readers who are facing major life changes the hope and practical insight they need to do the same... (Budget: $10 - $30 USD, Jobs: Book Writing, Content Writing, Editing, Fiction, Ghostwrit"
+      "pub_date": "Sat, 31 Oct 2026 15:48:15 -0400",
+      "description": "Project Description:  I have an existing railway girder launching video and need a professional VFX/video editor to digitally add safety helmets to workers who are working at height without helmets.  Requirements:  1... (Budget: \u20b9600 - \u20b91500 INR, Jobs: 3D Modelling, 3D Rendering, 3D Visualization, After Effects, Rotoscoping, Video Editing, Video Pr"
     },
     {
-      "job_id": "Electronics-Logo-Design",
-      "title": "IT &amp; Electronics Logo Design",
-      "link": "https://www.freelancer.com/projects/adobe-illustrator/Electronics-Logo-Design.html",
-      "budget": "\u20b912500 - \u20b937500 INR, Jobs: Adobe Illustrator, Adobe Photoshop, Branding, Graphic Design, Icon Design, Illustrator, Logo Design, Vector Design)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Sat, 31 Oct 2026 04:43:17 -0400",
-      "description": "I need a fresh logo for my parent company that feels both modern-tech and premium-corporate at the same time. The core of our business is consumer electronics and other everyday tech products, so the mark must instantly signal innovation people can trust in their homes and offices... (Budget: \u20b912500 - \u20b937500 INR, Jobs: Adobe Illustrator, Adobe Phot"
-    },
-    {
-      "job_id": "Children-Animated-Series-Scriptwriter",
-      "title": "Children&rsquo;s Animated Series Scriptwriter Needed",
-      "link": "https://www.freelancer.com/projects/content-development/Children-Animated-Series-Scriptwriter.html",
-      "budget": "\u20b912500 - \u20b937500 INR, Jobs: Content Development, Creative Writing, Screenwriting)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Sat, 31 Oct 2026 04:40:09 -0400",
-      "description": "Freelance Scriptwriter for Children's Animated Series   About the Project  We are building an original children's IP featuring lovable animated characters, each representing a unique emotion or strength, such as courage, kindness, sad, curiosity, and joy... (Budget: \u20b912500 - \u20b937500 INR, Jobs: Content Development, Creative Writing, Screenwriting)"
-    },
-    {
-      "job_id": "Design-Premium-Page-Booklet",
-      "title": "Design a Premium 25-Page E-Booklet",
-      "link": "https://www.freelancer.com/projects/adobe-illustrator/Design-Premium-Page-Booklet.html",
-      "budget": "\u20b91500 - \u20b912500 INR, Jobs: Adobe Illustrator, Adobe InDesign, Branding, Brochure Design, Creative Design, Digital Design, Graphic Design, Illustration, Photoshop, Visual Design)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Sat, 31 Oct 2026 04:38:57 -0400",
-      "description": "We are looking for a professional graphic designer to create a **25-page digital booklet/e-book**. We will provide all the written content, text, and necessary information for each page. We will also share... (Budget: \u20b91500 - \u20b912500 INR, Jobs: Adobe Illustrator, Adobe InDesign, Branding, Brochure Design, Creative Design, Digital Design, Graphic Des"
-    },
-    {
-      "job_id": "High-Ticket-Coaching-Sales-setter",
-      "title": "High Ticket Coaching Sales setter",
-      "link": "https://www.freelancer.com/projects/sales/High-Ticket-Coaching-Sales-setter.html",
-      "budget": "\u20ac250 - \u20ac750 EUR, Jobs: Appointment Setting, Business Development, Communications, Conflict Resolution, Consulting, Customer Service, Internet Marketing, Lead Generation, Sales, Social Media Marketing)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Sat, 31 Oct 2026 04:38:08 -0400",
-      "description": "Commission-Only High-Ticket Sales Expert Wanted (Remote \u2013 Global)!  About the Opportunity  I am looking for an emotionally intelligent,  experienced (preferable), highly motivated, ethical, and results-driven... (Budget: \u20ac250 - \u20ac750 EUR, Jobs: Appointment Setting, Business Development, Communications, Conflict Resolution, Consulting, Customer Servi"
-    },
-    {
-      "job_id": "International-Sales-Required-Sell-Our",
-      "title": "International Sales Required &ndash; Sell Our School ERP Software",
-      "link": "https://www.freelancer.com/projects/b2b-marketing/International-Sales-Required-Sell-Our.html",
-      "budget": "$500 - $700 USD, Jobs: Account Management, B2B Marketing, Business Development, Lead Generation, Leads, Market Research, Sales, Telemarketing)",
-      "category": "Rapid Engineering",
-      "solver_key": "solve_job_01",
-      "pub_date": "Sat, 31 Oct 2026 04:35:54 -0400",
-      "description": "We are looking for individual freelance sales partners who can help us acquire genuine school clients internationally.  Your Responsibilities  Find schools interested in School Management Software.  Contact school owners, principals and decision-makers... (Budget: $500 - $700 USD, Jobs: Account Management, B2B Marketing, Business Development, Lead"
-    },
-    {
-      "job_id": "Mobile-Messaging-App-with-Group",
-      "title": "Mobile Messaging App with Group Chat",
-      "link": "https://www.freelancer.com/projects/react-native/Mobile-Messaging-App-with-Group.html",
-      "budget": "\u20b9600 - \u20b91500 INR, Jobs: Android, Backend Development, iOS, Mobile App Development, Node.js, React Native)",
-      "category": "Next.js / TypeScript Fix",
-      "solver_key": "solve_job_01",
-      "pub_date": "Sat, 31 Oct 2026 04:35:51 -0400",
-      "description": "I\u2019m looking to have a mobile application built that lets people communicate easily through both one-to-one text conversations and larger group or community chats. The core of the project is real-time messaging... (Budget: \u20b9600 - \u20b91500 INR, Jobs: Android, Backend Development, iOS, Mobile App Development, Node.js, React Native)"
+      "job_id": "Fix-Pine-Script-Replay-Signals",
+      "title": "Fix Pine Script Replay Signals and order not filling sending to tradingview alerts",
+      "link": "https://www.freelancer.com/projects/pine-script/Fix-Pine-Script-Replay-Signals.html",
+      "budget": "$30 - $250 USD, Jobs: Algorithmic Trading, Backtesting, Data Analysis, Data Visualization, Financial Analysis, Financial Markets, Market Research, Pine Script, Scripting, Trading)",
+      "category": "Web Scraping & Python",
+      "solver_key": "solve_job_02",
+      "pub_date": "Sat, 31 Oct 2026 15:48:07 -0400",
+      "description": "I have a multi-time-frame strategy written in Pine Script (v5) that trades on the 1-second to 1-minute chart while using a higher-time-frame candle as the filter. Everything works in live mode, but the... (Budget: $30 - $250 USD, Jobs: Algorithmic Trading, Backtesting, Data Analysis, Data Visualization, Financial Analysis, Financial Markets, Market"
     }
   ],
   "packaged_solutions": [
     {
-      "timestamp": "2026-10-31 08:51:42 UTC",
+      "timestamp": "2026-10-31 20:13:18 UTC",
       "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Efficient-Quiet-BLDC-Fan-Motor",
-      "title": "Efficient Quiet BLDC Fan Motor -- 2",
-      "budget": "\u20b912500 - \u20b925000 INR, Jobs: CAD/CAM, Electronics, Manufacturing Design, Mechanical Engineering, Solidworks)",
-      "category": "Rapid Engineering",
-      "link": "https://www.freelancer.com/projects/cad-cam/Efficient-Quiet-BLDC-Fan-Motor.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Efficient-Quiet-BLDC-Fan-Motor_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Efficient-Quiet-BLDC-Fan-Motor_proposal.txt",
-      "file_size": 1002
-    },
-    {
-      "timestamp": "2026-10-31 08:51:42 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Door-Catalogue-Design-CDR-PDF",
-      "title": "Door Catalogue Design CDR &amp; PDF",
-      "budget": "\u20b9600 - \u20b91500 INR, Jobs: Adobe InDesign, Brochure Design, Catalog Design, Corel Draw, Graphic Design, Photoshop, Print Design, Visual Design)",
-      "category": "Rapid Engineering",
-      "link": "https://www.freelancer.com/projects/corel-draw/Door-Catalogue-Design-CDR-PDF.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Door-Catalogue-Design-CDR-PDF_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Door-Catalogue-Design-CDR-PDF_proposal.txt",
-      "file_size": 1002
-    },
-    {
-      "timestamp": "2026-10-31 08:51:42 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Sydney-Editorial-Shoot-Coordinator",
-      "title": "Sydney Editorial Shoot Coordinator Needed",
-      "budget": "$15 - $20 AUD, Jobs: Event Coordination, Photography, Virtual Assistant)",
+      "job_id": "Dark-Artistic-Music-Video-Editing",
+      "title": "Dark Artistic Music Video Editing",
+      "budget": "\u20b9400 - \u20b9750 INR, Jobs: Adobe Premiere Pro, After Effects, Animation, Color Grading, DaVinci Resolve, Video Editing, Video Production, Visual Effects)",
       "category": "Video & Multimedia Production",
-      "link": "https://www.freelancer.com/projects/photography/Sydney-Editorial-Shoot-Coordinator.html",
+      "link": "https://www.freelancer.com/projects/adobe-premiere-pro/Dark-Artistic-Music-Video-Editing.html",
       "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Sydney-Editorial-Shoot-Coordinator_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Sydney-Editorial-Shoot-Coordinator_proposal.txt",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Dark-Artistic-Music-Video-Editing_solution.ts",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Dark-Artistic-Music-Video-Editing_proposal.txt",
       "file_size": 1002
     },
     {
-      "timestamp": "2026-10-31 08:51:42 UTC",
+      "timestamp": "2026-10-31 20:13:18 UTC",
       "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Confidence-Building-Memoir-Ghostwriting",
-      "title": "Confidence-Building Memoir Ghostwriting",
-      "budget": "$10 - $30 USD, Jobs: Book Writing, Content Writing, Editing, Fiction, Ghostwriting, Life Coaching, Memoir Writing, Writing Tutoring)",
-      "category": "Video & Multimedia Production",
-      "link": "https://www.freelancer.com/projects/book-writing/Confidence-Building-Memoir-Ghostwriting.html",
-      "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Confidence-Building-Memoir-Ghostwriting_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Confidence-Building-Memoir-Ghostwriting_proposal.txt",
-      "file_size": 1002
-    },
-    {
-      "timestamp": "2026-10-31 08:51:43 UTC",
-      "platform": "Freelancer.com Live Project Feed",
-      "job_id": "Electronics-Logo-Design",
-      "title": "IT &amp; Electronics Logo Design",
-      "budget": "\u20b912500 - \u20b937500 INR, Jobs: Adobe Illustrator, Adobe Photoshop, Branding, Graphic Design, Icon Design, Illustrator, Logo Design, Vector Design)",
+      "job_id": "Unreal-Engine-Realistic-Zombie-Character",
+      "title": "Unreal Engine Realistic Zombie Character",
+      "budget": "\u00a310 - \u00a320 GBP, Jobs: 3D Animation, 3D Modelling, 3D Rigging, Animation, Character Design, Game Development, Maya, Unreal Engine)",
       "category": "Rapid Engineering",
-      "link": "https://www.freelancer.com/projects/adobe-illustrator/Electronics-Logo-Design.html",
+      "link": "https://www.freelancer.com/projects/unreal-engine/Unreal-Engine-Realistic-Zombie-Character.html",
       "status": "SOLUTION_PACKAGED",
-      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Electronics-Logo-Design_solution.ts",
-      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Electronics-Logo-Design_proposal.txt",
+      "deliverable_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Unreal-Engine-Realistic-Zombie-Character_solution.ts",
+      "proposal_file": "/home/runner/work/aria-agent/aria-agent/data/jobs_output/Unreal-Engine-Realistic-Zombie-Character_proposal.txt",
       "file_size": 1002
     }
   ]
