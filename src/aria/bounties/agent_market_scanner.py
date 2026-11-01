@@ -44,7 +44,7 @@ class AgentMarketplaceManager:
             address = acct.address
             priv_key = acct.key.hex()
         else:
-            address = "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c"
+            address = "shruhicollections@gmail.com"
             priv_key = "0x" + "0" * 64
 
         wallet_data = {

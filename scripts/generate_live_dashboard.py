@@ -431,7 +431,7 @@ def generate_live_bounties_data():
             "opire_bounties_count": len(opire_bounties),
             "client_contracts_count": len(client_sprints),
             "settlement_rail_primary": "PayPal: shruhicollections@gmail.com",
-            "settlement_rail_backup": "Base EVM USDC: 0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c"
+            "settlement_rail_backup": "Base EVM USDC: shruhicollections@gmail.com"
         },
         "total_pipeline_value": f"${total_pipeline:,.2f} USD",
         "total_merged_value": f"${total_merged:,.2f} USD",

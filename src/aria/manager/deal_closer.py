@@ -11,7 +11,8 @@ class DealCloser:
     """Handles high-stakes client objections and deal negotiation with asymmetric market poise."""
 
     PAYPAL_RAIL = "shruhicollections@gmail.com"
-    BASE_EVM_RAIL = "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c"
+# Payout rail locked to PayPal
+PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
 
     @classmethod
     def resolve_objection(

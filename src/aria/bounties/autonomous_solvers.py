@@ -446,7 +446,7 @@ def dispatch_alert(webhook_url, title, fields):
             f"3. Verify all tests pass with zero regressions.\n\n"
             f"## Verified Settlement Rails\n"
             f"- PayPal: `shruhicollections@gmail.com`\n"
-            f"- Base L2 (USDC): `0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c`\n"
+            f"- Base L2 (USDC): `shruhicollections@gmail.com`\n"
         )
         with open(readme_file, "w", encoding="utf-8") as f:
             f.write(readme_content)

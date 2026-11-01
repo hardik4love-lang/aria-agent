@@ -184,7 +184,7 @@ class BountySubmissionEngine:
                     f"• AST Verification: PASSED (100% Zero-Loss Guardrail)\n\n"
                     f"Settlement Rails:\n"
                     f"• PayPal: shruhicollections@gmail.com\n"
-                    f"• Base EVM (USDC): 0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c\n"
+                    f"• Base EVM (USDC): shruhicollections@gmail.com\n"
                     f"• Fixed Agreed Milestone: {job.typical_payout}\n\n"
                     f"Thank you for working with ARIA Sovereign Autonomous Operations."
                 )

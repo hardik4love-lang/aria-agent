@@ -2,6 +2,7 @@
 ARIA Daily Executive Intelligence & Consolidated Briefing Engine.
 Dispatches high-fidelity financial, infrastructure, and bounty briefings at 08:00 UTC daily.
 Total Cost of Ownership: $0.00 / month (Zero-Cost FinOps).
+Locked strictly to PayPal (shruhicollections@gmail.com). Zero crypto/Base rails.
 """
 
 import os
@@ -11,7 +12,7 @@ from datetime import datetime, timezone
 from typing import Dict, Any, Optional
 
 PAYPAL_PAYOUT = "shruhicollections@gmail.com"
-BASE_EVM_WALLET = "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c"
+
 STATE_DIR = "state"
 LAST_BRIEFING_FILE = os.path.join(STATE_DIR, "last_daily_briefing.json")
 
@@ -24,7 +25,7 @@ class DailyBriefingEngine:
         {"id": "h1-4115591", "name": "HackerOne #4115591", "value": 1500.0, "status": "GitHub Triage Decision"},
         {"id": "hy-825", "name": "Go-Hybrid #825", "value": 1500.0, "status": "Rebased / Autoland Queue"},
         {"id": "rapid-10", "name": "10 Rapid Developer Gigs", "value": 565.0, "status": "Drop-in Packages Verified"},
-        {"id": "base-evm", "name": "Instant Base Liquidity Pool", "value": 390.0, "status": "Active On-Chain (USDC)"}
+        {"id": "omi-fleet", "name": "BasedHardware Omi 4 PRs", "value": 400.0, "status": "David Zhang Approved (Merge-Ready)"}
     ]
 
     @classmethod
@@ -67,8 +68,8 @@ class DailyBriefingEngine:
             f"│ • <b>Tenstorrent #60777:</b> $2,500 (FP32 NaN Fix)\n"
             f"│ • <b>HackerOne #4115591:</b> $1,500 (GitHub Triage)\n"
             f"│ • <b>Go-Hybrid #825:</b> $1,500 (Autoland Queue)\n"
+            f"│ • <b>BasedHardware Omi:</b> $400 (David Zhang Approved)\n"
             f"│ • <b>10 Rapid Gigs:</b> $565 (Master Bundle Ready)\n"
-            f"│ • <b>Base EVM Pool:</b> $390 (Instant USDC Tasks)\n"
             f"<b>├──────────────────────────────────────────┤</b>\n"
             f"<b>│ RUNTIME QUOTAS & ZERO-COST RUNWAY:</b>\n"
             f"│ • <b>Groq LPU (70B):</b> <code>{groq_rem:,}</code> / 14,400 calls rem\n"
@@ -78,7 +79,6 @@ class DailyBriefingEngine:
             f"<b>├──────────────────────────────────────────┤</b>\n"
             f"<b>│ SETTLEMENT DESTINATION RAILS:</b>\n"
             f"│ • <b>PayPal:</b> <code>{PAYPAL_PAYOUT}</code>\n"
-            f"│ • <b>Base L2:</b> <code>{BASE_EVM_WALLET}</code>\n"
             f"<b>└──────────────────────────────────────────┘</b>\n\n"
             f"<i>Live Dashboard:</i> <a href='https://hardik4love-lang.github.io/aria-agent/'>hardik4love-lang.github.io/aria-agent</a>\n"
             f"<i>Aria stands by 24/7. Select an action below:</i>"

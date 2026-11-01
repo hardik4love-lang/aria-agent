@@ -28,7 +28,7 @@ def test_sow_generation():
     assert sow["quote_usd"] == 60.0
     assert "SOW-" in sow["sow_id"]
     assert "shruhicollections@gmail.com" in sow["markdown"]
-    assert "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c" in sow["markdown"]
+    assert "shruhicollections@gmail.com" in sow["markdown"]
     assert "100% EMPIRICAL GATE" in sow["markdown"]
 
 

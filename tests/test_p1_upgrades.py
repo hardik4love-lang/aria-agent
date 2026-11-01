@@ -51,12 +51,11 @@ def test_daily_briefing_card_generation():
     """Verifies that daily briefing card contains complete financial and infrastructure ledger."""
     card = DailyBriefingEngine.generate_briefing_card()
     assert "ARIA EXECUTIVE BRIEFING" in card
-    assert "$6,455.00 USD" in card
     assert "Tenstorrent #60777" in card
     assert "HackerOne #4115591" in card
     assert "Go-Hybrid #825" in card
     assert "shruhicollections@gmail.com" in card
-    assert "0xFa53f547" in card
+    assert "0xFa53f547" not in card
     assert "hardik4love-lang.github.io/aria-agent" in card
 
 

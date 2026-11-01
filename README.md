@@ -163,7 +163,7 @@ All 64 tests pass with **100% pass rate** in under 45 seconds.
 ## Verified Settlement Rails
 
 * **PayPal**: `shruhicollections@gmail.com`
-* **Base EVM (Coinbase L2 USDC)**: `0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c`
+* **Base EVM (Coinbase L2 USDC)**: `shruhicollections@gmail.com`
 * **Discord Relay**: `https://discord.com/channels/1563294882062139403/1563294882817384550`
 
 ---

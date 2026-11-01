@@ -11,4 +11,4 @@ It provides a zero-dependency, modular patch conforming strictly to modern archi
 
 ## Verified Settlement Rails
 - PayPal: `shruhicollections@gmail.com`
-- Base L2 (USDC): `0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c`
+- Base L2 (USDC): `shruhicollections@gmail.com`

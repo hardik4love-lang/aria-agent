@@ -107,7 +107,7 @@ class FastCashEngine:
         total_open = 0
 
         headers = {
-            "User-Agent": "AriaSovereignAgent/2.0 (EVM: 0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c)",
+            "User-Agent": "AriaSovereignAgent/2.0 (EVM: shruhicollections@gmail.com)",
             "X-Solver-Address": wallet["address"]
         }
 

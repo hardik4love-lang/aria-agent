@@ -20,7 +20,7 @@ fast_cash_tab_content = '''<!-- TAB 5: FAST CASH & INSTANT LIQUIDITY -->
 
           <div style="display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end;">
             <div style="font-size: 0.75rem; color: #94a3b8;">BASE MAINNET EVM WALLET:</div>
-            <span class="copy-pill" style="font-size: 0.82rem; font-family: monospace;" onclick="copyText('0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c', this)">
+            <span class="copy-pill" style="font-size: 0.82rem; font-family: monospace;" onclick="copyText('shruhicollections@gmail.com', this)">
               0xFa53...337c (USDC) 📋
             </span>
             <div style="font-size: 0.72rem; color: #10b981;">&#10003; Automated Settlement Rail Active</div>

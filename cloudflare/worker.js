@@ -288,7 +288,7 @@ export default {
           turnaround_minutes: 45,
           settlement_rails: {
             paypal: PAYPAL_PAYOUT,
-            base_usdc: "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c"
+            base_usdc: "shruhicollections@gmail.com"
           },
           message: "Task accepted into ARIA Sovereign Pipeline. Feasibility check PASSED."
         }), {

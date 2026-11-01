@@ -87,7 +87,7 @@ class DynamicPricingEngine:
             "turnkey_premium_pct": 40,
             "settlement_rails": {
                 "paypal": "shruhicollections@gmail.com",
-                "base_evm": "0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c"
+                "base_evm": "shruhicollections@gmail.com"
             }
         }
 

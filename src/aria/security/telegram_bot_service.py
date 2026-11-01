@@ -307,7 +307,6 @@ class TelegramAssistantService:
                     f"<b>├──────────────────────────────────────────┤</b>\n"
                     f"<b>│ SETTLEMENT RAILS:</b>\n"
                     f"│ • <b>PayPal:</b> <code>{PAYPAL_PAYOUT}</code>\n"
-                    f"│ • <b>Base L2:</b> <code>0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c</code>\n"
                     f"<b>├──────────────────────────────────────────┤</b>\n"
                     f"<b>│ MASTER BUNDLE:</b>\n"
                     f"│ <code>data/jobs_output/ARIA_MASTER_RAPID_CASH_ALL_10_JOBS.md</code>\n"
@@ -858,7 +857,6 @@ class TelegramAssistantService:
             f"<b>├──────────────────────────────────────────┤</b>\n"
             f"<b>│ SETTLEMENT RAILS:</b>\n"
             f"│ • <b>PayPal:</b> <code>{PAYPAL_PAYOUT}</code>\n"
-            f"│ • <b>Base L2:</b> <code>0xFa53f5472F8bF07bd0eC88270AB81482B5A4337c</code>\n"
             f"<b>└──────────────────────────────────────────┘</b>\n\n"
             f"<i>Live Dashboard:</i> <a href='https://hardik4love-lang.github.io/aria-agent/'>hardik4love-lang.github.io/aria-agent</a>"
         )
