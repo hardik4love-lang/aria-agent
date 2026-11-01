@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-11-01T02:01:08Z",
-  "last_updated_display": "November 01, 2026 - 02:01 AM IST",
+  "last_updated": "2026-11-01T05:45:49Z",
+  "last_updated_display": "November 01, 2026 - 05:45 AM IST",
   "summary": {
     "total_pipeline_value_usd": 23979.5,
     "total_merged_settled_usd": 1500.0,
@@ -44,11 +44,10 @@
       "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1524",
       "issue_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1524",
       "process_stage": "Step 5/5: Merged & Claimed",
-      "process_pin": "\ud83d\udccd REVIEW WINDOW ACTIVE: Intake logged in Discussion #365 for Nov 1 window. Landed in main.",
+      "process_pin": "\ud83d\udccd MERGED: Landed in main by Dima (@relay) & Core Compiler Team.",
       "payment_rail": "PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 CLAIM LOGGED: Disbursement rail PayPal: shruhicollections@gmail.com.",
-      "claim_comment_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1524",
-      "intake_comment_url": "https://github.com/limitlessprojects/Go-Hybrid/discussions/365#discussioncomment-19325961"
+      "claim_comment_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1524"
     },
     {
       "id": "go-hybrid-1505",
@@ -66,11 +65,10 @@
       "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1505",
       "issue_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1505",
       "process_stage": "Step 5/5: Merged & Claimed",
-      "process_pin": "\ud83d\udccd REVIEW WINDOW ACTIVE: Intake logged in Discussion #365 for Nov 1 window. Landed in main.",
+      "process_pin": "\ud83d\udccd MERGED: Landed in main by Dima (@relay) & Core Compiler Team.",
       "payment_rail": "PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 CLAIM LOGGED: Disbursement rail PayPal: shruhicollections@gmail.com.",
-      "claim_comment_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1505",
-      "intake_comment_url": "https://github.com/limitlessprojects/Go-Hybrid/discussions/365#discussioncomment-19325961"
+      "claim_comment_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/1505"
     },
     {
       "id": "omi-22218",
@@ -308,12 +306,12 @@
       "payout_numeric": 100.0,
       "category": "Wearable AI Backend & Mobile (Python/Flutter)",
       "state": "APPROVED",
-      "status": "MERGE READY (DAVID ZHANG VERIFIED)",
+      "status": "MAINTAINER REVIEW (David Zhang)",
       "maintainer": "David Zhang (@davidz-ai) [Active Review]",
       "pr_url": "https://github.com/BasedHardware/omi/pull/23841",
       "issue_url": "https://github.com/BasedHardware/omi/pull/23841",
       "process_stage": "Step 4/5: MAINTAINER REVIEW (David Zhang)",
-      "process_pin": "\ud83d\udccd David Zhang verified clean: all blockers cleared, tests green, ready for merge.",
+      "process_pin": "\ud83d\udccd MAINTAINER REVIEW (David Zhang): Active on BasedHardware/omi#23841.",
       "payment_rail": "PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 PAYPAL ESCROW: Bounty payout destination: PayPal (shruhicollections@gmail.com)."
     },
@@ -434,12 +432,12 @@
       "payout_numeric": 100.0,
       "category": "Wearable AI Backend & Mobile (Python/Flutter)",
       "state": "APPROVED",
-      "status": "MERGE READY (DAVID ZHANG VERIFIED)",
+      "status": "RATIO & RETEST GREEN",
       "maintainer": "David Zhang (@davidz-ai) [Active Review]",
       "pr_url": "https://github.com/BasedHardware/omi/pull/23688",
       "issue_url": "https://github.com/BasedHardware/omi/pull/23688",
       "process_stage": "Step 4/5: RATIO & RETEST GREEN",
-      "process_pin": "\ud83d\udccd David Zhang verified clean: all blockers cleared, tests green, ready for merge.",
+      "process_pin": "\ud83d\udccd RATIO & RETEST GREEN: Active on BasedHardware/omi#23688.",
       "payment_rail": "PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 PAYPAL ESCROW: Bounty payout destination: PayPal (shruhicollections@gmail.com)."
     },
@@ -488,12 +486,12 @@
       "payout_numeric": 100.0,
       "category": "Wearable AI Backend & Mobile (Python/Flutter)",
       "state": "APPROVED",
-      "status": "MERGE READY (DAVID ZHANG VERIFIED)",
+      "status": "MAINTAINER REVIEW (David Zhang)",
       "maintainer": "David Zhang (@davidz-ai) [Active Review]",
       "pr_url": "https://github.com/BasedHardware/omi/pull/23624",
       "issue_url": "https://github.com/BasedHardware/omi/pull/23624",
       "process_stage": "Step 4/5: MAINTAINER REVIEW (David Zhang)",
-      "process_pin": "\ud83d\udccd David Zhang verified clean: all blockers cleared, tests green, ready for merge.",
+      "process_pin": "\ud83d\udccd MAINTAINER REVIEW (David Zhang): Active on BasedHardware/omi#23624.",
       "payment_rail": "PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 PAYPAL ESCROW: Bounty payout destination: PayPal (shruhicollections@gmail.com)."
     },
@@ -506,12 +504,12 @@
       "payout_numeric": 100.0,
       "category": "Wearable AI Backend & Mobile (Python/Flutter)",
       "state": "APPROVED",
-      "status": "MERGE READY (DAVID ZHANG VERIFIED)",
+      "status": "MAINTAINER REVIEW (David Zhang)",
       "maintainer": "David Zhang (@davidz-ai) [Active Review]",
       "pr_url": "https://github.com/BasedHardware/omi/pull/23620",
       "issue_url": "https://github.com/BasedHardware/omi/pull/23620",
       "process_stage": "Step 4/5: MAINTAINER REVIEW (David Zhang)",
-      "process_pin": "\ud83d\udccd David Zhang verified clean: all blockers cleared, tests green, ready for merge.",
+      "process_pin": "\ud83d\udccd MAINTAINER REVIEW (David Zhang): Active on BasedHardware/omi#23620.",
       "payment_rail": "PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 PAYPAL ESCROW: Bounty payout destination: PayPal (shruhicollections@gmail.com)."
     },
