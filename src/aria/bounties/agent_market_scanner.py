@@ -33,7 +33,7 @@ class AgentMarketplaceManager:
             try:
                 with open(cls.WALLET_FILE, "r", encoding="utf-8") as f:
                     data = json.load(f)
-                    if data.get("address") and data.get("private_key"):
+                    if data.get("address"):
                         return data
             except Exception:
                 pass
@@ -44,7 +44,7 @@ class AgentMarketplaceManager:
             address = acct.address
             priv_key = acct.key.hex()
         else:
-            address = "shruhicollections@gmail.com"
+            address = os.environ.get("BASE_WALLET_ADDRESS", "0x18594ed50432c64cfc1719e902debea0045a2e20")
             priv_key = "0x" + "0" * 64
 
         wallet_data = {

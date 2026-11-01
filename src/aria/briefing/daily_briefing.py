@@ -79,6 +79,7 @@ class DailyBriefingEngine:
             f"│ • <b>Monthly TCO:</b> <b>$0.00 / month (Permanent)</b>\n"
             f"<b>├──────────────────────────────────────────┤</b>\n"
             f"<b>│ SETTLEMENT DESTINATION RAILS:</b>\n"
+            f"│ • <b>UPI (Domestic INR):</b> <code>9227095624@kotak811</code>\n"
             f"│ • <b>PayPal:</b> <code>{PAYPAL_PAYOUT}</code>\n"
             f"│ • <b>Base L2 (USDC):</b> <code>{BASE_EVM_WALLET}</code>\n"
             f"<b>└──────────────────────────────────────────┘</b>\n\n"

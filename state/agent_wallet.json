@@ -2,9 +2,10 @@
   "address": "0x18594ed50432c64cfc1719e902debea0045a2e20",
   "network": "Base Mainnet (EVM Chain ID 8453)",
   "settlement_currency": "USDC",
-  "owner": "Hardik",
+  "owner": "Hardik Kakkad",
   "user_payout_destination": "0x18594ed50432c64cfc1719e902debea0045a2e20",
   "paypal_payout_destination": "shruhicollections@gmail.com",
-  "updated_at": "2026-11-01 09:28:00 UTC",
+  "upi_payout_destination": "9227095624@kotak811",
+  "updated_at": "2026-11-01 15:17:00 UTC",
   "note": "USER_VERIFIED_PERSONAL_BASE_WALLET"
 }

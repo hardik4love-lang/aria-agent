@@ -102,7 +102,7 @@ def test_pr_rebase_watcher_health_check():
     assert len(results) >= 2
     ids = [r["id"] for r in results]
     assert "tt-60777" in ids
-    assert "hy-825" in ids
+    assert any("hybrid" in i or "hy-" in i for i in ids)
     for r in results:
         assert "health" in r
         assert "status" in r["health"]

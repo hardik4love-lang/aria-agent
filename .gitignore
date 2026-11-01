@@ -58,3 +58,9 @@ Thumbs.db
 # Autonomous runner workspaces
 data/workspace_repos/
 data/screenshots/
+
+# Private Beneficiary Profile & Bank State
+state/beneficiary_profile.json
+state/pc_health.json
+state/telegram_last_update.json
+scratch/

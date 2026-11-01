@@ -927,7 +927,7 @@ def build_dashboard():
             <span class="dot-sep">•</span>
             <span>24/7 Cloud Actions Daemon</span>
             <span class="dot-sep">•</span>
-            <span style="color: #34d399; font-weight: 600;">Dual Verified Rails (PayPal & Base USDC)</span>
+            <span style="color: #34d399; font-weight: 600;">Multi-Rail Verified Settlement (UPI, Base USDC, PayPal)</span>
           </div>
         </div>
       </div>
@@ -941,6 +941,10 @@ def build_dashboard():
         <div class="payout-lock-pill" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.1); color: #38bdf8;" onclick="copyBaseRail()" title="Click to copy verified Base EVM wallet">
           <span>⛓️ Base USDC:</span>
           <span class="email-mono" id="locked-base-text">0x1859...2e20</span>
+        </div>
+        <div class="payout-lock-pill" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.1); color: #10b981;" onclick="copyUPIRail()" title="Click to copy verified UPI ID">
+          <span>⚡ UPI (INR):</span>
+          <span class="email-mono" id="locked-upi-text">9227095624@kotak811</span>
         </div>
 
         <!-- Live Sync Counter & Action -->
@@ -1481,11 +1485,23 @@ def build_dashboard():
       }}, 3000);
     }}
 
-    // Copy PayPal Pill
+    // Copy Settlement Rails
     function copyPayPalRail() {{
       const email = 'shruhicollections@gmail.com';
       navigator.clipboard.writeText(email);
-      showToast(`Locked PayPal address copied: ${{email}}`);
+      showToast(`Verified PayPal address copied: ${{email}}`);
+    }}
+
+    function copyBaseRail() {{
+      const addr = '0x18594ed50432c64cfc1719e902debea0045a2e20';
+      navigator.clipboard.writeText(addr);
+      showToast(`Verified Base EVM address copied: ${{addr}}`);
+    }}
+
+    function copyUPIRail() {{
+      const upi = '9227095624@kotak811';
+      navigator.clipboard.writeText(upi);
+      showToast(`Verified UPI ID copied: ${{upi}}`);
     }}
 
     // Copy Discussion #365 Summary Report
