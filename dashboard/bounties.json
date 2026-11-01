@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-11-01T17:20:57.962167+00:00",
-  "last_updated_display": "November 01, 2026 - 05:20 PM UTC",
+  "last_updated": "2026-11-01T17:23:09.143928+00:00",
+  "last_updated_display": "November 01, 2026 - 05:23 PM UTC",
   "summary": {
-    "total_pipeline_value_usd": 29329.5,
+    "total_pipeline_value_usd": 29279.5,
     "total_merged_settled_usd": 1500.0,
     "total_approved_imminent_usd": 2350.0,
-    "total_open_prs_usd": 10600.0,
+    "total_open_prs_usd": 10550.0,
     "total_opire_bounties_usd": 575.0,
     "total_client_contracts_usd": 660.0,
     "total_rapid_jobs_usd": 565.0,
@@ -17,12 +17,12 @@
     "rapid_jobs_count": 10,
     "settlement_rail_primary": "PayPal: shruhicollections@gmail.com",
     "settlement_rail_backup": "Direct Bank Wire via PayPal: shruhicollections@gmail.com",
-    "total_active_pipeline_items": 97
+    "total_active_pipeline_items": 98
   },
-  "total_pipeline_value": "$29,329.50 USD",
+  "total_pipeline_value": "$29,279.50 USD",
   "total_merged_value": "$1,500.00 USD",
   "total_approved_value": "$2,350.00 USD",
-  "total_open_prs_value": "$10,600.00 USD",
+  "total_open_prs_value": "$10,550.00 USD",
   "total_client_contracts_value": "$660.00 USD",
   "total_rapid_jobs_value": "$565.00 USD",
   "dashboard_live_url": "https://hardik4love-lang.github.io/aria-agent/",
@@ -280,24 +280,6 @@
       "payment_pin": "\ud83d\udcb0 PAYPAL ESCROW: Bounty payout destination: PayPal (shruhicollections@gmail.com)."
     },
     {
-      "id": "go-hybrid-2974",
-      "repo": "limitlessprojects/Go-Hybrid",
-      "pr_number": 2974,
-      "title": "fix(hy-check): reject implicit assignment of any to concrete types (fixes #2962)",
-      "payout": "$250.00",
-      "payout_numeric": 250.0,
-      "category": "Go-Hybrid Compiler & Type-Checker (Soundness)",
-      "state": "QUEUE",
-      "status": "GATE CLEAN (IN REVIEW)",
-      "maintainer": "Dima (@relay) & Core Compiler Team",
-      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/2974",
-      "issue_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/2962",
-      "process_stage": "Step 4/5: Codeowner Review",
-      "process_pin": "\ud83d\udccc GATE CLEAN: Live submission on Go-Hybrid PR #2974. Closes Nov 2 window.",
-      "payment_rail": "PayPal (shruhicollections@gmail.com)",
-      "payment_pin": "\ud83d\udcb0 PAYPAL ESCROW: Bounty payout destination: PayPal (shruhicollections@gmail.com)."
-    },
-    {
       "id": "superteam-validator-research",
       "repo": "hardik4love-lang/solana-validator-ordering-research",
       "pr_number": 1,
@@ -314,6 +296,24 @@
       "process_pin": "\ud83d\udccc LIVE SUBMITTED: Published code & thesis repository on Superteam Earn.",
       "payment_rail": "PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 DIRECT GRANT: Bounty payout destination: PayPal (shruhicollections@gmail.com)."
+    },
+    {
+      "id": "go-hybrid-2974",
+      "repo": "limitlessprojects/Go-Hybrid",
+      "pr_number": 2974,
+      "title": "fix(hy-check): reject implicit assignment of any to concrete types (fixes #2962)",
+      "payout": "$200.00",
+      "payout_numeric": 200.0,
+      "category": "Go-Hybrid Compiler & Type-Checker (Go)",
+      "state": "QUEUE",
+      "status": "IN REVIEW",
+      "maintainer": "Dima (@relay) & Core Compiler Team",
+      "pr_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/2974",
+      "issue_url": "https://github.com/limitlessprojects/Go-Hybrid/pull/2974",
+      "process_stage": "Step 4/5: IN REVIEW",
+      "process_pin": "\ud83d\udccd IN REVIEW: Active on limitlessprojects/Go-Hybrid#2974.",
+      "payment_rail": "PayPal (shruhicollections@gmail.com)",
+      "payment_pin": "\ud83d\udcb0 PAYPAL ESCROW: Bounty payout destination: PayPal (shruhicollections@gmail.com)."
     },
     {
       "id": "go-hybrid-2376",
