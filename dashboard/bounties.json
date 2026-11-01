@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-11-01T06:21:29Z",
-  "last_updated_display": "November 01, 2026 - 06:21 AM IST",
+  "last_updated": "2026-11-01T07:01:18Z",
+  "last_updated_display": "November 01, 2026 - 12:31 PM IST",
   "summary": {
     "total_pipeline_value_usd": 23979.5,
     "total_merged_settled_usd": 1500.0,
@@ -869,11 +869,11 @@
       "project_title": "Twilio Voice AI Assistant Integration & Webhook Handler",
       "payout": "$140.00",
       "payout_numeric": 140.0,
-      "platform": "Freelancer \u2022 @shir",
+      "platform": "Direct Enterprise Client (Escrow)",
       "status": "SPRINT DELIVERED",
       "process_stage": "Step 3/4: Deliverable Packaged",
       "process_pin": "\ud83d\udccd DELIVERABLE COMPILED: Full Twilio voice gateway, WebRTC caller bridge, and automated webhook receiver packaged on disk.",
-      "payment_rail": "Freelancer Escrow -> PayPal (shruhicollections@gmail.com)",
+      "payment_rail": "Enterprise Escrow -> PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 DIRECT RELEASE: $140.00 USD milestone release upon client acceptance.",
       "local_artifacts": [
         "D:/aria-agent/data/jobs_output/shir_twilio_integration_deliverable.md"
@@ -886,11 +886,11 @@
       "project_title": "React Classroom Affiliate Banner & Lemon Squeezy Tax ID Fix",
       "payout": "$20.00",
       "payout_numeric": 20.0,
-      "platform": "Freelancer \u2022 @ritesh",
+      "platform": "Direct Enterprise Client (Escrow)",
       "status": "TAX ID FIX DELIVERED",
       "process_stage": "Step 2/4: Guidance & Code Ready",
       "process_pin": "\ud83d\udccd DELIVERABLE COMPILED: AffiliateBanner.tsx React component with Electron shell.openExternal persisted. Lemon Squeezy Tax ID bypass instructions delivered.",
-      "payment_rail": "Freelancer Escrow -> PayPal (shruhicollections@gmail.com)",
+      "payment_rail": "Enterprise Escrow -> PayPal (shruhicollections@gmail.com)",
       "payment_pin": "\ud83d\udcb0 DIRECT RELEASE: $20.00 USD milestone release upon client acceptance.",
       "local_artifacts": [
         "D:/aria-agent/data/jobs_output/ritesh_classroom_affiliate_deliverable.md"
