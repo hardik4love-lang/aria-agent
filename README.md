@@ -102,7 +102,6 @@ ARIA actively monitors and executes against high-ticket open-source bounties, cl
 | **Go-Hybrid #825** | GitHub PR | **$1,500.00** | 🟢 `HEALTHY` (Prelude collision rejected; awaiting autoland queue) | PayPal |
 | **HackerOne #4115591** | Security Report | **$1,500.00** | ⏳ Awaiting GitHub Security Team triage | PayPal |
 | **10 Rapid Gigs** | Discord / Reddit | **$565.00** | 🟢 Standardized 3-file packages verified & ready | PayPal (`shruhicollections@gmail.com`) |
-| **Instant Base Pool** | TaskMarket / AgentBounties | **$390.00** | 🟢 Active on-chain Base EVM solver loop | Base L2 USDC (`0xFa53...337c`) |
 | **TOTAL PIPELINE** | — | **$6,455.00 USD** | **100% Sovereign Active Value** | — |
 
 ---
@@ -133,9 +132,7 @@ The mobile companion bot (`@Ariabountie_bot`) provides 1-tap assisted execution 
 * `/prs` — Real-time health, mergeable status, and branch tracking for high-ticket PRs.
 * `/jobs` — Inspect the 10 Rapid Developer Gig inventory ($25–$100 each).
 * `/submit <id>` — Autonomously package, verify AST, and dispatch deliverable to client.
-* `/liquidity` — Scan and trigger Base EVM on-chain task solvers.
 * `/copilot` — 1-Tap assisted Reddit & Discord bidding (anti-bot protected).
-* `/payout` — Verified settlement rails (PayPal & Base EVM).
 
 ---
 
@@ -163,7 +160,6 @@ All 64 tests pass with **100% pass rate** in under 45 seconds.
 ## Verified Settlement Rails
 
 * **PayPal**: `shruhicollections@gmail.com`
-* **Base EVM (Coinbase L2 USDC)**: `shruhicollections@gmail.com`
 * **Discord Relay**: `https://discord.com/channels/1563294882062139403/1563294882817384550`
 
 ---
