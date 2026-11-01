@@ -12,7 +12,6 @@ from datetime import datetime, timezone
 from typing import Dict, Any, Optional
 
 PAYPAL_PAYOUT = "shruhicollections@gmail.com"
-BASE_EVM_WALLET = "0x18594ed50432c64cfc1719e902debea0045a2e20"
 
 STATE_DIR = "state"
 LAST_BRIEFING_FILE = os.path.join(STATE_DIR, "last_daily_briefing.json")
@@ -78,10 +77,8 @@ class DailyBriefingEngine:
             f"│ • <b>Circuit Breakers:</b> 🟢 CLOSED (Zero 429 trips)\n"
             f"│ • <b>Monthly TCO:</b> <b>$0.00 / month (Permanent)</b>\n"
             f"<b>├──────────────────────────────────────────┤</b>\n"
-            f"<b>│ SETTLEMENT DESTINATION RAILS:</b>\n"
-            f"│ • <b>UPI (Domestic INR):</b> <code>9227095624@kotak811</code>\n"
+            f"<b>│ SETTLEMENT DESTINATION RAIL:</b>\n"
             f"│ • <b>PayPal:</b> <code>{PAYPAL_PAYOUT}</code>\n"
-            f"│ • <b>Base L2 (USDC):</b> <code>{BASE_EVM_WALLET}</code>\n"
             f"<b>└──────────────────────────────────────────┘</b>\n\n"
             f"<i>Live Dashboard:</i> <a href='https://hardik4love-lang.github.io/aria-agent/'>hardik4love-lang.github.io/aria-agent</a>\n"
             f"<i>Aria stands by 24/7. Select an action below:</i>"

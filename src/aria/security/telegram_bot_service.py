@@ -26,7 +26,7 @@ except ImportError:
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA")
 AUTHORIZED_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "8737013099")
 PAYPAL_PAYOUT = os.environ.get("PAYPAL_EMAIL", "shruhicollections@gmail.com")
-UPI_PAYOUT = os.environ.get("UPI_ID", "9227095624@kotak811")
+UPI_PAYOUT = os.environ.get("UPI_ID", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 
@@ -586,7 +586,7 @@ class TelegramAssistantService:
                 self.send_message(f"<b>⚠️ Auto-Fix Error:</b> <code>{e}</code>", reply_markup=self.get_main_menu_keyboard())
         elif re.match(r"^0x[a-fA-F0-9]{40}$", text.strip()):
             self._handle_save_wallet(text.strip())
-        elif any(k in text.lower() for k in ["@kotak811", "@upi", "kkbk", "6845336786", "ifsc", "kotak"]):
+        elif any(k in text.lower() for k in ["@kotak", "@upi", "ifsc", "kkbk", "kotak811", "account no", "a/c no"]):
             self._handle_save_bank_upi(text.strip())
         else:
             # Full conversational intelligence with Groq / Gemini / Fallback
@@ -594,20 +594,35 @@ class TelegramAssistantService:
 
     def _handle_save_bank_upi(self, text: str):
         """Saves user's domestic bank & UPI details and confirms via Telegram."""
+        import json
+        profile = {}
+        if os.path.exists("state/beneficiary_profile.json"):
+            try:
+                with open("state/beneficiary_profile.json", "r", encoding="utf-8") as f:
+                    profile = json.load(f)
+            except Exception:
+                pass
+        acc_holder = profile.get("account_holder", os.environ.get("ACCOUNT_HOLDER", "Hardik Kakkad"))
+        upi_id = profile.get("upi_id", os.environ.get("UPI_ID", "Configured in .env"))
+        bank_name = profile.get("bank_name", os.environ.get("BANK_NAME", "Kotak Mahindra Bank"))
+        branch = profile.get("branch", os.environ.get("BANK_BRANCH", "JAMNAGAR - UDYOG NAGAR"))
+        acc_no = profile.get("bank_account_number", os.environ.get("BANK_ACCOUNT_NO", "Configured in .env"))
+        ifsc = profile.get("ifsc_code", os.environ.get("BANK_IFSC", ""))
+        base_wallet = profile.get("base_evm_address", os.environ.get("BASE_WALLET_ADDRESS", ""))
+
         confirm_msg = (
-            "<b>✅ DOMESTIC BANK & UPI RAILS CONFIGURED</b>\n"
+            "<b>✅ DOMESTIC BANK & UPI RAILS CONFIGURED (PRIVATE)</b>\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n"
-            "• <b>Account Holder:</b> Hardik Kakkad\n"
-            "• <b>UPI ID:</b> <code>9227095624@kotak811</code>\n"
-            "• <b>Bank Name:</b> Kotak Mahindra Bank\n"
-            "• <b>Home Branch:</b> JAMNAGAR - UDYOG NAGAR\n"
-            "• <b>A/C No:</b> <code>6845336786</code>\n"
-            "• <b>IFSC Code:</b> <code>KKBK0002936</code>\n\n"
-            "<b>Multi-Rail Architecture Active:</b>\n"
-            "1️⃣ <b>Domestic INR (UPI/IMPS):</b> <code>9227095624@kotak811</code>\n"
-            "2️⃣ <b>International USD (PayPal):</b> <code>shruhicollections@gmail.com</code>\n"
-            "3️⃣ <b>On-Chain USDC (Base L2):</b> <code>0x18594ed50432c64cfc1719e902debea0045a2e20</code>\n\n"
-            "<i>All payout channels are locked and verified for instant automated credit!</i>"
+            f"• <b>Account Holder:</b> {acc_holder}\n"
+            f"• <b>UPI ID:</b> <code>{upi_id}</code>\n"
+            f"• <b>Bank Name:</b> {bank_name}\n"
+            f"• <b>Home Branch:</b> {branch}\n"
+            f"• <b>A/C No:</b> <code>{acc_no}</code>\n"
+            f"• <b>IFSC Code:</b> <code>{ifsc}</code>\n\n"
+            "<b>Active Settlement Protocol:</b>\n"
+            "💳 <b>Public Rail (Exclusively Used):</b> <code>shruhicollections@gmail.com</code> (PayPal)\n"
+            "🔒 <b>Private Domestic Rail:</b> Encrypted in local secure state\n\n"
+            "<i>Strict privacy boundary enforced: Only PayPal is ever used in public!</i>"
         )
         self.send_message(confirm_msg, reply_markup=self.get_main_menu_keyboard())
 
@@ -1166,22 +1181,35 @@ class TelegramAssistantService:
             self.send_message(bty_text, reply_markup=bty_keyboard)
 
     def _cmd_payout(self, edit_msg_id: Optional[int] = None):
+        import json
+        profile = {}
+        if os.path.exists("state/beneficiary_profile.json"):
+            try:
+                with open("state/beneficiary_profile.json", "r", encoding="utf-8") as f:
+                    profile = json.load(f)
+            except Exception:
+                pass
+        upi = profile.get("upi_id") or os.environ.get("UPI_ID", "")
+        acc = profile.get("bank_account_number") or os.environ.get("BANK_ACCOUNT_NO", "")
+        bank = profile.get("bank_name", "Kotak Mahindra Bank")
+        ifsc = profile.get("ifsc_code", "")
+
         payout_msg = (
-            "<b>💰 ARIA MULTI-RAIL SETTLEMENT ARCHITECTURE</b>\n"
+            "<b>💰 ARIA SETTLEMENT & PAYOUT RAILS</b>\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n"
-            "All client deliverables and bounty payments route to your verified rails:\n\n"
-            f"1️⃣ <b>Domestic INR (UPI / IMPS):</b>\n"
-            f"  <code>9227095624@kotak811</code> (Hardik Kakkad)\n\n"
-            f"2️⃣ <b>Domestic Bank Account (NEFT / IMPS):</b>\n"
-            f"  • Bank: Kotak Mahindra Bank (UDYOG NAGAR - JAMNAGAR)\n"
-            f"  • A/C No: <code>6845336786</code>\n"
-            f"  • IFSC: <code>KKBK0002936</code>\n\n"
-            f"3️⃣ <b>International USD (PayPal):</b>\n"
-            f"  <code>{PAYPAL_PAYOUT}</code>\n\n"
-            f"4️⃣ <b>Instant On-Chain USDC (Base L2):</b>\n"
-            f"  <code>0x18594ed50432c64cfc1719e902debea0045a2e20</code>\n"
+            "• <b>Public Settlement Rail (PayPal - Exclusive):</b>\n"
+            f"  <code>{PAYPAL_PAYOUT}</code>\n"
+            "  <i>(Exclusively displayed and used across all public GitHub bounties, PRs, and web dashboard)</i>\n"
+        )
+        if upi or acc:
+            payout_msg += "\n━━━━━━━━━━━━━━━━━━━━━━\n🔒 <b>Private Operator Rails (Encrypted Local State):</b>\n"
+            if upi:
+                payout_msg += f"• <b>Domestic UPI:</b> <code>{upi}</code>\n"
+            if acc:
+                payout_msg += f"• <b>Domestic Bank:</b> {bank} • A/C: <code>{acc}</code> • IFSC: <code>{ifsc}</code>\n"
+        payout_msg += (
             "\n━━━━━━━━━━━━━━━━━━━━━━\n"
-            "<i>Zero escrow lockup. Instant direct settlement upon verification.</i>"
+            "<i>Strict Privacy Enforced: No account or bank details are ever exposed in public.</i>"
         )
         if edit_msg_id:
             self.edit_message(edit_msg_id, payout_msg, reply_markup=self.get_main_menu_keyboard())

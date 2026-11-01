@@ -44,7 +44,7 @@ class AgentMarketplaceManager:
             address = acct.address
             priv_key = acct.key.hex()
         else:
-            address = os.environ.get("BASE_WALLET_ADDRESS", "0x18594ed50432c64cfc1719e902debea0045a2e20")
+            address = os.environ.get("BASE_WALLET_ADDRESS", "")
             priv_key = "0x" + "0" * 64
 
         wallet_data = {

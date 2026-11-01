@@ -64,3 +64,4 @@ state/beneficiary_profile.json
 state/pc_health.json
 state/telegram_last_update.json
 scratch/
+state/agent_wallet.json

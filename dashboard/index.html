@@ -900,24 +900,19 @@
             <span class="dot-sep">•</span>
             <span>24/7 Cloud Actions Daemon</span>
             <span class="dot-sep">•</span>
-            <span style="color: #34d399; font-weight: 600;">Multi-Rail Verified Settlement (UPI, Base USDC, PayPal)</span>
+            <span style="color: #34d399; font-weight: 600;">PayPal Rail Exclusive (shruhicollections@gmail.com)</span>
           </div>
         </div>
       </div>
 
       <div class="masthead-controls">
         <!-- Locked Settlement Pill -->
-        <div class="payout-lock-pill" onclick="copyPayPalRail()" title="Click to copy verified PayPal address">
-          <span>💳 PayPal:</span>
+        <div class="payout-lock-pill" onclick="copyPayPalRail()" title="Click to copy locked PayPal address">
+          <span>💳 Locked Settlement:</span>
           <span class="email-mono" id="locked-paypal-text">shruhicollections@gmail.com</span>
-        </div>
-        <div class="payout-lock-pill" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.1); color: #38bdf8;" onclick="copyBaseRail()" title="Click to copy verified Base EVM wallet">
-          <span>⛓️ Base USDC:</span>
-          <span class="email-mono" id="locked-base-text">0x1859...2e20</span>
-        </div>
-        <div class="payout-lock-pill" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.1); color: #10b981;" onclick="copyUPIRail()" title="Click to copy verified UPI ID">
-          <span>⚡ UPI (INR):</span>
-          <span class="email-mono" id="locked-upi-text">9227095624@kotak811</span>
+          <button class="copy-icon-btn" id="copy-btn-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          </button>
         </div>
 
         <!-- Live Sync Counter & Action -->
@@ -1458,23 +1453,11 @@
       }, 3000);
     }
 
-    // Copy Settlement Rails
+    // Copy PayPal Pill
     function copyPayPalRail() {
       const email = 'shruhicollections@gmail.com';
       navigator.clipboard.writeText(email);
-      showToast(`Verified PayPal address copied: ${email}`);
-    }
-
-    function copyBaseRail() {
-      const addr = '0x18594ed50432c64cfc1719e902debea0045a2e20';
-      navigator.clipboard.writeText(addr);
-      showToast(`Verified Base EVM address copied: ${addr}`);
-    }
-
-    function copyUPIRail() {
-      const upi = '9227095624@kotak811';
-      navigator.clipboard.writeText(upi);
-      showToast(`Verified UPI ID copied: ${upi}`);
+      showToast(`Locked PayPal address copied: ${email}`);
     }
 
     // Copy Discussion #365 Summary Report
