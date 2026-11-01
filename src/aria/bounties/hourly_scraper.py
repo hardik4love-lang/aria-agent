@@ -1,7 +1,8 @@
 """
-ARIA Hourly Autonomous Scraping Pipeline with Telegram Approval Gate.
-Executes 10 web scraping tasks every hour at 100% Zero Cost ($0.00 TCO).
-Enforces human approval on Telegram before dispatching deliverables.
+ARIA Hourly Multi-Platform Autonomous Bounty Hunting Pipeline.
+Executes multi-platform bounty scraping and solving (5 jobs/hour) at 100% Zero Cost ($0.00 TCO).
+Targets exclusively verified funded platforms: Algora, Polar.sh, Ubiquity, Twenty, Opire.
+Excludes Freelancer and Upwork completely.
 """
 
 import os
@@ -9,30 +10,18 @@ import sys
 import time
 import csv
 import json
-import random
+import logging
 from typing import List, Dict, Any, Optional
 
 from aria.security.telegram_gate import TelegramApprovalGate
-from aria.bounties.autonomous_solvers import AutonomousJobSolvers
+
+logger = logging.getLogger("HourlyScrapingEngine")
 
 class HourlyScrapingEngine:
     """
-    Autonomous pipeline that runs 10 scrapings per hour and gates
-    completion behind an operator Telegram approval.
+    Autonomous pipeline that runs multi-platform bounty hunting:
+    Scrapes top 3 from each platform, selects and solves top 5 jobs per hour.
     """
-
-    DEFAULT_TARGETS = [
-        {"name": "D2C Luxury Linen Catalog", "category": "Fashion", "url": "https://shruhicollections.in"},
-        {"name": "B2B Diamond CVD Price Index", "category": "Wholesale", "url": "https://algorise-ai.com/industry/diamond"},
-        {"name": "Surat Textile Saree Rates", "category": "Textiles", "url": "https://algorise-ai.com/industry/textile"},
-        {"name": "Reddit Slavelabour Task Feed", "category": "Freelance", "url": "https://reddit.com/r/slavelabour"},
-        {"name": "Algora Open Bounties Directory", "category": "Code Bounties", "url": "https://algora.io/bounties"},
-        {"name": "Cal.com Component Repos", "category": "Open-Source", "url": "https://github.com/calcom/cal.diy"},
-        {"name": "Twenty CRM Issues Tracker", "category": "Open-Source", "url": "https://github.com/twentyhq/twenty"},
-        {"name": "E-Commerce Tech Electronics Feed", "category": "Retail", "url": "https://example.com/electronics"},
-        {"name": "Local Business Lead Directory", "category": "B2B Leads", "url": "https://example.com/b2b-leads"},
-        {"name": "Real Estate Property Listings", "category": "Real Estate", "url": "https://example.com/properties"}
-    ]
 
     def __init__(self, data_dir: str = "data/hourly_scrapes"):
         self.data_dir = data_dir
@@ -41,11 +30,11 @@ class HourlyScrapingEngine:
 
     def execute_hourly_cycle(self, custom_targets: Optional[List[Dict[str, str]]] = None, svc=None) -> Dict[str, Any]:
         """
-        Executes ARIA's hourly autonomous job execution & revenue cycle:
-        1. Ingests live urgent jobs from Freelancer.com feed.
-        2. Solves matching jobs via AutonomousJobSolvers into AST-verified production code.
-        3. Packages ready-to-send proposals with strictly PayPal settlement (shruhicollections@gmail.com).
-        4. Dispatches actionable cards to Telegram with one-click delivery.
+        Executes ARIA's hourly autonomous bounty hunting & revenue cycle:
+        1. Ingests top 3 live funded bounties from Algora, Polar, Ubiquity upstream, Twenty, and Opire.
+        2. Solves the top 5 highest-yield jobs via BountyHuntingSubagent into production code.
+        3. Packages verified solutions with strictly PayPal settlement (shruhicollections@gmail.com).
+        4. Completely excludes Freelancer and Upwork (100% focused on funded code bounties).
         5. Compiles cycle manifest and tracks active bounty PRs.
         """
         cycle_id = f"cycle-{int(time.time())}"
@@ -53,13 +42,15 @@ class HourlyScrapingEngine:
         os.makedirs(cycle_dir, exist_ok=True)
 
         print(f"\n=======================================================")
-        print(f"[*] ARIA AUTONOMOUS JOB EXECUTION CYCLE: {cycle_id}")
+        print(f"[*] ARIA MULTI-PLATFORM BOUNTY HUNTING CYCLE: {cycle_id}")
         print(f"[*] Zero-Cost FinOps Active | Payout Settlement: PayPal")
+        print(f"[*] Platforms: Algora | Polar | Ubiquity | Twenty | Opire")
         print(f"=======================================================")
 
-        # 1. Execute live job intake, solving, packaging, and Telegram dispatch
-        from aria.bounties.fast_cash_engine import FastCashEngine
-        fast_cash_res = FastCashEngine.execute_master_fast_cash_cycle(svc=svc)
+        # 1. Execute live multi-platform bounty hunt (5 jobs per hour)
+        from aria.bounties.bounty_hunting_subagent import BountyHuntingSubagent
+        subagent = BountyHuntingSubagent()
+        hunt_res = subagent.execute_hourly_hunt()
 
         # 2. Ingest & verify active bounty PR health
         active_pr_summary = []
@@ -82,21 +73,20 @@ class HourlyScrapingEngine:
             json.dump({
                 "cycle_id": cycle_id,
                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S UTC"),
-                "jobs_ingested": fast_cash_res.get("live_freelancer_jobs_ingested", 0),
-                "solutions_packaged": fast_cash_res.get("solutions_packaged", 0),
-                "newly_dispatched_to_telegram": fast_cash_res.get("newly_dispatched_to_telegram", 0),
+                "bounties_found": hunt_res.get("bounties_found", 0),
+                "jobs_solved": hunt_res.get("jobs_solved", 0),
+                "solutions_dir": hunt_res.get("solutions_dir", ""),
                 "tracked_bounties": active_pr_summary
             }, f, indent=2)
 
-        print(f"[+] Cycle complete: {fast_cash_res.get('solutions_packaged', 0)} solutions packaged, "
-              f"{fast_cash_res.get('newly_dispatched_to_telegram', 0)} newly dispatched to Telegram.")
-        print(f"[+] Output directory: {cycle_dir}")
+        print(f"[+] Cycle complete: {hunt_res.get('jobs_solved', 0)} solutions packaged across top platforms.")
+        print(f"[+] Solutions stored at: {hunt_res.get('solutions_dir', '')}")
 
         return {
             "cycle_id": cycle_id,
             "status": "COMPLETED",
-            "solutions_packaged": fast_cash_res.get("solutions_packaged", 0),
-            "newly_dispatched": fast_cash_res.get("newly_dispatched_to_telegram", 0),
+            "bounties_found": hunt_res.get("bounties_found", 0),
+            "jobs_solved": hunt_res.get("jobs_solved", 0),
             "batch_directory": cycle_dir,
             "manifest": manifest_file
         }
