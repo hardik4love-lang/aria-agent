@@ -39,30 +39,32 @@ def test_synthesize_proposal_for_stripe():
     assert "Stripe Webhook & Payment Engine" in proposal
 
 def test_execute_bidding_cycle_unauthenticated():
-    with patch.object(FreelancerBidderEngine, "get_self_profile", return_value={"authenticated": False}):
-        with patch.object(FreelancerBidderEngine, "search_active_projects", return_value=[
-            {"id": 99901, "title": "Scrape directory data to CSV", "seo_url": "scrape-dir", "budget": {"minimum": 50}},
-            {"id": 99902, "title": "Create Next.js responsive landing page", "seo_url": "nextjs-landing", "budget": {"minimum": 75}}
-        ]):
-            res = FreelancerBidderEngine.execute_bidding_cycle()
-            assert res["cycle_complete"] is True
-            assert res["authenticated"] is False
-            assert res["packaged_proposals_count"] == 2
-            assert len(res["packaged_proposals"]) == 2
+    with patch.object(FreelancerBidderEngine, "AUTO_BID_DISABLED", False):
+        with patch.object(FreelancerBidderEngine, "get_self_profile", return_value={"authenticated": False}):
+            with patch.object(FreelancerBidderEngine, "search_active_projects", return_value=[
+                {"id": 99901, "title": "Scrape directory data to CSV", "seo_url": "scrape-dir", "budget": {"minimum": 50}},
+                {"id": 99902, "title": "Create Next.js responsive landing page", "seo_url": "nextjs-landing", "budget": {"minimum": 75}}
+            ]):
+                res = FreelancerBidderEngine.execute_bidding_cycle()
+                assert res["cycle_complete"] is True
+                assert res["authenticated"] is False
+                assert res["packaged_proposals_count"] == 2
+                assert len(res["packaged_proposals"]) == 2
 
 def test_execute_bidding_cycle_authenticated_places_bid():
     mock_profile = {"authenticated": True, "user_id": 8888, "username": "aria_dev"}
     mock_projects = [
         {"id": 99910, "title": "Scrape website data", "seo_url": "scrape-website", "budget": {"minimum": 40, "maximum": 100}}
     ]
-    with patch.object(FreelancerBidderEngine, "get_self_profile", return_value=mock_profile):
-        with patch.object(FreelancerBidderEngine, "get_already_bid_project_ids", return_value=set()):
-            with patch.object(FreelancerBidderEngine, "search_active_projects", return_value=mock_projects):
-                with patch.object(FreelancerBidderEngine, "place_bid", return_value={"success": True, "bid_id": 555}):
-                    mock_svc = MagicMock()
-                    res = FreelancerBidderEngine.execute_bidding_cycle(svc=mock_svc, max_bids=1)
-                    assert res["cycle_complete"] is True
-                    assert res["authenticated"] is True
-                    assert res["bids_placed_count"] == 1
-                    assert res["placed_bids"][0]["bid_id"] == 555
-                    assert mock_svc.send_message.called
+    with patch.object(FreelancerBidderEngine, "AUTO_BID_DISABLED", False):
+        with patch.object(FreelancerBidderEngine, "get_self_profile", return_value=mock_profile):
+            with patch.object(FreelancerBidderEngine, "get_already_bid_project_ids", return_value=set()):
+                with patch.object(FreelancerBidderEngine, "search_active_projects", return_value=mock_projects):
+                    with patch.object(FreelancerBidderEngine, "place_bid", return_value={"success": True, "bid_id": 555}):
+                        mock_svc = MagicMock()
+                        res = FreelancerBidderEngine.execute_bidding_cycle(svc=mock_svc, max_bids=1)
+                        assert res["cycle_complete"] is True
+                        assert res["authenticated"] is True
+                        assert res["bids_placed_count"] == 1
+                        assert res["placed_bids"][0]["bid_id"] == 555
+                        assert mock_svc.send_message.called

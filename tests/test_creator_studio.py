@@ -177,6 +177,9 @@ def test_shorts_repurposing():
 
 
 def test_audio_synthesizer_local():
+    import sys, pytest
+    if sys.platform != 'win32':
+        pytest.skip('Local SAPI speech synthesis is Windows-specific')
     from aria.creator.audio_synthesizer import AudioSynthesizer
     import tempfile, os
     with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as tf:

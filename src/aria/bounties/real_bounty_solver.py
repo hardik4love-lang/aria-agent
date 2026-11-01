@@ -52,10 +52,14 @@ class RealBountySolver:
         title_lower = title.lower()
         slug = "".join(c if c.isalnum() else "_" for c in title_lower)[:35].strip("_")
 
-        # Detect language from issue metadata
-        if any(kw in title_lower for kw in ["python", "pytest", "mir", "fastapi", "django"]):
+        # Detect language from issue metadata, body, and file hints
+        full_text = f"{title_lower} {body.lower()}"
+        if any(kw in full_text for kw in ["python", "pytest", "mir", "fastapi", "django", ".py"]):
             lang = "python"
             ext = "py"
+        elif any(kw in full_text for kw in ["javascript", "node", "express", ".js"]):
+            lang = "javascript"
+            ext = "js"
         else:
             lang = "typescript"
             ext = "ts"
