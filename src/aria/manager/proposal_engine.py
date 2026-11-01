@@ -13,8 +13,7 @@ class ProposalEngine:
     """Architects high-conversion, adult freelance proposals backed by verified proof-of-work."""
 
     PAYPAL_RAIL = "shruhicollections@gmail.com"
-# Payout rail locked to PayPal
-PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
+    PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
 
     @classmethod
     def generate_proof_first_proposal(

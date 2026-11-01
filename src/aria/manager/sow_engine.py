@@ -13,8 +13,7 @@ class SOWEngine:
     """Generates deterministic, high-status freelance agreements and Statements of Work."""
 
     PAYPAL_RAIL = "shruhicollections@gmail.com"
-# Payout rail locked to PayPal
-PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
+    PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
 
     @classmethod
     def generate_sow(
@@ -63,9 +62,7 @@ Delivery is deemed accepted upon satisfying the following verifiable technical c
 ### 4. COMMERCIAL TERMS & SETTLEMENT RAILS
 - **Fixed Milestone Fee:** **${quote_usd:,.2f} USD**
 - **Guaranteed Delivery Window:** Within **{turnaround_hours:.1f} hours** of milestone funding.
-- **Settlement Destinations:**
-  1. **PayPal:** `{cls.PAYPAL_RAIL}`
-  2. **Base Mainnet (USDC):** `{cls.BASE_EVM_RAIL}`
+- **Settlement Destination:** **PayPal:** `{cls.PAYPAL_RAIL}`
 
 ### 5. IP ASSIGNMENT & WARRANTY
 Upon settlement confirmation, 100% of exclusive commercial intellectual property rights for the generated code are irrevocably assigned to the Client. Includes a 14-day zero-defect warranty for regressions against agreed specifications.
@@ -81,6 +78,6 @@ Upon settlement confirmation, 100% of exclusive commercial intellectual property
             "markdown": markdown_body,
             "settlement_rails": {
                 "paypal": cls.PAYPAL_RAIL,
-                "base_usdc": cls.BASE_EVM_RAIL
+                "primary": cls.PAYPAL_RAIL
             }
         }

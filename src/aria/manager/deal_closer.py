@@ -11,8 +11,7 @@ class DealCloser:
     """Handles high-stakes client objections and deal negotiation with asymmetric market poise."""
 
     PAYPAL_RAIL = "shruhicollections@gmail.com"
-# Payout rail locked to PayPal
-PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
+    PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
 
     @classmethod
     def resolve_objection(
@@ -39,7 +38,7 @@ PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
                 f"I do not discount fixed milestone rates, as that compromises production reliability. "
                 f"If your current budget is strictly capped at ${budget:,.2f} USD, I can deliver the core isolated logic "
                 f"with basic smoke tests. Otherwise, we proceed with the full enterprise package for immediate production deployment.\n\n"
-                f"Settlement Rails: PayPal (`{cls.PAYPAL_RAIL}`) or Base USDC (`{cls.BASE_EVM_RAIL}`)."
+                f"Settlement Rail: PayPal (`{cls.PAYPAL_RAIL}`)."
             )
             strategy = "VALUE_ANCHOR_AND_MODULAR_DECOUPLING"
 
@@ -63,7 +62,7 @@ PAYPAL_PRIMARY_RAIL = "shruhicollections@gmail.com"
                 f"{gist_text}"
                 f"You can review the public proof-of-work and passing test telemetry. "
                 f"The complete unredacted production package is released immediately upon milestone funding confirmation "
-                f"via PayPal (`{cls.PAYPAL_RAIL}`) or Base USDC (`{cls.BASE_EVM_RAIL}`).\n\n"
+                f"via PayPal (`{cls.PAYPAL_RAIL}`).\n\n"
                 f"Once confirmed, code is merged or pushed directly to your repository within 15 minutes."
             )
             strategy = "CRYPTOGRAPHIC_PROOF_AND_ESCROW_ENFORCEMENT"
