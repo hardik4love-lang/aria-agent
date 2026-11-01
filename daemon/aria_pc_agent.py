@@ -112,7 +112,7 @@ def save_last_update_id(uid: int):
 
 def get_system_health() -> dict:
     health = {
-        "timestamp": datetime.datetime.utcnow().isoformat(),
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "platform": platform.platform(),
     }
     try:
@@ -232,7 +232,7 @@ def check_clipboard_for_github_url():
                 "id": issue_id, "number": number, "title": data.get("title", f"Issue #{number}"),
                 "repo": repo, "url": data.get("url", text), "body": data.get("body", ""),
                 "labels": [], "platform": "Clipboard Import", "price": 75.0,
-                "queued_at": datetime.datetime.utcnow().isoformat(), "source": "clipboard",
+                "queued_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "source": "clipboard",
             }
             queue.append(entry)
             _save_queue(queue)
