@@ -1,9 +1,10 @@
 {
-  "address": "shruhicollections@gmail.com",
-  "private_key": "a5b6ff2f563e0a2b93a4b6e1040c75cbf26b61b1c89bca47e1b6d4a78ced6084",
+  "address": "0x18594ed50432c64cfc1719e902debea0045a2e20",
   "network": "Base Mainnet (EVM Chain ID 8453)",
   "settlement_currency": "USDC",
-  "created_at": "2026-10-23 21:28:59 UTC",
-  "note": "INTERNAL_TEST_WALLET_ONLY_DO_NOT_USE_FOR_USER_PAYOUTS",
-  "user_payout_destination": "PayPal: shruhicollections@gmail.com"
+  "owner": "Hardik",
+  "user_payout_destination": "0x18594ed50432c64cfc1719e902debea0045a2e20",
+  "paypal_payout_destination": "shruhicollections@gmail.com",
+  "updated_at": "2026-11-01 09:28:00 UTC",
+  "note": "USER_VERIFIED_PERSONAL_BASE_WALLET"
 }

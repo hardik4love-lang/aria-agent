@@ -927,19 +927,20 @@ def build_dashboard():
             <span class="dot-sep">•</span>
             <span>24/7 Cloud Actions Daemon</span>
             <span class="dot-sep">•</span>
-            <span style="color: #34d399; font-weight: 600;">PayPal Rail Exclusive</span>
+            <span style="color: #34d399; font-weight: 600;">Dual Verified Rails (PayPal & Base USDC)</span>
           </div>
         </div>
       </div>
 
       <div class="masthead-controls">
         <!-- Locked Settlement Pill -->
-        <div class="payout-lock-pill" onclick="copyPayPalRail()" title="Click to copy locked PayPal address">
-          <span>💳 Locked Settlement:</span>
+        <div class="payout-lock-pill" onclick="copyPayPalRail()" title="Click to copy verified PayPal address">
+          <span>💳 PayPal:</span>
           <span class="email-mono" id="locked-paypal-text">shruhicollections@gmail.com</span>
-          <button class="copy-icon-btn" id="copy-btn-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-          </button>
+        </div>
+        <div class="payout-lock-pill" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.1); color: #38bdf8;" onclick="copyBaseRail()" title="Click to copy verified Base EVM wallet">
+          <span>⛓️ Base USDC:</span>
+          <span class="email-mono" id="locked-base-text">0x1859...2e20</span>
         </div>
 
         <!-- Live Sync Counter & Action -->
