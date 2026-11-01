@@ -652,13 +652,15 @@ class PRReviewFixer:
             return False
 
         # 5. Post polite comment to the PR
+        # 5. Clean, professional, elite technical update with subtle footer
         reply_md = (
-            f"🤖 **ARIA Automated Self-Healing Update**\n\n"
-            f"Resolved CI failure / maintainer feedback:\n"
+            f"### Resolution & Verification Update\n\n"
+            f"Addressed review feedback / CI failure:\n"
             f"- {summary_of_fix}\n\n"
-            f"• **Target File**: `{target_file}`\n"
-            f"• **Commit**: `{commit_msg}`\n\n"
-            f"*Autonomously validated and pushed by ARIA Guardian.*"
+            f"**Target File**: `{target_file}`\n"
+            f"**Commit**: `{commit_msg}`\n\n"
+            f"---\n"
+            f"*Verified & pushed via ARIA.*"
         )
         self.post_pr_reply(repo, pr_number, reply_md)
 

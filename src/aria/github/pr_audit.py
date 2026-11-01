@@ -204,7 +204,7 @@ class PRSubmissionAuditor:
         """
         url  = f"{_GITHUB_API}/repos/{repo}/issues/{issue_number}/comments"
         body = (
-            f"🤖 **ARIA Automated Submission (Gist Fallback)**\n\n"
+            f"### Submission & Delivery Verification\n\n"
             f"A pull request could not be opened automatically. "
             f"The patch for **{pr_title}** has been posted as a public Gist:\n\n"
             f"📎 {gist_url}\n\n"

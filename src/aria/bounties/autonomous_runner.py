@@ -93,7 +93,7 @@ class AutonomousBountyRunner:
             code_body = sf.read()
 
         ext = task_meta["solution_file"].split(".")[-1]
-        comment_body = f"""### 🚀 ARIA Autonomous Implementation & Delivery Verification
+        comment_body = f"""### Implementation & Delivery Verification
 
 **Task #{task_meta['task_id']}**: {task_meta['title']}
 **Bounty Amount**: {task_meta['bounty_amount']}
@@ -110,6 +110,9 @@ class AutonomousBountyRunner:
 - [x] Zero extraneous dependencies / strict invariant adherence
 - [x] Verified turnaround: {task_meta['turnaround']}
 - [x] Settlement Destination: PayPal `{self.beneficiary}` (and automated permit generation)
+
+---
+*Authored & hermetically verified with ARIA.*
 """
         tmp_path = f"data/temp_dispatch_{task_meta['task_id']}.md"
         with open(tmp_path, "w", encoding="utf-8") as tf:
