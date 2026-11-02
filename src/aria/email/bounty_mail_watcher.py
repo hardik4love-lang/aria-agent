@@ -1,8 +1,8 @@
 """
-ARIA 1-Minute Bounty & Client Email Watcher.
-Monitors incoming inbox messages every 60 seconds for PR updates,
-bounty alerts (Go-Hybrid, Tenstorrent, Algora), and client payments.
-Dispatches high-priority push notifications to Telegram.
+ARIA 1-Minute Bounty & Client Email Watcher with Intelligent Noise Filtering.
+Monitors incoming inbox messages every 60 seconds for verified PR reviews,
+bounty settlements (PayPal, USDC), maintainer decisions, and genuine client hiring.
+Filters out bot spam, competitor bids, and community chatter.
 """
 
 import os
@@ -16,14 +16,23 @@ from aria.security.telegram_gate import TelegramApprovalGate
 
 logger = logging.getLogger("BountyMailWatcher")
 
-class BountyMailWatcher:
-    """Watches inbox every 60 seconds and notifies operator of bounty updates."""
 
-    BOUNTY_KEYWORDS = [
-        "omi", "basedhardware", "rayban", "ray-ban", "david zhang", "git-on-my-level", "mdmohsin7",
-        "go-hybrid", "limitlessprojects", "tenstorrent", "tt-metal", "hackerone",
-        "algora", "bounty", "pull request", "shepherd", "preflight", "verdict",
-        "slavelabour", "paypal", "payment", "upi", "hiring", "invoice"
+class BountyMailWatcher:
+    """Watches inbox every 60 seconds and notifies operator of high-priority, actionable updates."""
+
+    # Keywords that indicate genuine maintainer action or monetary settlement
+    HIGH_PRIORITY_KEYWORDS = [
+        "approved your pull request", "changes requested", "review submitted",
+        "bounty awarded", "payment received", "paypal transfer", "sent you money",
+        "invoice paid", "hired you", "merge conflict detected", "preflight verdict",
+        "payout sent", "bounty settled"
+    ]
+
+    # Noisy bot chatter to drop immediately
+    IGNORE_KEYWORDS = [
+        "/opire try", "/attempt", "/try", "fuma2514", "i can deliver this",
+        "run failed: autoland", "run failed: aria automated maintenance",
+        "run failed: ci/autoland"
     ]
 
     def __init__(self):
@@ -32,7 +41,7 @@ class BountyMailWatcher:
         self.seen_uids = set()
 
     def check_inbox_cycle(self) -> List[Dict[str, Any]]:
-        """Checks for new unread emails and alerts operator if bounty-related."""
+        """Checks for new unread emails and alerts operator if actionable."""
         try:
             emails = self.email_tools.email_list_unread(max_count=10)
         except Exception as e:
@@ -50,12 +59,17 @@ class BountyMailWatcher:
             sender = em.get("sender", "")
             snippet = em.get("snippet", "")
 
-            # Check for bounty keywords
             combined = f"{subject} {sender} {snippet}".lower()
-            is_bounty_event = any(k in combined for k in self.BOUNTY_KEYWORDS)
 
-            if is_bounty_event:
-                logger.info(f"[!] Bounty/Client event detected: {subject}")
+            # Skip noisy automated chatter
+            if any(ign in combined for ign in self.IGNORE_KEYWORDS):
+                continue
+
+            # Check if actionable
+            is_actionable = any(k in combined for k in self.HIGH_PRIORITY_KEYWORDS)
+
+            if is_actionable:
+                logger.info(f"[!] Actionable event detected: {subject}")
                 alerts.append(em)
                 self._dispatch_telegram_alert(em)
 
@@ -68,15 +82,15 @@ class BountyMailWatcher:
         date_str = em.get("date", time.strftime("%Y-%m-%d %H:%M:%S"))
 
         alert_msg = (
-            f"<b>📬 NEW BOUNTY / CLIENT EMAIL ALERT</b>\n"
+            f"<b>📬 ACTIONABLE BOUNTY / CLIENT EMAIL ALERT</b>\n"
             f"━━━━━━━━━━━━━━━━━━━━━━\n"
             f"<b>Subject:</b> <code>{subject}</code>\n"
             f"<b>From:</b> <i>{sender}</i>\n"
             f"<b>Date:</b> {date_str}\n\n"
-            f"<b>Preview:</b>\n"
+            f"<b>Summary:</b>\n"
             f"<blockquote>{snippet}</blockquote>\n"
             f"━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"<i>ARIA is monitoring your pipeline 24/7.</i>"
+            f"<i>Noise filtered. Only actionable maintainer & payout events alert you.</i>"
         )
         try:
             from aria.security.telegram_bot_service import TelegramAssistantService
