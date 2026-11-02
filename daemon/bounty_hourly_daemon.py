@@ -175,7 +175,11 @@ class HourlyBountyDaemon:
         if os.path.exists(path):
             try:
                 with open(path, encoding="utf-8") as f:
-                    return json.load(f)
+                    data = json.load(f)
+                    if isinstance(data, list):
+                        return data
+                    elif isinstance(data, dict):
+                        return list(data.values())
             except Exception:
                 pass
         return []
@@ -184,7 +188,11 @@ class HourlyBountyDaemon:
         if os.path.exists(self.queue_file):
             try:
                 with open(self.queue_file, encoding="utf-8") as f:
-                    return json.load(f)
+                    data = json.load(f)
+                    if isinstance(data, list):
+                        return data
+                    elif isinstance(data, dict):
+                        return list(data.values())
             except Exception:
                 pass
         return []
