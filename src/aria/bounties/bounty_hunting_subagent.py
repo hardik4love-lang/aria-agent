@@ -1,241 +1,258 @@
-"""
-ARIA Multi-Platform Bounty Hunting Subagent.
-Replaces legacy Freelancer/Upwork bidding with an elite, multi-platform bounty hunter:
-1. Scrapes Top 3 live funded code bounties from each platform:
-   - Algora.io (bounties tagged on GitHub)
-   - Opire.dev (active /opire bounties)
-   - Polar.sh (funded pledges on open source)
-   - Ubiquity Upstream (real issues with 'Price: XX USD' on ubiquity/ai.ubq.fi)
-   - Verified High-Velocity Partners (Twenty CRM, Cal.com, Omi)
-2. Excludes Freelancer and Upwork completely (zero dead-end bidding).
-3. Solves 5 high-yield jobs per hour (upgraded from 2).
-4. Strictly applies the Anti-Ban and Anti-Mock circuit breakers:
-   - Zero mock code or truncated responses.
-   - Professional understated footer (*Authored & hermetically verified with ARIA.*).
-   - Zero aggressive top bragging or bot emojis.
-   - Payout destination strictly: PayPal (shruhicollections@gmail.com).
-"""
-
-import os
-import sys
-import time
-import json
+import asyncio
 import logging
-from typing import List, Dict, Any, Optional
+import os
+import sqlite3
+from typing import Dict, List, Optional
+import httpx
 
-from aria.bounties.bounty_radar import GlobalBountyRadar
-from aria.llm.router import CascadeLLMRouter
+# Load environment variables from .env if present
+env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+if os.path.exists(env_path):
+    with open(env_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip())
 
-logger = logging.getLogger("BountyHuntingSubagent")
+# Configure Structured Logging
+LOG_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "subagent_scraper.log")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[
+        logging.FileHandler(LOG_FILE, encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("BountySubagent")
 
-class BountyHuntingSubagent:
-    """Autonomous subagent for multi-platform bounty discovery and 5-job/hr execution."""
+DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "bounty_state.db")
+os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
-    BENEFICIARY = "shruhicollections@gmail.com"
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-    OUTPUT_DIR = os.path.join(BASE_DIR, "data", "bounties_output")
-    LOG_FILE = os.path.join(BASE_DIR, "data", "bounty_hunting_log.jsonl")
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", "")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
+GH_TOKEN = os.getenv("GH_AGENT_PAT") or os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN", "")
 
-    def __init__(self):
-        self.radar = GlobalBountyRadar()
-        self.router = CascadeLLMRouter(role="executor")
-        os.makedirs(self.OUTPUT_DIR, exist_ok=True)
 
-    def scrape_platform_top3_each(self) -> Dict[str, List[Dict[str, Any]]]:
-        """
-        Scrapes the top 3 live funded bounties from each non-freelance platform.
-        Excludes Freelancer, Upwork, and dead-end aggregators.
-        """
-        logger.info("[*] Bounty Hunting Subagent: Scraping Top 3 bounties across target platforms...")
+class StateManager:
+    """Handles state persistence using SQLite to prevent duplicate alerts across full-day runs."""
+    def __init__(self, db_path: str = DB_PATH):
+        self.db_path = db_path
+        self._init_db()
 
-        # 1. Algora
-        algora_items = self.radar.scan_algora_bounties(limit=10)
-        top_algora = algora_items[:3]
+    def _init_db(self):
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute("""
+                CREATE TABLE IF NOT EXISTS seen_bounties (
+                    bounty_id TEXT PRIMARY KEY,
+                    platform TEXT,
+                    title TEXT,
+                    reward TEXT,
+                    url TEXT,
+                    detected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            conn.commit()
 
-        # 2. Polar
-        polar_items = self.radar.scan_polar_bounties(limit=10)
-        top_polar = polar_items[:3]
+    def is_seen(self, bounty_id: str) -> bool:
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT 1 FROM seen_bounties WHERE bounty_id = ?", (bounty_id,))
+            return cursor.fetchone() is not None
 
-        # 3. High-Velocity Ecosystem Partners (Twenty, Cal.com, Omi, Ubiquity upstream)
-        partner_items = self.radar.scan_partner_bounties(limit_per_partner=5)
-        
-        # Categorize partners
-        ubiquity_items = [p for p in partner_items if "ubiquity" in p.get("repo", "").lower()][:3]
-        twenty_items = [p for p in partner_items if "twenty" in p.get("repo", "").lower()][:3]
-        cal_or_omi_items = [p for p in partner_items if "cal.com" in p.get("repo", "").lower() or "omi" in p.get("repo", "").lower()][:3]
+    def mark_seen(self, bounty_id: str, platform: str, title: str, reward: str, url: str):
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute(
+                "INSERT OR IGNORE INTO seen_bounties (bounty_id, platform, title, reward, url) VALUES (?, ?, ?, ?, ?)",
+                (bounty_id, platform, title, reward, url)
+            )
+            conn.commit()
 
-        # 4. Global GitHub Opire / Tagged Bounties
-        gh_items = self.radar.scan_github_global_bounties(limit=15)
-        opire_or_general = [
-            g for g in gh_items
-            if "opire" in g.get("body", "").lower() or "opire" in str(g.get("labels", [])).lower() or g.get("price", 0) >= 100.0
-        ][:3]
 
-        pool = {
-            "Algora": top_algora,
-            "Polar.sh": top_polar,
-            "Ubiquity_Upstream": ubiquity_items,
-            "Twenty_CRM": twenty_items,
-            "Opire_and_General": opire_or_general
+class BountySubagent:
+    """Autonomous Subagent Daemon for continuous task & bounty monitoring."""
+
+    def __init__(self, check_interval: int = 180):
+        self.interval = check_interval  # Base polling interval in seconds (e.g. 3 minutes)
+        self.state = StateManager()
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            "Accept": "application/json, text/plain, */*"
         }
 
-        total_scraped = sum(len(v) for v in pool.values())
-        logger.info(f"[+] Subagent completed scrape: {total_scraped} high-value bounties collected across {len(pool)} platforms.")
-        return pool
+    async def dispatch_alert(self, client: httpx.AsyncClient, platform: str, title: str, reward: str, url: str):
+        """Logs finding and triggers instant Webhook & Telegram alerts."""
+        msg = f"🔥 [NEW TASK DETECTED] Platform: {platform} | Title: {title} | Reward: {reward} | Link: {url}"
+        logger.info(msg)
 
-    def select_top5_jobs_to_solve(self, pool: Dict[str, List[Dict[str, Any]]]) -> List[Dict[str, Any]]:
-        """Selects the top 5 highest-yield, technically clearest bounties across all platforms."""
-        all_candidates = []
-        seen_ids = set()
+        # Discord Webhook Notification
+        if DISCORD_WEBHOOK_URL:
+            try:
+                payload = {
+                    "content": f"🚨 **New Task Available!**\n**Platform:** {platform}\n**Title:** {title}\n**Reward:** {reward}\n**Link:** {url}"
+                }
+                await client.post(DISCORD_WEBHOOK_URL, json=payload, timeout=5.0)
+            except Exception as e:
+                logger.error(f"Webhook alert failed: {e}")
 
-        for platform, items in pool.items():
-            for item in items:
-                item_id = item.get("id") or f"{item.get('repo')}_{item.get('number')}"
-                if item_id not in seen_ids:
-                    seen_ids.add(item_id)
-                    all_candidates.append(item)
+        # Telegram Instant Mobile Notification
+        if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID:
+            try:
+                tg_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+                clean_title = title.replace("*", "").replace("_", " ")
+                tg_payload = {
+                    "chat_id": TELEGRAM_CHAT_ID,
+                    "text": (
+                        f"🚨 <b>New Task Available!</b>\n\n"
+                        f"<b>Platform:</b> {platform}\n"
+                        f"<b>Title:</b> {clean_title}\n"
+                        f"<b>Reward:</b> <code>{reward}</code>\n\n"
+                        f"🔗 <a href=\"{url}\">Open Task / Bounty</a>"
+                    ),
+                    "parse_mode": "HTML",
+                    "disable_web_page_preview": False
+                }
+                await client.post(tg_url, json=tg_payload, timeout=5.0)
+            except Exception as e:
+                logger.error(f"Telegram alert failed: {e}")
 
-        # Sort primarily by bounty price descending, then by body detail length
-        all_candidates.sort(key=lambda x: (x.get("price", 0.0), len(x.get("body", ""))), reverse=True)
-        return all_candidates[:5]
+    async def fetch_github_open_source_bounties(self, client: httpx.AsyncClient) -> List[Dict]:
+        """Scrapes open-source bounties (Algora, Opire, GitHub label:bounty)."""
+        platform = "GitHub / Algora / Opire"
+        bounties = []
+        try:
+            url = "https://api.github.com/search/issues?q=label%3Abounty+is%3Aopen+is%3Aissue&sort=created&order=desc&per_page=15"
+            gh_headers = {**self.headers}
+            if GH_TOKEN:
+                gh_headers["Authorization"] = f"Bearer {GH_TOKEN}"
+            
+            resp = await client.get(url, headers=gh_headers, timeout=10.0)
+            
+            if resp.status_code == 200:
+                items = resp.json().get("items", [])
+                for item in items:
+                    b_id = f"gh_{item['id']}"
+                    title = item.get("title", "Untitled Issue")
+                    link = item.get("html_url", "")
+                    
+                    # Extract dollar bounty label if present
+                    reward = "Open Bounty"
+                    for label in item.get("labels", []):
+                        lname = label.get("name", "")
+                        if "$" in lname or "bounty" in lname.lower():
+                            reward = lname
+                            
+                    bounties.append({"id": b_id, "platform": platform, "title": title, "reward": reward, "url": link})
+            elif resp.status_code == 403:
+                logger.warning("GitHub API rate limit reached. Backing off for this cycle.")
+        except Exception as e:
+            logger.error(f"Error scraping GitHub bounties: {e}")
+        return bounties
 
-    def solve_bounty_job(self, bounty: Dict[str, Any]) -> Dict[str, Any]:
+    async def fetch_immunefi_bounties(self, client: httpx.AsyncClient) -> List[Dict]:
+        """Polls Immunefi Web3 bug bounty listings via official public API."""
+        platform = "Immunefi"
+        bounties = []
+        try:
+            url = "https://immunefi.com/public-api/bounties.json"
+            resp = await client.get(url, headers=self.headers, timeout=12.0)
+            if resp.status_code == 200:
+                items = resp.json()
+                if isinstance(items, list):
+                    for item in items[:15]:
+                        slug = item.get("slug") or item.get("id", "")
+                        b_id = f"im_{slug}"
+                        title = item.get("project") or item.get("name", "DeFi Protocol")
+                        max_val = item.get("maxBounty") or item.get("maximum_reward") or item.get("max_bounty")
+                        reward = f"Up to ${int(max_val):,}" if max_val and str(max_val).isdigit() else "See Program"
+                        link = f"https://immunefi.com/bug-bounty/{slug}/"
+                        
+                        bounties.append({"id": b_id, "platform": platform, "title": str(title), "reward": reward, "url": link})
+        except Exception as e:
+            logger.error(f"Error scraping Immunefi bounties: {e}")
+        return bounties
+
+    async def fetch_authenticated_platform_queue(self, client: httpx.AsyncClient, platform_name: str, endpoint: str, token_env_var: str) -> List[Dict]:
         """
-        Synthesizes a production-grade solution with hermetic verification:
-        - Rejects any mock code
-        - Rejects file shrinkage / truncation
-        - Includes real unit tests
-        - Adds understated professional footer
+        Generic fetcher for authenticated platforms requiring worker tokens 
+        (e.g., Prolific API, Outlier queue, DataAnnotation dashboard).
         """
-        title = bounty.get("title", "Bug Fix")
-        repo = bounty.get("repo", "")
-        number = bounty.get("number", 0)
-        price = bounty.get("price", 75.0)
-        platform = bounty.get("platform", "Code Bounty")
-        body = bounty.get("body", "")
+        token = os.getenv(token_env_var, "")
+        bounties = []
+        if not token:
+            logger.debug(f"Skipping {platform_name}: Token {token_env_var} not set in environment.")
+            return bounties
 
-        logger.info(f"[*] Solving [{platform}] {repo}#{number} (${price}): {title}...")
+        auth_headers = {**self.headers, "Authorization": f"Bearer {token}"}
+        try:
+            resp = await client.get(endpoint, headers=auth_headers, timeout=10.0)
+            if resp.status_code == 200:
+                tasks = resp.json().get("results", [])
+                for t in tasks:
+                    b_id = f"{platform_name.lower()}_{t.get('id')}"
+                    title = t.get("name", "Available Task Queue Item")
+                    reward = f"${t.get('reward', 0) / 100:.2f}" if isinstance(t.get('reward'), int) else str(t.get('reward', 'Hourly Rate'))
+                    link = endpoint
+                    bounties.append({"id": b_id, "platform": platform_name, "title": title, "reward": reward, "url": link})
+            elif resp.status_code == 401:
+                logger.error(f"[{platform_name}] Authentication token invalid or expired!")
+        except Exception as e:
+            logger.error(f"Error scraping {platform_name}: {e}")
+        return bounties
 
-        prompt = f"""You are a Principal Software Engineer solving a high-value code bounty.
-Repository: {repo} (Issue #{number})
-Title: {title}
-Reward: ${price} USD
+    async def run_poll_cycle(self, client: httpx.AsyncClient):
+        """Executes one unified polling cycle across all target platforms."""
+        logger.info("=== Starting Bounty Subagent Polling Cycle ===")
 
-ISSUE SPECIFICATION & CONTEXT:
-{body[:3500]}
-
-REQUIREMENTS:
-1. Provide the complete production solution code (zero placeholders, zero TODOs, zero mock responses).
-2. Include comprehensive unit test cases proving the fix works and prevents regressions.
-3. Keep the code hermetic, clean, and adhering to strict idiomatic patterns for this repository.
-"""
-
-        raw_response = self.router.generate(
-            prompt=prompt,
-            role="executor",
-            system="You are a Principal Staff Engineer delivering clean, robust, production-grade solutions."
+        # Run scrapers concurrently
+        results = await asyncio.gather(
+            self.fetch_github_open_source_bounties(client),
+            self.fetch_immunefi_bounties(client),
+            self.fetch_authenticated_platform_queue(
+                client, "Prolific", "https://api.prolific.com/api/v1/studies/", "PROLIFIC_API_TOKEN"
+            ),
+            return_exceptions=True
         )
 
-        # Circuit Breaker: reject mock artifacts
-        if any(bad in raw_response for bad in ["Mock response", "cascade-executor", "TODO: implement", "placeholder"]):
-            raise ValueError(f"Circuit breaker tripped: LLM returned mock artifact for {repo}#{number}")
+        new_count = 0
+        for res in results:
+            if isinstance(res, list):
+                for item in res:
+                    b_id = item["id"]
+                    if not self.state.is_seen(b_id):
+                        self.state.mark_seen(b_id, item["platform"], item["title"], item["reward"], item["url"])
+                        await self.dispatch_alert(client, item["platform"], item["title"], item["reward"], item["url"])
+                        new_count += 1
 
-        if len(raw_response.strip()) < 150:
-            raise ValueError(f"Circuit breaker tripped: Solution too short for {repo}#{number}")
+        logger.info(f"=== Polling Cycle Complete ({new_count} new tasks found). Sleeping for {self.interval}s ===")
 
-        clean_slug = f"{repo.replace('/', '_')}_{number}_{title[:30]}".replace(" ", "_").lower()
-        clean_slug = "".join(c for c in clean_slug if c.isalnum() or c in "_-")
-        
-        # Determine language extension
-        ext = "ts"
-        if any(k in repo.lower() for k in ["python", "django", "fastapi", "backend", "vllm", "omi"]):
-            ext = "py"
-        elif any(k in repo.lower() for k in ["go-", "golang", "hybrid"]):
-            ext = "go"
-        elif any(k in repo.lower() for k in ["metal", "cpp", "cuda"]):
-            ext = "cpp"
+    async def start_daemon(self, max_cycles: Optional[int] = None):
+        """Runs the subagent with automatic recovery and exponential backoff."""
+        logger.info("Initializing Subagent Daemon for Autonomous Execution...")
+        async with httpx.AsyncClient(follow_redirects=True) as client:
+            consecutive_failures = 0
+            cycles = 0
+            while True:
+                try:
+                    await self.run_poll_cycle(client)
+                    consecutive_failures = 0
+                    cycles += 1
+                    if max_cycles and cycles >= max_cycles:
+                        logger.info(f"Completed {cycles} test cycles. Stopping daemon.")
+                        break
+                    await asyncio.sleep(self.interval)
+                except KeyboardInterrupt:
+                    logger.info("Subagent manually stopped by user.")
+                    break
+                except Exception as e:
+                    consecutive_failures += 1
+                    backoff = min(600, self.interval * (2 ** consecutive_failures))
+                    logger.error(f"Unexpected subagent loop error: {e}. Backing off for {backoff} seconds.")
+                    await asyncio.sleep(backoff)
 
-        sol_filename = f"bounty_{clean_slug}_solution.{ext}"
-        sol_path = os.path.join(self.OUTPUT_DIR, sol_filename)
-
-        with open(sol_path, "w", encoding="utf-8") as f:
-            f.write(raw_response)
-
-        # Package delivery comment markdown
-        comment_md = f"""### Implementation & Delivery Verification
-
-**Task #{number}**: {title}
-**Platform**: {platform}
-**Bounty Amount**: ${price:.2f} USD
-**Repository**: `{repo}`
-**Delivery Artifact**: [{sol_filename}](https://github.com/hardik4love-lang/aria-agent/blob/main/data/bounties_output/{sol_filename})
-
-#### Complete Verified Implementation:
-```{ext}
-{raw_response[:3000]}
-```
-
-#### Verification & Claim Settlement:
-- [x] Complete hermetic unit test assertions included
-- [x] Zero extraneous dependencies / strict invariant adherence
-- [x] Settlement Destination: PayPal `{self.BENEFICIARY}`
-
----
-*Authored & hermetically verified with ARIA.*
-"""
-
-        claim_filename = f"bounty_{clean_slug}_claim.md"
-        claim_path = os.path.join(self.OUTPUT_DIR, claim_filename)
-        with open(claim_path, "w", encoding="utf-8") as f:
-            f.write(comment_md)
-
-        result_record = {
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-            "id": f"bounty-{repo.replace('/', '-')}-{number}",
-            "repo": repo,
-            "number": number,
-            "title": title,
-            "price": price,
-            "platform": platform,
-            "solution_file": sol_filename,
-            "claim_file": claim_filename,
-            "status": "PACKAGED_AND_VERIFIED",
-            "beneficiary": self.BENEFICIARY
-        }
-
-        # Log to hunting journal
-        with open(self.LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(json.dumps(result_record) + "\n")
-
-        return result_record
-
-    def execute_hourly_hunt(self) -> Dict[str, Any]:
-        """
-        Executes a complete 5-job hourly hunt cycle:
-        1. Scrapes top 3 from Algora, Polar, Ubiquity, Twenty, Opire.
-        2. Selects top 5 jobs.
-        3. Solves and packages all 5 jobs cleanly.
-        """
-        logger.info("[=== STARTING ARIA 5-JOB/HR MULTI-PLATFORM HUNT ===]")
-        pool = self.scrape_platform_top3_each()
-        top5 = self.select_top5_jobs_to_solve(pool)
-
-        solved_records = []
-        for job in top5:
-            try:
-                rec = self.solve_bounty_job(job)
-                solved_records.append(rec)
-            except Exception as e:
-                logger.warning(f"[!] Error solving bounty {job.get('repo')}#{job.get('number')}: {e}")
-
-        total_value = sum(r.get("price", 0.0) for r in solved_records)
-        logger.info(f"[=== COMPLETED HUNT: {len(solved_records)}/5 JOBS SOLVED (TOTAL VALUE: ${total_value:.2f}) ===]")
-
-        return {
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-            "jobs_scraped": sum(len(v) for v in pool.values()),
-            "target_platforms": list(pool.keys()),
-            "jobs_solved_count": len(solved_records),
-            "total_solved_value_usd": total_value,
-            "solved_jobs": solved_records
-        }
+if __name__ == "__main__":
+    # Run subagent with a 3-minute (180s) polling loop
+    subagent = BountySubagent(check_interval=180)
+    asyncio.run(subagent.start_daemon())
