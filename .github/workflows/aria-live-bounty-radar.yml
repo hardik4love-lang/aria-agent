@@ -1,0 +1,58 @@
+name: ARIA Live Bounty Subagent Radar
+
+on:
+  schedule:
+    # Runs every 15 minutes 24/7 (100% free on public GitHub Actions)
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aria-live-bounty-radar
+  cancel-in-progress: false
+
+jobs:
+  poll-bounties:
+    name: Poll GitHub & Immunefi Bounties
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Codebase & Deduplication State
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_AGENT_PAT || secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install httpx
+
+      - name: Run Subagent Polling Cycle
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}
+          GH_AGENT_PAT: ${{ secrets.GH_AGENT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GH_AGENT_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          python daemon/subagent_scraper.py --once
+
+      - name: Persist SQLite Deduplication State
+        if: always()
+        run: |
+          git config --global user.name "ARIA Radar Bot"
+          git config --global user.email "aria-radar@users.noreply.github.com"
+          git add data/bounty_state.db || true
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "chore(state): persist seen bounties state [skip ci]" || true
+            git push origin HEAD:${{ github.ref_name }} || true
+          fi

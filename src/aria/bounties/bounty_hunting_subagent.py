@@ -5,8 +5,18 @@ import sqlite3
 from typing import Dict, List, Optional
 import httpx
 
+def find_repo_root():
+    cur = os.path.abspath(__file__)
+    for _ in range(5):
+        cur = os.path.dirname(cur)
+        if os.path.exists(os.path.join(cur, ".git")) or os.path.exists(os.path.join(cur, "requirements.txt")):
+            return cur
+    return os.getcwd()
+
+REPO_ROOT = find_repo_root()
+
 # Load environment variables from .env if present
-env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+env_path = os.path.join(REPO_ROOT, ".env")
 if os.path.exists(env_path):
     with open(env_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -16,7 +26,7 @@ if os.path.exists(env_path):
                 os.environ.setdefault(k.strip(), v.strip())
 
 # Configure Structured Logging
-LOG_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "subagent_scraper.log")
+LOG_FILE = os.path.join(REPO_ROOT, "subagent_scraper.log")
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
@@ -27,7 +37,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger("BountySubagent")
 
-DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "bounty_state.db")
+DB_PATH = os.path.join(REPO_ROOT, "data", "bounty_state.db")
 os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", "")
