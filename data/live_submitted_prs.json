@@ -1,5 +1,5 @@
-{
-  "2376": {
+[
+  {
     "timestamp": "2026-10-30T19:56:39.366450+00:00",
     "status": "LIVE_PR_SUBMITTED_ONLINE",
     "repo": "limitlessprojects/Go-Hybrid",
@@ -8,5 +8,65 @@
     "title": "fix(hy-check): resolve each hop in struct field chains and assignment places (fixes #2375)",
     "bounty_usd": "$100.00 USD",
     "beneficiary": "shruhicollections@gmail.com"
+  },
+  {
+    "id": "gh_Spectral-Finance_lux_72",
+    "number": 72,
+    "title": "YouTube Analytics and Growth Engine $2,000",
+    "repo": "Spectral-Finance/lux",
+    "price": 2000.0,
+    "score": 94.0,
+    "pr_url": "https://gist.github.com/hardik4love-lang/c1f5f8953c525278d11d700b05d8a977",
+    "impl_file": "",
+    "impl_hash": "75ed5df20774db48",
+    "submitted_at": "2026-11-02T04:30:11.233270+00:00"
+  },
+  {
+    "id": "gh_ClankerNation_OpenAgents_183",
+    "number": 183,
+    "title": "[ Bounty $9k ] [ Solidity ] Add gas sponsorship relay for agent transactions \u2014 security critical",
+    "repo": "ClankerNation/OpenAgents",
+    "price": 900.0,
+    "score": 94.0,
+    "pr_url": "https://gist.github.com/hardik4love-lang/27fa3bbc903b587da45500d6a08dbe26",
+    "impl_file": "",
+    "impl_hash": "75ed5df20774db48",
+    "submitted_at": "2026-11-02T04:31:17.235741+00:00"
+  },
+  {
+    "id": "gh_SecureBananaLabs_bug-bounty_80",
+    "number": 80,
+    "title": "Pixel Art Creation with high Creative Thinking",
+    "repo": "SecureBananaLabs/bug-bounty",
+    "price": 780.0,
+    "score": 94.0,
+    "pr_url": "https://gist.github.com/hardik4love-lang/101bbcf670679722bb7d71f70a03f235",
+    "impl_file": "",
+    "impl_hash": "75ed5df20774db48",
+    "submitted_at": "2026-11-02T04:32:23.344452+00:00"
+  },
+  {
+    "id": "gh_SecureBananaLabs_bug-bounty_743",
+    "number": 743,
+    "title": "Low Handing Fruit Automation",
+    "repo": "SecureBananaLabs/bug-bounty",
+    "price": 700.0,
+    "score": 94.0,
+    "pr_url": "https://gist.github.com/hardik4love-lang/3fc88c9fd9ea3d4bd8d07742eca5a0d8",
+    "impl_file": "",
+    "impl_hash": "75ed5df20774db48",
+    "submitted_at": "2026-11-02T04:33:26.641770+00:00"
+  },
+  {
+    "id": "gh_algora-io_algora_238",
+    "number": 238,
+    "title": "[UI Bug] Unauthorized 'Edit' and 'Delete' buttons visible on /bounties page",
+    "repo": "algora-io/algora",
+    "price": 2500.0,
+    "score": 82.0,
+    "pr_url": "https://gist.github.com/hardik4love-lang/56aad8103e5f4d94452642036c91d90b",
+    "impl_file": "",
+    "impl_hash": "75ed5df20774db48",
+    "submitted_at": "2026-11-02T04:34:34.524847+00:00"
   }
-}
+]
