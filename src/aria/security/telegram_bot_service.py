@@ -500,6 +500,8 @@ class TelegramAssistantService:
             self._cmd_payout()
         elif cmd in ["/email", "email"]:
             self._cmd_email()
+        elif cmd in ["/surat", "surat", "/pcleads", "pcleads", "/leads", "leads"]:
+            self._cmd_surat_leads()
         elif cmd == "/solve":
             if not args:
                 self.send_message("Please provide a task description. Example: <code>/solve need python product scraper</code>")
@@ -1952,3 +1954,36 @@ class TelegramAssistantService:
 if __name__ == "__main__":
     svc = TelegramAssistantService()
     svc.process_updates(max_seconds=20)
+
+    def _cmd_surat_leads(self, edit_msg_id: Optional[int] = None):
+        try:
+            from aria.tools.surat_pc_lead_tools import SuratPCLeadTools
+            summary = SuratPCLeadTools.get_summary()
+            top = SuratPCLeadTools.get_top_leads(limit=4)
+            msg = (
+                "<b>💻 ARIA SURAT PC REPAIR & ONSITE LEAD DESK</b>\n"
+                "━━━━━━━━━━━━━━━━━━━━━━\n"
+                f"• <b>Total Commercial Leads:</b> {summary['total_leads']} Verified Hubs\n"
+                f"• <b>High-Urgency Outlets:</b> {summary['high_urgency_count']} (Textile & Diamond Belts)\n"
+                f"• <b>Standard Rate:</b> ₹500 Onsite Visit + ₹1,850 SSD Upgrade\n\n"
+                "<b>Top High-Intent Targets:</b>\n"
+            )
+            for l in top:
+                msg += f"• <b>{l['business_name']}</b> ({l['market_location']})\n  <i>Issues: {l['likely_issues'][:65]}...</i>\n"
+
+            msg += (
+                "\n━━━━━━━━━━━━━━━━━━━━━━\n"
+                "<i>Interactive 1-Click WhatsApp Dashboard: <code>D:\\surat_pc_repair_leads.html</code></i>"
+            )
+            kb = {
+                "inline_keyboard": [
+                    [{"text": "📋 Refresh Surat Leads", "callback_data": "cmd_surat"}],
+                    [{"text": "« Back to Main Menu", "callback_data": "cmd_main_menu"}]
+                ]
+            }
+            if edit_msg_id:
+                self.edit_message(edit_msg_id, msg, reply_markup=kb)
+            else:
+                self.send_message(msg, reply_markup=kb)
+        except Exception as e:
+            self.send_message(f"Error loading Surat leads: {e}")

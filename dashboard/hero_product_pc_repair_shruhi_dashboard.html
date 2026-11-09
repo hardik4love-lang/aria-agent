@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Product Automation Engine | Shruhi Collections & PC Repair</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a0e17;
+  --bg-card: #111827;
+  --bg-card-hover: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+  --border-color: #374151;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding: 30px 20px;
+}
+.container { max-width: 1300px; margin: 0 auto; }
+header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 24px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid var(--accent-emerald);
+  color: var(--accent-emerald);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.dot-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-emerald);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-emerald);
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.3); } }
+h1 { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; }
+.subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-top: 4px; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+@media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover { border-color: var(--accent-cyan); }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.card-title { font-size: 1.25rem; font-weight: 700; }
+.card-tag {
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+}
+
+.metric-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.metric-box {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 12px 14px;
+  border-radius: 8px;
+  text-align: center;
+}
+.metric-val { font-size: 1.4rem; font-weight: 800; color: var(--accent-cyan); }
+.metric-lbl { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; margin-top: 3px; }
+
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.check-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--accent-emerald);
+}
+.btn-action {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  transition: opacity 0.2s;
+}
+.btn-action:hover { opacity: 0.9; }
+
+.table-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 24px;
+  overflow-x: auto;
+}
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th { text-align: left; padding: 12px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.78rem; text-transform: uppercase; }
+td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.tag-pill {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--accent-cyan);
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <h1>Algorise AI Hero Product Master Dashboard</h1>
+      <p class="subtitle">Surat PC Repair Onsite Engine & Shruhi Collections Automation</p>
+    </div>
+    <div class="badge-live">
+      <span class="dot-pulse"></span>
+      24/7 AI AUTOMATION RUNNING
+    </div>
+  </header>
+
+  <div class="grid-2">
+    <!-- Card 1: PC Repair Engine -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Surat PC Repair Engine</div>
+          <div style="font-size:0.8rem; color:var(--text-secondary);">AlgoRise Tech Support Surat • Founder Hardik</div>
+        </div>
+        <span class="card-tag" style="color:var(--accent-emerald);">LIVE ON WHATSAPP</span>
+      </div>
+
+      <div class="metric-row">
+        <div class="metric-box">
+          <div class="metric-val">100</div>
+          <div class="metric-lbl">Target Groups</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">10-15m</div>
+          <div class="metric-lbl">Stagger Delay</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">30</div>
+          <div class="metric-lbl">Daily Posts</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">1/day</div>
+          <div class="metric-lbl">Post Throttle</div>
+        </div>
+      </div>
+
+      <ul class="checklist">
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>100 Surat Groups Directory:</strong> Ring Road, Varachha, Pandesara, Adajan, Vesu staged at 10-15 groups/day.</div>
+        </li>
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>Anti-Spam Humanizer:</strong> Jittered 10-15 min randomized delays to prevent bans.</div>
+        </li>
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>30-Day Daily Post Manifest:</strong> Tally speed, SSD upgrade, doorstep repair in 30-45 mins.</div>
+        </li>
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>Inbound Routing to Hardik's WhatsApp:</strong> All leads routed directly to <code>+91 92270 95624</code>.</div>
+        </li>
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>24/7 Social Scanner Daemon:</strong> Active on Reddit (r/surat) & web RSS, pushing to <code>@Ariabountie_bot</code>.</div>
+        </li>
+      </ul>
+
+      <a href="https://wa.me/919227095624?text=Hi%20Hardik%2C%20Surat%20PC%20Repair%20lead%20routing%20verified%20live" class="btn-action">Verify WhatsApp Direct (+91 92270 95624)</a>
+    </div>
+
+    <!-- Card 2: Shruhi Collections -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Shruhi Collections Engine</div>
+          <div style="font-size:0.8rem; color:var(--text-secondary);">Fashion & Apparel Multi-Channel Autopilot</div>
+        </div>
+        <span class="card-tag" style="color:var(--accent-cyan);">FULLY SYNCED</span>
+      </div>
+
+      <div class="metric-row">
+        <div class="metric-box">
+          <div class="metric-val">3</div>
+          <div class="metric-lbl">Pages Synced</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">100</div>
+          <div class="metric-lbl">FB Groups</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">59</div>
+          <div class="metric-lbl">Live Posts</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">4K</div>
+          <div class="metric-lbl">Catalog Plates</div>
+        </div>
+      </div>
+
+      <ul class="checklist">
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>3 Pages Live:</strong> Main Facebook Page, Instagram Boutique, Google Merchant Feed TSV.</div>
+        </li>
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>100 FB Groups Joined:</strong> Saree, Kurti & Wholesale hubs across India with staggered scheduling.</div>
+        </li>
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>59 Product Posts Manifest:</strong> High-converting image captions, prices & direct WhatsApp CTA.</div>
+        </li>
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>4K Ultra-Res Branded Catalog:</strong> AI model wearing plates & schema graph data.</div>
+        </li>
+        <li class="check-item">
+          <div class="check-icon">✓</div>
+          <div><strong>WhatsApp Multi-Device AI Bot:</strong> Active automated ordering on 6355285433, 8849601725, 9054241725.</div>
+        </li>
+      </ul>
+
+      <a href="file:///D:/projects/shruhi-collections/index.html" class="btn-action" style="background: linear-gradient(135deg, #10b981, #06b6d4);">Open Shruhi Storefront</a>
+    </div>
+  </div>
+
+  <!-- Bottom Table: 100 Staggered Surat Groups Overview -->
+  <div class="table-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h2 style="font-size:1.15rem; font-weight:700;">Surat PC Repair 100-Group Safe Stagger Schedule</h2>
+      <span style="font-size:0.8rem; color:var(--text-secondary);">10-15 groups/day • 10-15 min random delay • Anti-Spam Guard Active</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Group ID</th>
+          <th>Cluster / Community</th>
+          <th>Group Name</th>
+          <th>Stagger Day</th>
+          <th>Delay Interval</th>
+          <th>Daily Post</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>GRP-SRT-001</code></td>
+          <td><span class="tag-pill">Textile</span></td>
+          <td>Surat Textile Market Traders & Brokers</td>
+          <td>Day 1</td>
+          <td>12 mins</td>
+          <td>Tally Lag & SSD Boost</td>
+          <td style="color:var(--accent-emerald);">● Queued Safe</td>
+        </tr>
+        <tr>
+          <td><code>GRP-SRT-002</code></td>
+          <td><span class="tag-pill">Textile</span></td>
+          <td>Millennium Market Wholesale Association</td>
+          <td>Day 1</td>
+          <td>14 mins</td>
+          <td>GST Billing PC Freeze Fix</td>
+          <td style="color:var(--accent-emerald);">● Queued Safe</td>
+        </tr>
+        <tr>
+          <td><code>GRP-SRT-021</code></td>
+          <td><span class="tag-pill">Diamond</span></td>
+          <td>Varachha Diamond Bourse & Trading Group</td>
+          <td>Day 2</td>
+          <td>11 mins</td>
+          <td>Doorstep PC Health Check</td>
+          <td style="color:var(--accent-emerald);">● Queued Safe</td>
+        </tr>
+        <tr>
+          <td><code>GRP-SRT-035</code></td>
+          <td><span class="tag-pill">Industrial</span></td>
+          <td>Pandesara GIDC Industrial Area Network</td>
+          <td>Day 3</td>
+          <td>15 mins</td>
+          <td>Factory Accounting System AMC</td>
+          <td style="color:var(--accent-emerald);">● Queued Safe</td>
+        </tr>
+        <tr>
+          <td><code>GRP-SRT-050</code></td>
+          <td><span class="tag-pill">Commercial</span></td>
+          <td>Surat CA, Tax Consultants & GST Practitioners</td>
+          <td>Day 4</td>
+          <td>13 mins</td>
+          <td>Audit Season Urgent PC Service</td>
+          <td style="color:var(--accent-emerald);">● Queued Safe</td>
+        </tr>
+        <tr>
+          <td><code>GRP-SRT-065</code></td>
+          <td><span class="tag-pill">Residential</span></td>
+          <td>Adajan-Palanpur Residents Community</td>
+          <td>Day 5</td>
+          <td>10 mins</td>
+          <td>Doorstep Laptop Screen & Fan Fix</td>
+          <td style="color:var(--accent-emerald);">● Queued Safe</td>
+        </tr>
+        <tr>
+          <td><code>GRP-SRT-085</code></td>
+          <td><span class="tag-pill">Buy/Sell & IT</span></td>
+          <td>Surat Second Hand Laptops & Electronics</td>
+          <td>Day 6</td>
+          <td>14 mins</td>
+          <td>SSD & RAM Upgrade in 15 Mins</td>
+          <td style="color:var(--accent-emerald);">● Queued Safe</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

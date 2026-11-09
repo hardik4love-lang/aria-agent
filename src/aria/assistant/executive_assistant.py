@@ -176,6 +176,31 @@ class ExecutiveAssistant:
         """
         t_low = user_text.lower()
 
+        # Handle Surat PC Repair & Local Leads
+        if any(w in t_low for w in ["surat", "lead", "leads", "pc repair", "repair", "laptop", "onsite", "hardware", "computer"]):
+            try:
+                from aria.tools.surat_pc_lead_tools import SuratPCLeadTools
+                summary = SuratPCLeadTools.get_summary()
+                top_leads = SuratPCLeadTools.get_top_leads(limit=3)
+                leads_text = []
+                for l in top_leads:
+                    leads_text.append(f"• <b>{l['business_name']}</b> ({l['market_location']})\n  <i>Need: {l['likely_issues'][:70]}...</i>\n  💰 <i>Quote: {l['pricing_quote']}</i>")
+                
+                return (
+                    f"💻 <b>Aria Surat PC Repair & Onsite Lead Desk</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"Har, here is your live commercial lead status across Surat:\n\n"
+                    f"• 📍 <b>Total Verified Leads:</b> {summary['total_leads']} across 5 key commercial zones\n"
+                    f"• 🔥 <b>High-Urgency Outlets:</b> {summary['high_urgency_count']} (Ring Road Textile, Varachha, Adajan)\n"
+                    f"• 💵 <b>Target Pricing:</b> ₹500 Onsite Visit + ₹1,850 SSD Upgrade\n\n"
+                    f"<b>Immediate High-Intent Targets:</b>\n"
+                    + "\n\n".join(leads_text) + "\n\n"
+                    f"🌐 <b>Action Dashboard:</b> <code>D:\\surat_pc_repair_leads.html</code>\n"
+                    f"<i>Send /surat anytime to inspect or dispatch leads.</i>"
+                )
+            except Exception as e:
+                pass
+
         # Handle Mail queries
         if any(w in t_low for w in ["mail", "email", "inbox", "gmail", "letters", "messages"]):
             mail = self.get_mail_briefing()
