@@ -1,0 +1,58 @@
+name: ARIA Surat PC Repair 24/7 Cloud Autopilot
+
+on:
+  schedule:
+    # Runs every 30 minutes 24/7 in GitHub Cloud
+    - cron: '*/30 * * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/aria/scanners/surat_live_repair_scanner.py'
+      - 'scripts/run_surat_cloud_scanner.py'
+      - '.github/workflows/aria-surat-pc-hero-24x7.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: surat-pc-hero-cloud
+  cancel-in-progress: false
+
+jobs:
+  surat-cloud-scanner:
+    name: Surat 24/7 Hot Lead Scanner & Dispatches
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Execute Cloud Scan Cycle
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}
+        run: |
+          python scripts/run_surat_cloud_scanner.py
+
+      - name: Commit & Push State Persistence
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/surat_live_leads_state.json
+          if git diff --staged --quiet; then
+            echo "No state changes to commit."
+          else
+            git commit -m "chore(telemetry): update surat live leads state [skip ci]"
+            git push origin main
+          fi
