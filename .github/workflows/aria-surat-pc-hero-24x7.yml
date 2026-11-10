@@ -40,8 +40,8 @@ jobs:
 
       - name: Execute Cloud Scan Cycle
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python scripts/run_surat_cloud_scanner.py
 

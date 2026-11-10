@@ -39,8 +39,8 @@ jobs:
       - name: Run Subagent Polling Cycle
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA' }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8737013099' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           GH_AGENT_PAT: ${{ secrets.GH_AGENT_PAT }}
           GITHUB_TOKEN: ${{ secrets.GH_AGENT_PAT || secrets.GITHUB_TOKEN }}
         run: |
