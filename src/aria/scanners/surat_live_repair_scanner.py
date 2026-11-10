@@ -17,7 +17,8 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
-STATE_FILE = "D:/aria-agent/data/surat_live_leads_state.json"
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+STATE_FILE = os.environ.get("SURAT_STATE_FILE", os.path.join(ROOT_DIR, "data", "surat_live_leads_state.json"))
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "8585331609:AAFa_foTU82ToL7EFBiZ3EIrSbCDCfW0cPA")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "8737013099")
 
@@ -32,7 +33,7 @@ class SuratLiveRepairScanner:
     """Aria's autonomous scanner for real-time inbound PC repair requests in Surat."""
 
     def __init__(self):
-        os.makedirs("D:/aria-agent/data", exist_ok=True)
+        os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
         self.seen_ids = self._load_seen_ids()
 
     def _load_seen_ids(self) -> set:
