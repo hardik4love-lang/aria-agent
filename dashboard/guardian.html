@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuardianAngel AI • 24/7 Elder Defense & Voice-Clone Interceptor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --card-bg: rgba(16, 21, 33, 0.75);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --accent-emerald: #10b981;
+      --accent-cyan: #38bdf8;
+      --accent-rose: #f43f5e;
+      --accent-amber: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+    header {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand-title { font-size: 22px; font-weight: 800; display: flex; align-items: center; gap: 10px; color: var(--accent-emerald); }
+    .badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-nav:hover { background: rgba(255, 255, 255, 0.15); }
+    
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    
+    .panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .panel-title { font-size: 16px; font-weight: 700; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; }
+    
+    .scenario-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 16px;
+      border-radius: 10px;
+      color: var(--text-main);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+    .scenario-btn:hover { background: rgba(56, 189, 248, 0.1); border-color: var(--accent-cyan); }
+    .scenario-btn.active { background: rgba(16, 185, 129, 0.15); border-color: var(--accent-emerald); }
+    
+    #canvasWave {
+      width: 100%;
+      height: 120px;
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+    }
+    
+    .transcript-box {
+      background: #020617;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 16px;
+      min-height: 100px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      white-space: pre-wrap;
+    }
+    .highlight-scam { background: rgba(244, 63, 94, 0.35); color: #fda4af; padding: 2px 4px; border-radius: 4px; font-weight: 700; }
+    
+    .result-badge {
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .threat-critical { background: rgba(244, 63, 94, 0.2); border: 1px solid var(--accent-rose); color: var(--accent-rose); }
+    .threat-safe { background: rgba(16, 185, 129, 0.2); border: 1px solid var(--accent-emerald); color: var(--accent-emerald); }
+    
+    .phone-mock {
+      background: #090d16;
+      border: 2px solid #1e293b;
+      border-radius: 20px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .telegram-card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 14px;
+      border-left: 4px solid var(--accent-rose);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <div class="brand-title">🛡️ GuardianAngel AI <span class="badge">LIVE ENGINE</span></div>
+        <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">
+          Autonomous 24/7 Inbound Elder Scam & Voice-Clone Defense • $29.99/mo ($1.00/day) • Powered by Groq Llama 3.3 70B & Twilio SIP
+        </p>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <a href="index.html" class="btn-nav">← Back to ARIA Cockpit</a>
+        <a href="surat_vision.html" class="btn-nav">SuratVision AI Demo →</a>
+        <a href="https://github.com/hardik4love-lang/aria-agent" target="_blank" class="btn-nav">GitHub Repo ↗</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Left Panel: Live Call Simulator -->
+      <div class="panel">
+        <div class="panel-title">
+          <span>1. SELECT TEST CALL SCENARIO</span>
+          <span style="font-size:12px; color:var(--text-muted);">Real-time Twilio Audio Simulation</span>
+        </div>
+
+        <button class="scenario-btn active" onclick="simulateCall(0)">
+          <div>
+            <strong>🚨 US Voice Clone Scam</strong>
+            <p style="font-size:12px; color:var(--text-muted);">Mimics Grandson in Jail after car accident demanding bail wire</p>
+          </div>
+          <span style="font-size:11px; font-weight:700; color:var(--accent-rose);">CRITICAL</span>
+        </button>
+
+        <button class="scenario-btn" onclick="simulateCall(1)">
+          <div>
+            <strong>⚖️ US IRS / Federal Arrest Threat</strong>
+            <p style="font-size:12px; color:var(--text-muted);">Caller threatens imminent arrest for unpaid back taxes & SSN crimes</p>
+          </div>
+          <span style="font-size:11px; font-weight:700; color:var(--accent-rose);">CRITICAL</span>
+        </button>
+
+        <button class="scenario-btn" onclick="simulateCall(2)">
+          <div>
+            <strong>🏦 UK Safe Account Transfer</strong>
+            <p style="font-size:12px; color:var(--text-muted);">Fake Barclays fraud rep ordering transfer to 'safe account'</p>
+          </div>
+          <span style="font-size:11px; font-weight:700; color:var(--accent-rose);">CRITICAL</span>
+        </button>
+
+        <button class="scenario-btn" onclick="simulateCall(3)">
+          <div>
+            <strong>👮 India Digital Arrest (Mumbai Police)</strong>
+            <p style="font-size:12px; color:var(--text-muted);">Illegal FedEx narcotics parcel coercion via Skype video interrogation</p>
+          </div>
+          <span style="font-size:11px; font-weight:700; color:var(--accent-rose);">CRITICAL</span>
+        </button>
+
+        <button class="scenario-btn" onclick="simulateCall(4)">
+          <div>
+            <strong>🟢 Benign Family Conversation</strong>
+            <p style="font-size:12px; color:var(--text-muted);">Real Granddaughter calling about cookie recipe & Sunday dinner</p>
+          </div>
+          <span style="font-size:11px; font-weight:700; color:var(--accent-emerald);">SAFE</span>
+        </button>
+
+        <div style="margin-top:10px;">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px; color:var(--text-muted);">INBOUND AUDIO STREAM (WSS SIP MEDIA)</div>
+          <canvas id="canvasWave"></canvas>
+        </div>
+      </div>
+
+      <!-- Right Panel: Telemetry & Intervention Response -->
+      <div class="panel">
+        <div class="panel-title">
+          <span>2. REAL-TIME AI INTERCEPTION & CHILD ALERT</span>
+          <span id="evalTimeBadge" style="font-size:12px; color:var(--accent-cyan);">&lt; 380ms Latency</span>
+        </div>
+
+        <div>
+          <div style="font-size:12px; font-weight:700; color:var(--text-muted); margin-bottom:6px;">LIVE CALL TRANSCRIPTION & TAXONOMY PARSER</div>
+          <div id="transcriptBox" class="transcript-box">Click a scenario on the left to start live call simulation...</div>
+        </div>
+
+        <div id="resultStatus" class="result-badge threat-critical">
+          <span id="threatStatusText">🚨 THREAT DETECTED: US VOICE CLONE FRAUD</span>
+          <span id="threatScoreText">Score: 0.98 / 1.00</span>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:10px; padding:14px;">
+          <div style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Autonomous Intervention Speech Delivered to Caller:</div>
+          <p id="speechBox" style="font-size:13px; color:var(--accent-cyan); font-weight:600; margin-top:4px;">
+            "This call is protected by GuardianAngel AI. Because you are claiming an emergency regarding family, please speak the family emergency verification code word now."
+          </p>
+        </div>
+
+        <div class="phone-mock">
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--text-muted);">
+            <span>TELEGRAM EMERGENCY NOTIFICATION (ADULT CHILD)</span>
+            <span>PUSH DELIVERED NOW</span>
+          </div>
+          <div class="telegram-card" id="telegramCard">
+            <strong style="color:var(--accent-rose);" id="tgTitle">🚨 GuardianAngel Alert: Mom's phone targeted!</strong>
+            <div id="tgBody">Caller mimicking grandson demanding $5,000 bail money. Voice-Clone Code Word Challenge triggered. Caller dropped line. 15s audio clip attached.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scenarios = [
+      {
+        text: "Grandma, it's me! I had a car accident and I'm <span class='highlight-scam'>in jail</span>. Please <span class='highlight-scam'>don't tell mom</span>, I need <span class='highlight-scam'>bail money</span> wired right away!",
+        isThreat: true,
+        threatName: "🚨 THREAT DETECTED: US VOICE CLONE FRAUD",
+        score: "Score: 0.98 / 1.00",
+        action: "CHALLENGE_FAMILY_CODE_WORD",
+        speech: "This call is protected by GuardianAngel AI. Because you are claiming an emergency regarding family, please speak the family emergency verification code word now.",
+        tgTitle: "🚨 GuardianAngel Alert: Mom's phone targeted!",
+        tgBody: "Caller mimicking grandson demanding bail wire. Family Secret Code Word challenge initiated. Caller hung up. Audio fingerprint preserved.",
+        color: "#f43f5e"
+      },
+      {
+        text: "This is Officer Miller from the <span class='highlight-scam'>Internal Revenue Service</span>. There is an <span class='highlight-scam'>arrest warrant</span> issued for your SSN due to tax fraud.",
+        isThreat: true,
+        threatName: "🚨 THREAT DETECTED: IRS EXTORTION THREAT",
+        score: "Score: 0.95 / 1.00",
+        action: "IMMEDIATE_DISCONNECT_POLICE_WARNING",
+        speech: "GuardianAngel security alert: This line is protected against fraud. Your call is being recorded and reported to federal authorities. Disconnecting.",
+        tgTitle: "⚠️ Government Impersonation Blocked",
+        tgBody: "Caller claimed to be IRS with arrest warrant. Line severed immediately. Federal cybercrime report logged.",
+        color: "#f43f5e"
+      },
+      {
+        text: "This is Barclays fraud department. Your account is compromised due to internal theft. Transfer your funds to a <span class='highlight-scam'>safe account</span> immediately.",
+        isThreat: true,
+        threatName: "🚨 THREAT DETECTED: UK SAFE ACCOUNT SCAM",
+        score: "Score: 0.96 / 1.00",
+        action: "BLOCK_AND_ALERT_CHILD",
+        speech: "GuardianAngel screening: This recipient does not conduct bank account transfers over the phone. Please contact branch security formally.",
+        tgTitle: "🚨 High-Risk Bank Scam Intercepted",
+        tgBody: "Caller attempted Authorised Push Payment (safe account scam). Call dropped. Bank branch notified.",
+        color: "#f43f5e"
+      },
+      {
+        text: "This is Mumbai Police cyber crime branch. A parcel sent in your name contains narcotics. You are under <span class='highlight-scam'>digital arrest</span> on Skype.",
+        isThreat: true,
+        threatName: "🚨 THREAT DETECTED: INDIA DIGITAL ARREST",
+        score: "Score: 0.99 / 1.00",
+        action: "CRITICAL_INTERVENE_DROP_LINE",
+        speech: "GuardianAngel security alert: Under Indian law, no legal authority conducts digital arrests via Skype. Your IP has been reported to 1930 Cyber Helpline.",
+        tgTitle: "🚨 Digital Arrest Coercion Blocked",
+        tgBody: "Scammer attempted Skype digital arrest extortion. Call terminated with cybercrime warning.",
+        color: "#f43f5e"
+      },
+      {
+        text: "Hi Grandma, hope you are doing well! Just calling to see if you have that chocolate chip cookie recipe and what time we should come over for Sunday dinner.",
+        isThreat: false,
+        threatName: "🟢 SAFE CALL: NORMAL FAMILY CONVERSATION",
+        score: "Score: 0.02 / 1.00",
+        action: "ALLOW_NORMAL_FLOW",
+        speech: "(Call passed through directly to Grandma with zero interference)",
+        tgTitle: "🟢 Benign Call Connected",
+        tgBody: "Verified family conversation. No threat detected.",
+        color: "#10b981"
+      }
+    ];
+
+    let currentIdx = 0;
+    const canvas = document.getElementById('canvasWave');
+    const ctx = canvas.getContext('2d');
+    let waveOffset = 0;
+
+    function drawWave() {
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = 120;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      const sc = scenarios[currentIdx];
+      ctx.strokeStyle = sc.color;
+
+      const midY = canvas.height / 2;
+      for (let x = 0; x < canvas.width; x++) {
+        const freq = sc.isThreat ? 0.05 : 0.02;
+        const amp = sc.isThreat ? 30 : 15;
+        const y = midY + Math.sin(x * freq + waveOffset) * amp * Math.sin(x * 0.01);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      waveOffset += 0.15;
+      requestAnimationFrame(drawWave);
+    }
+    drawWave();
+
+    function simulateCall(index) {
+      currentIdx = index;
+      document.querySelectorAll('.scenario-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
+
+      const sc = scenarios[index];
+      document.getElementById('transcriptBox').innerHTML = sc.text;
+      document.getElementById('threatStatusText').innerText = sc.threatName;
+      document.getElementById('threatScoreText').innerText = sc.score;
+      document.getElementById('speechBox').innerText = `"${sc.speech}"`;
+      document.getElementById('tgTitle').innerText = sc.tgTitle;
+      document.getElementById('tgBody').innerText = sc.tgBody;
+
+      const resBadge = document.getElementById('resultStatus');
+      const tgCard = document.getElementById('telegramCard');
+      if (sc.isThreat) {
+        resBadge.className = 'result-badge threat-critical';
+        tgCard.style.borderLeftColor = 'var(--accent-rose)';
+      } else {
+        resBadge.className = 'result-badge threat-safe';
+        tgCard.style.borderLeftColor = 'var(--accent-emerald)';
+      }
+    }
+
+    simulateCall(0);
+  </script>
+</body>
+</html>

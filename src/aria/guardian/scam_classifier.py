@@ -196,8 +196,9 @@ class GlobalScamClassifier:
     def _compile_fast_heuristics(self):
         self.compiled_rules = []
         for vec in self.vectors:
-            # Build regex matching any trigger keyword
-            pattern = re.compile(r'\b(' + '|'.join(re.escape(k) for k in vec.trigger_keywords) + r')\b', re.IGNORECASE)
+            # Build regex matching any trigger keyword with optional plural 's'
+            pattern_parts = [re.escape(k) + r's?' for k in vec.trigger_keywords]
+            pattern = re.compile(r'\b(' + '|'.join(pattern_parts) + r')\b', re.IGNORECASE)
             self.compiled_rules.append((vec, pattern))
 
     def evaluate_transcript(self, transcript: str, family_whitelist: Optional[List[str]] = None) -> Dict[str, Any]:
@@ -248,8 +249,10 @@ class GlobalScamClassifier:
             "transcript_analyzed": transcript,
             "threat_score": round(threat_score, 3),
             "is_threat": is_critical,
+            "is_scam": is_critical,
             "matched_vectors_count": len(matched_vectors),
             "primary_vector": primary,
+            "matched_vectors": matched_vectors,
             "all_detected_vectors": matched_vectors,
             "recommended_action": recommended_action,
             "intervention_speech": intervention_speech
