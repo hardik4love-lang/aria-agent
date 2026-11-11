@@ -1,0 +1,807 @@
+{
+  "scanned_at": "2026-11-11T18:36:23.411339Z",
+  "verified_count": 36,
+  "rejected_count": 2,
+  "verified_jobs": [
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($80.00) with fast settlement (24h)."
+      },
+      "job_id": "micro-outlier-python-eval",
+      "title": "Python & API Code Reasoning Evaluation & Bug-Fixing",
+      "budget_usd": 80.0,
+      "platform": "outlier",
+      "url": "https://outlier.ai/experts/software-engineering"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($90.00) with fast settlement (24h)."
+      },
+      "job_id": "micro-dataannotation-coding",
+      "title": "Python Automation Script Testing & Code QA Task",
+      "budget_usd": 90.0,
+      "platform": "dataannotation",
+      "url": "https://www.dataannotation.tech/workers"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($150.00) with fast settlement (12h)."
+      },
+      "job_id": "micro-superteam-sol-microbounty",
+      "title": "FastAPI Webhook & Script Bug-Fix Delivery",
+      "budget_usd": 150.0,
+      "platform": "superteam",
+      "url": "https://earn.superteam.fun/bounties"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-5242704678",
+      "title": "Piece selector tab labels truncated (e.g. \"Approvals\" shows as \"Appr...\")",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/activepieces/activepieces/issues/15039"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3520227293",
+      "title": "[Enhancement]: Project-specific members",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/issues/6894"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3923205739",
+      "title": "[Enhancement]: Add a reusable email server stack/template for managing client email domains",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/issues/8266"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3913430544",
+      "title": "feat(oauth): add keycloak provider",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/pull/8209"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2341711069",
+      "title": "[Feature]: Backup Manger in the UI",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/issues/2389"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3722348116",
+      "title": "[Enhancement]: new deployment page",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/issues/7596"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2348806303",
+      "title": "[Improvement]: Container Info and Network tab (for each container and service)",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/issues/2495"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3704053490",
+      "title": "[Enhancement]: Integrated backups for Git based Docker Composes",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/issues/7528"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3735897685",
+      "title": "[Improvement]: Do not share all environment variables across all containers in a Compose project",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/issues/7655"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3944463247",
+      "title": "feat(services): add Hi.Events one-click service",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/pull/8369"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-4165044738",
+      "title": "feat(notifications): add Ntfy as notification provider",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/coollabsio/coolify/pull/9276"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-4269349854",
+      "title": "KnowledgeBase Document Pruning",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/archestra-ai/archestra/issues/3789"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-4336433249",
+      "title": "WhatsApp support for agents similar to MS Teams and Slack",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/archestra-ai/archestra/issues/4145"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2179294878",
+      "title": "ZStream.groupedWithin works in unexpected way for infinite stream",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/8686"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2298396134",
+      "title": "Create Loom-friendly concurrent weak set (FiberSet)",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/8861"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2459060722",
+      "title": "ZIO's `Semaphore` performance not too great",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/9093"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2541006108",
+      "title": "ZIO.timeoutTO has tremendous overhead",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/9211"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-4395818250",
+      "title": "Can Fiber(Runtime) and Promise be merged?",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/10860"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2271678249",
+      "title": "Creating highly optimized and specialized fiber mailbox",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/8807"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3881306765",
+      "title": "Responsible Disclosure Inquiry \u2013 Security Vulnerability Found",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/10418"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2504904459",
+      "title": "Status of Runtime Operation Logging",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/9170"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-2462813269",
+      "title": "zio.test.Gen generates the same data every time in certain conditions ",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/9101"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-3099738401",
+      "title": "Create test suite that tests the correct behaviour of `ZIOApp`",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/zio/zio/issues/9909"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-5743344998",
+      "title": "[Bounty/Paid] Fix #8621: [Bounty $500] Host Tilizer Optimizations for BFP8/",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/59635"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-6047811485",
+      "title": "fix: Bounty $[750] Improve Qwen3-TTS Code Predictor Accuracy (resolves #62571)",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/62576"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-6135349911",
+      "title": "[Bug fix] ttnn.sampling: use FP32-level random threshold without 8-bit cap",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/63585"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-5866634711",
+      "title": "[Baobot AI Bounty Fix] Automated solution for Issue #58986",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/60751"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-5863797267",
+      "title": "[Baobot AI Bounty Fix] Automated solution for Issue #8621",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/60719"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-6289362418",
+      "title": "Fix paged_update_cache ND_SHARDED page_table crash",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/65021"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-6234485112",
+      "title": "Fix sharded softmax work units and per-core runtime args on offset core grids (#64575)",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/64576"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-6234318791",
+      "title": "[Bounty $750] Fix sharded softmax on offset core grids",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/issues/64575"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-6289409301",
+      "title": "Fix paged_fused_update_cache ND_SHARDED shard_spec crashes",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/65022"
+    },
+    {
+      "verified_paying": true,
+      "consensus_score": "3/3",
+      "agent_1_escrow": {
+        "passed": true,
+        "verdict": "PASSED: Funds confirmed pre-locked in escrow/milestone."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "gh-6244933000",
+      "title": "[Bounty $750] Fix remaining sharded scale_mask_softmax mask handling issues",
+      "budget_usd": 100.0,
+      "platform": "github-bounty",
+      "url": "https://github.com/tenstorrent/tt-metal/issues/64647"
+    }
+  ],
+  "rejected_jobs": [
+    {
+      "verified_paying": false,
+      "consensus_score": "0/3",
+      "agent_1_escrow": {
+        "passed": false,
+        "verdict": "REJECTED: Post uses a speculative/contest pool without guaranteed individual payment."
+      },
+      "agent_2_counterparty": {
+        "passed": false,
+        "verdict": "REJECTED: Poster/Client has unverified payment credentials."
+      },
+      "agent_3_rapid_scope": {
+        "passed": false,
+        "verdict": "REJECTED: Payout turnaround (720h) exceeds rapid payment threshold (max 48h)."
+      },
+      "job_id": "test-go-hybrid-unfunded",
+      "title": "Go-Hybrid Speculative Pool Discussion #295",
+      "budget_usd": 500.0,
+      "platform": "github",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid"
+    },
+    {
+      "verified_paying": false,
+      "consensus_score": "2/3",
+      "agent_1_escrow": {
+        "passed": false,
+        "verdict": "REJECTED: Disallowed platform (Freelancer and Reddit explicitly banned by policy)."
+      },
+      "agent_2_counterparty": {
+        "passed": true,
+        "verdict": "PASSED: Counterparty payment method and historical track record verified."
+      },
+      "agent_3_rapid_scope": {
+        "passed": true,
+        "verdict": "PASSED: Scope is rapid remote deliverable ($100.00) with fast settlement (24h)."
+      },
+      "job_id": "test-freelancer-banned",
+      "title": "Scrape Website Data Fast",
+      "budget_usd": 100.0,
+      "platform": "freelancer",
+      "url": "https://www.freelancer.com/projects/scrape"
+    }
+  ]
+}
