@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: fastapi-webhook-engine
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: SHOPIFY_WEBHOOK_SECRET
+        sync: false
+      - key: GENERIC_WEBHOOK_SECRET
+        sync: false
